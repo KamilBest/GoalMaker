@@ -2,6 +2,7 @@ package goal_maker.database.dao.user_dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -15,29 +16,17 @@ public class UserDaoImpl implements UserDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	/**
+	 * Get user by login
+	 */
 	@Override
 	public GmUser getUserByLogin(String login) {
-		// TODO Auto-generated method stub
-		return null;
+		String sqlSelect = "SELECT id_user, login, password, is_active FROM goal_maker.user_gm WHERE login = '"
+				+ login + "'";
+		Query query = entityManager.createNativeQuery(sqlSelect, GmUser.class);
+		GmUser user = (GmUser) query.getSingleResult();
+		return user;
 	}
+
 	
-	//@SuppressWarnings("unchecked")
-//	public GmUser getUserByLogin(String login)
-//	{
-//
-////		List<User> users=new ArrayList<User>();
-////		users = entityManager.createQuery("SELECT * FROM firm01.user_emes where login =?")
-////			.setParameter(0, login)
-////			.getResultList();
-////		if (users.size() > 0) {
-////			return users.get(0);
-////		} else {
-////			return null;
-////		}
-//		
-//		//if (login.equals("test"))
-//			return new User(1l, "Test", "Adam", "Kozłowski", "USER", "test", BCrypt.hashpw("test", BCrypt.gensalt()));
-//		//else
-//			//return null;
-	//}
 }

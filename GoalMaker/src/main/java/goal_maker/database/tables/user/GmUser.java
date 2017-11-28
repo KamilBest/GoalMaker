@@ -6,17 +6,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user", catalog="public")
-public class GmUser {
+@Table(name = "user_gm",schema = "goal_maker")
+public class GmUser implements java.io.Serializable {
 
-	private Long id;
+	private long id;
 	private String login;
 	private String password;
 	private boolean isActive;
 	
 	public GmUser() {}
 
-	public GmUser(Long id, String login,
+	public GmUser(long id, String login,
 			String password, boolean isActive) {
 		this.id = id;
 		this.login = login;
@@ -25,11 +25,11 @@ public class GmUser {
 
 	@Id
 	@Column(name = "id_user",unique=true, nullable=false)
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long i) {
+	public void setId(long i) {
 		this.id = i;
 	}
 	

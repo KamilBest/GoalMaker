@@ -1,9 +1,6 @@
 package goal_maker.web.controller;
 
-import java.security.Principal;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -11,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String showLoginPage(Model model, Principal principal) {
+	public String showLoginPage() {
 		return "login";
 	}
 	

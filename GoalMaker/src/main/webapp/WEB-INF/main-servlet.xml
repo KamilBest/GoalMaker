@@ -3,9 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-<!-- 	<mvc:resources mapping="/bootstrap/**" location="/bootstrap/" /> -->
-<!-- 	<mvc:resources mapping="/dist/**" location="/dist/" /> -->
-<!-- 	<mvc:resources mapping="/plugins/**" location="/plugins/" /> -->
+
+	<mvc:resources mapping="/assets/css/**" location="/assets/css/" />
+	<mvc:resources mapping="/assets/img/**" location="/assets/img/" />
+	<mvc:resources mapping="/assets/scripts/**" location="/assets/scripts/" />
+	<mvc:resources mapping="/assets/vendor/**" location="/assets/vendor/" />
+
+
 
 	<mvc:annotation-driven />
 	<context:component-scan base-package="goal_maker" />
@@ -81,7 +85,8 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hbm2dll.auto">update</prop>
 				<prop key="connection_pool_size">1</prop>
-				<prop key="hibernate.default_schema">firm01</prop>
+				<prop key="hibernate.default_schema">goal_maker</prop>
+				
 			</props>
 		</property>
 	</bean>
