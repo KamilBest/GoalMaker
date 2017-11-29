@@ -23,6 +23,15 @@ public class UserController {
 		model.addAttribute("location", "userByLogin");
 		model.addAttribute("User", gmUser);
 	}
+
+	@RequestMapping(value="/getUsersList", method=RequestMethod.GET)
+	public void getUsersList(Model model)
+	{
+		model.addAttribute("location", "userByLogin");
+		model.addAttribute("UsersList", userService.getUsersList());
+	}
+
+
 	
 }
 
