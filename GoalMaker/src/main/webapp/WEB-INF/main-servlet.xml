@@ -65,6 +65,12 @@
 		<property name="characterEncoding" value="UTF-8" />
 		<property name="templateMode" value="HTML5" />
 	</bean>
+	<bean id="hibernateDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
+		<property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+		<property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
+	</bean>
+	<!--
 	<bean id="hibernateDataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="org.postgresql.Driver" />
@@ -72,6 +78,7 @@
 		<property name="username" value="postgres" />
 		<property name="password" value="masterkey" />
 	</bean>
+	-->
 	<bean id="myEmf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="hibernateDataSource" />
@@ -86,7 +93,7 @@
 				<prop key="hbm2dll.auto">update</prop>
 				<prop key="connection_pool_size">1</prop>
 				<prop key="hibernate.default_schema">goal_maker</prop>
-				
+
 			</props>
 		</property>
 	</bean>
