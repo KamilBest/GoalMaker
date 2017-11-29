@@ -1,8 +1,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<mvc:resources mapping="/assets/css/**" location="/assets/css/" />
 	<mvc:resources mapping="/assets/img/**" location="/assets/img/" />
@@ -18,19 +18,19 @@
 		<property name="messageConverters">
 			<list>
 				<bean
-					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+						class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
 				<bean
-					class="org.springframework.http.converter.StringHttpMessageConverter" />
+						class="org.springframework.http.converter.StringHttpMessageConverter" />
 			</list>
 		</property>
 	</bean>
 	<bean id="messageSource"
-		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		  class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="WEB-INF/l10n/messages" />
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 	<bean id="localeResolver"
-		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		  class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 		<property name="defaultLocale" value="pl_PL" />
 	</bean>
 	<!-- **************************************************************** -->
@@ -59,12 +59,16 @@
 	</bean>
 	<!-- Thymeleaf Template Resolver -->
 	<bean id="templateResolver"
-		class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+		  class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".html" />
 		<property name="characterEncoding" value="UTF-8" />
 		<property name="templateMode" value="HTML5" />
 	</bean>
+	<bean class="java.net.URI" id="dbUrl">
+		<constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
+	</bean>
+
 	<bean id="hibernateDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
 		<property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
@@ -79,8 +83,9 @@
 		<property name="password" value="masterkey" />
 	</bean>
 	-->
+
 	<bean id="myEmf"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		  class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="hibernateDataSource" />
 		<property name="packagesToScan" value="goal_maker.database.tables" />
 		<property name="jpaVendorAdapter">
