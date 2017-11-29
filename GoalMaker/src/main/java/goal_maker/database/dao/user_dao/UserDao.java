@@ -2,7 +2,11 @@ package goal_maker.database.dao.user_dao;
 
 import goal_maker.database.tables.user.GmUser;
 
+import java.util.List;
+
 public interface UserDao {
 	public GmUser getUserByLogin(String login);
+	public List<GmUser> getUsersList();
+
 	
 }

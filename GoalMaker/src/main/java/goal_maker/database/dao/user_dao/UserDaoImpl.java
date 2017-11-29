@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 
 import goal_maker.database.tables.user.GmUser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class UserDaoImpl implements UserDao {
 
@@ -28,5 +31,12 @@ public class UserDaoImpl implements UserDao {
 		return user;
 	}
 
-	
+	@Override
+	public List<GmUser> getUsersList() {
+		String sqlSelect = "SELECT id_user, login, password, is_active FROM goal_maker.user_gm";
+		List<GmUser> userList = entityManager.createNativeQuery(sqlSelect, GmUser.class).getResultList();
+		return userList;
+	}
+
+
 }
