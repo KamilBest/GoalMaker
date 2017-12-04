@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     /**
-     * Add user method
+     * Add user method with user param
      */
     @Transactional
     @Override
