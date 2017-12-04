@@ -1,11 +1,11 @@
-package goal_maker.config.Security;
+package goal_maker.config.security;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * Created by Maarcin on 2017-12-04.
  */
-public class Enrycption
+public class Encryption
 {
     public static String encryptPassword(String password) {
 

@@ -34,7 +34,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
-    public String userForm(Model model) {
+    public String addUserForm(Model model) {
         model.addAttribute("location", "addUser");
         model.addAttribute("user", new GmUser());
         return "index";

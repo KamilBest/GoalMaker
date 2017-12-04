@@ -4,16 +4,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import goal_maker.config.Security.Enrycption;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.bcrypt.BCrypt;
+import goal_maker.config.security.Encryption;
 import org.springframework.stereotype.Repository;
 
 import goal_maker.database.tables.user.GmUser;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.security.Security;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -22,7 +18,7 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
     @PersistenceContext
-    private Enrycption encryption;
+    private Encryption encryption;
 
     /**
      * Get user by login
