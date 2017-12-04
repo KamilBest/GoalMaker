@@ -36,6 +36,9 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
+    /**
+     * Add user method
+     */
     @Transactional
     @Override
     public void addUser(GmUser user) {
