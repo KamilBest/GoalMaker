@@ -12,8 +12,59 @@ public class GmUser implements java.io.Serializable {
 	private long id;
 	private String login;
 	private String password;
+	private String name;
+	private String surname;
+	private String email;
+	private String dateOfBirth;
 	private boolean isActive;
-	
+
+	@Column(name = "name")
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Column(name = "surname")
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	@Column(name = "email")
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public GmUser(long id, String login, String password, String name, String surname, String email, String dateOfBirth, boolean isActive) {
+		this.id = id;
+		this.login = login;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.dateOfBirth = dateOfBirth;
+		this.isActive = isActive;
+	}
+
+	@Column(name = "date_of_birth")
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
 	public GmUser() {}
 
 	public GmUser(long id, String login,
@@ -33,7 +84,7 @@ public class GmUser implements java.io.Serializable {
 		this.id = i;
 	}
 	
-	@Column(name = "login")
+	@Column(name = "login",unique=true, nullable=false)
 	public String getLogin() {
 		return login;
 	}
