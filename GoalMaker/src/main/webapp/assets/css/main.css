@@ -21,7 +21,7 @@ html {
 }
 
 body {
-	background-image: url("/assets/img/background.jpeg");
+	background-image: url("../../assets/img/background.jpeg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
@@ -1334,7 +1334,6 @@ ul.activity-list>li .timestamp {
 	margin: 0 auto;
 	background-color: #fff;
 }
-
 .auth-box:before {
 	display: inline-block;
 	vertical-align: middle;
@@ -1345,7 +1344,6 @@ ul.activity-list>li .timestamp {
 	vertical-align: middle;
 	height: 100%;
 }
-
 .auth-box .content {
 	display: inline-block;
 	vertical-align: middle;
@@ -1356,7 +1354,6 @@ ul.activity-list>li .timestamp {
 	vertical-align: middle;
 	margin-top: -20px;
 }
-
 .auth-box .left {
 	float: left;
 	width: 100%;
@@ -1364,7 +1361,6 @@ ul.activity-list>li .timestamp {
 	padding: 0px 33px;
 	text-align: center;
 }
-
 .auth-box .left:before {
 	display: inline-block;
 	vertical-align: middle;
@@ -1375,25 +1371,20 @@ ul.activity-list>li .timestamp {
 	vertical-align: middle;
 	height: 100%;
 }
-
 .auth-box .header {
 	margin-bottom: 30px;
 }
-
 .auth-box .lead {
 	margin-top: 5px;
 	font-size: 18px;
 	text-align: center;
 }
-
 .auth-box .form-auth-small .btn {
 	margin-top: 20px;
 }
-
 .auth-box .form-auth-small .element-left {
 	float: left;
 }
-
 .auth-box .form-auth-small .element-right {
 	float: right;
 }
@@ -1402,7 +1393,6 @@ ul.activity-list>li .timestamp {
 	margin-top: 20px;
 	text-align: center;
 }
-
 .auth-box.lockscreen {
 	width: 50%;
 	padding: 40px 60px;
@@ -1431,9 +1421,15 @@ ul.activity-list>li .timestamp {
 	.auth-box {
 		width: 90%;
 	}
+    .register-box{
+        width: 90%;
+    }
 	.auth-box .left {
 		top: 3.3em;
 	}
+    .register-box .left{
+        top: 3.3em;
+    }
 }
 
 @media screen and (max-width: 1023px) {
@@ -1445,12 +1441,20 @@ ul.activity-list>li .timestamp {
 	.auth-box .right {
 		display: none;
 	}
+    .register-box .left{
+        width: 100%;
+        position: inherit;
+        padding: 30px;
+    }
 }
 
 @media screen and (max-width: 992px) {
 	.auth-box {
 		width: 70%;
 	}
+    .register-box{
+        width: 70%;
+    }
 	.auth-box.lockscreen {
 		width: 50%;
 		padding: 40px 20px;
@@ -1461,6 +1465,9 @@ ul.activity-list>li .timestamp {
 	.auth-box {
 		width: 90%;
 	}
+    .register-box{
+        width: 90%;
+    }
 	.auth-box .content {
 		width: 95%;
 	}
@@ -1469,6 +1476,84 @@ ul.activity-list>li .timestamp {
 	}
 }
 
+/*******************
+*REGISTER FORM
+********************/
+.register-box{
+    -moz-box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.1);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 30%;
+	height: 550px;
+	margin: 0 auto;
+	background-color: #fff;
+}
+.register-box:before{
+    display: inline-block;
+	vertical-align: middle;
+	*vertical-align: auto;
+	*zoom: 1;
+	*display: inline;
+	content: ' ';
+	vertical-align: middle;
+	height: 100%;
+}
+.register-box .content{
+    display: inline-block;
+	vertical-align: middle;
+	*vertical-align: auto;
+	*zoom: 1;
+	*display: inline;
+	width: 80%;
+	vertical-align: middle;
+	margin-top: -20px;
+}
+.register-box .left{
+    float: left;
+	width: 100%;
+	height: 100%;
+	padding: 0px 33px;
+	text-align: center;
+}
+
+.register-box .left:before{
+    display: inline-block;
+	vertical-align: middle;
+	*vertical-align: auto;
+	*zoom: 1;
+	*display: inline;
+	content: ' ';
+	vertical-align: middle;
+	height: 100%;
+}
+
+.register-box .header{
+    margin-bottom: 30px;
+}
+
+.register-box .lead{
+    margin-top: 5px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.register-box .form-auth-small .btn{
+    margin-top: 20px;
+}
+
+.register-box .form-auth-small .element-left{
+    float: left;
+}
+.register-box .form-auth-small .element-right{
+    float: right;
+}
+.register-box .form-aut-small .bottom{
+    margin-top: 20px;
+    text-align: center;
+}
 /********************
  * HELPERS
  ********************/
