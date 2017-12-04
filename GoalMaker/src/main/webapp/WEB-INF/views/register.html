@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <title>Register Goal Maker</title>
@@ -41,47 +42,51 @@
 								</div>
 								<p class="lead">Zarejestruj się</p>
 							</div>
-							<form class="form-register-small" th:action="@{/register}" method="post">
+							<form class="form-register-small" th:action="@{/addUser}" th:object="@{user}" method="post">
+                                <input type="hidden" th:field="*{id}" />
 								<div class="form-group">
 									<label for="register-login" class="control-label sr-only">Wpisz login</label>
 									   <input type="text" name="username" class="form-control"
-										  placeholder="Wpisz login">
+										  placeholder="Wpisz login" th:field="*{login}">
                                 </div>
                                 <div class="form-group">
 									<label for="register-email" class="control-label sr-only">Wpisz email</label>
 									   <input type="email" name="email" class="form-control"
-										  placeholder="Wpisz email">
+										  placeholder="Wpisz email" th:field="*{email}">
                                 </div>
                                 <div class="form-group">
 									<label for="register-firstname" class="control-label sr-only">Imię</label>
 									   <input type="text" name="firstname" class="form-control"
-										  placeholder="Imię">
+										  placeholder="Imię" th:field="*{name}">
                                 </div>
                                 <div class="form-group">
 									<label for="register-surname" class="control-label sr-only">Nazwisko</label>
 									   <input type="text" name="surname" class="form-control"
-										  placeholder="Nazwisko">
+										  placeholder="Nazwisko" th:field="*{surname}">
                                 </div>
                                 <div class="form-group">
 									<label for="register-bday" class="control-label sr-only">Data urodzenia</label>
 									   <input type="date" name="bday" class="form-control"
-										  placeholder="date">
+										  placeholder="date" th:field="*{dateOfBirth}">
                                 </div>
                                 <div class="form-group">
 									<label for="register-password" class="control-label sr-only">Wpisz haslo</label>
 									   <input type="password" name="password" class="form-control"
-										  placeholder="Wpisz hasło">
+										  placeholder="Wpisz hasło" th:field="*{password}">
                                 </div>
+                                <!--
                                 <div class="form-group">
 									<label for="register-rpassword" class="control-label sr-only">Powtórz hasło</label>
 									   <input type="password" name="rpassword" class="form-control"
 										  placeholder="Powtórz hasło">
                                 </div>
+                                -->
                                 <!---
 								<h4 th:if="${param.error}" class="loginError">Zły login lub
 									hasło!</h4>
 				                <br>
                                 -->
+                                 <input type="hidden" th:field="*{isActive}" />
 								<button type="submit" class="btn btn-primary btn-lg btn-block">ZAREJESTRUJ</button>
 
 							</form>
