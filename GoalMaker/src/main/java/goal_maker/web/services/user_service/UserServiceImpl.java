@@ -24,4 +24,9 @@ public class UserServiceImpl implements UserService{
 		return userDao.getUsersList();
 	}
 
+	@Override
+	public void addUser(GmUser user) {
+		userDao.addUser(user);
+	}
+
 }
