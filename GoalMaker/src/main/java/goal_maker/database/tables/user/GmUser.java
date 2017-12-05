@@ -1,9 +1,13 @@
 package goal_maker.database.tables.user;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "user_gm",schema = "goal_maker")
@@ -15,7 +19,7 @@ public class GmUser implements java.io.Serializable {
 	private String name;
 	private String surname;
 	private String email;
-	private String dateOfBirth;
+	private Date dateOfBirth;
 	private boolean isActive;
 
 	@Column(name = "name")
@@ -45,7 +49,7 @@ public class GmUser implements java.io.Serializable {
 		this.email = email;
 	}
 
-	public GmUser(long id, String login, String password, String name, String surname, String email, String dateOfBirth, boolean isActive) {
+	public GmUser(long id, String login, String password, String name, String surname, String email, Date dateOfBirth, boolean isActive) {
 		this.id = id;
 		this.login = login;
 		this.password = password;
@@ -57,13 +61,15 @@ public class GmUser implements java.io.Serializable {
 	}
 
 	@Column(name = "date_of_birth")
-	public String getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
+
 
 	public GmUser() {}
 
@@ -103,11 +109,11 @@ public class GmUser implements java.io.Serializable {
 	}
 	
 	@Column(name = "is_active")
-	public boolean isActive() {
+	public boolean getIsActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
 	}
 	

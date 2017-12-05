@@ -1,17 +1,18 @@
 package goal_maker.web.controller;
 
-import goal_maker.web.services.user_service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import goal_maker.database.tables.user.GmUser;
 import goal_maker.web.services.user_service.UserService;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class UserController {
@@ -32,20 +33,24 @@ public class UserController {
         model.addAttribute("UsersList", userService.getUsersList());
     }
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        sdf.setLenient(true);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+    }
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String addUserForm(Model model) {
-        model.addAttribute("location", "addUser");
         model.addAttribute("user", new GmUser());
-        return "index";
+        return "register";
     }
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public ModelAndView addUser(@ModelAttribute("user") GmUser user, @RequestParam int id) {
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String addUser(@ModelAttribute("user") GmUser user) {
         userService.addUser(user);
-        return new ModelAndView("/getUsersList");
+        return "redirect:/login";
     }
-
 
 }
 

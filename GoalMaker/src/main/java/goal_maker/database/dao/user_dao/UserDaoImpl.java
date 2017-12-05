@@ -12,20 +12,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static goal_maker.config.security.Encryption.encryptPassword;
+
 @Repository
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
     private EntityManager entityManager;
-    @PersistenceContext
-    private Encryption encryption;
 
     /**
      * Get user by login
      */
     @Override
     public GmUser getUserByLogin(String login) {
-        String sqlSelect = "SELECT id_user, login, password, is_active FROM goal_maker.user_gm WHERE login = '"
+        String sqlSelect = "SELECT id_user, login, password, name, surname, email, date_of_birth, is_active " +
+                "FROM goal_maker.user_gm WHERE login = '"
                 + login + "'";
         Query query = entityManager.createNativeQuery(sqlSelect, GmUser.class);
         GmUser user = (GmUser) query.getSingleResult();
@@ -39,12 +40,9 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void addUser(GmUser user) {
 
-        user.setPassword(encryption.encryptPassword(user.getPassword()));
-        String sqlInsert = "INSERT INTO goal_maker.user_gm(\n" +
-                "            id_user, login, password, name, surname, email, date_of_birth, \n" +
-                "            is_active)\n" +
-                "    VALUES (?, ?, ?, ?, ?, ?, ?, \n" +
-                "            ?);";
+        user.setPassword(Encryption.encryptPassword(user.getPassword()));
+        String sqlInsert = "INSERT INTO goal_maker.user_gm(id_user, login, password, name, surname, email, date_of_birth, " +
+                "is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         Query query = entityManager.createNativeQuery(sqlInsert, GmUser.class);
         query.setParameter(1, user.getId());
         query.setParameter(2, user.getLogin());
@@ -53,7 +51,7 @@ public class UserDaoImpl implements UserDao {
         query.setParameter(5, user.getSurname());
         query.setParameter(6, user.getEmail());
         query.setParameter(7, user.getDateOfBirth());
-        query.setParameter(8, user.isActive());
+        query.setParameter(8, user.getIsActive());
         query.executeUpdate();
 
     }
