@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cdff902-03d8-42d9-97da-b1c84eb3bb32" name="Default" comment="&quot;added pom files&quot;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GoalMaker/src/main/webapp/assets/css/datepicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GoalMaker/src/main/webapp/assets/scripts/bootstrap-datepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GoalMaker/src/main/webapp/assets/scripts/jquery-3.2.1.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoalMaker/GoalMaker.iml" afterPath="$PROJECT_DIR$/GoalMaker/GoalMaker.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/config/SecurityConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/database/dao/user_dao/UserDaoImpl.java" afterPath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/database/dao/user_dao/UserDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/database/tables/user/GmUser.java" afterPath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/database/tables/user/GmUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/web/controller/LoginController.java" afterPath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/web/controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/web/controller/UserController.java" afterPath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/web/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/web/services/user_service/UserLoginDetailsService.java" afterPath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/web/services/user_service/UserLoginDetailsService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/web/services/user_service/UserService.java" afterPath="$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/web/services/user_service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoalMaker/src/main/webapp/WEB-INF/views/login.html" afterPath="$PROJECT_DIR$/GoalMaker/src/main/webapp/WEB-INF/views/login.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoalMaker/src/main/webapp/WEB-INF/views/register.html" afterPath="$PROJECT_DIR$/GoalMaker/src/main/webapp/WEB-INF/views/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoalMaker/src/main/webapp/assets/css/gm.css" afterPath="$PROJECT_DIR$/GoalMaker/src/main/webapp/assets/css/gm.css" />
     </list>
     <ignored path="$PROJECT_DIR$/GoalMaker/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,9 +19,11 @@
       <file leaf-file-name="register.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GoalMaker/src/main/webapp/WEB-INF/views/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="105" column="70" lean-forward="false" selection-start-line="105" selection-start-column="70" selection-end-line="105" selection-end-column="70" />
-              <folding />
+            <state relative-caret-position="240">
+              <caret line="120" column="78" lean-forward="false" selection-start-line="120" selection-start-column="78" selection-end-line="120" selection-end-column="78" />
+              <folding>
+                <element signature="n#style#0;n#div#7;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -41,7 +31,7 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GoalMaker/src/main/webapp/assets/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="480">
               <caret line="32" column="3" lean-forward="false" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
               <folding />
             </state>
@@ -84,7 +74,7 @@
       <file leaf-file-name="GmUser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/database/tables/user/GmUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
+            <state relative-caret-position="705">
               <caret line="67" column="35" lean-forward="false" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -100,7 +90,7 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/web/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
+            <state relative-caret-position="435">
               <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
@@ -110,7 +100,7 @@
       <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GoalMaker/src/main/webapp/WEB-INF/views/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="975">
               <caret line="65" column="36" lean-forward="false" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="88" />
               <folding />
             </state>
@@ -240,38 +230,14 @@
               <item name="GoalMaker" type="b2602c69:ProjectViewProjectNode" />
               <item name="GoalMaker" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="GoalMaker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GoalMaker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GoalMaker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GoalMaker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GoalMaker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GoalMaker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GoalMaker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GoalMaker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -407,7 +373,8 @@
       <workItem from="1512479724650" duration="780000" />
       <workItem from="1512481893340" duration="29000" />
       <workItem from="1512482298908" duration="973000" />
-      <workItem from="1512496852264" duration="6963000" />
+      <workItem from="1512496852264" duration="7296000" />
+      <workItem from="1512512204303" duration="726000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;added pom files&quot;">
       <created>1511991616239</created>
@@ -416,15 +383,21 @@
       <option name="project" value="LOCAL" />
       <updated>1511991616239</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="#GM-32 Finished Added thymeleaf connection with controllers - made working registration.">
+      <created>1512503986028</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1512503986029</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28836000" />
+    <option name="totallyTimeSpent" value="29895000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="59" y="-4" width="1381" height="904" extended-state="6" />
-    <editor active="true" />
+    <frame x="178" y="24" width="1383" height="912" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5026217" order="7" side_tool="true" content_ui="tabs" />
@@ -447,7 +420,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.4973783" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33419356" sideWeight="0.48838952" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20149812" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20149812" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -469,7 +442,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;added pom files&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;added pom files&quot;" />
+    <MESSAGE value="#GM-32 Finished Added thymeleaf connection with controllers - made working registration." />
+    <option name="LAST_COMMIT_MESSAGE" value="#GM-32 Finished Added thymeleaf connection with controllers - made working registration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -703,13 +677,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GoalMaker/hs_err_pid10691.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/GoalMaker/hs_err_pid10691.log" />
     <entry file="file://$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/config/SecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -738,7 +706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -746,7 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -754,14 +720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
           <caret line="51" column="47" lean-forward="false" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1512477428350" expanded="true" signature="722:791" ph="SELECT id_us... " />
-            <marker date="1512477428350" expanded="true" signature="722:892" ph="SELECT id_us... user_gm" />
-            <marker date="1512477428350" expanded="true" signature="1289:1444" ph="INSERT INTO goal_maker.user_gm... " />
-            <marker date="1512477428350" expanded="true" signature="1289:1446" ph="INSERT INTO goal_maker.user_gm... " />
-            <marker date="1512477428350" expanded="true" signature="2046:2112" ph="SELECT id_us... user_gm" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -769,7 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -783,7 +740,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/database/tables/user/GmUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
+        <state relative-caret-position="705">
           <caret line="67" column="35" lean-forward="false" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -816,7 +773,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GoalMaker/src/main/webapp/WEB-INF/views/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="975">
           <caret line="65" column="36" lean-forward="false" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="88" />
           <folding />
         </state>
@@ -824,7 +781,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GoalMaker/src/main/webapp/assets/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="480">
           <caret line="32" column="3" lean-forward="false" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
           <folding />
         </state>
@@ -848,7 +805,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GoalMaker/src/main/java/goal_maker/web/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
+        <state relative-caret-position="435">
           <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
@@ -858,15 +815,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-966">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GoalMaker/src/main/webapp/WEB-INF/views/register.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="105" column="70" lean-forward="false" selection-start-line="105" selection-start-column="70" selection-end-line="105" selection-end-column="70" />
-          <folding />
+        <state relative-caret-position="240">
+          <caret line="120" column="78" lean-forward="false" selection-start-line="120" selection-start-column="78" selection-end-line="120" selection-end-column="78" />
+          <folding>
+            <element signature="n#style#0;n#div#7;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
