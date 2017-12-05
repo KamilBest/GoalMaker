@@ -35,7 +35,7 @@ public class UserLoginDetailsService implements UserDetailsService {
 			throw new UsernameNotFoundException("No user found with login: " + login);
 		}
 
-		User user = new User(gmUser.getLogin(), gmUser.getPassword(), true, true, true, gmUser.isActive(),
+		User user = new User(gmUser.getLogin(), gmUser.getPassword(), true, true, true, gmUser.getIsActive(),
 				Arrays.asList(authority));
 		return user;
 
