@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="GoalMaker:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="GoalMaker.war">
-      <element id="artifact" artifact-name="GoalMaker:war exploded" />
-    </root>
-  </artifact>
-</component>
