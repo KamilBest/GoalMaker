@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface UserDao {
 
-	public GmUser getUserByLogin(String login);
-	public void addUser(GmUser user);
-	public List<GmUser> getUsersList();
+    public GmUser getUserByLogin(String login);
 
-	
+    public void addUser(GmUser user);
+
+    public List<GmUser> getUsersList();
+
+
 }

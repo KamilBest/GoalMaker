@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users list</title>
+</head>
+<body>
+<section class="content" th:fragment="Userslist">
+    <table id="usersList" class="table table-striped table-bordered" cellspacing="0" width="85%">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Login</th>
+            <th>Hasło</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Email</th>
+            <th>Data urodzenia</th>
+            <th>Stan</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${UsersList}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.login}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.surname}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.dateOfBirth}"></td>
+            <td th:text="${user.isActive}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

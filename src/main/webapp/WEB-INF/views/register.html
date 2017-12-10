@@ -1,153 +1,154 @@
 <!DOCTYPE html>
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Register Goal Maker</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<!-- VENDOR CSS -->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="assets/vendor/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
-	<link rel="stylesheet" href="assets/css/datepicker.css">
-<!-- MAIN CSS -->
-<link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/gm.css">
-<!-- GOOGLE FONTS -->
-<link
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
-	rel="stylesheet">
-<!-- ICONS -->
-<link rel="apple-touch-icon" sizes="76x76"
-	href="assets/img/apple-icon.png">
-<link rel="icon" type="image/png" sizes="96x96"
-	href="assets/img/favicon.png">
-<script src="assets/scripts/jquery-3.2.1.min.js"></script>
-	<script src="assets/scripts/bootstrap-datepicker.js"></script>
-	<script>
-		$(function(){
-		   $('.datepicker').datepicker({
-		       format: 'dd.mm.yyyy'});
-		});
-	</script>
+    <title>Register Goal Maker</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="assets/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+    <link rel="stylesheet" href="assets/css/datepicker.css">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/gm.css">
+    <!-- GOOGLE FONTS -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
+            rel="stylesheet">
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="76x76"
+          href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+          href="assets/img/favicon.png">
+    <script src="assets/scripts/jquery-3.2.1.min.js"></script>
+    <script src="assets/scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $(function () {
+            $('.datepicker').datepicker({
+                format: 'dd.mm.yyyy'
+            });
+        });
+    </script>
 </head>
 
 <body>
-	<!-- WRAPPER -->
-	<div id="wrapper">
-		<div class="vertical-align-wrap margin">
-			<div class="vertical-align-middle">
-				<div class="register-box">
-					<div class="left">
-						<div class="content">
-							<div class="header">
-								<div class="logo centerImg">
-									<a href="index.html"><img src="assets/img/logo-dark.png"
-															  alt="GoalMaker Logo" class="img-responsive logo"></a>
-								</div>
-								<p class="lead">Zarejestruj się</p>
-							</div>
-							<form class="form-register-small" th:action="@{/register}" th:object="${user}" method="post">
-                                <!--<input type="hidden" th:field="*{id}" />-->
-								<div class="form-group">
-									<label for="register-id" class="control-label sr-only">Wpisz id</label>
-									<input id="register-id" type="number" name="id" class="form-control"
-										   placeholder="ID" th:field="*{id}" >
-								</div>
-								<div class="form-group">
-									<div class="input-group">
-										<label for="register-login" class="control-label sr-only">Wpisz login</label>
-									   	<input id="register-login" type="text" name="username" class="form-control"
-										  	placeholder="Wpisz login" th:field="*{login}">
-										<span class="input-group-addon">
-											<span class="fa fa-user-circle-o" />
+<!-- WRAPPER -->
+<div id="wrapper">
+    <div class="vertical-align-wrap margin">
+        <div class="vertical-align-middle">
+            <div class="register-box">
+                <div class="left">
+                    <div class="content">
+                        <div class="header">
+                            <div class="logo centerImg">
+                                <a href="index.html"><img src="assets/img/logo-dark.png"
+                                                          alt="GoalMaker Logo" class="img-responsive logo"></a>
+                            </div>
+                            <p class="lead">Zarejestruj się</p>
+                        </div>
+                        <form class="form-register-small" th:action="@{/register}" th:object="${user}" method="post">
+                            <!--<input type="hidden" th:field="*{id}" />-->
+                            <div class="form-group">
+                                <label for="register-id" class="control-label sr-only">Wpisz id</label>
+                                <input id="register-id" type="number" name="id" class="form-control"
+                                       placeholder="ID" th:field="*{id}">
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="register-login" class="control-label sr-only">Wpisz login</label>
+                                    <input id="register-login" type="text" name="username" class="form-control"
+                                           placeholder="Wpisz login" th:field="*{login}">
+                                    <span class="input-group-addon">
+											<span class="fa fa-user-circle-o"/>
 										</span>
-									</div>
                                 </div>
-                                <div class="form-group">
-									<div class="input-group">
-										<label for="register-email" class="control-label sr-only">Wpisz email</label>
-									   	<input id="register-email" type="email" name="email" class="form-control"
-										  	placeholder="Wpisz email" th:field="*{email}">
-										<span class="input-group-addon">
-											<span class="fa fa-at" />
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="register-email" class="control-label sr-only">Wpisz email</label>
+                                    <input id="register-email" type="email" name="email" class="form-control"
+                                           placeholder="Wpisz email" th:field="*{email}">
+                                    <span class="input-group-addon">
+											<span class="fa fa-at"/>
 										</span>
-									</div>
                                 </div>
-                                <div class="form-group">
-									<div class="input-group">
-										<label for="register-firstname" class="control-label sr-only">Imię</label>
-									   	<input id="register-firstname" type="text" name="firstname" class="form-control"
-										  	placeholder="Imię" th:field="*{name}">
-										<span class="input-group-addon">
-											<span class="fa fa-vcard-o" />
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="register-firstname" class="control-label sr-only">Imię</label>
+                                    <input id="register-firstname" type="text" name="firstname" class="form-control"
+                                           placeholder="Imię" th:field="*{name}">
+                                    <span class="input-group-addon">
+											<span class="fa fa-vcard-o"/>
 										</span>
-									</div>
                                 </div>
-                                <div class="form-group">
-									<div class="input-group">
-										<label for="register-surname" class="control-label sr-only">Nazwisko</label>
-									   	<input id="register-surname" type="text" name="surname" class="form-control"
-										 	 placeholder="Nazwisko" th:field="*{surname}">
-										<span class="input-group-addon">
-											<span class="fa fa-vcard-o" />
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="register-surname" class="control-label sr-only">Nazwisko</label>
+                                    <input id="register-surname" type="text" name="surname" class="form-control"
+                                           placeholder="Nazwisko" th:field="*{surname}">
+                                    <span class="input-group-addon">
+											<span class="fa fa-vcard-o"/>
 										</span>
-									</div>
                                 </div>
-                                <div class="form-group">
-									<div class="input-group">
-									<label  for="register-bday" class="control-label sr-only">Data urodzenia</label>
-									   <input id="register-bday" type="text" name="date" class="form-control datepicker"
-										  placeholder="Data urodzenia" th:field="*{dateOfBirth}">
-										<span class="input-group-addon">
-											<span class="fa fa-calendar-plus-o" />
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="register-bday" class="control-label sr-only">Data urodzenia</label>
+                                    <input id="register-bday" type="text" name="date" class="form-control datepicker"
+                                           placeholder="Data urodzenia" th:field="*{dateOfBirth}">
+                                    <span class="input-group-addon">
+											<span class="fa fa-calendar-plus-o"/>
 										</span>
-									</div>
                                 </div>
-                                <div class="form-group">
-									<div class="input-group">
-										<label for="register-password" class="control-label sr-only">Wpisz haslo</label>
-										<input id="register-password" type="password" name="password" class="form-control"
-											   placeholder="Wpisz hasło" th:field="*{password}">
-										<span class="input-group-addon">
-											<span class="fa fa-lock" />
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="register-password" class="control-label sr-only">Wpisz haslo</label>
+                                    <input id="register-password" type="password" name="password" class="form-control"
+                                           placeholder="Wpisz hasło" th:field="*{password}">
+                                    <span class="input-group-addon">
+											<span class="fa fa-lock"/>
 										</span>
-									</div>
                                 </div>
-								<div class="form-group" style="display: none;">
-									<select class="form-control" th:field="*{isActive}">
-										<option th:value="TRUE" th:text="TRUE" />
-										<!--<option th:value="FALSE" th:text="FALSE" />-->
-									</select>
-								</div>
-                                <!--
-                                <div class="form-group">
-									<label for="register-rpassword" class="control-label sr-only">Powtórz hasło</label>
-									   <input type="password" name="rpassword" class="form-control"
-										  placeholder="Powtórz hasło">
-                                </div>
-                                -->
-                                <!---
-								<h4 th:if="${param.error}" class="loginError">Zły login lub
-									hasło!</h4>
-				                <br>
-                                -->
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <select class="form-control" th:field="*{isActive}">
+                                    <option th:value="TRUE" th:text="TRUE"/>
+                                    <!--<option th:value="FALSE" th:text="FALSE" />-->
+                                </select>
+                            </div>
+                            <!--
+                            <div class="form-group">
+                                <label for="register-rpassword" class="control-label sr-only">Powtórz hasło</label>
+                                   <input type="password" name="rpassword" class="form-control"
+                                      placeholder="Powtórz hasło">
+                            </div>
+                            -->
+                            <!---
+                            <h4 th:if="${param.error}" class="loginError">Zły login lub
+                                hasło!</h4>
+                            <br>
+                            -->
 
-								<button type="submit" class="btn btn-primary btn-lg btn-block">ZAREJESTRUJ</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">ZAREJESTRUJ</button>
 
-							</form>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- END WRAPPER -->
+                        </form>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END WRAPPER -->
 </body>
 
 </html>
