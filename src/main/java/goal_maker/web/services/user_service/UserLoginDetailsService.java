@@ -21,25 +21,25 @@ import goal_maker.database.tables.user.GmUser;
 @Service("userDetailsService")
 public class UserLoginDetailsService implements UserDetailsService {
 
-	@Autowired
-	private UserDao userDao;
-	GmUser gmUser = null;
+    @Autowired
+    private UserDao userDao;
+    GmUser gmUser = null;
 
-	@Transactional(readOnly = true)
-	@Override
-	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+    @Transactional(readOnly = true)
+    @Override
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
-		gmUser = userDao.getUserByLogin(login);
-		GrantedAuthority authority = new SimpleGrantedAuthority("USER");
-		if (gmUser == null) {
-			throw new UsernameNotFoundException("No user found with login: " + login);
-		}
+        gmUser = userDao.getUserByLogin(login);
+        GrantedAuthority authority = new SimpleGrantedAuthority("USER");
+        if (gmUser == null) {
+            throw new UsernameNotFoundException("No user found with login: " + login);
+        }
 
-		User user = new User(gmUser.getLogin(), gmUser.getPassword(), true, true, true, gmUser.getIsActive(),
-				Arrays.asList(authority));
-		return user;
+        User user = new User(gmUser.getLogin(), gmUser.getPassword(), true, true, true, gmUser.getIsActive(),
+                Arrays.asList(authority));
+        return user;
 
-	}
+    }
 }
 
 	

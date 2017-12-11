@@ -9,20 +9,20 @@ import goal_maker.database.tables.user.GmUser;
 import java.util.List;
 
 @Service("UserService")
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
-	@Autowired
-	UserDao userDao;
-	
-	@Override
-	public GmUser getUserByLogin(String login) {
-		return userDao.getUserByLogin(login);
-	}
+    @Autowired
+    UserDao userDao;
 
-	@Override
-	public List<GmUser> getUsersList() {
-		return userDao.getUsersList();
-	}
+    @Override
+    public GmUser getUserByLogin(String login) {
+        return userDao.getUserByLogin(login);
+    }
+
+    @Override
+    public List<GmUser> getUsersList() {
+        return userDao.getUsersList();
+    }
 
     //add user
     @Override
