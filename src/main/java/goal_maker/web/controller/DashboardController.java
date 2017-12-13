@@ -1,7 +1,6 @@
 package goal_maker.web.controller;
 
 import goal_maker.database.dao.goal_dao.GoalDao;
-import goal_maker.database.dao.goal_dao.GoalDao1;
 import goal_maker.database.tables.GmUser;
 import goal_maker.web.services.user_service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +25,14 @@ public class DashboardController {
     public String showFrontPage(Model model) {
         model.addAttribute("location", "dashboard");
 
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
 
-        model.addAttribute("userGoal", goalDao.getGoalById(gmUser.getId()));
+
+        model.addAttribute("currentUserGoal", goalDao.getGoalById(gmUser.getId()));
+
         return "index";
     }
 

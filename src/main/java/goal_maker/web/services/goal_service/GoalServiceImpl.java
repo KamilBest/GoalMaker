@@ -15,4 +15,9 @@ public class GoalServiceImpl implements GoalService {
         return goalDao.getGoalById(id);
     }
 
+    @Override
+    public void addGoal(Goal goal) {
+        goalDao.addGoal(goal);
+    }
+
 }

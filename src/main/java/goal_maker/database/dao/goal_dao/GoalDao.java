@@ -5,5 +5,7 @@ import goal_maker.database.tables.Goal;
 public interface GoalDao {
 
     public Goal getGoalById(long id);
+    public void addGoal(Goal goal);
+
 
 }

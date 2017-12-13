@@ -1,9 +1,8 @@
 package goal_maker.database.tables;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
@@ -11,17 +10,17 @@ import java.io.Serializable;
 @Table(name = "goal", schema = "goal_maker")
 
 public class Goal implements Serializable {
-    private long id_goal;
+    private Long id_goal;
     private String name;
     private String category;
     private long value;
     private long number_of_days;
-    private byte picture;
+    private String picture;
 
     public Goal() {
     }
 
-    public Goal(long id_goal, String name, String category, long value, long number_of_days, byte picture) {
+    public Goal(Long id_goal, String name, String category, long value, long number_of_days, String picture) {
         this.id_goal = id_goal;
         this.name = name;
         this.category = category;
@@ -31,7 +30,7 @@ public class Goal implements Serializable {
     }
 
     @Id
-    @Column(name = "id_goal")
+    @Column(name = "id_goal", unique = true, nullable = false)
     public long getId_goal() {
         return id_goal;
     }
@@ -76,11 +75,11 @@ public class Goal implements Serializable {
     }
 
     @Column(name="picture")
-    public byte getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(byte picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 }

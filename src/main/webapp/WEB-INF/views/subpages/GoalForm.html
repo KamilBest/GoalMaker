@@ -3,57 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Goal form</title>
-    <!-- VENDOR CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="assets/vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/vendor/linearicons/style.css">
-    <link rel="stylesheet" href="assets/css/datepicker.css">
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/gm.css">
-    <!-- GOOGLE FONTS -->
-    <link
-            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
-            rel="stylesheet">
-    <!-- ICONS -->
-    <link rel="apple-touch-icon" sizes="76x76"
-          href="assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96"
-          href="assets/img/favicon.png">
-</head>
 <body>
-<div class="container-fluid">
-    <div class="panel panel-headline">
-        <div class="panel-body">
-            <form method="post">
-                <div class="form-group">
-                    <label for="goalid">ID celu</label>
-                    <input type="number" class="form-control" id="goalid" placeholder="Wprowadź id">
-                </div>
-                <div class="form-group">
-                    <label for="goalname">Nazwa celu</label>
-                    <input type="text" class="form-control" id="goalname" placeholder="Wprowadź nazwę celu">
-                </div>
-                <div class="form-group">
-                    <label>Kategoria</label>
-                    <select class="form-control">
-                        <option>Wakacje</option>
-                        <option>Samochód</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="goalvalue">Wartość celu</label>
-                    <input type="number" class="form-control" id="goalvalue" placeholder="Wprowadź wartość celu">
-                </div>
-                <div class="form-group">
-                    <label for="goalofdays">Ilość dni</label>
-                    <input type="number" class="form-control" id="goalofdays" placeholder="Wprowadź ilość dni na osiągnięcie celu">
-                </div>
-                <button type="submit" class="btn btn-primary">Zatwierdź</button>
-            </form>
+<section class="content" th:fragment="CreateUpdateGoalForm">
+
+    <div class="container-fluid">
+        <div class="panel panel-headline">
+            <div class="panel-body">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="goalid">ID celu</label>
+                        <input type="number" class="form-control" id="goalid" placeholder="Wprowadź id">
+                    </div>
+                    <div class="form-group">
+                        <label for="goalname">Nazwa celu</label>
+                        <input type="text" class="form-control" id="goalname" placeholder="Wprowadź nazwę celu">
+                    </div>
+                    <div class="form-group">
+                        <label>Kategoria</label>
+                        <select class="form-control">
+                            <option>Wakacje</option>
+                            <option>Samochód</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalvalue">Wartość celu</label>
+                        <input type="number" class="form-control" id="goalvalue" placeholder="Wprowadź wartość celu">
+                    </div>
+                    <div class="form-group">
+                        <label for="goalofdays">Ilość dni</label>
+                        <input type="number" class="form-control" id="goalofdays"
+                               placeholder="Wprowadź ilość dni na osiągnięcie celu">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Zatwierdź</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</section>
 </body>
 </html>

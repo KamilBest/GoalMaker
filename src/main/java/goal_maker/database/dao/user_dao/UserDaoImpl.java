@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao {
      */
     @Override
     public GmUser getUserByLogin(String login) {
-        String sqlSelect = "SELECT id_user, login, password, name, surname, email, date_of_birth, is_active " +
+        String sqlSelect = "SELECT id_user, login, password, name, surname, email, date_of_birth, is_active, id_goal " +
                 "FROM goal_maker.user_gm WHERE login = '"
                 + login + "'";
         Query query = entityManager.createNativeQuery(sqlSelect, GmUser.class);
@@ -40,7 +40,7 @@ public class UserDaoImpl implements UserDao {
 
         user.setPassword(Encryption.encryptPassword(user.getPassword()));
         String sqlInsert = "INSERT INTO goal_maker.user_gm(id_user, login, password, name, surname, email, date_of_birth, " +
-                "is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                "is_active, id_goal) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         Query query = entityManager.createNativeQuery(sqlInsert, GmUser.class);
         query.setParameter(1, user.getId());
         query.setParameter(2, user.getLogin());
@@ -50,13 +50,15 @@ public class UserDaoImpl implements UserDao {
         query.setParameter(6, user.getEmail());
         query.setParameter(7, user.getDateOfBirth());
         query.setParameter(8, user.getIsActive());
+        query.setParameter(9, user.getGoal().getId_goal());
+
         query.executeUpdate();
 
     }
 
     @Override
     public List<GmUser> getUsersList() {
-        String sqlSelect = "SELECT id_user, login, password, name, surname, email, date_of_birth, is_active FROM goal_maker.user_gm";
+        String sqlSelect = "SELECT id_user, login, password, name, surname, email, date_of_birth, is_active, id_goal FROM goal_maker.user_gm";
         List<GmUser> userList = entityManager.createNativeQuery(sqlSelect, GmUser.class).getResultList();
         return userList;
     }
