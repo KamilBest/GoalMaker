@@ -1,4 +1,4 @@
-package goal_maker.database.tables.user;
+package goal_maker.database.tables;
 
 
 import javax.persistence.Column;

@@ -7,12 +7,10 @@ import javax.persistence.Query;
 import goal_maker.config.security.Encryption;
 import org.springframework.stereotype.Repository;
 
-import goal_maker.database.tables.user.GmUser;
+import goal_maker.database.tables.GmUser;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-import static goal_maker.config.security.Encryption.encryptPassword;
 
 @Repository
 public class UserDaoImpl implements UserDao {

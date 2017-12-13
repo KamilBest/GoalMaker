@@ -82,7 +82,10 @@
 											Profile</span></a></li>
                             <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
                             <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-                            <li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+
+                            <!--  LOGOUT -->
+                            <li><a  th:href="@{/logout}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+
                         </ul>
                     </li>
                 </ul>
@@ -135,7 +138,7 @@
                         <div th:switch="${location}">
                             <div th:case="'dashboard'"
                                  th:include="subpages/Dashboard :: Dashboard"></div>
-                            <div th:case="'userByLogin'"
+                            <div th:case="'usersList'"
                                  th:include="subpages/Userslist :: Userslist"></div>
                         </div>
                     </div>

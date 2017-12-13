@@ -1,6 +1,6 @@
 package goal_maker.database.dao.user_dao;
 
-import goal_maker.database.tables.user.GmUser;
+import goal_maker.database.tables.GmUser;
 
 import java.util.List;
 

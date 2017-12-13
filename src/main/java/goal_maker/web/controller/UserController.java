@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import goal_maker.database.tables.user.GmUser;
+import goal_maker.database.tables.GmUser;
 import goal_maker.web.services.user_service.UserService;
 
 import java.text.SimpleDateFormat;
@@ -28,7 +28,7 @@ public class UserController {
 
     @RequestMapping(value = "/getUsersList", method = RequestMethod.GET)
     public String getUsersList(Model model) {
-        model.addAttribute("location", "userByLogin");
+        model.addAttribute("location", "usersList");
         model.addAttribute("UsersList", userService.getUsersList());
         return "index";
     }
