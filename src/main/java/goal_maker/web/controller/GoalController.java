@@ -18,7 +18,7 @@ public class GoalController {
 
     @RequestMapping(value = "/addGoal", method = RequestMethod.GET)
     public String addGoal(Model model) {
-        model.addAttribute("location", "CreateUpdateGoal");
+        model.addAttribute("location", "createUpdateGoal");
         model.addAttribute("goal", new Goal());
         return "index";
     }

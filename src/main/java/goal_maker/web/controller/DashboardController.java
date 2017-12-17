@@ -30,8 +30,11 @@ public class DashboardController {
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
 
+        if (gmUser.getGoal() != null)
+            model.addAttribute("currentUserGoal", goalDao.getGoalById(gmUser.getGoal().getId_goal()));
+        else
+            model.addAttribute("currentUserGoal", gmUser.getGoal());
 
-        model.addAttribute("currentUserGoal", goalDao.getGoalById(gmUser.getId()));
 
         return "index";
     }

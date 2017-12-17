@@ -6,35 +6,44 @@
 </head>
 <body>
 
-</div>
+
 <section class="content" th:fragment="Dashboard">
     <div class="container-fluid">
 
         <div class="panel panel-headline">
             <div class="panel-body">
-                <!--GOAL TITLE-->
                 <h1>CEL: </h1>
-                <h1 th:text="${currentUserGoal.name}"></h1>
-                <p th:text="${currentUserGoal.category}"></p>
+                <!--IF USER DOESN'T HAVE GOAL SET-->
+                <div th:if="${currentUserGoal==null}">
+                    <h3>Nie ustawiłeś jeszcze żadnego celu, możesz zrobić to teraz</h3>
+                    <p>(Kliknij "Dodaj cel")</p>
+                    <a th:href="@{/addGoal}" class="btn btn-primary">
+                        <i class="fa fa-plus"></i>
+                        <span>Dodaj cel</span>
+                    </a>
+                </div>
 
-                <a th:if="${currentUserGoal==null}" th:href="@{/addGoal}" class="btn btn-primary">
-                    <i class="fa fa-plus"></i>
-                    <span>Dodaj cel</span>
-                </a>
-                <a th:if="${currentUserGoal!=null}" th:href="@{/addGoal}" class="btn btn-primary">
-                    <i class="fa fa-edit"></i>
-                    <span>Edytuj</span>
-                </a>
-                <a th:if="${currentUserGoal!=null}" class="btn btn-primary">
-                    <i class="fa fa-trash"></i>
-                    <span>Usuń</span>
-                </a>
+                <!--IF USER HAVE GOAL SET-->
+                <div th:if="${currentUserGoal!=null}">
+                    <h1 th:text="${currentUserGoal.name}"></h1>
+                    <p th:text="${currentUserGoal.category}"></p>
+
+
+                    <a th:href="@{/editGoal}" class="btn btn-primary">
+                        <i class="fa fa-edit"></i>
+                        <span>Edytuj</span>
+                    </a>
+                    <a class="btn btn-primary">
+                        <i class="fa fa-trash"></i>
+                        <span>Usuń</span>
+                    </a>
+                </div>
             </div>
 
 
         </div>
     </div>
-    <div class="container-fluid" style="margin-top: 20px">
+    <div class="container-fluid" th:if="${currentUserGoal!=null}">
         <div class="progress">
             <div class="progress-bar" role="progressbar" aria-valuenow="70"
                  aria-valuemin="0" aria-valuemax="100" style="width:70%;" th:text="${currentUserGoal.value}">
