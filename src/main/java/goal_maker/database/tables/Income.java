@@ -16,19 +16,19 @@ public class Income implements Serializable {
     private long value;
     private UserFinances user_finances;
     private Set<ConstantIncome> constantIncomes = new HashSet<ConstantIncome>(0);
-    private Set<ChangableIncome> changableIncomes = new HashSet<ChangableIncome>(0);
+    private Set<ChangeableIncome> changeableIncomes = new HashSet<ChangeableIncome>(0);
 
     public Income() {
 
     }
 
-    public Income(Long id_income, String type, long value, UserFinances user_finances, Set<ConstantIncome> constantIncomes, Set<ChangableIncome> changableIncomes) {
+    public Income(Long id_income, String type, long value, UserFinances user_finances, Set<ConstantIncome> constantIncomes, Set<ChangeableIncome> changeableIncomes) {
         this.id_income = id_income;
         this.type = type;
         this.value = value;
         this.user_finances = user_finances;
         this.constantIncomes = constantIncomes;
-        this.changableIncomes = changableIncomes;
+        this.changeableIncomes = changeableIncomes;
     }
 
     @Id
@@ -60,18 +60,17 @@ public class Income implements Serializable {
         this.value = value;
     }
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_user_finances")
     public UserFinances getUser_finances() {
         return user_finances;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "income")
     public void setUser_finances(UserFinances user_finances) {
         this.user_finances = user_finances;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "income")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "income")
     public Set<ConstantIncome> getConstantIncomes() {
         return constantIncomes;
     }
@@ -80,11 +79,12 @@ public class Income implements Serializable {
         this.constantIncomes = constantIncomes;
     }
 
-    public Set<ChangableIncome> getChangableIncomes() {
-        return changableIncomes;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "income")
+    public Set<ChangeableIncome> getChangeableIncomes() {
+        return changeableIncomes;
     }
 
-    public void setChangableIncomes(Set<ChangableIncome> changableIncomes) {
-        this.changableIncomes = changableIncomes;
+    public void setChangeableIncomes(Set<ChangeableIncome> changeableIncomes) {
+        this.changeableIncomes = changeableIncomes;
     }
 }

@@ -60,7 +60,7 @@ public class UserFinances implements Serializable {
         this.current_state_to_goal = current_state_to_goal;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user_finances")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user_finances")
     public Set<Income> getIncomes() {
         return incomes;
     }

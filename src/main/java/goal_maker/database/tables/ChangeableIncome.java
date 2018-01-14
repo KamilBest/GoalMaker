@@ -7,26 +7,26 @@ import java.io.Serializable;
  * Created by Maarcin on 2018-01-14.
  */
 @Entity
-@Table(name = "changable_income", schema = "goal_maker")
-public class ChangableIncome implements Serializable {
+@Table(name = "changeable_income", schema = "goal_maker")
+public class ChangeableIncome implements Serializable {
     private Long id_changable_income;
     private String name;
     private float value;
     private Income income;
 
-    public ChangableIncome(String name, float value, Income income) {
+    public ChangeableIncome(String name, float value, Income income) {
         this.name = name;
         this.value = value;
         this.income = income;
     }
 
-    public ChangableIncome() {
+    public ChangeableIncome() {
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_changable_income", unique = true, nullable = false)
+    @Column(name = "id_changeable_income", unique = true, nullable = false)
     public Long getId_changable_income() {
         return id_changable_income;
     }
@@ -53,7 +53,7 @@ public class ChangableIncome implements Serializable {
         this.value = value;
     }
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_income")
     public Income getIncome() {
         return income;

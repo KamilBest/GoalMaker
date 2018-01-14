@@ -64,7 +64,7 @@ public class ConstantIncome implements Serializable{
         this.how_many_days = how_many_days;
     }
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "income")
     public Income getIncome() {
         return income;
