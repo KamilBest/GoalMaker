@@ -11,10 +11,21 @@ public class Goal implements Serializable {
     private String name;
     private Category category;
     private long value;
-    private long number_of_days;
+    private Long number_of_days;
     private String picture_name;
 
     public Goal() {
+    }
+
+    public Goal(long id_goal) {
+        this.id_goal = id_goal;
+    }
+
+    public Goal(long id_goal, String name, Category category, long value) {
+        this.id_goal = id_goal;
+        this.name = name;
+        this.category = category;
+        this.value = value;
     }
 
     public Goal(String name, Category category, long value) {
@@ -23,7 +34,7 @@ public class Goal implements Serializable {
         this.value = value;
     }
 
-    public Goal(String name, Category category, long value, long number_of_days, String picture_name) {
+    public Goal(String name, Category category, long value, Long number_of_days, String picture_name) {
         this.name = name;
         this.category = category;
         this.value = value;
@@ -31,7 +42,7 @@ public class Goal implements Serializable {
         this.picture_name = picture_name;
     }
 
-    public Goal(long id_goal, String name, Category category, long value, long number_of_days, String picture_name) {
+    public Goal(long id_goal, String name, Category category, long value, Long number_of_days, String picture_name) {
         this.id_goal = id_goal;
         this.name = name;
         this.category = category;
@@ -80,11 +91,11 @@ public class Goal implements Serializable {
     }
 
     @Column(name = "number_of_days")
-    public long getNumber_of_days() {
+    public Long getNumber_of_days() {
         return number_of_days;
     }
 
-    public void setNumber_of_days(long number_of_days) {
+    public void setNumber_of_days(Long number_of_days) {
         this.number_of_days = number_of_days;
     }
 

@@ -26,8 +26,12 @@
                 <!--IF USER HAVE GOAL SET-->
                 <div th:if="${currentUserGoal!=null}">
                     <h1 th:text="${currentUserGoal.name}"></h1>
+<<<<<<< HEAD
+
+=======
                     <p th:text="${currentUserGoal.category.name}"></p>
                     <img width = "350" height="350" alt="Picture" th:src="@{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'}" />
+>>>>>>> 17949359f4646da708bcc4cd8ccf600e8fd9c37b
                     <a th:href="@{/editGoal}" class="btn btn-primary">
                         <i class="fa fa-edit"></i>
                         <span>Edytuj</span>
