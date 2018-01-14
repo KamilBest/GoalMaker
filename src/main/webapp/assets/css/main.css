@@ -21,10 +21,7 @@ html {
 }
 
 body {
-	background-image: url("../../assets/img/background.jpeg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center;
+	background: url("../../assets/img/background.jpeg") no-repeat fixed center;
 	font-family: "Source Sans Pro", sans-serif;
 	font-size: 15px;
 	color: #676a6d;
@@ -97,6 +94,10 @@ footer {
 	left: 0;
 	position: relative;
 	float: right;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 17949359f4646da708bcc4cd8ccf600e8fd9c37b
 }
 
 #wrapper #sidebar-nav, #wrapper .main {
