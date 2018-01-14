@@ -53,12 +53,6 @@
                             <p class="lead">Zarejestruj się</p>
                         </div>
                         <form class="form-register-small" th:action="@{/register}" th:object="${user}" method="post">
-                            <!--<input type="hidden" th:field="*{id}" />-->
-                            <div class="form-group">
-                                <label for="register-id" class="control-label sr-only">Wpisz id</label>
-                                <input id="register-id" type="number" name="id" class="form-control"
-                                       placeholder="ID" th:field="*{id}">
-                            </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <label for="register-login" class="control-label sr-only">Wpisz login</label>

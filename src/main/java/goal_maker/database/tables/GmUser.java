@@ -1,12 +1,9 @@
-package goal_maker.database.tables.user;
+package goal_maker.database.tables;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -21,6 +18,50 @@ public class GmUser implements java.io.Serializable {
     private String email;
     private Date dateOfBirth;
     private boolean isActive;
+    private Goal goal;
+
+    public GmUser() {
+    }
+
+    public GmUser(String login, String password, String name, String surname, String email, Date dateOfBirth, boolean isActive, Goal goal) {
+        this.login = login;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.isActive = isActive;
+        this.goal = goal;
+    }
+
+    public GmUser(long id, String login,
+                  String password, boolean isActive) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+    }
+
+    public GmUser(long id, String login, String password, String name, String surname, String email, Date dateOfBirth, boolean isActive) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.isActive = isActive;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_user", unique = true, nullable = false)
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long i) {
+        this.id = i;
+    }
 
     @Column(name = "name")
     public String getName() {
@@ -49,17 +90,6 @@ public class GmUser implements java.io.Serializable {
         this.email = email;
     }
 
-    public GmUser(long id, String login, String password, String name, String surname, String email, Date dateOfBirth, boolean isActive) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.isActive = isActive;
-    }
-
     @Column(name = "date_of_birth")
     public Date getDateOfBirth() {
         return dateOfBirth;
@@ -67,27 +97,6 @@ public class GmUser implements java.io.Serializable {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }
-
-
-    public GmUser() {
-    }
-
-    public GmUser(long id, String login,
-                  String password, boolean isActive) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-    }
-
-    @Id
-    @Column(name = "id_user", unique = true, nullable = false)
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long i) {
-        this.id = i;
     }
 
     @Column(name = "login", unique = true, nullable = false)
@@ -117,5 +126,13 @@ public class GmUser implements java.io.Serializable {
         this.isActive = isActive;
     }
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_goal")
+    public Goal getGoal() {
+        return goal;
+    }
 
+    public void setGoal(Goal goal) {
+        this.goal = goal;
+    }
 }

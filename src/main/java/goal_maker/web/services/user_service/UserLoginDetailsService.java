@@ -1,8 +1,6 @@
 package goal_maker.web.services.user_service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import goal_maker.database.dao.user_dao.UserDao;
-import goal_maker.database.tables.user.GmUser;
+import goal_maker.database.tables.GmUser;
 
 
 @Service("userDetailsService")

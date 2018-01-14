@@ -6,6 +6,7 @@
 </head>
 <body>
 <section class="content" th:fragment="Userslist">
+    <h1>Lista użytkowników</h1>
     <table class="table table-striped table-bordered datatables" cellspacing="0" width="85%">
         <thead>
         <tr>
@@ -17,6 +18,8 @@
             <th>Email</th>
             <th>Data urodzenia</th>
             <th>Stan</th>
+            <th>Cel</th>
+
         </tr>
         </thead>
         <tbody>
@@ -29,6 +32,10 @@
             <td th:text="${user.email}"></td>
             <td th:text="${user.dateOfBirth}"></td>
             <td th:text="${user.isActive}"></td>
+            <td>
+                <span th:if="${user.goal!=null}" th:text="${user.goal.id_goal}"> </span>
+                <span th:unless="${user.goal==null}" th:text="${' '}"></span>
+            </td>
         </tr>
         </tbody>
     </table>

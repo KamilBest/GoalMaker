@@ -33,7 +33,7 @@ public class PropertiesConfiguration {
         String appID = properties.getProperty("app.id");
 
         List<Resource> resources = new ArrayList() {{
-            add(new FileSystemResource("/etc/ekspert/" + appID + "/app.properties"));
+            add(new FileSystemResource("/etc/GoalMaker/" + appID + "/app.properties"));
             add(new FileSystemResource("D:/GoalMaker/DBProperties" + appID + "/app.properties"));
         }};
 

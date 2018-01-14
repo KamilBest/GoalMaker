@@ -6,41 +6,57 @@
 </head>
 <body>
 
-</div>
+
 <section class="content" th:fragment="Dashboard">
     <div class="container-fluid">
-        <a href="#" class="btn btn-primary" style="margin-bottom: 30px;">
-            <i class="fa fa-plus"></i>
-            <span>Dodaj cel</span>
-        </a>
+
+        <div class="panel panel-headline">
+            <div class="panel-body">
+                <h1>CEL: </h1>
+                <!--IF USER DOESN'T HAVE GOAL SET-->
+                <div th:if="${currentUserGoal==null}">
+                    <h3>Nie ustawiłeś jeszcze żadnego celu, możesz zrobić to teraz</h3>
+                    <p>(Kliknij "Dodaj cel")</p>
+                    <a th:href="@{/addGoal}" class="btn btn-primary">
+                        <i class="fa fa-plus"></i>
+                        <span>Dodaj cel</span>
+                    </a>
+                </div>
+
+                <!--IF USER HAVE GOAL SET-->
+                <div th:if="${currentUserGoal!=null}">
+                    <h1 th:text="${currentUserGoal.name}"></h1>
+                    <p th:text="${currentUserGoal.category.name}"></p>
+                    <img width = "350" height="350" alt="Picture" th:src="@{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'}" />
+                    <a th:href="@{/editGoal}" class="btn btn-primary">
+                        <i class="fa fa-edit"></i>
+                        <span>Edytuj</span>
+                    </a>
+                    <a class="btn btn-primary">
+                        <i class="fa fa-trash"></i>
+                        <span>Usuń</span>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container-fluid" th:if="${currentUserGoal!=null}">
         <div class="progress">
             <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                 aria-valuemin="0" aria-valuemax="100" style="width:70%;">
-                70zł/100zł
+                 aria-valuemin="0" aria-valuemax="100" style="width:70%;" th:text="${currentUserGoal.value}">
+
             </div>
         </div>
-    </div>
-    <div class="container-fluid">
         <div class="panel panel-headline">
             <div class="panel-body">
-                <h1>Wakacje w Bieszczadach</h1>
-                <p>Wakacje</p>
-                <a href="#" class="btn btn-primary">
-                    <i class="fa fa-edit"></i>
-                    <span>Edytuj</span>
-                </a>
-                <a href="#" class="btn btn-primary">
-                    <i class="fa fa-trash"></i>
-                    <span>Usuń</span>
-                </a>
+                <h4>Wartość całkowita celu</h4>
+                <h2 th:text="${currentUserGoal.value}"></h2>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid" style="margin-top: 20px">
-        <div class="panel panel-headline">
             <div class="panel-body">
                 <h4>Przybliżony czas do osiągnięcia celu</h4>
-                <h2>15 DNI</h2>
+                <h2 th:text="${currentUserGoal.number_of_days}"></h2>
             </div>
         </div>
     </div>
