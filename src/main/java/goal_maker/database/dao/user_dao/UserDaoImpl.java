@@ -7,12 +7,10 @@ import javax.persistence.Query;
 import goal_maker.config.security.Encryption;
 import org.springframework.stereotype.Repository;
 
-import goal_maker.database.tables.user.GmUser;
+import goal_maker.database.tables.GmUser;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-import static goal_maker.config.security.Encryption.encryptPassword;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -25,7 +23,7 @@ public class UserDaoImpl implements UserDao {
      */
     @Override
     public GmUser getUserByLogin(String login) {
-        String sqlSelect = "SELECT id_user, login, password, name, surname, email, date_of_birth, is_active " +
+        String sqlSelect = "SELECT id_user, login, password, name, surname, email, date_of_birth, is_active, id_goal " +
                 "FROM goal_maker.user_gm WHERE login = '"
                 + login + "'";
         Query query = entityManager.createNativeQuery(sqlSelect, GmUser.class);
@@ -41,24 +39,24 @@ public class UserDaoImpl implements UserDao {
     public void addUser(GmUser user) {
 
         user.setPassword(Encryption.encryptPassword(user.getPassword()));
-        String sqlInsert = "INSERT INTO goal_maker.user_gm(id_user, login, password, name, surname, email, date_of_birth, " +
-                "is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        String sqlInsert = "INSERT INTO goal_maker.user_gm(login, password, name, surname, email, date_of_birth, " +
+                "is_active) VALUES (?, ?, ?, ?, ?, ?, ?);";
         Query query = entityManager.createNativeQuery(sqlInsert, GmUser.class);
-        query.setParameter(1, user.getId());
-        query.setParameter(2, user.getLogin());
-        query.setParameter(3, user.getPassword());
-        query.setParameter(4, user.getName());
-        query.setParameter(5, user.getSurname());
-        query.setParameter(6, user.getEmail());
-        query.setParameter(7, user.getDateOfBirth());
-        query.setParameter(8, user.getIsActive());
+        query.setParameter(1, user.getLogin());
+        query.setParameter(2, user.getPassword());
+        query.setParameter(3, user.getName());
+        query.setParameter(4, user.getSurname());
+        query.setParameter(5, user.getEmail());
+        query.setParameter(6, user.getDateOfBirth());
+        query.setParameter(7, user.getIsActive());
+
         query.executeUpdate();
 
     }
 
     @Override
     public List<GmUser> getUsersList() {
-        String sqlSelect = "SELECT id_user, login, password, name, surname, email, date_of_birth, is_active FROM goal_maker.user_gm";
+        String sqlSelect = "SELECT id_user, login, password, name, surname, email, date_of_birth, is_active, id_goal FROM goal_maker.user_gm";
         List<GmUser> userList = entityManager.createNativeQuery(sqlSelect, GmUser.class).getResultList();
         return userList;
     }

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import goal_maker.database.dao.user_dao.UserDao;
-import goal_maker.database.tables.user.GmUser;
+import goal_maker.database.tables.GmUser;
 
 import java.util.List;
 

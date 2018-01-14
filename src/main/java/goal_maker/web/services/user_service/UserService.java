@@ -1,6 +1,6 @@
 package goal_maker.web.services.user_service;
 
-import goal_maker.database.tables.user.GmUser;
+import goal_maker.database.tables.GmUser;
 
 import java.util.List;
 

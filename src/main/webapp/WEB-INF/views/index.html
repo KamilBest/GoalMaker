@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+    <title>Goal Maker</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -82,7 +82,10 @@
 											Profile</span></a></li>
                             <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
                             <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-                            <li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+
+                            <!--  LOGOUT -->
+                            <li><a  th:href="@{/logout}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+
                         </ul>
                     </li>
                 </ul>
@@ -135,8 +138,11 @@
                         <div th:switch="${location}">
                             <div th:case="'dashboard'"
                                  th:include="subpages/Dashboard :: Dashboard"></div>
-                            <div th:case="'userByLogin'"
+                            <div th:case="'usersList'"
                                  th:include="subpages/Userslist :: Userslist"></div>
+
+                            <div th:case="'createUpdateGoal'"
+                                 th:include="subpages/GoalForm :: CreateUpdateGoalForm"></div>
                         </div>
                     </div>
                 </div>
