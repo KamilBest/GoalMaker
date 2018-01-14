@@ -15,7 +15,7 @@ public class GoalDaoImpl implements GoalDao {
 
     @Override
     public Goal getGoalById(long id) {
-        String sqlSelect = "SELECT id_goal, name, category, value, number_of_days, picture FROM goal_maker.goal WHERE id_goal=" + id;
+        String sqlSelect = "SELECT id_goal, name, goal.id_category, value, number_of_days, picture_name FROM goal_maker.goal WHERE id_goal=" + id;
         Query query = entityManager.createNativeQuery(sqlSelect, Goal.class);
         Goal goal = (Goal) query.getSingleResult();
         return goal;

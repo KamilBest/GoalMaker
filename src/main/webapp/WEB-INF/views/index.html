@@ -37,6 +37,7 @@
 
 <body>
 <!-- WRAPPER -->
+<div th:style="'background:url(' + @{'/assets/img/categories'} + ${currentUserGoal.category.name}+'.jpg' ')!important;'">
 <div id="wrapper">
     <!-- NAVBAR -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -160,6 +161,7 @@
             </p>
         </div>
     </footer>
+</div>
 </div>
 <!-- END WRAPPER -->
 <!-- Javascript -->
