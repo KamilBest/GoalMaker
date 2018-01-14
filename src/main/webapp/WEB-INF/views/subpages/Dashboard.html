@@ -24,7 +24,7 @@
                 </a>
             </div>
             <!--IF USER HAVE GOAL SET-->
-            <div th:if="${currentUserGoal!=null}" th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');background-size:cover; height:350px'">
+            <div th:if="${currentUserGoal!=null}" th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');background-size:cover; background-position:center; height:350px'">
                 <div class="panel-body">
                     <h1>CEL: </h1>
                     <h1 th:text="${currentUserGoal.name}"></h1>
