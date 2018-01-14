@@ -8,26 +8,27 @@
 
 
 <section class="content" th:fragment="Dashboard">
+
     <div class="container-fluid">
 
         <div class="panel panel-headline">
-            <div class="panel-body">
+            <div class="panel-body" th:if="${currentUserGoal==null}">
                 <h1>CEL: </h1>
                 <!--IF USER DOESN'T HAVE GOAL SET-->
-                <div th:if="${currentUserGoal==null}">
-                    <h3>Nie ustawiłeś jeszcze żadnego celu, możesz zrobić to teraz</h3>
-                    <p>(Kliknij "Dodaj cel")</p>
-                    <a th:href="@{/addGoal}" class="btn btn-primary">
-                        <i class="fa fa-plus"></i>
-                        <span>Dodaj cel</span>
-                    </a>
-                </div>
-
-                <!--IF USER HAVE GOAL SET-->
-                <div th:if="${currentUserGoal!=null}">
+                <!--<div th:if="${currentUserGoal==null}">-->
+                <h3>Nie ustawiłeś jeszcze żadnego celu, możesz zrobić to teraz</h3>
+                <p>(Kliknij "Dodaj cel")</p>
+                <a th:href="@{/addGoal}" class="btn btn-primary">
+                    <i class="fa fa-plus"></i>
+                    <span>Dodaj cel</span>
+                </a>
+            </div>
+            <!--IF USER HAVE GOAL SET-->
+            <div th:if="${currentUserGoal!=null}" th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');background-size:cover; height:350px'">
+                <div class="panel-body">
+                    <h1>CEL: </h1>
                     <h1 th:text="${currentUserGoal.name}"></h1>
                     <p th:text="${currentUserGoal.category.name}"></p>
-                    <img width = "350" height="350" alt="Picture" th:src="@{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'}" />
                     <a th:href="@{/editGoal}" class="btn btn-primary">
                         <i class="fa fa-edit"></i>
                         <span>Edytuj</span>
@@ -38,10 +39,10 @@
                     </a>
                 </div>
             </div>
-
-
         </div>
     </div>
+
+    <!--<div th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');'">?-->
     <div class="container-fluid" th:if="${currentUserGoal!=null}">
         <div class="progress">
             <div class="progress-bar" role="progressbar" aria-valuenow="70"
@@ -60,6 +61,7 @@
             </div>
         </div>
     </div>
+
 </section>
 </body>
 </html>
