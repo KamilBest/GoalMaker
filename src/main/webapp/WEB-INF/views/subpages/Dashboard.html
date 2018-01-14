@@ -26,8 +26,6 @@
                 <!--IF USER HAVE GOAL SET-->
                 <div th:if="${currentUserGoal!=null}">
                     <h1 th:text="${currentUserGoal.name}"></h1>
-                    <p th:text="${currentUserGoal.category}"></p>
-
 
                     <a th:href="@{/editGoal}" class="btn btn-primary">
                         <i class="fa fa-edit"></i>
