@@ -24,19 +24,22 @@
                 </a>
             </div>
             <!--IF USER HAVE GOAL SET-->
-            <div th:if="${currentUserGoal!=null}" th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');background-size:cover; background-position:center; height:350px'">
+            <div th:if="${currentUserGoal!=null}"
+                 th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');background-size:cover; background-position:center; height:350px'">
                 <div class="panel-body">
-                    <h1>CEL: </h1>
-                    <h1 th:text="${currentUserGoal.name}"></h1>
-                    <p th:text="${currentUserGoal.category.name}"></p>
-                    <a th:href="@{/editGoal}" class="btn btn-primary">
-                        <i class="fa fa-edit"></i>
-                        <span>Edytuj</span>
-                    </a>
-                    <a class="btn btn-primary">
-                        <i class="fa fa-trash"></i>
-                        <span>Usuń</span>
-                    </a>
+                    <div class="goal-body">
+                        <h1>CEL: </h1>
+                        <h1 th:text="${currentUserGoal.name}"></h1>
+                        <p th:text="${currentUserGoal.category.name}"></p>
+                        <a th:href="@{/editGoal}" class="btn btn-primary">
+                            <i class="fa fa-edit"></i>
+                            <span>Edytuj</span>
+                        </a>
+                        <a class="btn btn-primary">
+                            <i class="fa fa-trash"></i>
+                            <span>Usuń</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
