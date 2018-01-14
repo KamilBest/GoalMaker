@@ -23,6 +23,17 @@ public class GmUser implements java.io.Serializable {
     public GmUser() {
     }
 
+    public GmUser(String login, String password, String name, String surname, String email, Date dateOfBirth, boolean isActive, Goal goal) {
+        this.login = login;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.isActive = isActive;
+        this.goal = goal;
+    }
+
     public GmUser(long id, String login,
                   String password, boolean isActive) {
         this.id = id;
@@ -42,6 +53,7 @@ public class GmUser implements java.io.Serializable {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_user", unique = true, nullable = false)
     public long getId() {
         return id;

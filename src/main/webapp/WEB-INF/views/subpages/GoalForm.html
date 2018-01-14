@@ -5,39 +5,29 @@
     <title>Goal form</title>
 <body>
 <section class="content" th:fragment="CreateUpdateGoalForm">
-
+    <h1>Dodawanie celu</h1>
     <div class="container-fluid">
-        <div class="panel panel-headline">
             <div class="panel-body">
-                <form  th:action="@{/register}" method="post">
-                    <div class="form-group">
-                        <label for="goalid">ID celu</label>
-                        <input type="number" class="form-control" id="goalid" placeholder="Wprowadź id">
-                    </div>
+                <form  th:action="@{/addGoal}" method="post">
                     <div class="form-group">
                         <label for="goalname">Nazwa celu</label>
-                        <input type="text" class="form-control" id="goalname" placeholder="Wprowadź nazwę celu">
+                        <input type="text" th:value="${goal.name}" name="name" class="form-control" id="goalname" placeholder="Wprowadź nazwę celu" >
                     </div>
                     <div class="form-group">
                         <label>Kategoria</label>
-                        <select class="form-control">
-                            <option>Wakacje</option>
-                            <option>Samochód</option>
+                        <select class="form-control" name="categoryId">
+                            <option th:value="${0}" >WYBIERZ KATEGORIĘ</option>
+                            <option th:each="category : ${goalCategories}" th:value="${category.id_category}" th:text="${category.name}"></option>
+
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="goalvalue">Wartość celu</label>
-                        <input type="number" class="form-control" id="goalvalue" placeholder="Wprowadź wartość celu">
+                        <input type="number" name="value" th:value="${goal.value}" class="form-control" id="goalvalue" placeholder="Wprowadź wartość celu" >
                     </div>
-                    <div class="form-group">
-                        <label for="goalofdays">Ilość dni</label>
-                        <input type="number" class="form-control" id="goalofdays"
-                               placeholder="Wprowadź ilość dni na osiągnięcie celu">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Zatwierdź</button>
+                    <button type="submit" class="btn btn-primary btn-block">Zatwierdź</button>
                 </form>
             </div>
-        </div>
     </div>
 </section>
 </body>

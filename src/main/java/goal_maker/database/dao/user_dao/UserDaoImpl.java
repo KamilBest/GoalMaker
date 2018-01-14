@@ -39,18 +39,16 @@ public class UserDaoImpl implements UserDao {
     public void addUser(GmUser user) {
 
         user.setPassword(Encryption.encryptPassword(user.getPassword()));
-        String sqlInsert = "INSERT INTO goal_maker.user_gm(id_user, login, password, name, surname, email, date_of_birth, " +
-                "is_active, id_goal) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sqlInsert = "INSERT INTO goal_maker.user_gm(login, password, name, surname, email, date_of_birth, " +
+                "is_active) VALUES (?, ?, ?, ?, ?, ?, ?);";
         Query query = entityManager.createNativeQuery(sqlInsert, GmUser.class);
-        query.setParameter(1, user.getId());
-        query.setParameter(2, user.getLogin());
-        query.setParameter(3, user.getPassword());
-        query.setParameter(4, user.getName());
-        query.setParameter(5, user.getSurname());
-        query.setParameter(6, user.getEmail());
-        query.setParameter(7, user.getDateOfBirth());
-        query.setParameter(8, user.getIsActive());
-        query.setParameter(9, user.getGoal().getId_goal());
+        query.setParameter(1, user.getLogin());
+        query.setParameter(2, user.getPassword());
+        query.setParameter(3, user.getName());
+        query.setParameter(4, user.getSurname());
+        query.setParameter(5, user.getEmail());
+        query.setParameter(6, user.getDateOfBirth());
+        query.setParameter(7, user.getIsActive());
 
         query.executeUpdate();
 
