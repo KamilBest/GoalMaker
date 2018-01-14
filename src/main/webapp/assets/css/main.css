@@ -1273,20 +1273,7 @@ ul.activity-list>li .timestamp {
 .tab-pane {
 	padding: 25px 15px;
 }
-.goal-body{
-	color: white;
-	top: 150px;
-}
-.goal-body >h1{
-	font-size: 1.2rem;
-	font-weight: 800;
-	text-shadow: 1px 2px 1px #000;
-}
-.goal-body>p{
-	font-size: 0.5rem;
-	font-weight: 600;
-	text-shadow: 1px 2px 1px #000;
-}
+
 /********************
  * CHARTS
  ********************/
