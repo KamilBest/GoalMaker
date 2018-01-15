@@ -19,7 +19,7 @@ public class ChangeableIncomeDaoImpl implements ChangeableIncomeDao {
 
     @Override
     public List<ChangeableIncome> findAllByIncomeId(long incomeId) {
-        String sqlSelect = "Select * From goal_maker.income WHERE id_income=" + incomeId;
+        String sqlSelect = "Select * From goal_maker.changeable_income WHERE id_income=" + incomeId;
         List<ChangeableIncome> changeableIncomeList = entityManager.createNativeQuery(sqlSelect, ChangeableIncome.class).getResultList();
         return changeableIncomeList;
     }
