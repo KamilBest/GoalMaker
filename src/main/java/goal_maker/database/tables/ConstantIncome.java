@@ -6,15 +6,15 @@ import java.io.Serializable;
  * Created by Maarcin on 2018-01-14.
  */
 @Entity
-@Table(name = "constant_income", schema = "goal_maker")
+@Table(name = "constant_income_dao", schema = "goal_maker")
 public class ConstantIncome implements Serializable{
     private Long id_constant_income;
     private String name;
-    private float value;
+    private Long value;
     private Long how_many_days;
     private Income income;
 
-    public ConstantIncome(String name, float value, Long how_many_days, Income income) {
+    public ConstantIncome(String name, Long value, Long how_many_days, Income income) {
         this.name = name;
         this.value = value;
         this.how_many_days = how_many_days;
@@ -51,7 +51,7 @@ public class ConstantIncome implements Serializable{
         return value;
     }
 
-    public void setValue(float value) {
+    public void setValue(Long value) {
         this.value = value;
     }
 
