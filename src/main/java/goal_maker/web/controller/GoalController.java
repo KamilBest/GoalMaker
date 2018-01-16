@@ -48,5 +48,10 @@ public class GoalController {
         goalService.modifyGoal(goal);
         return "redirect:/index";
     }
+    @RequestMapping(value = "/deleteGoal", method = RequestMethod.GET)
+    public String deleteGoal(@RequestParam(value = "id") long id){
+        goalService.deleteGoal(id);
+        return "redirect:/index";
+    }
 
 }

@@ -3,6 +3,7 @@ package goal_maker.database.dao.goal_dao;
 import goal_maker.database.tables.GmUser;
 import goal_maker.database.tables.Goal;
 import goal_maker.web.services.user_service.UserService;
+import org.hibernate.type.BigIntegerType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -65,5 +66,25 @@ public class GoalDaoImpl implements GoalDao {
         updateQuery.setParameter(3, goal.getCategory().getId_category());
         updateQuery.setParameter(4, goal.getId_goal());
         updateQuery.executeUpdate();
+    }
+    @Transactional
+    @Override
+    public void deleteGoal(long id){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String login = auth.getName(); //get logged in login
+        GmUser gmUser = userService.getUserByLogin(login);
+
+        //user update
+        String sqlUpdate="UPDATE goal_maker.user_gm SET id_goal=NULL WHERE id_user=?";
+        Query updateQuery=entityManager.createNativeQuery(sqlUpdate, GmUser.class);
+
+        updateQuery.setParameter(1, gmUser.getId());
+        updateQuery.executeUpdate();
+
+        //delete goal
+        String sqlDeleteGoal = "DELETE FROM goal_maker.goal WHERE id_goal="+id;
+        Query deleteQuery = entityManager.createNativeQuery(sqlDeleteGoal, Goal.class);
+        deleteQuery.executeUpdate();
     }
 }
