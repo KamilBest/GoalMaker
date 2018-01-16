@@ -45,7 +45,6 @@
         </div>
     </div>
 
-    <!--<div th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');'">?-->
     <div class="container-fluid" th:if="${currentUserGoal!=null}">
         <div class="progress">
             <div class="progress-bar" role="progressbar" aria-valuenow="70"
@@ -65,6 +64,70 @@
         </div>
     </div>
 
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4>Stały dochód:</h4>
+                    </div>
+                    <div class="stable-income">
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <h1 class="h1 text-center">1500zł</h1>
+                            </div>
+                            <div class="col-md-6">
+                                <a class="btn btn-primary">
+                                    <i class="fa fa-plus"></i>
+                                    <span>Dodaj</span>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="text-right">Następny przychód za <span>25 dni</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4>Cały przychód:</h4>
+                    </div>
+                    <div class="all-income">
+                        <div class="panel-body">
+                            <table class="table table-responsive table-hover table-bordered">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Typ</th>
+                                    <th>Wartość</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Pinioszki</td>
+                                    <td>12.05zł</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="paginationCustom">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Poprzedni</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Następny</a></li>
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 </body>
 </html>

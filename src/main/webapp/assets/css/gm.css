@@ -14,7 +14,9 @@
 }
 .goal-body{
 	color: white;
-	top: 130px;
+}
+.goal-body>a{
+	margin-top: 130px;
 }
 .goal-body >h1{
 	font-size: 4rem;
@@ -25,4 +27,25 @@
 	font-size: 2rem;
 	font-weight: 600;
 	text-shadow: 1px 2px 1px #000;
+}
+.all-income {
+	height: 435px;
+}
+.all-income{
+	margin-top: 15px;
+}
+.stable-income{
+	height: 450px;
+}
+.stable-income>.panel-body>.col-md-12>h1{
+	margin-top: 150px;
+}
+.stable-income>.panel-body>.col-md-6>p{
+	margin-top: 175px;
+}
+.stable-income>.panel-body>.col-md-6>a{
+	margin-top: 175px;
+}
+.paginationCustom{
+	margin-top: 265px;
 }
