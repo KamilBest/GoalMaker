@@ -143,9 +143,12 @@
                                  th:include="subpages/Dashboard :: Dashboard"></div>
                             <div th:case="'usersList'"
                                  th:include="subpages/Userslist :: Userslist"></div>
-
                             <div th:case="'createUpdateGoal'"
                                  th:include="subpages/GoalForm :: CreateUpdateGoalForm"></div>
+                            <div th:case="'CreateConstantIncomeForm'"
+                                 th:include="subpages/ConstantIncomeForm :: CreateConstantIncomeForm"></div>
+                            <div th:case="'CreateChangeableIncomeForm'"
+                                 th:include="subpages/ChangeableIncomeForm :: CreateChangeableIncomeForm"></div>
                         </div>
                     </div>
                 </div>
