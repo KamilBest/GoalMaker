@@ -38,7 +38,6 @@ public class GoalDaoImpl implements GoalDao {
         query.setParameter(2, goal.getCategory().getId_category());
         query.setParameter(3, goal.getValue());
         query.executeUpdate();
-
         //get next goal ID
         String getAddedGoalId="SELECT id_goal FROM goal_maker.goal ORDER BY id_goal DESC LIMIT 1";
         Integer lastId  = (Integer)entityManager.createNativeQuery(getAddedGoalId).getSingleResult();
@@ -46,13 +45,25 @@ public class GoalDaoImpl implements GoalDao {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
-
         //user update
         String sqlUpdate="UPDATE goal_maker.user_gm SET id_goal=? WHERE id_user=?";
+
         Query updateQuery=entityManager.createNativeQuery(sqlUpdate, GmUser.class);
         updateQuery.setParameter(1, lastId);
         updateQuery.setParameter(2, gmUser.getId());
         updateQuery.executeUpdate();
+    }
 
+    @Transactional
+    @Override
+    public void modifyGoal(Goal goal) {
+        //Goal update
+        String sqlUpdateGoal = "UPDATE goal_maker.goal SET name=?, value=?, id_category=? WHERE id_goal=?";
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdateGoal, Goal.class);
+        updateQuery.setParameter(1, goal.getName());
+        updateQuery.setParameter(2, goal.getValue());
+        updateQuery.setParameter(3, goal.getCategory().getId_category());
+        updateQuery.setParameter(4, goal.getId_goal());
+        updateQuery.executeUpdate();
     }
 }

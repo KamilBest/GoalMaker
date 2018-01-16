@@ -31,7 +31,7 @@
                         <h1>CEL: </h1>
                         <h1 th:text="${currentUserGoal.name}"></h1>
                         <p th:text="${currentUserGoal.category.name}"></p>
-                        <a th:href="@{/editGoal}" class="btn btn-primary">
+                        <a th:onclick="'javascript:moveTo(\'' + @{/editGoal?id=}+${currentUserGoal.id_goal} + '\')'" class="btn btn-primary">
                             <i class="fa fa-edit"></i>
                             <span>Edytuj</span>
                         </a>
