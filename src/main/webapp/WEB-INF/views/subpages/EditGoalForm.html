@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Goal form</title>
+    <title>Edytuj cel</title>
+</head>
 <body>
-<section class="content" th:fragment="CreateUpdateGoalForm">
-    <h1>Dodawanie celu</h1>
+<section class="content" th:fragment="EditGoalForm">
+    <h1>Edytowanie celu</h1>
     <div class="container-fluid">
         <div class="panel">
             <div class="panel-body">
-                <form th:action="@{/addGoal}" method="post">
+                <form th:action="@{/editGoal}" method="post">
                     <div class="form-group">
                         <label for="goalname">Nazwa celu</label>
                         <input type="text" th:value="${goal.name}" name="name" class="form-control" id="goalname"
@@ -28,6 +29,7 @@
                         <input type="number" name="value" th:value="${goal.value}" class="form-control" id="goalvalue"
                                placeholder="Wprowadź wartość celu">
                     </div>
+                    <input type="hidden" th:value="${goal.id_goal}" name="id"/>
                     <button type="submit" class="btn btn-primary btn-block">Zatwierdź</button>
                 </form>
             </div>

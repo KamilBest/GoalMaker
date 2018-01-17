@@ -21,7 +21,7 @@ html {
 }
 
 body {
-	background: url("../../assets/img/background.jpeg") no-repeat fixed center;
+	background: url("../../assets/img/background.png") no-repeat fixed center;
 	font-family: "Source Sans Pro", sans-serif;
 	font-size: 15px;
 	color: #676a6d;
@@ -100,6 +100,7 @@ footer {
 #wrapper #sidebar-nav, #wrapper .main {
 	padding-top: 80px;
 	/*height: 100vh;*/
+	height: 100%;
 }
 
 @media screen and (max-width: 767px) {

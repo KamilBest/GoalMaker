@@ -7,9 +7,7 @@ import goal_maker.web.services.user_service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class GoalController {
@@ -36,4 +34,24 @@ public class GoalController {
         goalService.addGoal(goal);
         return "redirect:/index";
     }
+    @RequestMapping(value = "/editGoal", method = RequestMethod.GET)
+    public String editGoal(Model model, @RequestParam("id") long id){
+        model.addAttribute("location", "updateGoal");
+        model.addAttribute("goal", goalService.getGoalById(id));
+        model.addAttribute("goalCategories", categoryService.findAll());
+        return "index";
+    }
+    @RequestMapping(value = "/editGoal", method = RequestMethod.POST)
+    public String editGoal(@RequestParam(value = "id") long id, @RequestParam(value = "name") String name, @RequestParam(value = "categoryId") long categoryId, @RequestParam(value = "value")long value){
+        Category category = categoryService.getCategoryById(categoryId);
+        Goal goal = new Goal(id, name, category, value);
+        goalService.modifyGoal(goal);
+        return "redirect:/index";
+    }
+    @RequestMapping(value = "/deleteGoal", method = RequestMethod.GET)
+    public String deleteGoal(@RequestParam(value = "id") long id){
+        goalService.deleteGoal(id);
+        return "redirect:/index";
+    }
+
 }
