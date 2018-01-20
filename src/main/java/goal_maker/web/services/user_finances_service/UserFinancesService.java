@@ -8,4 +8,6 @@ public interface UserFinancesService {
     List<UserFinances> findAll();
     UserFinances getUserFinanceById(long id);
     void addUserFinance(UserFinances userFinances);
+    void updateAccountBalance(UserFinances userFinances);
+    void updateCurrentStateToGoal(UserFinances userFinances);
 }

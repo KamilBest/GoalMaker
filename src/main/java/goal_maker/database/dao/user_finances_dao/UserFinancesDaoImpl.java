@@ -43,6 +43,30 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
         query.executeUpdate();
 
     }
+    @Transactional
+    @Override
+    public void updateAccountBalance(UserFinances userFinances) {
+        String sqlUpdate = "UPDATE goal_maker.user_finances SET account_balance=? WHERE id_user_finances=?";
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
+        updateQuery.setParameter(1, userFinances.getAccount_balance());
+        updateQuery.setParameter(2, userFinances.getId_user_finances());
+
+        updateQuery.executeUpdate();
+    }
+
+    @Transactional
+    @Override
+    public void updateCurrentStateToGoal(UserFinances userFinances) {
+        String sqlUpdate= "UPDATE goal_maker.user_finances SET current_state_to_goal=? WHERE id_user_finances=?";
+        Query updateQuery=entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
+        updateQuery.setParameter(1, userFinances.getCurrent_state_to_goal());
+        updateQuery.setParameter(2, userFinances.getId_user_finances());
+
+        updateQuery.executeUpdate();
+
+    }
 }
+
+
 
 

@@ -25,4 +25,12 @@ public class UserFinancesServiceImpl implements UserFinancesService {
     @Override
     public void addUserFinance(UserFinances userFinances) {  userFinancesDao.addUserFinance(userFinances);
     }
+
+    @Override
+    public void updateAccountBalance(UserFinances userFinances) {userFinancesDao.updateAccountBalance(userFinances);
+    }
+
+    @Override
+    public void updateCurrentStateToGoal(UserFinances userFinances) {userFinancesDao.updateCurrentStateToGoal(userFinances);
+    }
 }
