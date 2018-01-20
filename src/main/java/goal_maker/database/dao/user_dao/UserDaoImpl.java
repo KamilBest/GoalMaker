@@ -5,6 +5,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import goal_maker.config.security.Encryption;
+import goal_maker.database.tables.UserFinances;
+import goal_maker.web.services.user_finances_service.UserFinancesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import goal_maker.database.tables.GmUser;
@@ -17,6 +20,9 @@ public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private UserFinancesService userFinancesService;
 
     /**
      * Get user by login
@@ -51,6 +57,19 @@ public class UserDaoImpl implements UserDao {
         query.setParameter(7, user.getIsActive());
 
         query.executeUpdate();
+
+        // set default userFinances for new user
+
+        UserFinances userFinances = userFinancesService.getUserFinanceById(user.getId());
+        String sqlUpdate="UPDATE goal_maker.user_finances SET account_balance=?,current_state_to_goal=?  WHERE id_user_finances=?";
+
+        Query updateQuery=entityManager.createNativeQuery(sqlUpdate, GmUser.class);
+        updateQuery.setParameter(1, 0);
+        updateQuery.setParameter(2, 0);
+        updateQuery.setParameter(3, userFinances.getId_user_finances());
+        updateQuery.executeUpdate();
+
+
 
     }
 
