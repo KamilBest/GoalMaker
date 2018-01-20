@@ -19,6 +19,7 @@ public class GmUser implements java.io.Serializable {
     private Date dateOfBirth;
     private boolean isActive;
     private Goal goal;
+    private UserFinances userFinances;
 
     public GmUser() {
     }
@@ -134,5 +135,15 @@ public class GmUser implements java.io.Serializable {
 
     public void setGoal(Goal goal) {
         this.goal = goal;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_user_finances")
+    public UserFinances getUserFinances() {
+        return userFinances;
+    }
+
+    public void setUserFinances(UserFinances userFinances) {
+        this.userFinances = userFinances;
     }
 }

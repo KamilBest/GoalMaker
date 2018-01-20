@@ -15,20 +15,29 @@ public class Income implements Serializable {
     private String type;
     private long value;
     private UserFinances user_finances;
-    private Set<ConstantIncome> constantIncomes = new HashSet<ConstantIncome>(0);
-    private Set<ChangeableIncome> changeableIncomes = new HashSet<ChangeableIncome>(0);
+//    private Set<ConstantIncome> constantIncomes = new HashSet<ConstantIncome>(0);
+//    private Set<ChangeableIncome> changeableIncomes = new HashSet<ChangeableIncome>(0);
 
     public Income() {
 
     }
 
-    public Income(Long id_income, String type, long value, UserFinances user_finances, Set<ConstantIncome> constantIncomes, Set<ChangeableIncome> changeableIncomes) {
+    public Income(String type, long value) {
+        this.type = type;
+        this.value = value;
+    }
+
+    public Income(String type, long value, UserFinances user_finances) {
+        this.type = type;
+        this.value = value;
+        this.user_finances = user_finances;
+    }
+
+    public Income(Long id_income, String type, long value, UserFinances user_finances) {
         this.id_income = id_income;
         this.type = type;
         this.value = value;
         this.user_finances = user_finances;
-        this.constantIncomes = constantIncomes;
-        this.changeableIncomes = changeableIncomes;
     }
 
     @Id
@@ -70,21 +79,21 @@ public class Income implements Serializable {
         this.user_finances = user_finances;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "income")
-    public Set<ConstantIncome> getConstantIncomes() {
-        return constantIncomes;
-    }
-
-    public void setConstantIncomes(Set<ConstantIncome> constantIncomes) {
-        this.constantIncomes = constantIncomes;
-    }
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "income")
-    public Set<ChangeableIncome> getChangeableIncomes() {
-        return changeableIncomes;
-    }
-
-    public void setChangeableIncomes(Set<ChangeableIncome> changeableIncomes) {
-        this.changeableIncomes = changeableIncomes;
-    }
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "income")
+//    public Set<ConstantIncome> getConstantIncomes() {
+//        return constantIncomes;
+//    }
+//
+//    public void setConstantIncomes(Set<ConstantIncome> constantIncomes) {
+//        this.constantIncomes = constantIncomes;
+//    }
+//
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "income")
+//    public Set<ChangeableIncome> getChangeableIncomes() {
+//        return changeableIncomes;
+//    }
+//
+//    public void setChangeableIncomes(Set<ChangeableIncome> changeableIncomes) {
+//        this.changeableIncomes = changeableIncomes;
+//    }
 }
