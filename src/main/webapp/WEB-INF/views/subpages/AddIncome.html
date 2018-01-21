@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="panel">
             <div class="panel-body">
-                <form th:action="@{/addIncome" method="post">
+                <form th:action="@{/addIncome}" method="post">
                     <div class="form-group">
                         <label for="incomeType">Typ przychodu</label>
                         <input type="text" th:value="${income.type}" name="type" class="form-control" id="incomeType"

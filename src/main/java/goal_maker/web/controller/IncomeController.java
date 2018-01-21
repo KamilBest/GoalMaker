@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.logging.Logger;
+
 @Controller
 public class IncomeController {
 
@@ -35,6 +37,7 @@ public class IncomeController {
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
         Income income=new Income(type, value,gmUser.getUserFinances());
+
         incomeService.addIncome(income);
         return "redirect:/index";
     }
