@@ -1,7 +1,6 @@
 package goal_maker.database.dao.income_dao;
 
 import goal_maker.database.tables.GmUser;
-import goal_maker.database.tables.Goal;
 import goal_maker.database.tables.Income;
 import goal_maker.web.services.user_service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,15 +33,11 @@ public class IncomeDaoImpl implements IncomeDao {
     @Transactional
     @Override
     public void addIncome(Income income) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String login = auth.getName(); //get logged in login
-        GmUser gmUser = userService.getUserByLogin(login);
-
-        String sqlInsert = "INSERT INTO goal_maker.income(type, value, id_user_finances) VALUES (?, ?, ?, ?)";
+        String sqlInsert = "INSERT INTO goal_maker.income(type, value, id_user_finances) VALUES (?, ?, ?)";
         Query query = entityManager.createNativeQuery(sqlInsert, Income.class);
         query.setParameter(1, income.getType());
         query.setParameter(2, income.getValue());
-        query.setParameter(3, gmUser.getUserFinances().getId_user_finances());
-
+        query.setParameter(3, income.getUser_finances().getId_user_finances());
+        query.executeUpdate();
     }
 }

@@ -74,7 +74,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<GmUser> getUsersList() {
-        String sqlSelect = "SELECT id_user, login, password, name, surname, email, date_of_birth, is_active, id_goal FROM goal_maker.user_gm ORDER BY id_user";
+        String sqlSelect = "SELECT * FROM goal_maker.user_gm ORDER BY id_user";
         List<GmUser> userList = entityManager.createNativeQuery(sqlSelect, GmUser.class).getResultList();
         return userList;
     }
