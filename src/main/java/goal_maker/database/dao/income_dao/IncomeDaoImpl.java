@@ -24,7 +24,7 @@ public class IncomeDaoImpl implements IncomeDao {
 
     @Override
     public List<Income> findAllUserIncomes(long id) {
-        String sqlSelect = "SELECT id_income, type, value, id_user_finances FROM goal_maker.income WHERE id_user_finances=" + id;
+        String sqlSelect = "SELECT id_income, type, value, id_user_finances, date, name  FROM goal_maker.income WHERE id_user_finances=" + id;
         List<Income> incomes = entityManager.createNativeQuery(sqlSelect, Income.class).getResultList();
         return incomes;
     }
@@ -33,11 +33,13 @@ public class IncomeDaoImpl implements IncomeDao {
     @Transactional
     @Override
     public void addIncome(Income income) {
-        String sqlInsert = "INSERT INTO goal_maker.income(type, value, id_user_finances) VALUES (?, ?, ?)";
+        String sqlInsert = "INSERT INTO goal_maker.income(id_income, type, value, id_user_finances, date, name) VALUES (?, ?, ?, ?, ?, ?)";
         Query query = entityManager.createNativeQuery(sqlInsert, Income.class);
         query.setParameter(1, income.getType());
         query.setParameter(2, income.getValue());
         query.setParameter(3, income.getUser_finances().getId_user_finances());
+        query.setParameter(4, income.getDate());
+        query.setParameter(5, income.getName());
         query.executeUpdate();
     }
 }
