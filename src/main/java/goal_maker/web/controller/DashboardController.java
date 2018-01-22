@@ -2,6 +2,7 @@ package goal_maker.web.controller;
 
 import goal_maker.database.dao.goal_dao.GoalDao;
 import goal_maker.database.tables.GmUser;
+import goal_maker.web.services.expenses_service.ExpensesService;
 import goal_maker.web.services.income_service.IncomeService;
 import goal_maker.web.services.user_finances_service.UserFinancesService;
 import goal_maker.web.services.user_service.UserService;
@@ -25,6 +26,8 @@ public class DashboardController {
     @Autowired
     IncomeService incomeService;
 
+    @Autowired
+    ExpensesService expensesService;
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String showFrontPage(Model model) {
         model.addAttribute("location", "dashboard");
@@ -39,7 +42,9 @@ public class DashboardController {
         else
             model.addAttribute("currentUserGoal", gmUser.getGoal());
         model.addAttribute("currentUserFinances",gmUser.getUserFinances());
-        model.addAttribute("incomeList", incomeService.findAllUserIncomes(gmUser.getUserFinances().getId_user_finances()));
+        long currentUserFinancesId=gmUser.getUserFinances().getId_user_finances();
+        model.addAttribute("incomeList", incomeService.findAllUserIncomes(currentUserFinancesId));
+        model.addAttribute("expensesList", expensesService.findAllUserExpenses(currentUserFinancesId));
         return "index";
     }
 
