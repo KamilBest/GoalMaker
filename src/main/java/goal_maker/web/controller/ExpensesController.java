@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Controller
@@ -33,11 +34,12 @@ public class ExpensesController {
     }
 
     @RequestMapping(value = "/addExpenses", method = RequestMethod.POST)
-    public String addExpenses(@RequestParam(value = "type")String type, @RequestParam(value = "value")long value, @RequestParam(value = "date")Date date, @RequestParam(value = "name")String name) {
+    public String addExpenses(@RequestParam(value = "type")String type, @RequestParam(value = "value")long value, @RequestParam(value = "name")String name) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
-        Expenses expenses=new Expenses(type, value,name,gmUser.getUserFinances(),date);
+        Timestamp currentTime=new Timestamp(System.currentTimeMillis());
+        Expenses expenses=new Expenses(type, value,name,gmUser.getUserFinances(),currentTime);
 
         expensesService.addExpenses(expenses);
         return "redirect:/index";

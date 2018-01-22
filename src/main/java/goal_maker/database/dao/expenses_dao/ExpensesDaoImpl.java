@@ -29,7 +29,7 @@ public class ExpensesDaoImpl implements ExpensesDao {
     @Transactional
     @Override
     public void addExpenses(Expenses expenses) {
-        String sqlInsert = "INSERT INTO goal_maker.expenses(type, value, id_user_finances, date, name) VALUES (?, ?, ?, ?, ?, ?)";
+        String sqlInsert = "INSERT INTO goal_maker.expenses(type, value, id_user_finances, date, name) VALUES (?, ?, ?, ?, ?)";
         Query query = entityManager.createNativeQuery(sqlInsert, Expenses.class);
         query.setParameter(1, expenses.getType());
         query.setParameter(2, expenses.getValue());

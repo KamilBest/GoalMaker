@@ -4,6 +4,7 @@ package goal_maker.database.tables;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -16,13 +17,13 @@ public class Expenses implements Serializable{
     private long value;
     private String name;
     private UserFinances userFinances;
-    private Date date;
+    private Timestamp date;
 
     public Expenses() {
 
     }
 
-    public Expenses(long idExpenses, String type, long value, String name, UserFinances userFinances, Date date) {
+    public Expenses(long idExpenses, String type, long value, String name, UserFinances userFinances, Timestamp date) {
 
         this.idExpenses = idExpenses;
         this.type = type;
@@ -32,7 +33,7 @@ public class Expenses implements Serializable{
         this.date = date;
     }
 
-    public Expenses(String type, long value, String name, UserFinances userFinances, Date date) {
+    public Expenses(String type, long value, String name, UserFinances userFinances, Timestamp date) {
         this.type = type;
         this.value = value;
         this.name = name;
@@ -83,12 +84,13 @@ public class Expenses implements Serializable{
     public void setUserFinances(UserFinances userFinances) {
         this.userFinances = userFinances;
     }
+
     @Column(name = "date")
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 }
