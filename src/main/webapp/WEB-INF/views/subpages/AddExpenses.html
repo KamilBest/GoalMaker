@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="content" th:fragment="AddExpenses">
+    <h1>Edytowanie celu</h1>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-body">
+                <form th:action="@{/AddExpenses}" method="post">
+                    <div class="form-group">
+                        <label for="expensesType">Typ przychodu</label>
+                        <input type="text" th:value="${expenses.type}" name="type" class="form-control" id="expensesType"
+                               placeholder="Wprowadź typ wydatku stały/zmienny">
+                    </div>
+                    <div class="form-group">
+                        <label for="expensesName">Nazwa przychodu</label>
+                        <input type="text" name="value" th:value="${expenses.name}" class="form-control" id="expensesName"
+                               placeholder="Wprowadź nazwe wydatku">
+                    </div>
+                    <div class="form-group">
+                        <label for="expensesValue">Wartość przychodu</label>
+                        <input type="number" name="value" th:value="${expenses.value}" class="form-control" id="expensesValue"
+                               placeholder="Wprowadź wartość wydatku">
+                    </div>
+                    <div class="form-group">
+                        <label for="expensesDate">Data</label>
+                        <input type="date" name="value" th:value="${expenses.date}" class="form-control" id="expensesDate"
+                               placeholder="Wprowadź date">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Zatwierdź</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
