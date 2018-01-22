@@ -31,11 +31,13 @@
                         <h1>CEL: </h1>
                         <h1 th:text="${currentUserGoal.name}"></h1>
                         <p th:text="${currentUserGoal.category.name}"></p>
-                        <a th:onclick="'javascript:moveTo(\'' + @{/editGoal?id=}+${currentUserGoal.id_goal} + '\')'" class="btn btn-primary">
+                        <a th:onclick="'javascript:moveTo(\'' + @{/editGoal?id=}+${currentUserGoal.id_goal} + '\')'"
+                           class="btn btn-primary">
                             <i class="fa fa-edit"></i>
                             <span>Edytuj</span>
                         </a>
-                        <a th:onclick="'javascript:moveTo(\'' + @{/deleteGoal?id=}+${currentUserGoal.id_goal} + '\')'" class="btn btn-primary">
+                        <a th:onclick="'javascript:moveTo(\'' + @{/deleteGoal?id=}+${currentUserGoal.id_goal} + '\')'"
+                           class="btn btn-primary">
                             <i class="fa fa-trash"></i>
                             <span>Usuń</span>
                         </a>
@@ -51,17 +53,67 @@
                  aria-valuemin="0" aria-valuemax="100" style="width:70%;" th:text="${currentUserGoal.value}">
             </div>
         </div>
-        <div class="panel panel-headline">
-            <div class="panel-body">
-                <h4>Wartość całkowita celu</h4>
-                <h2 th:text="${currentUserGoal.value}"></h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="metric user-panel">
+                    <span class="panel-icon"><i class="ion ion-arrow-graph-up-right"></i></span>
+                    <p>
+                        <span class="panel-title">POSTĘP</span>
+                        <span class="panel-value" th:text="${currentUserFinances.current_state_to_goal+' / '+ currentUserGoal.value}"></span>
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="panel panel-headline">
+            <div class="col-md-2">
+                <div class="metric user-panel">
+                    <span class="panel-icon"><i class="ion ion-cash"></i></span>
+                    <p>
+                        <span class="panel-title">STAN KONTA</span>
+                        <span class="panel-value" th:text="${currentUserFinances.account_balance}"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <div class="metric user-panel">
+                    <span class="panel-icon"><i class="ion ion-android-time"></i></span>
+                    <p>
+                        <span class="panel-title">SZACOWANY CZAS</span>
+                        <span class="panel-value">37 DNI</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                    <div class="metric user-panel">
+                        <span class="panel-icon"><i class="ion ion-folder"></i></span>
 
-            <div class="panel-body">
-                <h4>Przybliżony czas do osiągnięcia celu</h4>
-                <h2 th:text="${currentUserGoal.number_of_days}"></h2>
+                        <p>
+                            <span class="panel-title">LOREM IPSUM</span>
+                            <span class="panel-value">XXXS</span>
+                        </p>
+
+                    </div>
+            </div>
+            <div class="col-md-2" th:onclick="'javascript:moveTo(\'' + @{/addIncome} + '\')'">
+                <div class="metric income-panel">
+                    <p class="panel-button">
+                        <span class="panel-icon"><i class="ion ion-plus"></i></span>
+
+                        <span class="panel-title-button">DODAJ</span>
+                        <span class="panel-value-button">PRZYCHÓD</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-2" >
+                <div class="metric extense-panel">
+                    <p class="panel-button">
+                        <span class="panel-icon"><i class="ion ion-minus"></i></span>
+
+                        <span class="panel-title-button">ODEJMIJ</span>
+                        <span class="panel-value-button">WYDATEK</span>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -79,10 +131,7 @@
                             <div class="col-md-12">
                             </div>
                             <div class="col-md-6">
-                                <a th:href="@{/addIncome}" class="btn btn-primary">
-                                    <i class="fa fa-plus"></i>
-                                    <span>Dodaj</span>
-                                </a>
+
                             </div>
 
                         </div>
