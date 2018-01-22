@@ -6,11 +6,11 @@
 </head>
 <body>
 <section class="content" th:fragment="AddExpenses">
-    <h1>Edytowanie celu</h1>
+    <h1>Dodaj wydatek</h1>
     <div class="container-fluid">
         <div class="panel">
             <div class="panel-body">
-                <form th:action="@{/AddExpenses}" method="post">
+                <form th:action="@{/addExpenses}" method="post">
                     <div class="form-group">
                         <label for="expensesType">Typ przychodu</label>
                         <input type="text" th:value="${expenses.type}" name="type" class="form-control" id="expensesType"
