@@ -28,8 +28,8 @@
                     </div>
                     <div class="form-group">
                         <label for="expensesDate">Data</label>
-                        <input type="date" name="value" th:value="${expenses.date}" class="form-control" id="expensesDate"
-                               placeholder="Wprowadź date">
+                        <input type="date" name="value" th:value="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}" class="form-control" id="expensesDate"
+                               placeholder="Wprowadź date" readonly>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-block">Zatwierdź</button>
