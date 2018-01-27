@@ -44,6 +44,7 @@ public class DashboardController {
         model.addAttribute("currentUserFinances",gmUser.getUserFinances());
         long currentUserFinancesId=gmUser.getUserFinances().getId_user_finances();
         model.addAttribute("incomeList", incomeService.findAllUserIncomes(currentUserFinancesId));
+        model.addAttribute("lastFiveIncomeList", incomeService.findFiveLastUserIncomes(currentUserFinancesId));
         model.addAttribute("expensesList", expensesService.findAllUserExpenses(currentUserFinancesId));
         return "index";
     }

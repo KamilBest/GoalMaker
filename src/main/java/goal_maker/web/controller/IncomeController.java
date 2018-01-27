@@ -33,7 +33,7 @@ public class IncomeController {
     }
 
     @RequestMapping(value = "/addIncome", method = RequestMethod.POST)
-    public String addIncome(@RequestParam(value = "type")String type,@RequestParam(value = "value")String name, @RequestParam(value = "value")long value) {
+    public String addIncome(@RequestParam(value = "type")String type,@RequestParam(value = "name")String name, @RequestParam(value = "value")long value) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);

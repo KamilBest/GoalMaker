@@ -146,26 +146,27 @@
                     </div>
                     <div class="all-income">
                         <div class="panel-body">
-                            <table class="table table-striped table-bordered datatables" cellspacing="0" width="100%">
+                            <table class="table table-striped table-bordered " cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>NAZWA</th>
                                     <th>TYP</th>
                                     <th>WARTOŚĆ</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="income : ${incomeList}">
+                                <tr th:each="income : ${lastFiveIncomeList}">
                                     <td th:text="${income.id_income}"></td>
+                                    <td th:text="${income.name}"></td>
                                     <td th:text="${income.type}"></td>
                                     <td th:text="${income.value}"></td>
+                                    <!--<td th:text="${income.date.toString()}"></td>-->
                                 </tr>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
-
                     <div class="all-income">
                         <div class="panel-body">
                             <table class="table table-striped table-bordered datatables" cellspacing="0" width="100%">
