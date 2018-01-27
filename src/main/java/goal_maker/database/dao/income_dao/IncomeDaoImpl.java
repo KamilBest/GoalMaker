@@ -42,4 +42,11 @@ public class IncomeDaoImpl implements IncomeDao {
         query.setParameter(5, income.getName());
         query.executeUpdate();
     }
+
+    @Override
+    public List<Income> findLastUserIncomes(long id, long amount) {
+        String sqlSelect = "SELECT id_income, type, value, id_user_finances, date, name  FROM goal_maker.income WHERE id_user_finances=" + id + "ORDER BY id_income DESC LIMIT " + amount;
+        List<Income> lastIncomes = entityManager.createNativeQuery(sqlSelect, Income.class).getResultList();
+        return lastIncomes;
+    }
 }

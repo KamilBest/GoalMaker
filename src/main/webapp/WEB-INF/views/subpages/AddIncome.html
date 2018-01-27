@@ -6,7 +6,7 @@
 </head>
 <body>
 <section class="content" th:fragment="AddIncome">
-    <h1>Edytowanie celu</h1>
+    <h1>Dodaj przychód</h1>
     <div class="container-fluid">
         <div class="panel">
             <div class="panel-body">
@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         <label for="incomeName">Nazwa przychodu</label>
-                        <input type="text" th:value="${income.name}" name="type" class="form-control" id="incomeName"
+                        <input type="text" th:value="${income.name}" name="name" class="form-control" id="incomeName"
                                placeholder="Wprowadź nazwę przychodu">
                     </div>
                     <div class="form-group">

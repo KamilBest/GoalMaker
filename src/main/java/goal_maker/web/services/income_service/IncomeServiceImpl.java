@@ -22,4 +22,9 @@ public class IncomeServiceImpl implements IncomeService {
     public void addIncome(Income income) {
             incomeDao.addIncome(income);
     }
+
+    @Override
+    public List<Income> findLastUserIncomes(long id, long amount) {
+        return incomeDao.findLastUserIncomes(id, amount);
+    }
 }

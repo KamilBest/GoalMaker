@@ -4,7 +4,6 @@ import goal_maker.database.dao.goal_dao.GoalDao;
 import goal_maker.database.tables.GmUser;
 import goal_maker.web.services.expenses_service.ExpensesService;
 import goal_maker.web.services.income_service.IncomeService;
-import goal_maker.web.services.user_finances_service.UserFinancesService;
 import goal_maker.web.services.user_service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -44,7 +43,9 @@ public class DashboardController {
         model.addAttribute("currentUserFinances",gmUser.getUserFinances());
         long currentUserFinancesId=gmUser.getUserFinances().getId_user_finances();
         model.addAttribute("incomeList", incomeService.findAllUserIncomes(currentUserFinancesId));
+        model.addAttribute("lastIncomeList", incomeService.findLastUserIncomes(currentUserFinancesId, 10));
         model.addAttribute("expensesList", expensesService.findAllUserExpenses(currentUserFinancesId));
+        model.addAttribute("lastExpensesList", expensesService.findLastUserExpenses(currentUserFinancesId, 10));
         return "index";
     }
 
