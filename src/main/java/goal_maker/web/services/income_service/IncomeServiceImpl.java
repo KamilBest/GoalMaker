@@ -24,7 +24,7 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
-    public List<Income> findFiveLastUserIncomes(long id) {
-        return incomeDao.findTenLastUserIncomes(id);
+    public List<Income> findLastUserIncomes(long id, long amount) {
+        return incomeDao.findLastUserIncomes(id, amount);
     }
 }

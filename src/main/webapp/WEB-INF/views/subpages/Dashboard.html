@@ -162,7 +162,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="income : ${lastFiveIncomeList}">
+                                    <tr th:each="income : ${lastIncomeList}">
                                         <td th:text="${income.id_income}"></td>
                                         <td th:text="${income.name}"></td>
                                         <td th:text="${income.type}"></td>
@@ -187,7 +187,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="expense : ${lastFiveExpensesList}">
+                                    <tr th:each="expense : ${lastExpensesList}">
                                         <td th:text="${expense.idExpenses}"></td>
                                         <td th:text="${expense.name}"></td>
                                         <td th:text="${expense.type}"></td>

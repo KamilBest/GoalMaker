@@ -7,5 +7,5 @@ import java.util.List;
 public interface ExpensesDao {
     List<Expenses> findAllUserExpenses(long id);
     void addExpenses(Expenses income);
-    List<Expenses> findTenLastUserExpenses(long id);
+    List<Expenses> findLastUserExpenses(long id, long amount);
 }

@@ -23,7 +23,7 @@ public class ExpensesServiceImpl implements ExpensesService{
     }
 
     @Override
-    public List<Expenses> findFiveLastUserExpenses(long id) {
-        return expensesDao.findTenLastUserExpenses(id);
+    public List<Expenses> findLastUserExpenses(long id, long amount) {
+        return expensesDao.findLastUserExpenses(id, amount);
     }
 }

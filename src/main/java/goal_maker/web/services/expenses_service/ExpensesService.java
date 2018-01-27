@@ -7,5 +7,5 @@ import java.util.List;
 public interface ExpensesService {
      List<Expenses> findAllUserExpenses(long id);
      void addExpenses(Expenses income);
-     List<Expenses> findFiveLastUserExpenses(long id);
+     List<Expenses> findLastUserExpenses(long id, long amount);
 }
