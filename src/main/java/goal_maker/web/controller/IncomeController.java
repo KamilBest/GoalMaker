@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Timestamp;
 import java.util.logging.Logger;
 
 @Controller
@@ -32,11 +33,12 @@ public class IncomeController {
     }
 
     @RequestMapping(value = "/addIncome", method = RequestMethod.POST)
-    public String addIncome(@RequestParam(value = "type")String type, @RequestParam(value = "value")long value) {
+    public String addIncome(@RequestParam(value = "type")String type,@RequestParam(value = "value")String name, @RequestParam(value = "value")long value) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
-        Income income=new Income(type, value,gmUser.getUserFinances());
+        Timestamp currentTime=new Timestamp(System.currentTimeMillis());
+        Income income=new Income(type,value,gmUser.getUserFinances(),currentTime,name);
 
         incomeService.addIncome(income);
         return "redirect:/index";

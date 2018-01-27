@@ -33,7 +33,7 @@ public class IncomeDaoImpl implements IncomeDao {
     @Transactional
     @Override
     public void addIncome(Income income) {
-        String sqlInsert = "INSERT INTO goal_maker.income(id_income, type, value, id_user_finances, date, name) VALUES (?, ?, ?, ?, ?, ?)";
+        String sqlInsert = "INSERT INTO goal_maker.income(type, value, id_user_finances, date, name) VALUES (?, ?, ?, ?, ?)";
         Query query = entityManager.createNativeQuery(sqlInsert, Income.class);
         query.setParameter(1, income.getType());
         query.setParameter(2, income.getValue());
