@@ -27,6 +27,13 @@ public class Income implements Serializable {
 
     }
 
+    public Income(String type, long value, Date date, String name) {
+        this.type = type;
+        this.value = value;
+        this.date = date;
+        this.name = name;
+    }
+
     public Income(String type, long value) {
         this.type = type;
         this.value = value;
