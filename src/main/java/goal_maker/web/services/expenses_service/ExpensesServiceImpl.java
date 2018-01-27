@@ -21,4 +21,9 @@ public class ExpensesServiceImpl implements ExpensesService{
     public void addExpenses(Expenses income) {
         expensesDao.addExpenses(income);
     }
+
+    @Override
+    public List<Expenses> findFiveLastUserExpenses(long id) {
+        return expensesDao.findTenLastUserExpenses(id);
+    }
 }

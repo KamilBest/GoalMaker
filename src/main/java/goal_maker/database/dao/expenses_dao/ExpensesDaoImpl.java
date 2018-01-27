@@ -38,4 +38,11 @@ public class ExpensesDaoImpl implements ExpensesDao {
         query.setParameter(5, expenses.getName());
         query.executeUpdate();
     }
+
+    @Override
+    public List<Expenses> findTenLastUserExpenses(long id) {
+        String sqlSelect = "SELECT id_expenses, type, value, id_user_finances, date, name FROM goal_maker.expenses WHERE id_user_finances=" + id + "ORDER BY id_expenses DESC LIMIT 10";
+        List<Expenses> lastFiveExpenses = entityManager.createNativeQuery(sqlSelect, Expenses.class).getResultList();
+        return lastFiveExpenses;
+    }
 }

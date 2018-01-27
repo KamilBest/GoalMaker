@@ -46,6 +46,7 @@ public class DashboardController {
         model.addAttribute("incomeList", incomeService.findAllUserIncomes(currentUserFinancesId));
         model.addAttribute("lastFiveIncomeList", incomeService.findFiveLastUserIncomes(currentUserFinancesId));
         model.addAttribute("expensesList", expensesService.findAllUserExpenses(currentUserFinancesId));
+        model.addAttribute("lastFiveExpensesList", expensesService.findFiveLastUserExpenses(currentUserFinancesId));
         return "index";
     }
 
