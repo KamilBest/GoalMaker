@@ -102,13 +102,13 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a th:href="@{/index}" href="#" class="active"><i class="lnr lnr-home"></i>
+                    <li><a th:href="@{/index}" class="active"><i class="lnr lnr-home"></i>
                         <span>Strona Główna</span></a></li>
-                    <li><a th:href="@{/getUsersList}" href="#" class=""><i class="lnr lnr-code"></i> <span>Lista Użytkowników</span></a>
+                    <li><a th:href="@{/getUsersList}" class=""><i class="lnr lnr-code"></i> <span>Lista Użytkowników</span></a>
                     </li>
-                    <li><a href="#" class=""><i class="lnr lnr-chart-bars"></i>
-                        <span>XXX</span></a></li>
-                    <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>XXX</span></a></li>
+                    <li><a th:href="@{/allIncomes}" class=""><i class="lnr lnr-chart-bars"></i>
+                        <span>Przychody</span></a></li>
+                    <li><a th:href="@{/allExpenses}" class=""><i class="lnr lnr-cog"></i> <span>Wydatki</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>XXX</span></a></li>
                     <li><a href="#" data-toggle="collapse" class="collapsed"><i
                             class="lnr lnr-file-empty"></i> <span>XXX</span> <i
@@ -155,6 +155,11 @@
                          th:include="subpages/AddIncome :: AddIncome"></div>
                     <div th:case="'addExpenses'"
                          th:include="subpages/AddExpenses :: AddExpenses"></div>
+
+                    <div th:case="'incomesList'"
+                         th:include="subpages/IncomesList :: IncomesList"></div>
+                    <div th:case="'expensesList'"
+                         th:include="subpages/ExpensesList :: ExpensesList"></div>
                 </div>
             </div>
         </div>

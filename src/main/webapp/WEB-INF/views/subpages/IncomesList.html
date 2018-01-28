@@ -5,6 +5,33 @@
     <title>Title</title>
 </head>
 <body>
+<section class="content" th:fragment="IncomesList">
+    <div class="container-fluid">
+    <h1>Lista przychodów</h1>
+        <hr>
+    <table class="table table-bordered datatables" cellspacing="0" width="85%">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>TYP</th>
+            <th>NAZWA</th>
+            <th>WARTOŚĆ</th>
+            <th>DATA</th>
 
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="income : ${allIncomes}">
+            <td th:text="${income.id_income}"></td>
+            <td th:text="${income.type}"></td>
+            <td th:text="${income.name}"></td>
+            <td th:text="${income.value}"></td>
+            <td th:text="${income.date}"></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</section>
 </body>
 </html>

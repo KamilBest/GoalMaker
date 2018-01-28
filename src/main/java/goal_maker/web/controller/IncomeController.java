@@ -25,6 +25,16 @@ public class IncomeController {
     @Autowired
     IncomeService incomeService;
 
+    @RequestMapping(value ="/allIncomes", method = RequestMethod.GET)
+    public String allIncomes(Model model)
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String login = auth.getName(); //get logged in login
+        GmUser gmUser = userService.getUserByLogin(login);
+        model.addAttribute("location","incomesList");
+        model.addAttribute("allIncomes", incomeService.findAllUserIncomes(gmUser.getUserFinances().getId_user_finances()));
+        return "index";
+    }
     @RequestMapping(value = "/addIncome", method = RequestMethod.GET)
     public String addIncome(Model model) {
         model.addAttribute("location", "addIncome");
@@ -37,6 +47,7 @@ public class IncomeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
+
         Timestamp currentTime=new Timestamp(System.currentTimeMillis());
         Income income=new Income(type,value,gmUser.getUserFinances(),currentTime,name);
 
