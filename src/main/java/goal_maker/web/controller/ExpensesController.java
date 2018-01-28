@@ -26,6 +26,17 @@ public class ExpensesController {
     @Autowired
     private  ExpensesService expensesService;
 
+    @RequestMapping(value ="/allExpenses", method = RequestMethod.GET)
+    public String allExpenses(Model model)
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String login = auth.getName(); //get logged in login
+        GmUser gmUser = userService.getUserByLogin(login);
+        model.addAttribute("location","expensesList");
+        model.addAttribute("allExpenses", expensesService.findAllUserExpenses(gmUser.getUserFinances().getId_user_finances()));
+        return "index";
+    }
+
     @RequestMapping(value = "/addExpenses", method = RequestMethod.GET)
     public String addExpenses(Model model) {
         model.addAttribute("location", "addExpenses");

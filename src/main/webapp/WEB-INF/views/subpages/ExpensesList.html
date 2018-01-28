@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="content" th:fragment="ExpensesList">
+    <div class="container-fluid">
+        <h1>Lista wydatków</h1>
+        <hr>
+        <table class="table table-bordered datatables" cellspacing="0" width="85%">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>TYP</th>
+                <th>NAZWA</th>
+                <th>WARTOŚĆ</th>
+                <th>DATA</th>
+                <th>USUŃ</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="tableRow" th:each="expense : ${allExpenses}">
+                <td th:text="${expense.idExpenses}"></td>
+                <td th:text="${expense.type}"></td>
+                <td th:text="${expense.name}"></td>
+                <td th:text="${expense.value}"></td>
+                <td th:text="${expense.date}"></td>
+                <td>USUŃ</td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>
+</body>
+</html>

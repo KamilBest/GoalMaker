@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
@@ -140,24 +140,24 @@
             </div>
 
             <div class="col-md-6">
-                <div class="panel">
-                    <div class="panel-heading clearfix">
-                        <div class="center-block">
-                            <a class="ownPills" data-toggle="tab" href="#income">Przychody</a>
-                            <a class="ownPills" data-toggle="tab" href="#expenses">Wydatki</a>
-                            <a class="ownPills" data-toggle="tab" href="#expensesAndIncomes">Wszystkie</a>
-                        </div>
+                <div class="panel" style="background: #2B333E">
+                    <div class="panel-heading">
+                        <ul class="nav nav-item">
+                            <li class="active"><a class="greenInc"data-toggle="tab" href="#income">Przychody</a></li>
+                            <li><a class="redExp" data-toggle="tab" href="#expenses">Wydatki</a></li>
+                            <li><a class="yellowAll"data-toggle="tab" href="#expensesAndIncomes">Wszystkie</a></li>
+                        </ul>
                     </div>
                     <div class="tab-content">
                         <div class="all-income tab-pane fade in active" id="income">
                             <div class="panel-body">
-                                <table class="table" cellspacing="0" width="100%">
+                                <table class="table table-borderless" cellspacing="0" width="100%">
                                     <tr class="incomesTable" th:each="income : ${lastIncomeList} ">
                                         <td class="chevron-cell"><i class="fa fa-chevron-up"></i></td>
-                                        <td class="id-cell" th:text="${income.id_income}"></td>
+                                        <td class="id-cell" th:text="'#'+${income.id_income}"></td>
                                         <td class="name-type-cell" th:text="${income.name}+ ' ' +${income.type}"></td>
                                         <td class="value-cell" th:text="'+'+${income.value}"></td>
-                                        <td class="date-cell" th:text="${income.date.toString()}"></td>
+                                        <td class="date-cell" th:text="${#dates.format(income.date, 'dd-MM-yyyy HH:mm')}"></td>
                                     </tr>
                                 </table>
                             </div>

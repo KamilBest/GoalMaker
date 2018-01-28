@@ -178,7 +178,6 @@
 }
 .id-cell, .date-cell{
 	vertical-align: top;
-	width: 5%;
 }
 .id-cell{
 	text-align: left;
@@ -187,18 +186,54 @@
 .incomesTable{
 	height: 45px;
 }
-.ownPills {
+.nav-item>li.active>a.greenInc, .nav-tabs>li.active>a.greenInc:hover, .nav-tabs>li.active>a.greenInc:focus{
+	border: 1px solid #49d61c;
+	background: #49d61c;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+	color: #fff;
+}
+.nav-item>li>a.greenInc:hover{
+	color: #fff;
+	background: #49d61c;
+}
+.nav-item>li.active>a.redExp, .nav-tabs>li.active>a.redExp:hover, .nav-tabs>li.active>a.redExp:focus{
+	border: 1px solid #eb2f2f ;
+	background: #eb2f2f;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+	color: #fff;
+}
+.nav-item>li>a.redExp:hover{
+	color: #fff;
+	background: #eb2f2f;
+}
+.nav-item>li.active>a.yellowAll, .nav-tabs>li.active>a.yellowAll:hover, .nav-tabs>li.active>a.yellowAll:focus{
+	border: 1px solid #ffe700;
+	background: #ffe700;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+	color: #fff;
+}
+.nav-item>li>a.yellowAll:hover{
+	color: #fff;
+	background: #ffe700;
+}
+.nav-item>li>a{
 	padding: 5px;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
 	width: 150px;
-	height: 35px;
+	height: 25px;
 	cursor: pointer;
-	border: 1px solid #49d61c;
 	-webkit-border-radius: 40px;
 	border-radius: 4px;
-	font: normal 17px/40px "Advent Pro", Helvetica, sans-serif;
-	color: #49d61c;
 	text-align: center;
 	-o-text-overflow: clip;
 	text-overflow: clip;
@@ -211,21 +246,29 @@
 	float: left;
 	margin-right: 10px;
 }
-.ownPills:hover {
-	color: #fff;
-	background: #49d61c;
-}
-.ownPills:active {
+.nav-item>li>a.greenInc{
 	border: 1px solid #49d61c;
-	background: #49d61c;
-	-webkit-transition: none;
-	-moz-transition: none;
-	-o-transition: none;
-	transition: none;
-}
-.ownPills > a {
 	color: #49d61c;
 }
-.ownPills > a:hover{
-	color: #fff;
+.nav-item>li>a.redExp{
+	border: 1px solid #eb2f2f;
+	color: #eb2f2f;
+}
+.nav-item>li>a.yellowAll{
+	border: 1px solid #ffe700;
+	color: #ffe700;
+}
+.tableRow{
+	cursor:pointer;
+}
+.tableRow:hover{
+	background: #00abff;
+}
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+	border: none;
 }
