@@ -54,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid" th:if="${currentUserGoal!=null}">
         <div class="row">
             <div class="col-md-2">
                 <div class="metric user-panel">
@@ -119,7 +119,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" th:if="${currentUserGoal!=null}">
         <div class="row">
 
             <div class="col-md-6">
@@ -159,6 +159,7 @@
                                         <th>NAZWA</th>
                                         <th>TYP</th>
                                         <th>WARTOŚĆ</th>
+                                        <th>DATA</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -167,6 +168,7 @@
                                         <td th:text="${income.name}"></td>
                                         <td th:text="${income.type}"></td>
                                         <td th:text="${income.value}"></td>
+                                        <td th:text="${income.date.toString()}"></td>
                                         <!--<td th:text="${income.date.toString()}"></td>-->
                                     </tr>
                                     </tbody>
@@ -193,6 +195,33 @@
                                         <td th:text="${expense.type}"></td>
                                         <td th:text="${expense.value}"></td>
                                         <td th:text="${expense.date.toString()}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="all-income tab-pane fade" id="expensesAndIncomes">
+                            <div class="panel-body">
+                                <table class="table table-striped table-bordered" cellspacing="0"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th></th>
+                                        <th>TYP</th>
+                                        <th>WARTOŚĆ</th>
+                                        <th>NAZWA</th>
+                                        <th>DATA</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="incomeAndExpense : ${incomesAndExpensesTogether}">
+                                        <td th:text="${incomeAndExpense.id}"></td>
+                                        <td><div><span th:if="${incomeAndExpense.isIncome()}">PRZYCHÓD</span><span th:if="${!incomeAndExpense.isIncome()}">WYDATEK</span></div></td>
+                                        <td th:text="${incomeAndExpense.name}"></td>
+                                        <td th:text="${incomeAndExpense.type}"></td>
+                                        <td th:text="${incomeAndExpense.value}"></td>
+                                        <td th:text="${incomeAndExpense.date.toString()}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
