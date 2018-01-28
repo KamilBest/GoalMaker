@@ -24,17 +24,20 @@
                 <th>NAZWA</th>
                 <th>WARTOŚĆ</th>
                 <th>DATA</th>
+                <th>USUŃ</th>
 
 
             </tr>
             </thead>
             <tbody>
-            <tr class="rowHover" th:each="expense : ${allExpenses}">
+            <tr class="tableRow" th:each="expense : ${allExpenses}">
                 <td th:text="${expense.idExpenses}"></td>
                 <td th:text="${expense.type}"></td>
                 <td th:text="${expense.name}"></td>
                 <td th:text="${expense.value}"></td>
                 <td th:text="${expense.date}"></td>
+                <td>USUŃ</td>
+
             </tr>
             </tbody>
         </table>

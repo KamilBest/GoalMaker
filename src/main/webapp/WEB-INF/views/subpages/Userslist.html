@@ -19,11 +19,12 @@
             <th>Data urodzenia</th>
             <th>Stan</th>
             <th>Cel</th>
+            <th>USUŃ</th>
 
         </tr>
         </thead>
         <tbody>
-        <tr th:each="user : ${UsersList}">
+        <tr class="tableRow" th:each="user : ${UsersList}">
             <td th:text="${user.id}"></td>
             <td th:text="${user.login}"></td>
             <td th:text="${user.password}"></td>
@@ -36,6 +37,8 @@
                 <span th:if="${user.goal!=null}" th:text="${user.goal.id_goal}"> </span>
                 <span th:unless="${user.goal==null}" th:text="${' '}"></span>
             </td>
+            <td>USUŃ</td>
+
         </tr>
         </tbody>
     </table>

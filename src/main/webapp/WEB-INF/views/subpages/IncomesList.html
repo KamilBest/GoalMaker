@@ -17,17 +17,19 @@
             <th>NAZWA</th>
             <th>WARTOŚĆ</th>
             <th>DATA</th>
+            <th>USUŃ</th>
 
 
         </tr>
         </thead>
         <tbody>
-        <tr th:each="income : ${allIncomes}">
+        <tr class="tableRow" th:each="income : ${allIncomes}">
             <td th:text="${income.id_income}"></td>
             <td th:text="${income.type}"></td>
             <td th:text="${income.name}"></td>
             <td th:text="${income.value}"></td>
             <td th:text="${income.date}"></td>
+            <td>USUŃ</td>
         </tr>
         </tbody>
     </table>
