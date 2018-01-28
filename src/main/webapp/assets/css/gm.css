@@ -143,3 +143,89 @@
 .info-title{
 
 }
+.chevron-cell, .id-cell, .name-type-cell, .value-cell, .date-cell{
+	padding: 0;
+}
+.date-cell{
+	font-size: 1rem;
+	text-align: right;
+}
+.chevron-cell
+{
+	color: #fff;
+	background-color: #45b121;
+	text-align: center;
+	padding-left: 0;
+	vertical-align: middle;
+}
+.id-cell, .name-type-cell, .value-cell, .date-cell{
+	background-color: #323942;
+}
+.value-cell{
+	color: #49d61c;
+	font-weight: bold;
+	text-align: left;
+	width: 25%;
+	font-size: 1.8rem;
+	padding-left: 0px;
+	vertical-align: middle;
+}
+.name-type-cell{
+	color: #fff;
+	font-weight: bolder;
+	font-size: 1.8rem;
+	vertical-align: middle;
+}
+.id-cell, .date-cell{
+	vertical-align: top;
+	width: 5%;
+}
+.id-cell{
+	text-align: left;
+	font-size: 1rem;
+}
+.incomesTable{
+	height: 45px;
+}
+.ownPills {
+	padding: 5px;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	width: 150px;
+	height: 35px;
+	cursor: pointer;
+	border: 1px solid #49d61c;
+	-webkit-border-radius: 40px;
+	border-radius: 4px;
+	font: normal 17px/40px "Advent Pro", Helvetica, sans-serif;
+	color: #49d61c;
+	text-align: center;
+	-o-text-overflow: clip;
+	text-overflow: clip;
+	letter-spacing: 1px;
+	background: rgba(0,0,0,0);
+	-webkit-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+	-moz-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+	-o-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+	transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+	float: left;
+	margin-right: 10px;
+}
+.ownPills:hover {
+	color: #fff;
+	background: #49d61c;
+}
+.ownPills:active {
+	border: 1px solid #49d61c;
+	background: #49d61c;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+.ownPills > a {
+	color: #49d61c;
+}
+.ownPills > a:hover{
+	color: #fff;
+}

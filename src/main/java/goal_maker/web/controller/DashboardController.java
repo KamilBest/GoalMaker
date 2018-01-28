@@ -64,7 +64,6 @@ public class DashboardController {
         List<Expenses> expensesList = expensesService.findLastUserExpenses(currentUserFinancesId, amountOfIncomesAndExpenses);
         model.addAttribute("lastIncomeList", incomesList);
         model.addAttribute("lastExpensesList", expensesList);
-
         List<IncomeAndExpense> incomeAndExpenseList=loadIncomesAndExpensesList(incomesList,expensesList);
         Collections.sort(incomeAndExpenseList);
         incomeAndExpenseList=decreaseListToGivenAmount(incomeAndExpenseList,amountOfIncomesAndExpenses);
