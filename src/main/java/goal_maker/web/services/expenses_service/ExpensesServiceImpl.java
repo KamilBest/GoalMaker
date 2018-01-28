@@ -21,4 +21,7 @@ public class ExpensesServiceImpl implements ExpensesService{
     public void addExpenses(Expenses income) {
         expensesDao.addExpenses(income);
     }
+
+    @Override
+    public void deleteExpenses(Expenses expenses) {  expensesDao.deleteExpenses(expenses);   }
 }

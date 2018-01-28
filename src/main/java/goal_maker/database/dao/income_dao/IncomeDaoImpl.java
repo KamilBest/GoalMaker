@@ -42,4 +42,12 @@ public class IncomeDaoImpl implements IncomeDao {
         query.setParameter(5, income.getName());
         query.executeUpdate();
     }
+
+    @Transactional
+    @Override
+    public void deleteIncome(Income income) {
+        String sqlDelete = "DELETE FROM goal_maker.income WHERE id_income="+income.getId_income();
+        Query query = entityManager.createNativeQuery(sqlDelete, Income.class);
+        query.executeUpdate();
+    }
 }

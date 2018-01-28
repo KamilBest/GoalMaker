@@ -5,6 +5,7 @@ import goal_maker.database.tables.Income;
 import java.util.List;
 
 public interface IncomeDao {
-    public List<Income> findAllUserIncomes(long id);
-    public void addIncome(Income income);
+     List<Income> findAllUserIncomes(long id);
+     void addIncome(Income income);
+     void deleteIncome(Income income);
 }

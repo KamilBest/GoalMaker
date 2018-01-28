@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface ExpensesDao {
     List<Expenses> findAllUserExpenses(long id);
-   void addExpenses(Expenses income);
+   void addExpenses(Expenses expenses);
+   void deleteExpenses(Expenses expenses);
 }

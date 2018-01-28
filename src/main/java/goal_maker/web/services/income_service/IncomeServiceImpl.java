@@ -11,7 +11,7 @@ import java.util.List;
 public class IncomeServiceImpl implements IncomeService {
 
     @Autowired
-    IncomeDao incomeDao;
+   private IncomeDao incomeDao;
 
     @Override
     public List<Income> findAllUserIncomes(long id) {
@@ -21,5 +21,9 @@ public class IncomeServiceImpl implements IncomeService {
     @Override
     public void addIncome(Income income) {
             incomeDao.addIncome(income);
+    }
+
+    @Override
+    public void deleteIncome(Income income) {  incomeDao.deleteIncome(income);
     }
 }

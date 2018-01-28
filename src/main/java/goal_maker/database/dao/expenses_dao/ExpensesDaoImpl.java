@@ -38,4 +38,12 @@ public class ExpensesDaoImpl implements ExpensesDao {
         query.setParameter(5, expenses.getName());
         query.executeUpdate();
     }
+
+    @Transactional
+    @Override
+    public void deleteExpenses(Expenses expenses) {
+        String sqlDelete = "DELETE FROM goal_maker.expenses WHERE id_expenses="+expenses.getIdExpenses();
+        Query query = entityManager.createNativeQuery(sqlDelete, Expenses.class);
+        query.executeUpdate();
+    }
 }
