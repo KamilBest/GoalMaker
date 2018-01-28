@@ -143,3 +143,10 @@
 .info-title{
 
 }
+
+.tableRow{
+	cursor:pointer;
+}
+.tableRow:hover{
+	background: #00abff;
+}
