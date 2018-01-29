@@ -143,10 +143,189 @@
 .info-title{
 
 }
-
+.chevron-cell, .id-cell, .name-type-cell, .value-cell, .date-cell, .chevron-cell-expense, .id-cell-expense, .name-type-cell-expense, .value-cell-expense, .date-cell-expense{
+	padding: 0;
+}
+.date-cell, .date-cell-expense{
+	font-size: 1rem;
+	text-align: right;
+}
+.chevron-cell
+{
+	color: #fff;
+	background-color: #45b121;
+	text-align: center;
+	padding-left: 0;
+	vertical-align: middle;
+	width: 45px;
+}
+.chevron-cell-expense
+{
+	color: #fff;
+	background-color: #eb2f2f;
+	text-align: center;
+	padding-left: 0;
+	vertical-align: middle;
+	width: 45px;
+}
+.id-cell, .name-type-cell, .value-cell, .date-cell, .id-cell-expense, .name-type-cell-expense, .value-cell-expense, .date-cell-expense{
+	background-color: #252c35;
+}
+.incomesTable:hover, .expensesTable:hover, .incomeAndExpenseTable:hover{
+	background-color: #323942;
+}
+.value-cell{
+	color: #49d61c;
+	font-weight: bold;
+	text-align: left;
+	width: 25%;
+	font-size: 1.8rem;
+	padding-left: 0px;
+	vertical-align: middle;
+}
+.value-cell-expense{
+	color: #eb2f2f;
+	font-weight: bold;
+	text-align: left;
+	width: 25%;
+	font-size: 1.8rem;
+	padding-left: 0px;
+	vertical-align: middle;
+}
+.name-type-cell, .name-type-cell-expense{
+	color: #fff;
+	font-weight: bolder;
+	font-size: 1.8rem;
+	vertical-align: middle;
+}
+.id-cell, .date-cell, .id-cell-expense, .date-cell-expense{
+	vertical-align: top;
+}
+.id-cell, .id-cell-expense{
+	text-align: left;
+	font-size: 1rem;
+}
+.incomesTable, .expensesTable{
+	height: 45px;
+}
+.nav-item>li.active>a.greenInc, .nav-tabs>li.active>a.greenInc:hover, .nav-tabs>li.active>a.greenInc:focus{
+	border: 1px solid #49d61c;
+	background: #49d61c;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+	color: #fff;
+}
+.nav-item>li>a.greenInc:hover{
+	color: #fff;
+	background: #49d61c;
+}
+.nav-item>li.active>a.redExp, .nav-tabs>li.active>a.redExp:hover, .nav-tabs>li.active>a.redExp:focus{
+	border: 1px solid #eb2f2f ;
+	background: #eb2f2f;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+	color: #fff;
+}
+.nav-item>li>a.redExp:hover{
+	color: #fff;
+	background: #eb2f2f;
+}
+.nav-item>li.active>a.yellowAll, .nav-tabs>li.active>a.yellowAll:hover, .nav-tabs>li.active>a.yellowAll:focus{
+	border: 1px solid #ffe700;
+	background: #ffe700;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+	color: #fff;
+}
+.nav-item>li>a.yellowAll:hover{
+	color: #fff;
+	background: #ffe700;
+}
+.nav-item>li>a{
+	padding: 5px;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	width: 150px;
+	height: 25px;
+	cursor: pointer;
+	-webkit-border-radius: 40px;
+	border-radius: 4px;
+	text-align: center;
+	-o-text-overflow: clip;
+	text-overflow: clip;
+	letter-spacing: 1px;
+	background: rgba(0,0,0,0);
+	-webkit-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+	-moz-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+	-o-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+	transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+	float: left;
+	margin-right: 10px;
+}
+.nav-item>li>a.greenInc{
+	border: 1px solid #49d61c;
+	color: #49d61c;
+}
+.nav-item>li>a.redExp{
+	border: 1px solid #eb2f2f;
+	color: #eb2f2f;
+}
+.nav-item>li>a.yellowAll{
+	border: 1px solid #ffe700;
+	color: #ffe700;
+}
 .tableRow{
 	cursor:pointer;
 }
 .tableRow:hover{
 	background: #00abff;
+}
+.table-borderBottomGreen > tbody > tr > td,
+.table-borderBottomGreen > tbody > tr > th,
+.table-borderBottomGreen > tfoot > tr > td,
+.table-borderBottomGreen > tfoot > tr > th,
+.table-borderBottomGreen > thead > tr > td,
+.table-borderBottomGreen > thead > tr > th {
+	border-bottom: 1px solid #49d61c;
+	border-top: 1px solid #49d61c;
+}
+.greenBorder{
+	border: 1px solid #49d61c;
+}
+
+.table-borderBottomRed > tbody > tr > td,
+.table-borderBottomRed > tbody > tr > th,
+.table-borderBottomRed > tfoot > tr > td,
+.table-borderBottomRed > tfoot > tr > th,
+.table-borderBottomRed > thead > tr > td,
+.table-borderBottomRed > thead > tr > th{
+	border-bottom: 1px solid #eb2f2f;
+	border-top: 1px solid #eb2f2f;
+}
+.redBorder{
+	border: 1px solid #eb2f2f;
+}
+tr.incomesTable td{
+	padding-top: 10px;
+	padding-bottom:10px;
+}
+
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th{
+	border: none;
+}
+
+.table-spacing{
+	border-collapse: separate;
+	border-spacing: 0 .3rem;
 }
