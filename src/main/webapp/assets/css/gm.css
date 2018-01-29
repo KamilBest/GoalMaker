@@ -169,6 +169,9 @@
 	width: 45px;
 }
 .id-cell, .name-type-cell, .value-cell, .date-cell, .id-cell-expense, .name-type-cell-expense, .value-cell-expense, .date-cell-expense{
+	background-color: #252c35;
+}
+.incomesTable:hover, .expensesTable:hover, .incomeAndExpenseTable:hover{
 	background-color: #323942;
 }
 .value-cell{
@@ -320,4 +323,9 @@ tr.incomesTable td{
 .table-borderless > thead > tr > td,
 .table-borderless > thead > tr > th{
 	border: none;
+}
+
+.table-spacing{
+	border-collapse: separate;
+	border-spacing: 0 .3rem;
 }
