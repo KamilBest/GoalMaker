@@ -151,12 +151,12 @@
                     <div class="tab-content">
                         <div class="all-income tab-pane fade in active" id="income">
                             <div class="panel-body">
-                                <table class="table table-borderless" cellspacing="0" width="100%">
+                                <table class="table table-borderBottomGreen greenBorder" cellspacing="0" width="100%">
                                     <tr class="incomesTable" th:each="income : ${lastIncomeList} ">
                                         <td class="chevron-cell"><i class="fa fa-chevron-up"></i></td>
                                         <td class="id-cell" th:text="'#'+${income.id_income}"></td>
                                         <td class="name-type-cell" th:text="${income.name}+ ' ' +${income.type}"></td>
-                                        <td class="value-cell" th:text="'+'+${income.value}"></td>
+                                        <td class="value-cell" th:text="'+'+${income.value}+'zł'"></td>
                                         <td class="date-cell" th:text="${#dates.format(income.date, 'dd-MM-yyyy HH:mm')}"></td>
                                     </tr>
                                 </table>
@@ -164,53 +164,28 @@
                         </div>
                         <div class="all-income tab-pane fade" id="expenses">
                             <div class="panel-body">
-                                <table class="table table-striped table-bordered" cellspacing="0"
-                                       width="100%">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>TYP</th>
-                                        <th>WARTOŚĆ</th>
-                                        <th>NAZWA</th>
-                                        <th>DATA</th>
+                                <table class="table table-borderBottomRed redBorder" cellspacing="0" width="100%">
+                                    <tr class="expensesTable" th:each="expense : ${lastExpensesList}">
+                                        <td class="chevron-cell-expense"><i class="fa fa-chevron-down"></i></td>
+                                        <td class="id-cell-expense" th:text="'#'+${expense.idExpenses}"></td>
+                                        <td class="name-type-cell-expense" th:text="${expense.name}+ ' ' +${expense.type}"></td>
+                                        <td class="value-cell-expense" th:text="'-'+${expense.value}+'zł'"></td>
+                                        <td class="date-cell-expense" th:text="${#dates.format(expense.date, 'dd-MM-yyyy HH:mm')}"></td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="expense : ${lastExpensesList}">
-                                        <td th:text="${expense.idExpenses}"></td>
-                                        <td th:text="${expense.name}"></td>
-                                        <td th:text="${expense.type}"></td>
-                                        <td th:text="${expense.value}"></td>
-                                        <td th:text="${expense.date.toString()}"></td>
-                                    </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="all-income tab-pane fade" id="expensesAndIncomes">
                             <div class="panel-body">
-                                <table class="table table-striped table-bordered" cellspacing="0"
-                                       width="100%">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th></th>
-                                        <th>TYP</th>
-                                        <th>WARTOŚĆ</th>
-                                        <th>NAZWA</th>
-                                        <th>DATA</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="incomeAndExpense : ${incomesAndExpensesTogether}">
-                                        <td th:text="${incomeAndExpense.id}"></td>
+                                <table class="table table-borderBottomRed redBorder" cellspacing="0" width="100%">
+                                    <tr class="expensesTable" th:each="incomeAndExpense : ${incomesAndExpensesTogether}">
+                                        <td class="chevron-cell-expense"><i class="fa fa-chevron-down"></i></td>
                                         <td><div><span th:if="${incomeAndExpense.isIncome()}">PRZYCHÓD</span><span th:if="${!incomeAndExpense.isIncome()}">WYDATEK</span></div></td>
-                                        <td th:text="${incomeAndExpense.name}"></td>
-                                        <td th:text="${incomeAndExpense.type}"></td>
-                                        <td th:text="${incomeAndExpense.value}"></td>
-                                        <td th:text="${incomeAndExpense.date.toString()}"></td>
+                                        <td class="id-cell-expense" th:text="'#'+${incomeAndExpense.id}"></td>
+                                        <td class="name-type-cell-expense" th:text="${incomeAndExpense.name}+ ' ' +${incomeAndExpense.type}"></td>
+                                        <td class="value-cell-expense" th:text="'-'+${incomeAndExpense.value}+'zł'"></td>
+                                        <td class="date-cell-expense" th:text="${#dates.format(incomeAndExpense.date, 'dd-MM-yyyy HH:mm')}"></td>
                                     </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
