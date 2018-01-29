@@ -177,14 +177,14 @@
                         </div>
                         <div class="all-income tab-pane fade" id="expensesAndIncomes">
                             <div class="panel-body">
-                                <table class="table table-borderBottomRed redBorder" cellspacing="0" width="100%">
+                                <table class="table table-borderless" cellspacing="0" width="100%">
                                     <tr class="expensesTable" th:each="incomeAndExpense : ${incomesAndExpensesTogether}">
-                                        <td class="chevron-cell-expense"><i class="fa fa-chevron-down"></i></td>
-                                        <td><div><span th:if="${incomeAndExpense.isIncome()}">PRZYCHÓD</span><span th:if="${!incomeAndExpense.isIncome()}">WYDATEK</span></div></td>
-                                        <td class="id-cell-expense" th:text="'#'+${incomeAndExpense.id}"></td>
-                                        <td class="name-type-cell-expense" th:text="${incomeAndExpense.name}+ ' ' +${incomeAndExpense.type}"></td>
-                                        <td class="value-cell-expense" th:text="'-'+${incomeAndExpense.value}+'zł'"></td>
-                                        <td class="date-cell-expense" th:text="${#dates.format(incomeAndExpense.date, 'dd-MM-yyyy HH:mm')}"></td>
+                                        <td class="" th:classappend="${incomeAndExpense.isIncome()} ? chevron-cell : chevron-cell-expense"><i class="fa " th:classappend="${incomeAndExpense.isIncome()} ? fa-chevron-up : fa-chevron-down"></i></td>
+                                        <!--<td><div><span th:if="${incomeAndExpense.isIncome()}">PRZYCHÓD</span><span th:if="${!incomeAndExpense.isIncome()}">WYDATEK</span></div></td>-->
+                                        <td class="" th:classappend="${incomeAndExpense.isIncome()} ? id-cell : id-cell-expense" th:text="'#'+${incomeAndExpense.id}"></td>
+                                        <td class="" th:classappend="${incomeAndExpense.isIncome()} ? name-type-cell : name-type-cell-expense" th:text="${incomeAndExpense.name}+ ' ' +${incomeAndExpense.type}"></td>
+                                        <td class="" th:classappend="${incomeAndExpense.isIncome()} ? value-cell : value-cell-expense" th:text="${incomeAndExpense.value}+'zł'"></td>
+                                        <td class="" th:classappend="${incomeAndExpense.isIncome()} ? date-cell : date-cell-expense" th:text="${#dates.format(incomeAndExpense.date, 'dd-MM-yyyy HH:mm')}"></td>
                                     </tr>
                                 </table>
                             </div>
