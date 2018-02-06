@@ -154,7 +154,6 @@
                          th:include="subpages/AddIncome :: AddIncome"></div>
                     <div th:case="'addExpenses'"
                          th:include="subpages/AddExpenses :: AddExpenses"></div>
-
                     <div th:case="'incomesList'"
                          th:include="subpages/IncomesList :: IncomesList"></div>
                     <div th:case="'expensesList'"
@@ -187,10 +186,46 @@
 <script src="assets/scripts/klorofil-common.js"></script>
 <script src="assets/scripts/jquery.dataTables.min.js"></script>
 <script src="assets/scripts/datatables.js"></script>
-<script src="assets/scripts/progressbar.min.js"></script>
 <script type="text/javascript">
     function moveTo(loc) {
         location.href = loc;
+    }
+</script>
+<script type="text/javascript">
+    var slider = document.getElementById("slider-range");
+    var value = document.getElementById("valueRange");
+    var multiplyByTen = document.getElementById("multiply-by-ten");
+    var resetButton = document.getElementById("reset-button");
+    multiplyByTen.onclick = function () {
+        if(slider.max == 10000){
+            multiplyByTen.disabled = true;
+            multiplyByTen.className += " " +"disabled";
+        }else {
+            slider.max *= 10;
+            slider.value *= 10;
+            value.innerHTML = slider.value;
+        }
+    };
+    resetButton.onclick = function(){
+        slider.max = 1000;
+        multiplyByTen.classList.remove("disabled");
+        slider.value = 0;
+        value.innerHTML = slider.value;
+        slider.oninput = function(){
+            value.innerHTML = this.value;
+        };
+    };
+
+    slider.oninput = function(){
+        value.innerHTML = this.value;
+    };
+    function changeValue(){
+        var nameValue = document.getElementById("numberValue");
+        slider.value = nameValue.value;
+        value.innerHTML = slider.value;
+        slider.oninput = function(){
+            value.innerHTML = this.value;
+        };
     }
 </script>
 <script>
