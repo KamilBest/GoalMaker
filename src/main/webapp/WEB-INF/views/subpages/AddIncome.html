@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Dodaj przychód</title>
 </head>
 <body>
 <section class="content" th:fragment="AddIncome">
@@ -51,15 +51,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
-                                        <div class="form-group">
-                                            <span class="range-slider-value" id="valueRange">
-                                             0
-                                             </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <input class="number-type-input" min="0" type="number" step="1" id="numberValue" onchange="changeValue()"/>
+                                    <div class="col-sm-2">
+                                        <input class="range-slider-value" min="1" type="number" step="1" id="numberValue" value="1" onchange="changeValue()"/>
                                     </div>
                                     <div class="col-sm-2 text-center">
                                         <div class="form-group">
@@ -75,14 +68,13 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6" align="center">
-                            <a href="http://www.goalmaker.herokuapp.com/index" class="btn btn-form btn-cancel">anuluj</a>
+                            <div class="col-sm-6" align="right">
+                            <a href="http://goalmaker.herokuapp.com/index" class="btn btn-form btn-cancel">anuluj</a>
                             </div>
-                            <div class="col-sm-6" align="center">
+                            <div class="col-sm-6" align="left">
                             <button type="submit" class="btn btn-form btn-accept">Zatwierdź</button>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>

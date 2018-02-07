@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org" >
 
 <head>
     <title>Goal Maker</title>
@@ -193,9 +193,9 @@
 </script>
 <script type="text/javascript">
     var slider = document.getElementById("slider-range");
-    var value = document.getElementById("valueRange");
     var multiplyByTen = document.getElementById("multiply-by-ten");
     var resetButton = document.getElementById("reset-button");
+    var nameValue = document.getElementById("numberValue");
     multiplyByTen.onclick = function () {
         if(slider.max == 10000){
             multiplyByTen.disabled = true;
@@ -203,28 +203,26 @@
         }else {
             slider.max *= 10;
             slider.value *= 10;
-            value.innerHTML = slider.value;
+            nameValue.value = slider.value;
         }
     };
     resetButton.onclick = function(){
         slider.max = 1000;
         multiplyByTen.classList.remove("disabled");
-        slider.value = 0;
-        value.innerHTML = slider.value;
+        slider.value = 1;
+        nameValue.value = slider.value;
         slider.oninput = function(){
-            value.innerHTML = this.value;
+            nameValue.value = this.value;
         };
     };
 
     slider.oninput = function(){
-        value.innerHTML = this.value;
+        nameValue.value = this.value;
     };
     function changeValue(){
-        var nameValue = document.getElementById("numberValue");
         slider.value = nameValue.value;
-        value.innerHTML = slider.value;
         slider.oninput = function(){
-            value.innerHTML = this.value;
+            nameValue.value = this.value;
         };
     }
 </script>

@@ -2,32 +2,84 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Odejmij wydatek</title>
 </head>
 <body>
 <section class="content" th:fragment="AddExpenses">
-    <h1>Dodaj wydatek</h1>
-    <div class="container-fluid">
-        <div class="panel">
+    <div class="container">
+        <div class="panel bg-black">
             <div class="panel-body">
-                <form th:action="@{/addExpenses}" method="post">
-                    <div class="form-group">
-                        <label for="expensesType">Typ wydatku</label>
-                        <input type="text" th:value="${expenses.type}" name="type" class="form-control" id="expensesType"
-                               placeholder="Wprowadź typ wydatku stały/zmienny">
-                    </div>
-                    <div class="form-group">
-                        <label for="expensesName">Nazwa wydatku</label>
-                        <input type="text" name="name" th:value="${expenses.name}" class="form-control" id="expensesName"
-                               placeholder="Wprowadź nazwe wydatku">
-                    </div>
-                    <div class="form-group">
-                        <label for="expensesValue">Wartość wydatku</label>
-                        <input type="number" name="value" th:value="${expenses.value}" class="form-control" id="expensesValue"
-                               placeholder="Wprowadź wartość wydatku">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Zatwierdź</button>
-                </form>
+                <h1 class="form-text text-center">Odejmij wydatek</h1>
+                <hr class="form-line"/>
+                <div class="forms">
+                    <form th:action="@{/addExpenses}" method="post">
+                        <div class="form-group form-group-custom">
+                            <label class="label-form">Wybierz typ</label>
+                            <!--<input type="text" th:value="${income.type}" name="type" class="form-control" id="incomeType"-->
+                            <!--placeholder="Wprowadź typ przychodu stały/zmienny">-->
+                            <div class="form-check">
+                                <label class="form-check-label bg-form-check">
+                                    <input class="form-check-input" type="radio" name="type" id="inlineRadioStable"
+                                           th:value="stały"><span>stały</span>
+                                </label>
+                                <label class="form-check-label bg-form-check">
+                                    <input class="form-check-input" type="radio" name="type" id="inlineRadioChange"
+                                           th:value="zmienny" checked="checked"> <span>zmienny</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-custom">
+                            <label for="expensesName" class="label-form">Wprowadź nazwę wydatku</label>
+                            <div class="input-group">
+                            <span class="input-group-addon bg-blue">
+                                <span class="ion ion-pricetag"></span>
+                            </span>
+                                <input type="text" th:value="${expenses.name}" name="name"
+                                       class="form-control form-control-custom" id="expensesName">
+                            </div>
+                        </div>
+                        <div class="form-group form-group-custom">
+                            <label class="label-form">Wybierz wartość przychodu</label>
+                            <div class="form-inline form-control form-control-bg">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="range-slider">
+                                                <input class="range-slider-range" th:value="${expenses.value}"
+                                                       id="slider-range" type="range" name="value"
+                                                       max="1000"
+                                                       value="0"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input class="range-slider-value" min="1" type="number" step="1"
+                                               id="numberValue" value="1" onchange="changeValue()"/>
+                                    </div>
+                                    <div class="col-sm-2 text-center">
+                                        <div class="form-group">
+                                            <a class="btn btn-multiply-ten" id="multiply-by-ten">X10</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 text-center">
+                                        <div class="form-group">
+                                            <a class="btn btn-reset" id="reset-button">reset</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6" align="right">
+                                <a href="http://goalmaker.herokuapp.com/index"
+                                   class="btn btn-form btn-cancel">anuluj</a>
+                            </div>
+                            <div class="col-sm-6" align="left">
+                                <button type="submit" class="btn btn-form btn-accept">Zatwierdź</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
