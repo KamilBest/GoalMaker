@@ -1,5 +1,6 @@
 package goal_maker.web.services.user_service;
 
+import goal_maker.database.dao.goal_dao.GoalDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserDao userDao;
+
 
     @Override
     public GmUser getUserByLogin(String login) {
@@ -29,5 +31,8 @@ public class UserServiceImpl implements UserService {
     public void addUser(GmUser user) {
         userDao.addUser(user);
     }
+
+    @Override
+    public void deleteGoal(long currentLoggedUserId){userDao.deleteGoal(currentLoggedUserId);}
 
 }

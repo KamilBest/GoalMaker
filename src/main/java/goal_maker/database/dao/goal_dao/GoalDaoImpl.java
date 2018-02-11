@@ -68,23 +68,5 @@ public class GoalDaoImpl implements GoalDao {
         updateQuery.setParameter(4, goal.getId_goal());
         updateQuery.executeUpdate();
     }
-    @Transactional
-    @Override
-    public void deleteGoal(long id){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String login = auth.getName(); //get logged in login
-        GmUser gmUser = userService.getUserByLogin(login);
 
-        //user update
-        String sqlUpdate="UPDATE goal_maker.user_gm SET id_goal=NULL WHERE id_user=?";
-        Query updateQuery=entityManager.createNativeQuery(sqlUpdate, GmUser.class);
-
-        updateQuery.setParameter(1, gmUser.getId());
-        updateQuery.executeUpdate();
-
-        //delete goal
-        String sqlDeleteGoal = "DELETE FROM goal_maker.goal WHERE id_goal="+id;
-        Query deleteQuery = entityManager.createNativeQuery(sqlDeleteGoal, Goal.class);
-        deleteQuery.executeUpdate();
-    }
 }

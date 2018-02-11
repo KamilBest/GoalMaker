@@ -5,9 +5,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import goal_maker.config.security.Encryption;
+import goal_maker.database.tables.Goal;
 import goal_maker.database.tables.UserFinances;
 import goal_maker.web.services.user_finances_service.UserFinancesService;
+import goal_maker.web.services.user_service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 
 import goal_maker.database.tables.GmUser;
@@ -24,6 +28,8 @@ public class UserDaoImpl implements UserDao {
     @Autowired
     private UserFinancesService userFinancesService;
 
+    @Autowired
+    private UserService userService;
     /**
      * Get user by login
      */
@@ -60,14 +66,13 @@ public class UserDaoImpl implements UserDao {
         // set default userFinances for new user
 
         UserFinances userFinances = userFinancesService.getUserFinanceById(user.getId());
-        String sqlUpdate="UPDATE goal_maker.user_finances SET account_balance=?,current_state_to_goal=?  WHERE id_user_finances=?";
+        String sqlUpdate = "UPDATE goal_maker.user_finances SET account_balance=?,current_state_to_goal=?  WHERE id_user_finances=?";
 
-        Query updateQuery=entityManager.createNativeQuery(sqlUpdate, GmUser.class);
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdate, GmUser.class);
         updateQuery.setParameter(1, 0);
         updateQuery.setParameter(2, 0);
         updateQuery.setParameter(3, userFinances.getId_user_finances());
         updateQuery.executeUpdate();
-
 
 
     }
@@ -79,5 +84,23 @@ public class UserDaoImpl implements UserDao {
         return userList;
     }
 
+    @Transactional
+    @Override
+    public void deleteGoal(long currentLoggedUserId) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String login = auth.getName(); //get logged in login
+        GmUser gmUser = userService.getUserByLogin(login);
 
+        //user update
+        String sqlUpdate = "UPDATE goal_maker.user_gm SET id_goal=NULL WHERE id_user=?";
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdate, GmUser.class);
+
+        updateQuery.setParameter(1, gmUser.getId());
+        updateQuery.executeUpdate();
+
+        //delete goal
+        String sqlDeleteGoal = "DELETE FROM goal_maker.goal WHERE id_goal=" + currentLoggedUserId;
+        Query deleteQuery = entityManager.createNativeQuery(sqlDeleteGoal, Goal.class);
+        deleteQuery.executeUpdate();
+    }
 }

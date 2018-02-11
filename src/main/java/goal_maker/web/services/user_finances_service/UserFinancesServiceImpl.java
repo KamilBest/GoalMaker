@@ -28,10 +28,16 @@ public class UserFinancesServiceImpl implements UserFinancesService {
     }
 
     @Override
-    public void updateAccountBalance(UserFinances userFinances) {userFinancesDao.updateAccountBalance(userFinances);
+    public void updateAccountBalance(UserFinances userFinances, long value,boolean addOrSubtract) {
+        userFinancesDao.updateAccountBalance(userFinances, value, addOrSubtract);
     }
 
     @Override
     public void updateCurrentStateToGoal(Income income) {userFinancesDao.updateCurrentStateToGoal(income);
+    }
+
+    @Override
+    public void resetCurrentStateToGoal(long userFinancesId) {
+        userFinancesDao.resetCurrentStateToGoal(userFinancesId);
     }
 }

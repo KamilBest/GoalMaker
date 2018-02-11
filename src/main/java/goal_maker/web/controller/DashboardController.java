@@ -1,13 +1,11 @@
 package goal_maker.web.controller;
 
 import goal_maker.database.dao.goal_dao.GoalDao;
-import goal_maker.database.tables.Expenses;
-import goal_maker.database.tables.GmUser;
-import goal_maker.database.tables.Goal;
-import goal_maker.database.tables.Income;
+import goal_maker.database.tables.*;
 import goal_maker.database.wrapper.IncomeAndExpense;
 import goal_maker.web.services.expenses_service.ExpensesService;
 import goal_maker.web.services.income_service.IncomeService;
+import goal_maker.web.services.user_finances_service.UserFinancesService;
 import goal_maker.web.services.user_service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -36,6 +34,8 @@ public class DashboardController {
     @Autowired
     ExpensesService expensesService;
 
+    @Autowired
+    UserFinancesService userFinancesService;
     private List<Goal> realisedGoals = new ArrayList<>();
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
@@ -49,19 +49,23 @@ public class DashboardController {
 
 
         //Check if this user has a goal, if doesn't show only button to add goal
-        if (gmUser.getGoal() != null)
+        if (gmUser.getGoal() != null) {
             model.addAttribute("currentUserGoal", goalDao.getGoalById(gmUser.getGoal().getId_goal()));
-        else
+            model.addAttribute("progressBarWidth", calculateCurrentGoalPercentageValue(gmUser));
+
+            //Handle reaching goal
+            isGoalAchieved(gmUser); //TODO: ALERT ABOUT REACHING GOAL
+            model.addAttribute("realisedGoals", realisedGoals);
+        } else {
             model.addAttribute("currentUserGoal", gmUser.getGoal());
+            model.addAttribute("progressBarWidth", 0);
+        }
 
         //get this user finances, to display his incomes and expenses
         model.addAttribute("currentUserFinances", gmUser.getUserFinances());
         long currentUserFinancesId = gmUser.getUserFinances().getId_user_finances();
 
         //PROGRESS BAR
-        model.addAttribute("progressBarWidth", calculateCurrentGoalPercentageValue(gmUser));
-        //  model.addAttribute("incomeList", incomeService.findAllUserIncomes(currentUserFinancesId));
-        //  model.addAttribute("expensesList", expensesService.findAllUserExpenses(currentUserFinancesId));
 
         //display records of given amount
         final int amountOfIncomesAndExpenses = 10;
@@ -76,6 +80,8 @@ public class DashboardController {
                 incomeAndExpenseList = decreaseListToGivenAmount(incomeAndExpenseList, amountOfIncomesAndExpenses);
             model.addAttribute("incomesAndExpensesTogether", incomeAndExpenseList);
         }
+
+
         return "index";
     }
 
@@ -106,7 +112,6 @@ public class DashboardController {
         return incomeAndExpenseList;
     }
 
-
     /**
      * Decrease list to given amount of records
      *
@@ -120,13 +125,12 @@ public class DashboardController {
             decreasedList.add(incomeAndExpenseList.get(i));
         }
         return decreasedList;
-
     }
 
     /**
      * Calculates collected funds of current goal percentage value
      *
-     * @param gmUser
+     * @param gmUser - current logged user
      * @return
      */
     private long calculateCurrentGoalPercentageValue(GmUser gmUser) {
@@ -134,5 +138,20 @@ public class DashboardController {
         return (gmUser.getUserFinances().getCurrent_state_to_goal() * 100) / goalValue;
     }
 
+    /**
+     * Method checks if goal is achieved
+     *
+     * @return returns true if achieved
+     */
+    private boolean isGoalAchieved(GmUser gmUser) {
+        Goal goal=gmUser.getGoal();
+        if (gmUser.getUserFinances().getCurrent_state_to_goal() >= goal.getValue()) {
+            realisedGoals.add(goal);
+            userService.deleteGoal(gmUser.getId());
+            userFinancesService.resetCurrentStateToGoal(gmUser.getUserFinances().getId_user_finances());
+            return true;
+        }
+        return false;
+    }
 
 }

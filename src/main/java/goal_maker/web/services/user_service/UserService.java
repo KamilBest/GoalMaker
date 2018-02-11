@@ -10,4 +10,7 @@ public interface UserService {
     public List<GmUser> getUsersList();
 
     public void addUser(GmUser user);
+
+    public void deleteGoal(long currentLoggedUserId);
+
 }

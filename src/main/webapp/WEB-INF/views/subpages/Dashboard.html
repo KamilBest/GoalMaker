@@ -122,20 +122,25 @@
         <div class="row">
 
             <div class="col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h4>Stały dochód:</h4>
-                    </div>
-                    <div class="stable-income">
-                        <div class="panel-body">
-                            <div class="col-md-12">
-                            </div>
-                            <div class="col-md-6">
-
-                            </div>
-
-                        </div>
-                    </div>
+                <div class="panel" style="background: #2B333E">
+                    <table class="table table-bordered datatables" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAZWA</th>
+                            <th>KATEGORIA</th>
+                            <th>WARTOŚĆ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="tableRow" th:each="goal : ${realisedGoals}">
+                            <td th:text="${goal.id_goal}"></td>
+                            <td th:text="${goal.name}"></td>
+                            <td th:text="${goal.category}"></td>
+                            <td th:text="${goal.value}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

@@ -7,5 +7,4 @@ public interface GoalDao {
     public Goal getGoalById(long id);
     public void addGoal(Goal goal);
     public void modifyGoal(Goal goal);
-    public void deleteGoal(long id);
 }

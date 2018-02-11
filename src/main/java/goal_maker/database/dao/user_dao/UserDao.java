@@ -11,6 +11,9 @@ public interface UserDao {
     public void addUser(GmUser user);
 
     public List<GmUser> getUsersList();
+    public void deleteGoal(long currentLoggedUserId);
+
+
 
 
 }
