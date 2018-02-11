@@ -5,31 +5,77 @@
     <title>Goal form</title>
 <body>
 <section class="content" th:fragment="CreateUpdateGoalForm">
-    <h1>Dodawanie celu</h1>
-    <div class="container-fluid">
-        <div class="panel">
+    <div class="container">
+        <div class="panel bg-black">
             <div class="panel-body">
-                <form th:action="@{/addGoal}" method="post">
-                    <div class="form-group">
-                        <label for="goalname">Nazwa celu</label>
-                        <input type="text" th:value="${goal.name}" name="name" class="form-control" id="goalname"
-                               placeholder="Wprowadź nazwę celu">
-                    </div>
-                    <div class="form-group">
-                        <label>Kategoria</label>
-                        <select class="form-control" name="categoryId">
-                            <option th:value="${0}">WYBIERZ KATEGORIĘ</option>
-                            <option th:each="category : ${goalCategories}" th:value="${category.id_category}"
-                                    th:text="${category.name}"></option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="goalvalue">Wartość celu</label>
-                        <input type="number" name="value" th:value="${goal.value}" class="form-control" id="goalvalue"
-                               placeholder="Wprowadź wartość celu">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Zatwierdź</button>
-                </form>
+                <h1 class="form-text text-center">Dodaj cel</h1>
+                <hr class="form-line"/>
+                <div class="forms">
+                    <form th:action="@{/addGoal}" method="post">
+                        <div class="form-group form-group-custom">
+                            <label for="goalname" class="label-form">Nazwa celu</label>
+                            <div class="input-group">
+                            <span class="input-group-addon bg-blue">
+                                <span class="ion ion-pinpoint"></span>
+                            </span>
+                                <input type="text" th:value="${goal.name}" name="name"
+                                       class="form-control form-control-custom" id="goalname">
+                            </div>
+                        </div>
+                        <div class="form-group form-group-custom">
+                            <label class="label-form">Wybierz kategorię</label>
+                            <div class="form-check">
+                                <div th:each="category : ${goalCategories}">
+                                    <label class="form-check-label bg-form-check">
+                                        <input class="form-check-input" name="categoryId" type="radio"
+                                               th:value="${category.id_category}" id="inlineRadioStable"/>
+                                        <span th:text="${category.name}"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-custom">
+                            <label class="label-form">Wybierz wartość celu</label>
+                            <div class="form-inline form-control form-control-bg">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="range-slider">
+                                                <input class="range-slider-range" th:value="${goal.value}"
+                                                       id="slider-range" type="range" name="value"
+                                                       max="1000"
+                                                       value="0"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input class="range-slider-value" min="1" type="number" step="1"
+                                               id="numberValue" value="1" onchange="changeValue()"/>
+                                    </div>
+                                    <div class="col-sm-2 text-center">
+                                        <div class="form-group">
+                                            <a class="btn btn-multiply-ten" id="multiply-by-ten">X10</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 text-center">
+                                        <div class="form-group">
+                                            <a class="btn btn-reset" id="reset-button">reset</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6" align="right">
+                                <a href="http://goalmaker.herokuapp.com/index"
+                                   class="btn btn-form btn-cancel">anuluj</a>
+                            </div>
+                            <div class="col-sm-6" align="left">
+                                <button type="submit" class="btn btn-form btn-accept">Zatwierdź</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

@@ -400,7 +400,7 @@ tr.incomesTable td{
 .bg-blue{
 	background: #00aaff;
 }
-.ion-pricetag{
+.ion-pricetag, .ion-pinpoint{
 	color: #fff;
 	width: 35px;
 	font-size: 1.4em;
