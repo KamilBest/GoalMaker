@@ -47,9 +47,9 @@
     </div>
 
     <div class="container-fluid" th:if="${currentUserGoal!=null}">
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                 aria-valuemin="0" aria-valuemax="100" style="width:70%;" th:text="${currentUserGoal.value}">
+        <div class="progress" style="height:30px">
+            <div class="progress-bar bg-success" role="progressbar" aria-valuemin="0"  aria-valuemax="100" th:attr="aria-valuenow=${currentUserGoal.value}"
+                 th:style="'width:'+ ${progressBarWidth}+'%;height:30px;'" th:text="${currentUserFinances.current_state_to_goal+' / '+ currentUserGoal.value}">
             </div>
         </div>
     </div>

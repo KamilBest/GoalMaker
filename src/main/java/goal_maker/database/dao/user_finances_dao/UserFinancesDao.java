@@ -1,5 +1,6 @@
 package goal_maker.database.dao.user_finances_dao;
 
+import goal_maker.database.tables.Income;
 import goal_maker.database.tables.UserFinances;
 
 
@@ -11,5 +12,5 @@ public interface UserFinancesDao {
     UserFinances getUserFinanceById(long id);
     void addUserFinance(UserFinances userFinances);
     void updateAccountBalance(UserFinances userFinances);
-    void updateCurrentStateToGoal(UserFinances userFinances);
+    void updateCurrentStateToGoal(Income income);
 }

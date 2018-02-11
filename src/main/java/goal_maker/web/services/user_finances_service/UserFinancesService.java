@@ -1,5 +1,6 @@
 package goal_maker.web.services.user_finances_service;
 
+import goal_maker.database.tables.Income;
 import goal_maker.database.tables.UserFinances;
 
 import java.util.List;
@@ -9,5 +10,5 @@ public interface UserFinancesService {
     UserFinances getUserFinanceById(long id);
     void addUserFinance(UserFinances userFinances);
     void updateAccountBalance(UserFinances userFinances);
-    void updateCurrentStateToGoal(UserFinances userFinances);
+    void updateCurrentStateToGoal(Income income);
 }

@@ -3,6 +3,7 @@ package goal_maker.web.controller;
 import goal_maker.database.tables.GmUser;
 import goal_maker.database.tables.Income;
 import goal_maker.web.services.income_service.IncomeService;
+import goal_maker.web.services.user_finances_service.UserFinancesService;
 import goal_maker.web.services.user_service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Timestamp;
-import java.util.logging.Logger;
 
 @Controller
 public class IncomeController {
@@ -25,12 +25,16 @@ public class IncomeController {
     @Autowired
     IncomeService incomeService;
 
+    @Autowired
+    UserFinancesService userFinancesService;
+
     @RequestMapping(value ="/allIncomes", method = RequestMethod.GET)
     public String allIncomes(Model model)
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
+
         model.addAttribute("location","incomesList");
         model.addAttribute("allIncomes", incomeService.findAllUserIncomes(gmUser.getUserFinances().getId_user_finances()));
         return "index";
@@ -48,10 +52,14 @@ public class IncomeController {
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
 
+
         Timestamp currentTime=new Timestamp(System.currentTimeMillis());
         Income income=new Income(type,value,gmUser.getUserFinances(),currentTime,name);
 
         incomeService.addIncome(income);
+
+        //update user current state to goal
+        userFinancesService.updateCurrentStateToGoal(income);
         return "redirect:/index";
     }
 }
