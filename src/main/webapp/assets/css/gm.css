@@ -205,7 +205,7 @@
 	text-align: left;
 	font-size: 1rem;
 }
-.incomesTable, .expensesTable{
+.incomesTable, .expensesTable, .incomeAndExpenseTable{
 	height: 45px;
 }
 .nav-item>li.active>a.greenInc, .nav-tabs>li.active>a.greenInc:hover, .nav-tabs>li.active>a.greenInc:focus{
@@ -248,6 +248,8 @@
 	background: #ffe700;
 }
 .nav-item>li>a{
+	text-transform: UPPERCASE;
+	font-weight: bold;
 	padding: 5px;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
@@ -259,7 +261,7 @@
 	text-align: center;
 	-o-text-overflow: clip;
 	text-overflow: clip;
-	letter-spacing: 1px;
+	letter-spacing: .2rem;
 	background: rgba(0,0,0,0);
 	-webkit-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
 	-moz-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
@@ -329,3 +331,196 @@ tr.incomesTable td{
 	border-collapse: separate;
 	border-spacing: 0 .3rem;
 }
+.nav-item{
+	text-align: center;
+	width: 100%;
+	margin-top: 25px;
+	margin-bottom: -25px;
+}
+.nav-item > li{
+	float: none;
+	display: inline-block;
+}
+.bg-black{
+	background: #2B333E;
+}
+.form-text{
+	text-transform: UPPERCASE;
+	letter-spacing: 1rem;
+	color: #fff;
+	font-weight: bold;
+	font-size: 3em;
+}
+.form-line{
+	border-top: 1px solid #3f4a58;
+	margin: 30px -25px 25px;
+}
+.label-form{
+	text-transform: UPPERCASE;
+	letter-spacing: .5rem;
+	color: #fff;
+	font-weight: bold;
+	font-size: 2rem;
+	margin-bottom: 25px;
+}
+.form-group-custom{
+	margin-top: 55px;
+	margin-bottom: 55px;
+}
+.bg-form-check{
+	background-color: #fff;
+	width: 245px;
+	height: 90px;
+	border-radius: 5px;
+	margin-right: 25px;
+	overflow: auto;
+}
+.form-check label span{
+	text-align: center;
+	font-size: 1.8rem;
+	letter-spacing: .5rem;
+	font-weight: bold;
+	display: block;
+	padding: 31.5px 0;
+	text-transform: UPPERCASE;
+	color: #2B333E;
+}
+.form-check label input{
+	position: absolute;
+	top: -20px;
+}
+.form-check input:checked + span{
+	border: 1px solid #00aaff;
+	color: #00aaff;
+}
+.forms{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+.bg-blue{
+	background: #00aaff;
+}
+.ion-pricetag, .ion-pinpoint{
+	color: #fff;
+	width: 35px;
+	font-size: 1.4em;
+}
+.text-blue{
+	color: #00aaff!important;
+}
+.form-control-custom{
+	height: 35px;
+	font-size: 1.4em;
+}
+.form-control-bg{
+	height: 35px;
+	background-color: #2c394b;
+	border: none;
+	padding: 2px 12px;
+}
+input[type=range]{
+	-webkit-appearance: none;
+}
+.range-slider{
+	width: 400px;
+}
+.range-slider-range{
+	-webkit-appearance: none;
+	width: 400px;
+	height: 5px;
+	border-radius: 3px;
+	background: #fff;
+	outline: none;
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+}
+.range-slider-range::-webkit-slider-thumb{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 15px;
+	height: 15px;
+	background: #00aaff;
+	cursor: pointer;
+	border-radius: 50%;
+}
+.range-slider-value{
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 30px;
+	background-color: #fff;
+	color: #00aaff;
+	line-height: 20px;
+	text-align: center;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-left: 20px;
+	padding: 5px 10px;
+	font-weight: bold;
+}
+.btn-multiply-ten{
+	display: inline-block;
+	position: relative;
+	width: 70px;
+	height: 30px;
+	background-color: #00aaff;
+	color: #fff;
+	line-height: 20px;
+	text-align: center;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-left: 45px;
+	padding: 5px 10px;
+	font-weight: bold;
+}
+.btn-reset{
+	display: inline-block;
+	position: relative;
+	width: 70px;
+	height: 30px;
+	background-color: #eb2f2f;
+	color: #fff;
+	line-height: 20px;
+	text-align: center;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 5px 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.btn-form{
+	width: 175px;
+	height: 65px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color: #fff;
+	text-align: center;
+	letter-spacing: .5rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 50px;
+	font-size: 1.8rem;
+}
+.btn-accept{
+	background-color: #00aaff;
+}
+.btn-cancel{
+	background-color: #eb2f2f;
+}
+.number-type-input{
+	width: 80px;
+	text-align: center;
+	height: 30px;
+	color: #00aaff;
+	-webkit-appearance: none;
+	border-radius: 5px;
+}
+
+
+
