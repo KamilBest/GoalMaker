@@ -1,5 +1,6 @@
 package goal_maker.database.dao.user_finances_dao;
 
+import goal_maker.database.tables.Income;
 import goal_maker.database.tables.UserFinances;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,12 +44,26 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
         query.executeUpdate();
 
     }
+
+    /**
+     *
+     * @param userFinances
+     * @param value
+     * @param addOrSubtract true - add / false-subtract
+     */
     @Transactional
     @Override
-    public void updateAccountBalance(UserFinances userFinances) {
+    public void updateAccountBalance(UserFinances userFinances, long value, boolean addOrSubtract) {
         String sqlUpdate = "UPDATE goal_maker.user_finances SET account_balance=? WHERE id_user_finances=?";
         Query updateQuery = entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
-        updateQuery.setParameter(1, userFinances.getAccount_balance());
+        if(addOrSubtract) {
+            updateQuery.setParameter(1, userFinances.getAccount_balance() + value);
+        }
+        else
+        {
+            updateQuery.setParameter(1, userFinances.getAccount_balance() - value);
+
+        }
         updateQuery.setParameter(2, userFinances.getId_user_finances());
 
         updateQuery.executeUpdate();
@@ -56,14 +71,24 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
 
     @Transactional
     @Override
-    public void updateCurrentStateToGoal(UserFinances userFinances) {
+    public void updateCurrentStateToGoal(Income income) {
         String sqlUpdate= "UPDATE goal_maker.user_finances SET current_state_to_goal=? WHERE id_user_finances=?";
         Query updateQuery=entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
-        updateQuery.setParameter(1, userFinances.getCurrent_state_to_goal());
-        updateQuery.setParameter(2, userFinances.getId_user_finances());
+        UserFinances userFinances=income.getUser_finances();
 
+        updateQuery.setParameter(1, userFinances.getCurrent_state_to_goal()+income.getValue());
+        updateQuery.setParameter(2, userFinances.getId_user_finances());
         updateQuery.executeUpdate();
 
+    }
+
+    @Transactional
+    @Override
+    public void resetCurrentStateToGoal(long userFinancesId) {
+        String sqlUpdate= "UPDATE goal_maker.user_finances SET current_state_to_goal=0 WHERE id_user_finances=?";
+        Query updateQuery=entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
+        updateQuery.setParameter(1, userFinancesId);
+        updateQuery.executeUpdate();
     }
 }
 

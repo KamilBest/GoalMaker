@@ -1,4 +1,5 @@
 package goal_maker.web.controller;
+
 import goal_maker.database.tables.Category;
 import goal_maker.database.tables.Goal;
 import goal_maker.web.services.category_service.CategoryService;
@@ -17,7 +18,8 @@ public class GoalController {
 
     @Autowired
     CategoryService categoryService;
-
+    @Autowired
+    UserService userService;
 
     @RequestMapping(value = "/addGoal", method = RequestMethod.GET)
     public String addGoal(Model model) {
@@ -28,29 +30,32 @@ public class GoalController {
     }
 
     @RequestMapping(value = "/addGoal", method = RequestMethod.POST)
-    public String addGoal(@RequestParam(value = "name")String name, @RequestParam(value = "categoryId")long categoryId, @RequestParam(value = "value")long value) {
-        Category category=categoryService.getCategoryById(categoryId);
-        Goal goal=new Goal(name,category,value);
+    public String addGoal(@RequestParam(value = "name") String name, @RequestParam(value = "categoryId") long categoryId, @RequestParam(value = "value") long value) {
+        Category category = categoryService.getCategoryById(categoryId);
+        Goal goal = new Goal(name, category, value);
         goalService.addGoal(goal);
         return "redirect:/index";
     }
+
     @RequestMapping(value = "/editGoal", method = RequestMethod.GET)
-    public String editGoal(Model model, @RequestParam("id") long id){
+    public String editGoal(Model model, @RequestParam("id") long id) {
         model.addAttribute("location", "updateGoal");
         model.addAttribute("goal", goalService.getGoalById(id));
         model.addAttribute("goalCategories", categoryService.findAll());
         return "index";
     }
+
     @RequestMapping(value = "/editGoal", method = RequestMethod.POST)
-    public String editGoal(@RequestParam(value = "id") long id, @RequestParam(value = "name") String name, @RequestParam(value = "categoryId") long categoryId, @RequestParam(value = "value")long value){
+    public String editGoal(@RequestParam(value = "id") long id, @RequestParam(value = "name") String name, @RequestParam(value = "categoryId") long categoryId, @RequestParam(value = "value") long value) {
         Category category = categoryService.getCategoryById(categoryId);
         Goal goal = new Goal(id, name, category, value);
         goalService.modifyGoal(goal);
         return "redirect:/index";
     }
+
     @RequestMapping(value = "/deleteGoal", method = RequestMethod.GET)
-    public String deleteGoal(@RequestParam(value = "id") long id){
-        goalService.deleteGoal(id);
+    public String deleteGoal(@RequestParam(value = "id") long id) {
+        userService.deleteGoal(id);
         return "redirect:/index";
     }
 

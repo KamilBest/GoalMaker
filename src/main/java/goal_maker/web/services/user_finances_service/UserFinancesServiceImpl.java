@@ -2,6 +2,7 @@ package goal_maker.web.services.user_finances_service;
 
 
 import goal_maker.database.dao.user_finances_dao.UserFinancesDao;
+import goal_maker.database.tables.Income;
 import goal_maker.database.tables.UserFinances;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,10 +28,16 @@ public class UserFinancesServiceImpl implements UserFinancesService {
     }
 
     @Override
-    public void updateAccountBalance(UserFinances userFinances) {userFinancesDao.updateAccountBalance(userFinances);
+    public void updateAccountBalance(UserFinances userFinances, long value,boolean addOrSubtract) {
+        userFinancesDao.updateAccountBalance(userFinances, value, addOrSubtract);
     }
 
     @Override
-    public void updateCurrentStateToGoal(UserFinances userFinances) {userFinancesDao.updateCurrentStateToGoal(userFinances);
+    public void updateCurrentStateToGoal(Income income) {userFinancesDao.updateCurrentStateToGoal(income);
+    }
+
+    @Override
+    public void resetCurrentStateToGoal(long userFinancesId) {
+        userFinancesDao.resetCurrentStateToGoal(userFinancesId);
     }
 }
