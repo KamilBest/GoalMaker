@@ -3,6 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Odejmij wydatek</title>
+    <!--<script src="../../../assets/scripts/jquery-3.2.1.min.js"></script>-->
+
+    <!--&lt;!&ndash; VENDOR CSS &ndash;&gt;-->
+    <!--<link rel="stylesheet"-->
+    <!--href="../../../assets/vendor/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet"-->
+    <!--href="../../../assets/vendor/font-awesome/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="../../../assets/vendor/linearicons/style.css">-->
+    <!--<link rel="stylesheet"-->
+    <!--href="../../../assets/vendor/chartist/css/chartist-custom.css">-->
+    <!--&lt;!&ndash; MAIN CSS &ndash;&gt;-->
+    <!--<link rel="stylesheet" href="../../../assets/css/main.css">-->
+    <!--<link rel="stylesheet"-->
+    <!--href="../../../assets/css/gm.css">-->
+    <!--&lt;!&ndash; GOOGLE FONTS &ndash;&gt;-->
+    <!--<link-->
+    <!--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"-->
+    <!--rel="stylesheet">-->
+    <!--&lt;!&ndash; ICONS &ndash;&gt;-->
+    <!--<link rel="apple-touch-icon" sizes="76x76"-->
+    <!--href="../../../assets/img/apple-icon.png">-->
+    <!--<link rel="icon" type="image/png" sizes="96x96"-->
+    <!--href="../../../assets/img/favicon.png">-->
+    <!--<link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>-->
+    <!--&lt;!&ndash;DataTables&ndash;&gt;-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../assets/css/dataTables.bootstrap4.min.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../assets/css/nouislider.css" />-->
 </head>
 <body>
 <section class="content" th:fragment="AddExpenses">
@@ -40,41 +67,40 @@
                         </div>
                         <div class="form-group form-group-custom">
                             <label class="label-form">Wybierz wartość przychodu</label>
-                            <div class="form-inline form-control form-control-bg">
+                            <div class="form-inline form-control none-border-transparent-bg">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <div class="range-slider">
-                                                <input class="range-slider-range" th:value="${expenses.value}"
-                                                       id="slider-range" type="range" name="value"
-                                                       max="1000"
-                                                       value="0"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input class="range-slider-value" min="1" type="number" step="1"
-                                               id="numberValue" value="1" onchange="changeValue()"/>
-                                    </div>
-                                    <div class="col-sm-2 text-center">
-                                        <div class="form-group">
-                                            <a class="btn btn-multiply-ten" id="multiply-by-ten">X10</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2 text-center">
-                                        <div class="form-group">
-                                            <a class="btn btn-reset" id="reset-button">reset</a>
+                                    <div class="col-md-12">
+                                        <div id="slider">
+                                            <input title="hiddenSlider" id="hiddenslider" type="range"
+                                                   th:value="${expenses.value}" name="value" style="display:none"
+                                                   min="1" max="100"/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group form-group-custom">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <a class="btn btn-range btn-block" id="update-1">Zakres[100-1000]</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="btn btn-range btn-block" id="update-2">Zakres[1000-10000]</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="btn btn-range btn-block" id="update-3">Zakres[10000-100000]</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="btn btn-range-reset btn-block" id="reset">Reset</a>
+                                </div>
+                            </div>
+                        </div>      <!-- End noUiSlider -->
                         <div class="row">
-                            <div class="col-sm-6" align="right">
+                            <div class="col-md-6" align="right">
                                 <a href="http://goalmaker.herokuapp.com/index"
                                    class="btn btn-form btn-cancel">anuluj</a>
                             </div>
-                            <div class="col-sm-6" align="left">
+                            <div class="col-md-6" align="left">
                                 <button type="submit" class="btn btn-form btn-accept">Zatwierdź</button>
                             </div>
                         </div>
@@ -84,5 +110,127 @@
         </div>
     </div>
 </section>
+<!--<script src="../../../assets/vendor/jquery/jquery.min.js"></script>-->
+<!--<script src="../../../assets/vendor/bootstrap/js/bootstrap.min.js"></script>-->
+<!--<script src="../../../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>-->
+<!--<script-->
+<!--src="../../../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>-->
+<!--<script src="../../../assets/vendor/chartist/js/chartist.min.js"></script>-->
+<!--<script src="../../../assets/scripts/klorofil-common.js"></script>-->
+<!--<script src="../../../assets/scripts/jquery.dataTables.min.js"></script>-->
+<!--<script src="../../../assets/scripts/datatables.js"></script>-->
+<!--<script src="../../../assets/scripts/nouislider.min.js"></script>-->
+<!--<script type="text/javascript">-->
+<!--function moveTo(loc) {-->
+<!--location.href = loc;-->
+<!--}-->
+<!--</script>-->
+<!--<script>-->
+<!--var updateSliderValue;-->
+
+<!--updateSliderValue = function(slider, handle) {-->
+<!--var children, i, results, val, values;-->
+<!--if (handle === null) {-->
+<!--handle = 0;-->
+<!--}-->
+<!--children = slider.getElementsByClassName('noUi-handle');-->
+<!--values = slider.noUiSlider.get();-->
+<!--i = 0;-->
+<!--results = [];-->
+<!--while (i < children.length) {-->
+<!--if (children.length === 1) {-->
+<!--val = parseInt(values);-->
+<!--} else {-->
+<!--val = parseInt(values[i]);-->
+<!--}-->
+<!--children[i].dataset.value = val;-->
+<!--results.push(i++);-->
+<!--}-->
+<!--return results;-->
+<!--};-->
+
+<!--var singleSlider;-->
+
+<!--singleSlider = document.getElementById('slider');-->
+
+<!--noUiSlider.create(singleSlider, {-->
+<!--animationDuration: 300,-->
+<!--start: [1],-->
+<!--step: 1,-->
+<!--range: {-->
+<!--'min': 1,-->
+<!--'max': 100-->
+<!--}-->
+<!--});-->
+<!--singleSlider.noUiSlider.on('update', function() {-->
+<!--return updateSliderValue(singleSlider);-->
+<!--});-->
+
+<!--var button1 = document.getElementById('update-1'),-->
+<!--button2 = document.getElementById('update-2'),-->
+<!--button3 = document.getElementById('update-3'),-->
+<!--button4 = document.getElementById('reset');-->
+<!--function updateSliderRange(min, max){-->
+<!--singleSlider.noUiSlider.updateOptions({-->
+<!--range:{-->
+<!--'min': min,-->
+<!--'max': max-->
+<!--},-->
+<!--start: [min]-->
+<!--});-->
+<!--}-->
+
+<!--button1.addEventListener('click', function () {-->
+<!--updateSliderRange(100, 1000);-->
+<!--});-->
+
+<!--button2.addEventListener('click', function () {-->
+<!--updateSliderRange(1000, 10000);-->
+<!--});-->
+
+<!--button3.addEventListener('click', function () {-->
+<!--updateSliderRange(10000, 100000);-->
+<!--});-->
+
+<!--button4.addEventListener('click', function () {-->
+<!--updateSliderRange(1, 100);-->
+<!--});-->
+
+<!--</script>-->
+<!--<script type="text/javascript">-->
+<!--var slider = document.getElementById("slider-range");-->
+<!--var multiplyByTen = document.getElementById("multiply-by-ten");-->
+<!--var resetButton = document.getElementById("reset-button");-->
+<!--var nameValue = document.getElementById("numberValue");-->
+<!--multiplyByTen.onclick = function () {-->
+<!--if(slider.max == 10000){-->
+<!--multiplyByTen.disabled = true;-->
+<!--multiplyByTen.className += " " +"disabled";-->
+<!--}else {-->
+<!--slider.max *= 10;-->
+<!--slider.value *= 10;-->
+<!--nameValue.value = slider.value;-->
+<!--}-->
+<!--};-->
+<!--resetButton.onclick = function(){-->
+<!--slider.max = 1000;-->
+<!--multiplyByTen.classList.remove("disabled");-->
+<!--slider.value = 1;-->
+<!--nameValue.value = slider.value;-->
+<!--slider.oninput = function(){-->
+<!--nameValue.value = this.value;-->
+<!--};-->
+<!--};-->
+
+<!--slider.oninput = function(){-->
+<!--nameValue.value = this.value;-->
+<!--};-->
+<!--function changeValue(){-->
+<!--slider.value = nameValue.value;-->
+<!--slider.oninput = function(){-->
+<!--nameValue.value = this.value;-->
+<!--};-->
+<!--}-->
+<!--</script>-->
 </body>
 </html>
