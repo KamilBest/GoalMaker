@@ -312,7 +312,7 @@
 	cursor:pointer;
 }
 .tableRow:hover{
-	background: #00abff;
+	background: #00abff!important;
 }
 .table-borderBottomGreen > tbody > tr > td,
 .table-borderBottomGreen > tbody > tr > th,
@@ -773,3 +773,62 @@ input[type=range]{
 .panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child td:first-child, .panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child th:first-child, .panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child td:first-child, .panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child th:first-child, .panel>.table:last-child>tbody:last-child>tr:last-child td:first-child, .panel>.table:last-child>tbody:last-child>tr:last-child th:first-child, .panel>.table:last-child>tfoot:last-child>tr:last-child td:first-child, .panel>.table:last-child>tfoot:last-child>tr:last-child th:first-child{
 	border-radius: 0;
 }
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eb2f2f+1,a21313+100 */
+	background: rgba(47,54,64,1);
+	background: -moz-linear-gradient(45deg, rgba(47,54,64,1) 0%, rgba(47,54,64,1) 50%, rgba(53,60,69,1) 50%, rgba(53,60,69,1) 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(47,54,64,1)), color-stop(50%, rgba(47,54,64,1)), color-stop(50%, rgba(53,60,69,1)), color-stop(100%, rgba(53,60,69,1)));
+	background: -webkit-linear-gradient(45deg, rgba(47,54,64,1) 0%, rgba(47,54,64,1) 50%, rgba(53,60,69,1) 50%, rgba(53,60,69,1) 100%);
+	background: -o-linear-gradient(45deg, rgba(47,54,64,1) 0%, rgba(47,54,64,1) 50%, rgba(53,60,69,1) 50%, rgba(53,60,69,1) 100%);
+	background: -ms-linear-gradient(45deg, rgba(47,54,64,1) 0%, rgba(47,54,64,1) 50%, rgba(53,60,69,1) 50%, rgba(53,60,69,1) 100%);
+	background: linear-gradient(45deg, rgba(47,54,64,1) 0%, rgba(47,54,64,1) 50%, rgba(53,60,69,1) 50%, rgba(53,60,69,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f3640', endColorstr='#353c45', GradientType=1 );
+	border: none;
+	color: #fff;
+}
+.table-striped>tbody>tr:nth-child(even)>td {
+	background-color: #DDDEE3!important;
+}
+.table-striped>tbody>tr:nth-child(odd)>td {
+	background-color: #F5F5FA!important;
+}
+.table-bordered>tbody>tr>td{
+	border-color: #ccc;
+}
+.add-edit-form{
+	background: #DDDEE3;
+	padding: 30px;
+}
+.form-title p{
+	color: #6D7089;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 1.5em;
+	display: block;
+	text-align: left;
+	margin: 0;
+}
+.form-title span{
+	color: #6D7089;
+	font-size: .8em;
+	text-align: left;
+}
+.form-title hr{
+	border-top: 1px solid #BBBDC9;
+}
+.add-edit-form .input-group input{
+	background: #fff;
+	border-radius: 5px;
+}
+.add-edit-form .form-group{
+	padding-right: 30px;
+}
+.add-edit-form .form-group label{
+	text-transform: uppercase;
+}
+.add-edit-form .input-group .input-group-addon span{
+	color: #fff;
+	font-size: 15px;
+	width: 15px;
+}
+
