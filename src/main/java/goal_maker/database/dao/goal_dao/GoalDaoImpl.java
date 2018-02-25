@@ -21,9 +21,10 @@ public class GoalDaoImpl implements GoalDao {
 
     @Autowired
     UserService userService;
+
     @Override
     public Goal getGoalById(long id) {
-        String sqlSelect = "SELECT id_goal, name, id_category, value, number_of_days, picture_name FROM goal_maker.goal WHERE id_goal=" + id;
+        String sqlSelect = "SELECT * FROM goal_maker.goal WHERE id_goal=" + id;
         Query query = entityManager.createNativeQuery(sqlSelect, Goal.class);
         Goal goal = (Goal) query.getSingleResult();
         return goal;
@@ -32,28 +33,22 @@ public class GoalDaoImpl implements GoalDao {
     @Transactional
     @Override
     public void addGoal(Goal goal) {
-        String sqlInsert = "INSERT INTO goal_maker.goal( name, id_category, value) VALUES (?, ?, ?)";
+        String sqlInsert = "INSERT INTO goal_maker.goal( name, id_category, value, id_user) VALUES (?, ?, ?,?)";
         Query query = entityManager.createNativeQuery(sqlInsert, Goal.class);
         query.setParameter(1, goal.getName());
         query.setParameter(2, goal.getCategory().getId_category());
         query.setParameter(3, goal.getValue());
-        query.executeUpdate();
-        //get next goal ID
-        String getAddedGoalId="SELECT id_goal FROM goal_maker.goal ORDER BY id_goal DESC LIMIT 1";
-        Integer lastId  = (Integer)entityManager.createNativeQuery(getAddedGoalId).getSingleResult();
-        //current logged in user
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
 
-        //user update
-        String sqlUpdate="UPDATE goal_maker.user_gm SET id_goal=? WHERE id_user=?";
+        query.setParameter(4, gmUser.getId());
+        query.executeUpdate();
 
-        Query updateQuery=entityManager.createNativeQuery(sqlUpdate, GmUser.class);
-        updateQuery.setParameter(1, lastId);
-        updateQuery.setParameter(2, gmUser.getId());
-        updateQuery.executeUpdate();
+   /*     //get next goal ID
+        String getAddedGoalId = "SELECT id_goal FROM goal_maker.goal ORDER BY id_goal DESC LIMIT 1";
+        Integer lastId = (Integer) entityManager.createNativeQuery(getAddedGoalId).getSingleResult();*/
     }
 
     @Transactional
@@ -69,4 +64,21 @@ public class GoalDaoImpl implements GoalDao {
         updateQuery.executeUpdate();
     }
 
+    @Override
+    public Goal getCurrentGoal(long userId) {
+        String sqlSelect = "SELECT * FROM goal_maker.goal WHERE id_user  = " + userId + "AND id_goal_state = 2";
+        Query query = entityManager.createNativeQuery(sqlSelect, Goal.class);
+        Goal goal = (Goal) query.getSingleResult();
+        return goal;
+    }
+
+    @Transactional
+    @Override
+    public void deleteGoal(long goalId) {
+
+        String sqlUpdate = "UPDATE goal_maker.goal SET id_goal_state = 3 WHERE id_goal=?";
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdate, GmUser.class);
+        updateQuery.setParameter(1, goalId);
+        updateQuery.executeUpdate();
+    }
 }
