@@ -85,8 +85,8 @@ public class IncomeAndExpense implements Comparable {
     @Override
     public int compareTo(Object o) {
         Timestamp dateToCompare = ((IncomeAndExpense) o).getDate();
-        long d1 = this.date.getTime();
-        long d2 = dateToCompare.getTime();
+        Long d1 = this.date.getTime();
+        Long d2 = dateToCompare.getTime();
 
         if (d2 > d1)
             return 1;

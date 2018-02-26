@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.List;
 
 @Repository
 public class GoalDaoImpl implements GoalDao {
@@ -66,10 +67,18 @@ public class GoalDaoImpl implements GoalDao {
 
     @Override
     public Goal getCurrentGoal(long userId) {
-        String sqlSelect = "SELECT * FROM goal_maker.goal WHERE id_user  = " + userId + "AND id_goal_state = 2";
-        Query query = entityManager.createNativeQuery(sqlSelect, Goal.class);
-        Goal goal = (Goal) query.getSingleResult();
-        return goal;
+        String sqlSelect = "SELECT name, value, number_of_days, picture_name, id_goal, id_category, id_user, id_goal_state" +
+                "  FROM goal_maker.goal WHERE id_user  = " + userId + "AND id_goal_state = 2";
+        List<Goal> goalList = entityManager.createNativeQuery(sqlSelect, Goal.class).getResultList();
+      //  Query query = entityManager.createNativeQuery(sqlSelect, Goal.class);
+     //   Goal goal = (Goal) query.getSingleResult();
+        if(goalList.isEmpty() || goalList==null)
+            return null;
+        return goalList.get(0);
+
+     /*   String sqlSelect = "SELECT id_income, type, value, id_user_finances, date, name  FROM goal_maker.income WHERE id_user_finances=" + id;
+        List<Income> incomes = entityManager.createNativeQuery(sqlSelect, Income.class).getResultList();
+        return goal;*/
     }
 
     @Transactional
