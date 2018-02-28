@@ -21,34 +21,22 @@
             </div>
             <!--IF USER HAVE GOAL SET-->
             <div th:if="${currentUserGoal!=null}"
-                 th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');background-size:cover; background-position:center; height:350px'">
+                 th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');background-size:cover; background-position:center; height:200px; position:relative;'">
+                <div class="goal-body-bg-rounded"></div>
                 <div class="panel-body">
                     <div class="goal-body">
-                        <h1>CEL: </h1>
+                        <span>Cel:</span>
                         <h1 th:text="${currentUserGoal.name}"></h1>
-                        <p th:text="${currentUserGoal.category.name}"></p>
-                        <a th:onclick="'javascript:moveTo(\'' + @{/editGoal?id=}+${currentUserGoal.id_goal} + '\')'"
-                           class="btn btn-primary">
-                            <i class="fa fa-edit"></i>
-                            <span>Edytuj</span>
-                        </a>
                         <a th:onclick="'javascript:moveTo(\'' + @{/deleteGoal?id=}+${currentUserGoal.id_goal} + '\')'"
-                           class="btn btn-primary">
-                            <i class="fa fa-trash"></i>
+                           class="btn btn-range-reset">
                             <span>Usuń</span>
+                        </a>
+                        <a th:onclick="'javascript:moveTo(\'' + @{/editGoal?id=}+${currentUserGoal.id_goal} + '\')'"
+                           class="btn btn-range">
+                            <span>Edytuj</span>
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid" th:if="${currentUserGoal!=null}">
-        <div class="progress" style="height:30px">
-            <div class="progress-bar bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                 th:attr="aria-valuenow=${currentUserGoal.value}"
-                 th:style="'width:'+ ${progressBarWidth}+'%;height:30px;'"
-                 th:text="${currentUserFinances.current_state_to_goal+' / '+ currentUserGoal.value}">
             </div>
         </div>
     </div>
@@ -107,13 +95,12 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid" th:if="${currentUserGoal!=null}">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="panel bg-black">
+    <div class="container-fluid" th:if="${currentUserGoal!=null}" style="height: 450px">
+        <div class="row" style="height: 450px">
+            <div class="col-md-4" style="height: 100%">
+                    <div class="panel bg-black" style="height: 100%">
                         <div class="panel-body panel-incomes-expenses">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <h1 class="text-center panel-header-text">Przychód okresowy</h1>
                                 <div class="panel-inc-exp">
                                 <span class="panel-icon-inc-exp"><img
@@ -130,7 +117,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <h1 class="text-center panel-header-text">Wydatek okresowy</h1>
                                 <div class="panel-inc-exp">
                                 <span class="panel-icon-inc-exp"><img
@@ -148,9 +135,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="panel bg-black">
+            </div>
+            <div class="col-md-4" style="height: 100%">
+                    <div class="panel bg-black" style="height: 100%">
                         <div class="panel-body">
                             <h1 class="text-center panel-header-text">Zrealizowane cele</h1>
                             <div class="table-responsive">
@@ -173,9 +160,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="panel bg-black panel-tables">
+            <div class="col-md-4" style="height: 100%">
+                <div class="panel bg-black panel-tables" style="height: 100%">
                     <div class="panel-heading">
                         <ul class="nav nav-item">
                             <li class="active"><a class="greenInc" data-toggle="tab" href="#income">Przychody</a></li>
