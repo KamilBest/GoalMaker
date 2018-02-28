@@ -25,8 +25,7 @@
 .goal-body-bg-rounded{
     width: 50%;
 	height: 100%;
-    border-bottom-right-radius: 95px;
-    border-top-right-radius: 95px;
+	-webkit-border-radius: 0 50% 50% 0 / 50% 300% 300% 50%;
     background: #2B333E;
     position: absolute;
 }
@@ -121,7 +120,10 @@
 {
 	background: #2F3640;
 }
-
+.noHorizontalScroll
+{
+	overflow: hidden;
+}
 .income-panel{
 	cursor: pointer;
 	background: rgba(47,54,64,1);

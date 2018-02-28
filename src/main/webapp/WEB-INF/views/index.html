@@ -107,7 +107,7 @@
                     <li><a th:href="@{/getUsersList}" class=""><i class="lnr lnr-code"></i>
                         <span>Lista Użytkowników</span></a>
                     </li>
-                    <li><a th:href="@{/allIncomes}" class=""><i class="lnr lnr-chart-bars"></i>
+                    <li><a th:href="@{/allIncomes?incomeId=0}" class=""><i class="lnr lnr-chart-bars"></i>
                         <span>Przychody</span></a></li>
                     <li><a th:href="@{/allExpenses}" class=""><i class="lnr lnr-cog"></i> <span>Wydatki</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>XXX</span></a></li>
@@ -135,7 +135,7 @@
     <!-- MAIN -->
     <div class="main">
         <!-- MAIN CONTENT -->
-        <div class="main-content">
+        <div class="main-content noHorizontalScroll">
             <div class="container-fluid">
                 <!-- OVERVIEW -->
                 <div th:switch="${location}">

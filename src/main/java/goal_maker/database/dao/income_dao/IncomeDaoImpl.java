@@ -29,6 +29,13 @@ public class IncomeDaoImpl implements IncomeDao {
         return incomes;
     }
 
+    @Override
+    public Income getIncomeById(long incomeId) {
+        String sqlSelect="SELECT * FROM goal_maker.income WHERE id_income = " + incomeId;
+        Query query =entityManager.createNativeQuery(sqlSelect,Income.class);
+        Income income = (Income) query.getSingleResult();
+        return income;
+    }
 
     @Transactional
     @Override

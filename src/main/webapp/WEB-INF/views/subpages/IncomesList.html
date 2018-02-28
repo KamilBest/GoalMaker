@@ -26,7 +26,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="tableRow" th:each="income : ${allIncomes}">
+                    <tr class="tableRow" th:each="income : ${allIncomes}"
+                        th:onclick="'javascript:moveTo(\'' + @{/allIncomes?incomeId=}+${income.id_income} + '\')'">
                         <td th:text="${income.id_income}"></td>
                         <td th:text="${income.type}"></td>
                         <td th:text="${income.name}"></td>
@@ -50,7 +51,7 @@
                                 <span class="ion ion-minus"></span>
                             </span>
                             <input type="text" class="form-control" id="id"
-                                   placeholder="id" readonly>
+                                   placeholder="id" th:value="${chosenIncome!=null? chosenIncome.id_income : ' '}" readonly>
                         </div>
                     </div>
                     <div class="form-group">
@@ -60,7 +61,7 @@
                                 <span class="ion ion-compose"></span>
                             </span>
                             <input type="text" class="form-control" id="type"
-                                   placeholder="Wybierz typ" readonly>
+                                   placeholder="Wybierz typ" th:value="${chosenIncome!=null? chosenIncome.type: ' '}"readonly>
                         </div>
                     </div>
                     <div class="form-group">
@@ -70,7 +71,7 @@
                                 <span class="ion ion-chatbubble"></span>
                             </span>
                             <input type="text" name="name" class="form-control" id="name"
-                                   placeholder="Wprowadź nazwę celu">
+                                   placeholder="Wprowadź nazwę przychodu" th:value="${chosenIncome!=null? chosenIncome.name: ' '}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -80,7 +81,7 @@
                                 <span class="ion ion-pricetag"></span>
                             </span>
                             <input type="text" class="form-control" id="value"
-                                   placeholder="Wprowadź wartość">
+                                   placeholder="Wprowadź wartość" th:value="${chosenIncome!=null? chosenIncome.value: ' '}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -90,7 +91,7 @@
                                 <span class="ion ion-android-calendar"></span>
                             </span>
                             <input type="text" class="form-control" id="date"
-                                   placeholder="Wybierz datę">
+                                   placeholder="Wybierz datę" th:value="${chosenIncome!=null? chosenIncome.date: ' '}">
                         </div>
                     </div>
                     <div class="row">
