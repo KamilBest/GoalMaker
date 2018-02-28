@@ -4,6 +4,7 @@ import goal_maker.database.dao.goal_dao.GoalDao;
 import goal_maker.database.tables.*;
 import goal_maker.database.wrapper.IncomeAndExpense;
 import goal_maker.web.services.expenses_service.ExpensesService;
+import goal_maker.web.services.goal_service.GoalService;
 import goal_maker.web.services.income_service.IncomeService;
 import goal_maker.web.services.user_finances_service.UserFinancesService;
 import goal_maker.web.services.user_service.UserService;
@@ -27,7 +28,8 @@ public class DashboardController {
 
     @Autowired
     UserService userService;
-
+    @Autowired
+    GoalService goalService;
     @Autowired
     IncomeService incomeService;
 
@@ -49,15 +51,16 @@ public class DashboardController {
 
 
         //Check if this user has a goal, if doesn't show only button to add goal
-        if (gmUser.getGoal() != null) {
-            model.addAttribute("currentUserGoal", goalDao.getGoalById(gmUser.getGoal().getId_goal()));
-            model.addAttribute("progressBarWidth", calculateCurrentGoalPercentageValue(gmUser));
+        Goal currentGoal = goalDao.getCurrentGoal(gmUser.getId());
+        if (currentGoal != null) {
+            model.addAttribute("currentUserGoal", currentGoal);
+            model.addAttribute("progressBarWidth", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
 
             //Handle reaching goal
-            isGoalAchieved(gmUser); //TODO: ALERT ABOUT REACHING GOAL
+            isGoalAchieved(gmUser, currentGoal); //TODO: ALERT ABOUT REACHING GOAL
             model.addAttribute("realisedGoals", realisedGoals);
         } else {
-            model.addAttribute("currentUserGoal", gmUser.getGoal());
+            model.addAttribute("currentUserGoal", currentGoal);
             model.addAttribute("progressBarWidth", 0);
         }
 
@@ -73,12 +76,15 @@ public class DashboardController {
         List<Expenses> expensesList = expensesService.findLastUserExpenses(currentUserFinancesId, amountOfIncomesAndExpenses);
         model.addAttribute("lastIncomeList", incomesList);
         model.addAttribute("lastExpensesList", expensesList);
-        List<IncomeAndExpense> incomeAndExpenseList = loadIncomesAndExpensesList(incomesList, expensesList);
-        if (incomeAndExpenseList != null || !incomeAndExpenseList.isEmpty()) {
-            Collections.sort(incomeAndExpenseList);
-            if (incomeAndExpenseList.size() > amountOfIncomesAndExpenses)
-                incomeAndExpenseList = decreaseListToGivenAmount(incomeAndExpenseList, amountOfIncomesAndExpenses);
-            model.addAttribute("incomesAndExpensesTogether", incomeAndExpenseList);
+
+        if ((incomesList != null || !incomesList.isEmpty())&& (expensesList != null || !expensesList.isEmpty())) {
+            List<IncomeAndExpense> incomeAndExpenseList = loadIncomesAndExpensesList(incomesList, expensesList);
+            if (incomeAndExpenseList != null || !incomeAndExpenseList.isEmpty()) {
+                Collections.sort(incomeAndExpenseList);
+                if (incomeAndExpenseList.size() > amountOfIncomesAndExpenses)
+                    incomeAndExpenseList = decreaseListToGivenAmount(incomeAndExpenseList, amountOfIncomesAndExpenses);
+                model.addAttribute("incomesAndExpensesTogether", incomeAndExpenseList);
+            }
         }
 
 
@@ -95,20 +101,18 @@ public class DashboardController {
     private List<IncomeAndExpense> loadIncomesAndExpensesList(List<Income> incomesList, List<Expenses> expensesList) {
         List<IncomeAndExpense> incomeAndExpenseList = new ArrayList<>();
 
-        if (incomesList != null || !incomesList.isEmpty()) {
-            for (int i = 0; i < incomesList.size(); i++) {
-                Income income = incomesList.get(i);
-                IncomeAndExpense incomeAndExpense = new IncomeAndExpense(income.getId_income(), true, income.getType(), income.getValue(), income.getName(), income.getDate());
-                incomeAndExpenseList.add(incomeAndExpense);
-            }
+        for (int i = 0; i < incomesList.size(); i++) {
+            Income income = incomesList.get(i);
+            IncomeAndExpense incomeAndExpense = new IncomeAndExpense(income.getId_income(), true, income.getType(), income.getValue(), income.getName(), income.getDate());
+            incomeAndExpenseList.add(incomeAndExpense);
         }
-        if (expensesList != null || !expensesList.isEmpty()) {
-            for (int i = 0; i < expensesList.size(); i++) {
-                Expenses expenses = expensesList.get(i);
-                IncomeAndExpense incomeAndExpense = new IncomeAndExpense(expenses.getIdExpenses(), false, expenses.getType(), expenses.getValue(), expenses.getName(), expenses.getDate());
-                incomeAndExpenseList.add(incomeAndExpense);
-            }
+
+        for (int i = 0; i < expensesList.size(); i++) {
+            Expenses expenses = expensesList.get(i);
+            IncomeAndExpense incomeAndExpense = new IncomeAndExpense(expenses.getIdExpenses(), false, expenses.getType(), expenses.getValue(), expenses.getName(), expenses.getDate());
+            incomeAndExpenseList.add(incomeAndExpense);
         }
+
         return incomeAndExpenseList;
     }
 
@@ -133,8 +137,8 @@ public class DashboardController {
      * @param gmUser - current logged user
      * @return
      */
-    private long calculateCurrentGoalPercentageValue(GmUser gmUser) {
-        long goalValue = gmUser.getGoal().getValue();
+    private long calculateCurrentGoalPercentageValue(GmUser gmUser, Goal currentGoal) {
+        long goalValue = currentGoal.getValue();
         return (gmUser.getUserFinances().getCurrent_state_to_goal() * 100) / goalValue;
     }
 
@@ -143,11 +147,10 @@ public class DashboardController {
      *
      * @return returns true if achieved
      */
-    private boolean isGoalAchieved(GmUser gmUser) {
-        Goal goal=gmUser.getGoal();
-        if (gmUser.getUserFinances().getCurrent_state_to_goal() >= goal.getValue()) {
-            realisedGoals.add(goal);
-            userService.deleteGoal(gmUser.getId());
+    private boolean isGoalAchieved(GmUser gmUser, Goal currentGoal) {
+        if (gmUser.getUserFinances().getCurrent_state_to_goal() >= currentGoal.getValue()) {
+            realisedGoals.add(currentGoal);
+            goalService.deleteGoal(gmUser.getId());
             userFinancesService.resetCurrentStateToGoal(gmUser.getUserFinances().getId_user_finances());
             return true;
         }
