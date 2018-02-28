@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.math.BigInteger;
 import java.util.List;
 
 @Repository
@@ -35,12 +36,10 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
     @Transactional
     @Override
     public void addUserFinance(UserFinances userFinances) {
-        String sqlInsert = "INSERT INTO goal_maker.user_finances(id_user_finances, account_balance, current_state_to_goal) VALUES (?, ?, ?)";
+        String sqlInsert = "INSERT INTO goal_maker.user_finances(account_balance, current_state_to_goal) VALUES (?, ?)";
         Query query = entityManager.createNativeQuery(sqlInsert, UserFinances.class);
-        query.setParameter(1, userFinances.getId_user_finances());
-        query.setParameter(2, userFinances.getAccount_balance());
-        query.setParameter(3, userFinances.getCurrent_state_to_goal());
-
+        query.setParameter(1, userFinances.getAccount_balance());
+        query.setParameter(2, userFinances.getCurrent_state_to_goal());
         query.executeUpdate();
 
     }
@@ -89,6 +88,13 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
         Query updateQuery=entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
         updateQuery.setParameter(1, userFinancesId);
         updateQuery.executeUpdate();
+    }
+
+    @Override
+    public long nextId() {
+        String sqlSelect = "SELECT (last_value + 1) AS new_id FROM goal_maker.user_finances_id_user_finances_seq";
+        BigInteger newID= (BigInteger) entityManager.createNativeQuery(sqlSelect).getSingleResult();
+        return newID.longValue();
     }
 }
 

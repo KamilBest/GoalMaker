@@ -22,6 +22,12 @@ public class UserFinances implements Serializable {
         this.incomes = incomes;
     }
 
+    public UserFinances(Long id_user_finances, Long account_balance, Long current_state_to_goal) {
+        this.id_user_finances = id_user_finances;
+        this.account_balance = account_balance;
+        this.current_state_to_goal = current_state_to_goal;
+    }
+
     public UserFinances() {
 
     }
