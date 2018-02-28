@@ -11,5 +11,6 @@ public interface UserService {
 
     public void addUser(GmUser user);
 
+    public void deleteGoal(long currentLoggedUserId);
 
 }

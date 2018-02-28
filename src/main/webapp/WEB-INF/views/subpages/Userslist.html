@@ -7,7 +7,7 @@
 <body>
 <section class="content" th:fragment="Userslist">
     <h1>Lista użytkowników</h1>
-    <table class="table table-bordered table-striped datatables" cellspacing="0" width="100%">
+    <table class="table table-bordered datatables" cellspacing="0" width="85%">
         <thead>
         <tr>
             <th>ID</th>
@@ -20,6 +20,7 @@
             <th>Stan</th>
             <th>Cel</th>
             <th>USUŃ</th>
+
         </tr>
         </thead>
         <tbody>
@@ -37,6 +38,7 @@
                 <span th:unless="${user.goal==null}" th:text="${' '}"></span>
             </td>
             <td>USUŃ</td>
+
         </tr>
         </tbody>
     </table>

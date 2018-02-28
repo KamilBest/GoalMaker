@@ -13,8 +13,6 @@ public class Goal implements Serializable {
     private long value;
     private Long number_of_days;
     private String picture_name;
-    private Long userId;
-    private GoalState goalState;
 
     public Goal() {
     }
@@ -51,17 +49,6 @@ public class Goal implements Serializable {
         this.value = value;
         this.number_of_days = number_of_days;
         this.picture_name = picture_name;
-    }
-
-    public Goal(long id_goal, String name, Category category, long value, Long number_of_days, String picture_name, Long userId, GoalState goalState) {
-        this.id_goal = id_goal;
-        this.name = name;
-        this.category = category;
-        this.value = value;
-        this.number_of_days = number_of_days;
-        this.picture_name = picture_name;
-        this.userId = userId;
-        this.goalState = goalState;
     }
 
     @Id
@@ -112,31 +99,12 @@ public class Goal implements Serializable {
         this.number_of_days = number_of_days;
     }
 
-    @Column(name = "picture_name")
+    @Column(name="picture_name")
     public String getPicture_name() {
         return picture_name;
     }
 
     public void setPicture_name(String picture_name) {
         this.picture_name = picture_name;
-    }
-
-    @Column(name = "id_user")
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_goal_state")
-    public GoalState getGoalState() {
-        return goalState;
-    }
-
-    public void setGoalState(GoalState goalState) {
-        this.goalState = goalState;
     }
 }

@@ -30,13 +30,12 @@ public class UserDaoImpl implements UserDao {
 
     @Autowired
     private UserService userService;
-
     /**
      * Get user by login
      */
     @Override
     public GmUser getUserByLogin(String login) {
-        String sqlSelect = "SELECT  * FROM goal_maker.user_gm WHERE login = '"
+        String sqlSelect = "SELECT * FROM goal_maker.user_gm WHERE login = '"
                 + login + "'";
         Query query = entityManager.createNativeQuery(sqlSelect, GmUser.class);
         GmUser user = (GmUser) query.getSingleResult();
@@ -85,5 +84,23 @@ public class UserDaoImpl implements UserDao {
         return userList;
     }
 
+    @Transactional
+    @Override
+    public void deleteGoal(long currentLoggedUserId) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String login = auth.getName(); //get logged in login
+        GmUser gmUser = userService.getUserByLogin(login);
 
+        //user update
+        String sqlUpdate = "UPDATE goal_maker.user_gm SET id_goal=NULL WHERE id_user=?";
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdate, GmUser.class);
+
+        updateQuery.setParameter(1, gmUser.getId());
+        updateQuery.executeUpdate();
+
+        //delete goal
+        String sqlDeleteGoal = "DELETE FROM goal_maker.goal WHERE id_goal=" + currentLoggedUserId;
+        Query deleteQuery = entityManager.createNativeQuery(sqlDeleteGoal, Goal.class);
+        deleteQuery.executeUpdate();
+    }
 }
