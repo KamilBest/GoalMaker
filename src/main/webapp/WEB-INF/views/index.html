@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" >
 
 <head>
     <title>Goal Maker</title>
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
     <!--DataTables-->
     <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/nouislider.css"/>
+
 </head>
 
 <body>
@@ -104,8 +104,7 @@
                 <ul class="nav">
                     <li><a th:href="@{/index}" class="active"><i class="lnr lnr-home"></i>
                         <span>Strona Główna</span></a></li>
-                    <li><a th:href="@{/getUsersList}" class=""><i class="lnr lnr-code"></i>
-                        <span>Lista Użytkowników</span></a>
+                    <li><a th:href="@{/getUsersList}" class=""><i class="lnr lnr-code"></i> <span>Lista Użytkowników</span></a>
                     </li>
                     <li><a th:href="@{/allIncomes}" class=""><i class="lnr lnr-chart-bars"></i>
                         <span>Przychody</span></a></li>
@@ -187,142 +186,44 @@
 <script src="assets/scripts/klorofil-common.js"></script>
 <script src="assets/scripts/jquery.dataTables.min.js"></script>
 <script src="assets/scripts/datatables.js"></script>
-<script src="assets/scripts/nouislider.min.js"></script>
 <script type="text/javascript">
     function moveTo(loc) {
         location.href = loc;
     }
 </script>
-<script>
-    var updateSliderValue;
-    var hs = document.getElementById("hiddenslider");
-
-    updateSliderValue = function (slider, handle) {
-        var children, i, results, val, values;
-        if (handle === null) {
-            handle = 0;
+<script type="text/javascript">
+    var slider = document.getElementById("slider-range");
+    var multiplyByTen = document.getElementById("multiply-by-ten");
+    var resetButton = document.getElementById("reset-button");
+    var nameValue = document.getElementById("numberValue");
+    multiplyByTen.onclick = function () {
+        if(slider.max == 10000){
+            multiplyByTen.disabled = true;
+            multiplyByTen.className += " " +"disabled";
+        }else {
+            slider.max *= 10;
+            slider.value *= 10;
+            nameValue.value = slider.value;
         }
-        children = slider.getElementsByClassName('noUi-handle');
-        values = slider.noUiSlider.get();
-        i = 0;
-        results = [];
-        while (i < children.length) {
-            if (children.length === 1) {
-                val = parseInt(values);
-            } else {
-                val = parseInt(values[i]);
-            }
-            children[i].dataset.value = val;
-            hs.value = val;
-            results.push(i++);
-        }
-        return results;
+    };
+    resetButton.onclick = function(){
+        slider.max = 1000;
+        multiplyByTen.classList.remove("disabled");
+        slider.value = 1;
+        nameValue.value = slider.value;
+        slider.oninput = function(){
+            nameValue.value = this.value;
+        };
     };
 
-    var singleSlider;
-
-    singleSlider = document.getElementById('slider');
-
-    noUiSlider.create(singleSlider, {
-        animationDuration: 300,
-        start: [0],
-        step: 1,
-        range: {
-            'min': 1,
-            'max': 100
-        },
-        pips: {
-            mode: 'count',
-            values: 10,
-            stepped: true
-        }
-    });
-
-    function clickOnPip() {
-        var value = Number(this.getAttribute('data-value'));
-        singleSlider.noUiSlider.set(value);
-    }
-
-    function getPips() {
-        var pips = singleSlider.querySelectorAll(".noUi-value");
-        for (var i = 0; i < pips.length; i++) {
-            pips[i].style.cursor = 'pointer';
-            pips[i].addEventListener('click', clickOnPip);
-        }
-    }
-
-    singleSlider.noUiSlider.onload = getPips();
-
-    singleSlider.noUiSlider.on('update', function () {
-        return getPips();
-    });
-
-    singleSlider.noUiSlider.on('update', function () {
-        return updateSliderValue(singleSlider);
-    });
-
-    var button1 = document.getElementById('update-1'),
-        button2 = document.getElementById('update-2'),
-        button3 = document.getElementById('update-3'),
-        button4 = document.getElementById('reset');
-
-    function updateSliderRange(min, max) {
-        singleSlider.noUiSlider.updateOptions({
-            range: {
-                'min': min,
-                'max': max
-            },
-            start: [min]
-        });
-        hs.setAttribute("max", max);
-        hs.setAttribute("min", min);
-    }
-
-    button1.addEventListener('click', function () {
-        updateSliderRange(100, 1000);
-    });
-
-    button2.addEventListener('click', function () {
-        updateSliderRange(1000, 10000);
-    });
-
-    button3.addEventListener('click', function () {
-        updateSliderRange(10000, 100000);
-    });
-
-    button4.addEventListener('click', function () {
-        updateSliderRange(1, 100);
-    });
-
-    function mapRange(value, low1, high1, low2, high2) {
-        return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
-    }
-
-</script>
-<script>
-    var myIndex = 0;
-    carousel();
-
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("slides");
-        var y = document.getElementsByClassName("slides2");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-            for (j = 0; j < y.length; j++) {
-                y[j].style.display = "none";
-            }
-        }
-        myIndex++;
-        if (myIndex > x.length) {
-            myIndex = 1
-        }
-        if (myIndex > y.length) {
-            myIndex = 1
-        }
-        x[myIndex - 1].style.display = "block";
-        y[myIndex - 1].style.display = "block";
-        setTimeout(carousel, 5000); // Change image every 2 seconds
+    slider.oninput = function(){
+        nameValue.value = this.value;
+    };
+    function changeValue(){
+        slider.value = nameValue.value;
+        slider.oninput = function(){
+            nameValue.value = this.value;
+        };
     }
 </script>
 <script>

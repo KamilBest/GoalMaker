@@ -18,6 +18,8 @@ public class GoalController {
 
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    UserService userService;
 
     @RequestMapping(value = "/addGoal", method = RequestMethod.GET)
     public String addGoal(Model model) {
@@ -53,7 +55,7 @@ public class GoalController {
 
     @RequestMapping(value = "/deleteGoal", method = RequestMethod.GET)
     public String deleteGoal(@RequestParam(value = "id") long id) {
-        goalService.deleteGoal(id);
+        userService.deleteGoal(id);
         return "redirect:/index";
     }
 

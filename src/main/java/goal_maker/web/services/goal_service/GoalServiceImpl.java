@@ -21,19 +21,7 @@ public class GoalServiceImpl implements GoalService {
     }
 
     @Override
-    public void modifyGoal(Goal goal) {
-        goalDao.modifyGoal(goal);
-    }
-
-    @Override
-    public Goal getCurrentGoal(long userId) {
-        return goalDao.getCurrentGoal(userId);
-    }
-
-    @Override
-    public void deleteGoal(long goalId) {
-        goalDao.deleteGoal(goalId);
-    }
+    public void modifyGoal(Goal goal){goalDao.modifyGoal(goal);}
 
 
 }
