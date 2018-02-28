@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "user_gm", schema = "goal_maker")
@@ -18,13 +19,14 @@ public class GmUser implements java.io.Serializable {
     private String email;
     private Date dateOfBirth;
     private boolean isActive;
-    private Goal goal;
+    private List<Goal> goals;
     private UserFinances userFinances;
+    private UserPermission permission;
 
     public GmUser() {
     }
 
-    public GmUser(String login, String password, String name, String surname, String email, Date dateOfBirth, boolean isActive, Goal goal) {
+    public GmUser(String login, String password, String name, String surname, String email, Date dateOfBirth, boolean isActive, List<Goal> goals) {
         this.login = login;
         this.password = password;
         this.name = name;
@@ -32,7 +34,7 @@ public class GmUser implements java.io.Serializable {
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.isActive = isActive;
-        this.goal = goal;
+        this.goals = goals;
     }
 
     public GmUser(long id, String login,
@@ -51,6 +53,20 @@ public class GmUser implements java.io.Serializable {
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.isActive = isActive;
+    }
+
+    public GmUser(long id, String login, String password, String name, String surname, String email, Date dateOfBirth, boolean isActive, List<Goal> goals, UserFinances userFinances, UserPermission permission) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.isActive = isActive;
+        this.goals = goals;
+        this.userFinances = userFinances;
+        this.permission = permission;
     }
 
     @Id
@@ -127,14 +143,14 @@ public class GmUser implements java.io.Serializable {
         this.isActive = isActive;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id_goal")
-    public Goal getGoal() {
-        return goal;
+    public List<Goal> getGoals() {
+        return goals;
     }
 
-    public void setGoal(Goal goal) {
-        this.goal = goal;
+    public void setGoals(List<Goal> goals) {
+        this.goals = goals;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -146,4 +162,15 @@ public class GmUser implements java.io.Serializable {
     public void setUserFinances(UserFinances userFinances) {
         this.userFinances = userFinances;
     }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_permission")
+    public UserPermission getPermission() {
+        return permission;
+    }
+
+    public void setPermission(UserPermission permission) {
+        this.permission = permission;
+    }
 }
+

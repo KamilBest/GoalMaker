@@ -36,32 +36,31 @@
                         </div>
                         <div class="form-group form-group-custom">
                             <label class="label-form">Wybierz wartość celu</label>
-                            <div class="form-inline form-control form-control-bg">
+                            <div class="form-inline form-control none-border-transparent-bg">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <div class="range-slider">
-                                                <input class="range-slider-range" th:value="${goal.value}"
-                                                       id="slider-range" type="range" name="value"
-                                                       max="1000"
-                                                       value="0"/>
-                                            </div>
+                                    <div class="col-md-12">
+                                        <div id="slider">
+                                            <input title="hiddenSlider" id="hiddenslider" type="range"
+                                                   th:value="${goal.value}" name="value" style="display:none"
+                                                   min="1" max="100"/>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
-                                        <input class="range-slider-value" min="1" type="number" step="1"
-                                               id="numberValue" value="1" onchange="changeValue()"/>
-                                    </div>
-                                    <div class="col-sm-2 text-center">
-                                        <div class="form-group">
-                                            <a class="btn btn-multiply-ten" id="multiply-by-ten">X10</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2 text-center">
-                                        <div class="form-group">
-                                            <a class="btn btn-reset" id="reset-button">reset</a>
-                                        </div>
-                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-custom">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <a class="btn btn-range btn-block" id="update-1">Zakres[100-1000]</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="btn btn-range btn-block" id="update-2">Zakres[1000-10000]</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="btn btn-range btn-block" id="update-3">Zakres[10000-100000]</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="btn btn-range-reset btn-block" id="reset">Reset</a>
                                 </div>
                             </div>
                         </div>
