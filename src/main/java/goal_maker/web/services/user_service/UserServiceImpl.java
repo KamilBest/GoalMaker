@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserService {
         userDao.addUser(user);
     }
 
-
+    @Override
+    public void deleteGoal(long currentLoggedUserId){userDao.deleteGoal(currentLoggedUserId);}
 
 }
