@@ -69,4 +69,31 @@ public class IncomeController {
         userFinancesService.updateAccountBalance(gmUser.getUserFinances(), income.getValue(), true);
         return "redirect:/index";
     }
+
+/*
+    @RequestMapping(value = "/editIncome", method = RequestMethod.GET)
+    public String editIncome(Model model, @RequestParam(value = "incomeId") long incomeId) {
+        Income income=incomeService.getIncomeById(incomeId);
+        model.addAttribute( "chosenIncome", income);
+        return "redirect:/allIncomes";
+    }*/
+    /**
+     * Income edit
+     * @param model
+     * @param id given income id
+     * @return
+     */
+
+    @RequestMapping(value = "/editIncome", method = RequestMethod.POST)
+    public String editIncome(@RequestParam(value = "incomeId") long incomeId, @RequestParam(value = "name") String name, @RequestParam(value = "type") String type, @RequestParam(value = "value") long value) {
+        Income income=new Income(incomeId,name, type, value);
+        incomeService.modifyIncome(income);
+        return "redirect:/allIncomes?incomeId=0";
+    }
+
+    @RequestMapping(value = "/deleteIncome", method = RequestMethod.GET)
+    public String deleteIncome(@RequestParam(value = "incomeId") long incomeId) {
+        incomeService.deleteIncome(incomeId);
+        return "redirect:/allIncomes?incomeId=0";
+    }
 }

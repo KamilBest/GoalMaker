@@ -32,4 +32,14 @@ public class IncomeServiceImpl implements IncomeService {
     public Income getIncomeById(long incomeId) {
         return incomeDao.getIncomeById(incomeId);
     }
+
+    @Override
+    public void modifyIncome(Income income) {
+        incomeDao.modifyIncome(income);
+    }
+
+    @Override
+    public void deleteIncome(long incomeId) {
+        incomeDao.deleteIncome(incomeId);
+    }
 }

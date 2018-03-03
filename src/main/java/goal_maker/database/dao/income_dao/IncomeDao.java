@@ -9,4 +9,8 @@ public interface IncomeDao {
     public Income getIncomeById(long incomeId);
     public void addIncome(Income income);
     public List<Income> findLastUserIncomes(long id, long amount);
+
+    public void modifyIncome(Income income);
+    public void deleteIncome(long incomeId);
+
 }
