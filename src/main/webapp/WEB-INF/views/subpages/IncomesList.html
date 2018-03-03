@@ -18,7 +18,7 @@
                 <table class="table table-bordered table-striped table-hover datatables" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <th class="hidden-column">ID</th>
                         <th>TYP</th>
                         <th>NAZWA</th>
                         <th>WARTOŚĆ</th>
@@ -38,6 +38,7 @@
                 </table>
             </div>
             <div class="col-md-4">
+                <form th:action="@{/editIncome}" method="post">
                     <div class="add-edit-form">
                         <div class="form-title">
                             <p>Edytuj / dodaj przychód</p>
@@ -106,11 +107,12 @@
                                     <span>Usuń</span>
                                 </a>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3" th:if="${chosenIncome!=null}">
                                 <button type="submit" class="btn btn-range">Edytuj</button>
                             </div>
                         </div>
                     </div>
+                </form>
             </div>
         </div>
     </div>

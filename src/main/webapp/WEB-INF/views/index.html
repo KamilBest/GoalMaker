@@ -34,7 +34,7 @@
 
     <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
     <!--DataTables-->
-    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/vendor/data-table/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/nouislider.css"/>
 </head>
 
@@ -179,14 +179,12 @@
 <!-- END WRAPPER -->
 <!-- Javascript -->
 <script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/vendor/data-table/datatables.min.js"></script>
 <script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script
         src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 <script src="assets/vendor/chartist/js/chartist.min.js"></script>
 <script src="assets/scripts/klorofil-common.js"></script>
-<script src="assets/scripts/jquery.dataTables.min.js"></script>
-<script src="assets/scripts/datatables.js"></script>
 <script src="assets/scripts/nouislider.min.js"></script>
 <script type="text/javascript">
     function moveTo(loc) {
@@ -356,11 +354,16 @@
                     "deferRender": true,
                     "autoWidth": true,
                     "order": [],
+                    "dom" : '<"dt-buttons"Bfli>rtp',
+                    "buttons" : [ 'colvis'],
+                    "columnDefs" : [ {
 
-                    "columnDefs": [{
-                        "targets": 'no-sort',
-                        "orderable": false,
-                    }]
+                        "targets" : "hidden-column",
+                        "visible" : false
+                    }, {
+                        "targets" : 'no-sort',
+                        "orderable" : false
+                    } ]
                 });
     });
 </script>

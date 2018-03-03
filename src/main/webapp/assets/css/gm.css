@@ -203,6 +203,7 @@
 .incomesTable:hover, .expensesTable:hover, .incomeAndExpenseTable:hover{
 	background-color: #323942;
 }
+
 .value-cell{
 	color: #49d61c;
 	font-weight: bold;
