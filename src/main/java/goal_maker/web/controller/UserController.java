@@ -1,6 +1,8 @@
 package goal_maker.web.controller;
 
+import goal_maker.database.tables.Goal;
 import goal_maker.database.tables.UserFinances;
+import goal_maker.web.services.goal_service.GoalService;
 import goal_maker.web.services.user_finances_service.UserFinancesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -24,6 +26,9 @@ public class UserController {
     @Autowired
     UserFinancesService userFinancesService;
 
+    @Autowired
+    GoalService goalService;
+
     @RequestMapping(value = "/getUserByLogin", method = RequestMethod.GET)
     public void getUserByLogin(Model model, @RequestParam String login) {
         GmUser gmUser = userService.getUserByLogin(login);
@@ -34,7 +39,7 @@ public class UserController {
     @RequestMapping(value = "/getUsersList", method = RequestMethod.GET)
     public String getUsersList(Model model) {
         model.addAttribute("location", "usersList");
-        model.addAttribute("UsersList", userService.getUsersList());
+        model.addAttribute("usersList", userService.getUsersList());
         return "index";
     }
 

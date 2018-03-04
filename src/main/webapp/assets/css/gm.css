@@ -789,6 +789,7 @@ input[type=range]{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f3640', endColorstr='#353c45', GradientType=1 );
 	border: none;
 	color: #fff;
+	text-shadow: 0 0 4px #000;
 }
 .table-striped>tbody>tr:nth-child(even)>td {
 	background-color: #DDDEE3!important;

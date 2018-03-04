@@ -1,5 +1,7 @@
 package goal_maker.database.tables;
 
+import groovy.transform.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -138,5 +140,11 @@ public class Goal implements Serializable {
 
     public void setGoalState(GoalState goalState) {
         this.goalState = goalState;
+    }
+
+    @Override
+    public String toString()
+    {
+        return name + " (ID: "+id_goal+ " STATE: "+goalState.getName()+")";
     }
 }
