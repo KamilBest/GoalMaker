@@ -23,6 +23,13 @@ public class Expenses implements Serializable{
 
     }
 
+    public Expenses(long idExpenses, String name, String type, long value) {
+        this.idExpenses = idExpenses;
+        this.type = type;
+        this.value = value;
+        this.name = name;
+    }
+
     public Expenses(long idExpenses, String type, long value, String name, UserFinances userFinances, Timestamp date) {
 
         this.idExpenses = idExpenses;

@@ -32,12 +32,20 @@ public class ExpensesController {
     private UserFinancesService userFinancesService;
 
     @RequestMapping(value ="/allExpenses", method = RequestMethod.GET)
-    public String allExpenses(Model model)
+    public String allExpenses(Model model, @RequestParam(value = "expenseId")long expenseId)
     {
+        model.addAttribute("location","expensesList");
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
-        model.addAttribute("location","expensesList");
+
+        if(expenseId>0) {
+            Expenses chosenExpense = expensesService.getExpenseById(expenseId);
+            model.addAttribute("chosenExpense", chosenExpense);
+        }
+        else
+            model.addAttribute("chosenExpense", null);
         model.addAttribute("allExpenses", expensesService.findAllUserExpenses(gmUser.getUserFinances().getId_user_finances()));
         return "index";
     }
@@ -61,5 +69,19 @@ public class ExpensesController {
         userFinancesService.updateAccountBalance(gmUser.getUserFinances(), expenses.getValue(), false);
 
         return "redirect:/index";
+    }
+
+
+    @RequestMapping(value = "/editExpense", method = RequestMethod.POST)
+    public String editExpense(@RequestParam(value = "expenseId") long expenseId, @RequestParam(value = "name") String name, @RequestParam(value = "type") String type, @RequestParam(value = "value") long value) {
+       Expenses expense=new Expenses(expenseId, name, type,value);
+        expensesService.modifyExpense(expense);
+        return "redirect:/allExpenses?expenseId=0";
+    }
+
+    @RequestMapping(value = "/deleteExpense", method = RequestMethod.GET)
+    public String deleteIncome(@RequestParam(value = "expenseId") long expenseId) {
+        expensesService.deleteExpense(expenseId);
+        return "redirect:/allExpenses?expenseId=0";
     }
 }
