@@ -62,11 +62,7 @@ public class UserDaoImpl implements UserDao {
         query.setParameter(6, user.getDateOfBirth());
         query.setParameter(7, user.getIsActive());
         query.setParameter(8, user.getUserFinances());
-
         query.executeUpdate();
-
-
-
     }
 
     @Override

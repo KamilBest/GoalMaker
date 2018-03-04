@@ -139,7 +139,7 @@ public class DashboardController {
      */
     private long calculateCurrentGoalPercentageValue(GmUser gmUser, Goal currentGoal) {
         long goalValue = currentGoal.getValue();
-        return (gmUser.getUserFinances().getCurrent_state_to_goal() * 100) / goalValue;
+        return (gmUser.getUserFinances().getGoal_balance() * 100) / goalValue;
     }
 
     /**
@@ -148,7 +148,7 @@ public class DashboardController {
      * @return returns true if achieved
      */
     private boolean isGoalAchieved(GmUser gmUser, Goal currentGoal) {
-        if (gmUser.getUserFinances().getCurrent_state_to_goal() >= currentGoal.getValue()) {
+        if (gmUser.getUserFinances().getGoal_balance() >= currentGoal.getValue()) {
             realisedGoals.add(currentGoal);
             goalService.deleteGoal(gmUser.getId());
             userFinancesService.resetCurrentStateToGoal(gmUser.getUserFinances().getId_user_finances());
