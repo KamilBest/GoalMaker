@@ -172,5 +172,14 @@ public class GmUser implements java.io.Serializable {
     public void setPermission(UserPermission permission) {
         this.permission = permission;
     }
+
+
+    //PRINT OBJECTS
+    public String printUserGoals()
+    {
+        if(goals.isEmpty() || goals==null)
+            return null;
+        return goals.toString();
+    }
 }
 

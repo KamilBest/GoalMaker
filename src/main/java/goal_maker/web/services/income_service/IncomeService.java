@@ -6,6 +6,13 @@ import java.util.List;
 
 public interface IncomeService {
     public List<Income> findAllUserIncomes(long id);
+
     public void addIncome(Income income);
+
     public List<Income> findLastUserIncomes(long id, long amount);
+
+    public Income getIncomeById(long incomeId);
+
+    public void modifyIncome(Income income);
+    public void deleteIncome(long incomeId);
 }

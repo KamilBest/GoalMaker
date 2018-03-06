@@ -8,22 +8,38 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("ExpensesService")
-public class ExpensesServiceImpl implements ExpensesService{
+public class ExpensesServiceImpl implements ExpensesService {
 
     @Autowired
-   private ExpensesDao expensesDao;
+    private ExpensesDao expensesDao;
+
     @Override
     public List<Expenses> findAllUserExpenses(long id) {
-        return  expensesDao.findAllUserExpenses(id);
+        return expensesDao.findAllUserExpenses(id);
     }
 
     @Override
-    public void addExpenses(Expenses income) {
-        expensesDao.addExpenses(income);
+    public Expenses getExpenseById(long expenseId) {
+        return expensesDao.getExpenseById(expenseId);
+    }
+
+    @Override
+    public void addExpenses(Expenses expenses) {
+        expensesDao.addExpenses(expenses);
     }
 
     @Override
     public List<Expenses> findLastUserExpenses(long id, long amount) {
         return expensesDao.findLastUserExpenses(id, amount);
+    }
+
+    @Override
+    public void modifyExpense(Expenses expenses) {
+        expensesDao.modifyExpense(expenses);
+    }
+
+    @Override
+    public void deleteExpense(long expenseId) {
+        expensesDao.deleteExpense(expenseId);
     }
 }

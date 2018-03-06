@@ -7,36 +7,37 @@
 <body>
 <section class="content" th:fragment="Userslist">
     <h1>Lista użytkowników</h1>
+    <hr>
     <table class="table table-bordered table-striped datatables" cellspacing="0" width="100%">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Login</th>
-            <th>Hasło</th>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Email</th>
-            <th>Data urodzenia</th>
-            <th>Stan</th>
-            <th>Cel</th>
-            <th>USUŃ</th>
+            <th>LOGIN</th>
+<!--
+            <th>HASŁO</th>
+-->
+            <th>IMIĘ</th>
+            <th>NAZWISKO</th>
+            <th>EMAIL</th>
+            <th>DATA URODZENIA</th>
+            <th>AKTYWNY</th>
+            <th>DEZAKTYWUJ</th>
         </tr>
         </thead>
         <tbody>
-        <tr class="tableRow" th:each="user : ${UsersList}">
+        <tr class="tableRow" th:each="user : ${usersList}">
             <td th:text="${user.id}"></td>
             <td th:text="${user.login}"></td>
+<!--
             <td th:text="${user.password}"></td>
+-->
             <td th:text="${user.name}"></td>
             <td th:text="${user.surname}"></td>
             <td th:text="${user.email}"></td>
             <td th:text="${user.dateOfBirth}"></td>
             <td th:text="${user.isActive}"></td>
-            <td>
-                <span th:if="${user.goal!=null}" th:text="${user.goal.id_goal}"> </span>
-                <span th:unless="${user.goal==null}" th:text="${' '}"></span>
-            </td>
-            <td>USUŃ</td>
+            <td>DEZAKTYWUJ</td>
+            <!--TODO: Switch lub zwykły button z potwierdzeniem aktywacji/dezaktywacji-->
         </tr>
         </tbody>
     </table>

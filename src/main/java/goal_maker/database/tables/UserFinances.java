@@ -13,23 +13,37 @@ import java.util.Set;
 public class UserFinances implements Serializable {
     private Long id_user_finances;
     private Long account_balance;
-    private Long current_state_to_goal;
+    private Long goal_balance;
     private Set<Income> incomes = new HashSet<Income>(0);
+    private float real_account_balance;
 
-    public UserFinances(Long account_balance, Long current_state_to_goal, Set<Income> incomes) {
+    public UserFinances(Long account_balance, Long goal_balance, Set<Income> incomes) {
         this.account_balance = account_balance;
-        this.current_state_to_goal = current_state_to_goal;
+        this.goal_balance = goal_balance;
         this.incomes = incomes;
+    }
+
+    public UserFinances(Long id_user_finances, Long account_balance, Long goal_balance) {
+        this.id_user_finances = id_user_finances;
+        this.account_balance = account_balance;
+        this.goal_balance = goal_balance;
+    }
+
+    public UserFinances(Long id_user_finances, Long account_balance, Long goal_balance, float real_account_balance) {
+        this.id_user_finances = id_user_finances;
+        this.account_balance = account_balance;
+        this.goal_balance = goal_balance;
+        this.real_account_balance = real_account_balance;
     }
 
     public UserFinances() {
 
     }
 
-    public UserFinances(Long account_balance, Long current_state_to_goal) {
+    public UserFinances(Long account_balance, Long goal_balance) {
         this.account_balance = account_balance;
 
-        this.current_state_to_goal = current_state_to_goal;
+        this.goal_balance = goal_balance;
     }
 
     @Id
@@ -52,13 +66,22 @@ public class UserFinances implements Serializable {
         this.account_balance = account_balance;
     }
 
-    @Column(name = "current_state_to_goal")
-    public Long getCurrent_state_to_goal() {
-        return current_state_to_goal;
+    @Column(name = "goal_balance")
+    public Long getGoal_balance() {
+        return goal_balance;
     }
 
-    public void setCurrent_state_to_goal(Long current_state_to_goal) {
-        this.current_state_to_goal = current_state_to_goal;
+    public void setGoal_balance(Long goal_balance) {
+        this.goal_balance = goal_balance;
+    }
+
+    @Column(name = "real_account_balance")
+    public float getReal_account_balance() {
+        return real_account_balance;
+    }
+
+    public void setReal_account_balance(float real_account_balance) {
+        this.real_account_balance = real_account_balance;
     }
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user_finances")
@@ -69,4 +92,6 @@ public class UserFinances implements Serializable {
     public void setIncomes(Set<Income> incomes) {
         this.incomes = incomes;
     }
+
+
 }

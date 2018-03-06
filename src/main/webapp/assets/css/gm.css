@@ -25,8 +25,7 @@
 .goal-body-bg-rounded{
     width: 50%;
 	height: 100%;
-    border-bottom-right-radius: 95px;
-    border-top-right-radius: 95px;
+	-webkit-border-radius: 0 50% 50% 0 / 50% 300% 300% 50%;
     background: #2B333E;
     position: absolute;
 }
@@ -121,7 +120,10 @@
 {
 	background: #2F3640;
 }
-
+.noHorizontalScroll
+{
+	overflow: hidden;
+}
 .income-panel{
 	cursor: pointer;
 	background: rgba(47,54,64,1);
@@ -201,6 +203,7 @@
 .incomesTable:hover, .expensesTable:hover, .incomeAndExpenseTable:hover{
 	background-color: #323942;
 }
+
 .value-cell{
 	color: #49d61c;
 	font-weight: bold;
@@ -786,6 +789,7 @@ input[type=range]{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f3640', endColorstr='#353c45', GradientType=1 );
 	border: none;
 	color: #fff;
+	text-shadow: 0 0 4px #000;
 }
 .table-striped>tbody>tr:nth-child(even)>td {
 	background-color: #DDDEE3!important;

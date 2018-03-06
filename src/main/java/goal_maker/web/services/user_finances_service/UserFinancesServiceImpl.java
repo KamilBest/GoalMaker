@@ -40,4 +40,9 @@ public class UserFinancesServiceImpl implements UserFinancesService {
     public void resetCurrentStateToGoal(long userFinancesId) {
         userFinancesDao.resetCurrentStateToGoal(userFinancesId);
     }
+
+    @Override
+    public long nextId() {
+       return userFinancesDao.nextId();
+    }
 }

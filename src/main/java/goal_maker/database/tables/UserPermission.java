@@ -5,25 +5,25 @@ import javax.persistence.*;
 @Entity
 @Table(name = "permission", schema = "goal_maker")
 public class UserPermission implements java.io.Serializable {
-    private long id;
+    private int id;
     private String name;
 
     public UserPermission() {
     }
 
-    public UserPermission(long id, String name) {
+    public UserPermission(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", unique = true, nullable = false)
-    public long getId() {
+    @Column(name = "id_permission", unique = true, nullable = false)
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

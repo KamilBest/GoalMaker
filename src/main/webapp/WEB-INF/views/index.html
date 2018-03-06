@@ -34,7 +34,7 @@
 
     <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
     <!--DataTables-->
-    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap4.min.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/vendor/data-table/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/nouislider.css"/>
 </head>
 
@@ -107,9 +107,9 @@
                     <li><a th:href="@{/getUsersList}" class=""><i class="lnr lnr-code"></i>
                         <span>Lista Użytkowników</span></a>
                     </li>
-                    <li><a th:href="@{/allIncomes}" class=""><i class="lnr lnr-chart-bars"></i>
+                    <li><a th:href="@{/allIncomes?incomeId=0}" class=""><i class="lnr lnr-chart-bars"></i>
                         <span>Przychody</span></a></li>
-                    <li><a th:href="@{/allExpenses}" class=""><i class="lnr lnr-cog"></i> <span>Wydatki</span></a></li>
+                    <li><a th:href="@{/allExpenses?expenseId=0}" class=""><i class="lnr lnr-cog"></i> <span>Wydatki</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>XXX</span></a></li>
                     <li><a href="#" data-toggle="collapse" class="collapsed"><i
                             class="lnr lnr-file-empty"></i> <span>XXX</span> <i
@@ -135,7 +135,7 @@
     <!-- MAIN -->
     <div class="main">
         <!-- MAIN CONTENT -->
-        <div class="main-content">
+        <div class="main-content noHorizontalScroll">
             <div class="container-fluid">
                 <!-- OVERVIEW -->
                 <div th:switch="${location}">
@@ -179,14 +179,12 @@
 <!-- END WRAPPER -->
 <!-- Javascript -->
 <script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/vendor/data-table/datatables.min.js"></script>
 <script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script
         src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 <script src="assets/vendor/chartist/js/chartist.min.js"></script>
 <script src="assets/scripts/klorofil-common.js"></script>
-<script src="assets/scripts/jquery.dataTables.min.js"></script>
-<script src="assets/scripts/datatables.js"></script>
 <script src="assets/scripts/nouislider.min.js"></script>
 <script type="text/javascript">
     function moveTo(loc) {
@@ -356,11 +354,16 @@
                     "deferRender": true,
                     "autoWidth": true,
                     "order": [],
+                    "dom" : '<"dt-buttons"Bfli>rtp',
+                    "buttons" : [ 'colvis'],
+                    "columnDefs" : [ {
 
-                    "columnDefs": [{
-                        "targets": 'no-sort',
-                        "orderable": false,
-                    }]
+                        "targets" : "hidden-column",
+                        "visible" : false
+                    }, {
+                        "targets" : 'no-sort',
+                        "orderable" : false
+                    } ]
                 });
     });
 </script>
