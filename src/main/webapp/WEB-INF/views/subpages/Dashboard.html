@@ -140,7 +140,7 @@
                     <div class="panel bg-black panel-tables">
                         <div class="panel-body">
                             <h1 class="text-center panel-header-text">Zrealizowane cele</h1>
-                            <div class="table-responsive">
+                            <div class="table-responsive realised-table-responsive">
                                 <table class="table table-borderless table-spacing realisedTable" width="100%">
                                     <tr th:each="goal : ${realisedGoals}">
                                         <td class="realised-goal-cell"><img
@@ -150,9 +150,8 @@
                                                 class="realised-type" th:text="${goal.category.name}"></span></td>
                                         <td><span class="title-save">Uzbierano</span><span class="realised-value"
                                                                                            th:text="${goal.value} + ' zł / '"></span><span
-                                                th:text="${goal.number_of_days}"
-                                                class="realised-days"></span>123dni</td>
-                                        <td class="realised-goal-date"><span class="realised-date">12.03.2018</span>
+                                                th:text="${goal.number_of_days} + ' dni'"
+                                                class="realised-days"></span></td>
                                         </td>
                                     </tr>
                                 </table>

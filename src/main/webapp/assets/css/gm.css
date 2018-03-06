@@ -738,31 +738,34 @@ input[type=range]{
 	-moz-box-shadow: inset 8px 0 0 0 #00aaff;
 	box-shadow: inset 8px 0 0 0 #00aaff;
 }
+.realised-goal-cell img{
+	width: 48px;
+}
 .realised-goal{
 	display: block;
 	color: #fff;
-	font-size: 2em;
+	font-size: 1.2em;
 	font-weight: bold;
 	text-transform: uppercase;
 }
 .realised-type{
 	color: #686A6D;
-	font-size: 12px;
+	font-size: 10px;
 	text-transform: uppercase;
 }
 .title-save{
 	display: block;
 	color: #686A6D;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 }
 .realised-value{
-	font-size: 1.2em;
+	font-size: 1em;
 	color: #fff;
 	font-weight: 800;
 }
 .realised-days{
-	font-size: 1.2em;
+	font-size: 1em;
 	font-weight: 500;
 	color: #00aaff;
 	text-transform: uppercase;
@@ -854,4 +857,7 @@ input[type=range]{
 }
 .money-table{
 	height: 30vh;
+}
+.realised-table-responsive{
+	height: 60vh;
 }
