@@ -31,7 +31,7 @@
     position: absolute;
 }
 .all-income {
-	height: 550px;
+	height: 250px;
 }
 .all-income{
 	margin-top: 15px;
@@ -206,7 +206,7 @@
 	font-weight: bold;
 	text-align: left;
 	width: 25%;
-	font-size: 1.8rem;
+	font-size: .9em;
 	padding-left: 0px;
 	vertical-align: middle;
 }
@@ -215,15 +215,22 @@
 	font-weight: bold;
 	text-align: left;
 	width: 25%;
-	font-size: 1.8rem;
+	font-size: .9em;
 	padding-left: 0px;
 	vertical-align: middle;
 }
-.name-type-cell, .name-type-cell-expense{
+.name-type-cell span, .name-type-cell-expense span{
 	color: #fff;
 	font-weight: bolder;
-	font-size: 1.8rem;
+	font-size: .9em;
 	vertical-align: middle;
+	text-transform: uppercase;
+}
+.name-type-cell p, .name-type-cell-expense p{
+	color: #686A6D;
+	font-size: .5em;
+	text-transform: uppercase;
+	display: inline-block;
 }
 .id-cell, .date-cell, .id-cell-expense, .date-cell-expense{
 	vertical-align: top!important;
@@ -232,9 +239,9 @@
 	text-align: left;
 	font-size: 1rem;
 }
-.incomesTable, .expensesTable, .incomeAndExpenseTable{
-	height: 45px;
-}
+/*.incomesTable, .expensesTable, .incomeAndExpenseTable{*/
+	/*height: 45px;*/
+/*}*/
 .nav-item>li.active>a.greenInc, .nav-tabs>li.active>a.greenInc:hover, .nav-tabs>li.active>a.greenInc:focus{
 	border: 1px solid #49d61c;
 	background: #49d61c;
@@ -280,11 +287,10 @@
 	padding: 5px;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
-	width: 150px;
-	height: 25px;
+	width: 100px;
 	cursor: pointer;
 	-webkit-border-radius: 40px;
-	border-radius: 4px;
+	border-radius: 5px;
 	text-align: center;
 	-o-text-overflow: clip;
 	text-overflow: clip;
@@ -361,7 +367,6 @@ tr.incomesTable td{
 .nav-item{
 	text-align: center;
 	width: 100%;
-	margin-top: 25px;
 	margin-bottom: -25px;
 }
 .nav-item > li{
@@ -659,16 +664,11 @@ input[type=range]{
 .slides{
 	display:none;
 }
-.panel-tables{
-	height: 740px;
+.dashboard-panel{
+	height: 450px;
 }
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
 	vertical-align: middle;
-}
-.name-type-cell span, .name-type-cell-expense span{
-    font-size: 12px;
-    color: #686A6D;
-    text-transform: uppercase;
 }
 .btn-range{
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00aaff+0,00aaff+51,19b2ff+51,19b2ff+100 */
@@ -832,4 +832,22 @@ input[type=range]{
 	font-size: 15px;
 	width: 15px;
 }
-
+.scroll-dashboard-panel{
+	height: 350px;
+	overflow-y: scroll;
+}
+.scroll-dashboard-table{
+	height: 250px;
+	overflow-y: scroll;
+}
+.equal{
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+.panel-tables{
+	height: 450px;
+}
+.money-table{
+	height: 30vh;
+}

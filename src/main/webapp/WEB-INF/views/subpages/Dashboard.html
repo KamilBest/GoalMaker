@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="container-fluid" th:if="${currentUserGoal!=null}">
-        <div class="row">
+        <div class="row equal">
             <div class="panel-buttons">
                 <div class="col-md-2" align="left" style="width: auto;">
                     <div class="metric user-panel">
@@ -95,11 +95,11 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid" th:if="${currentUserGoal!=null}" style="height: 450px">
-        <div class="row" style="height: 450px">
-            <div class="col-md-4" style="height: 100%">
-                    <div class="panel bg-black" style="height: 100%">
-                        <div class="panel-body panel-incomes-expenses">
+    <div class="container-fluid" th:if="${currentUserGoal!=null}">
+        <div class="row">
+            <div class="col-md-4">
+                    <div class="panel bg-black">
+                        <div class="panel-body panel-incomes-expenses panel-tables">
                             <div class="col-md-12">
                                 <h1 class="text-center panel-header-text">Przychód okresowy</h1>
                                 <div class="panel-inc-exp">
@@ -136,8 +136,8 @@
                         </div>
                     </div>
             </div>
-            <div class="col-md-4" style="height: 100%">
-                    <div class="panel bg-black" style="height: 100%">
+            <div class="col-md-4">
+                    <div class="panel bg-black panel-tables">
                         <div class="panel-body">
                             <h1 class="text-center panel-header-text">Zrealizowane cele</h1>
                             <div class="table-responsive">
@@ -160,8 +160,8 @@
                         </div>
                     </div>
                 </div>
-            <div class="col-md-4" style="height: 100%">
-                <div class="panel bg-black panel-tables" style="height: 100%">
+            <div class="col-md-4">
+                <div class="panel bg-black panel-tables">
                     <div class="panel-heading">
                         <ul class="nav nav-item">
                             <li class="active"><a class="greenInc" data-toggle="tab" href="#income">Przychody</a></li>
@@ -171,12 +171,12 @@
                     </div>
                     <div class="tab-content">
                         <div class="all-income tab-pane fade in active" id="income">
-                            <div class="panel-body table-responsive">
+                            <div class="panel-body table-responsive money-table">
                                 <table class="table table-borderless table-spacing" width="100%">
                                     <tr class="incomesTable" th:each="income : ${lastIncomeList} ">
                                         <td class="chevron-cell"><i class="fa fa-chevron-up"></i></td>
                                         <td class="id-cell" th:text="'#'+${income.id_income}"></td>
-                                        <td class="name-type-cell" th:text="${income.name}+ ' ' +${income.type}"></td>
+                                        <td class="name-type-cell"><span th:text="${income.name}+ ' '"></span><p th:text="${income.type}"></p></td>
                                         <td class="value-cell" th:text="'+'+${income.value}+'zł'"></td>
                                         <td class="date-cell"
                                             th:text="${#dates.format(income.date, 'dd-MM-yyyy HH:mm')}"></td>
@@ -185,13 +185,12 @@
                             </div>
                         </div>
                         <div class="all-income tab-pane fade" id="expenses">
-                            <div class="panel-body table-responsive">
+                            <div class="panel-body table-responsive money-table">
                                 <table class="table table-borderless table-spacing" width="100%">
                                     <tr class="expensesTable" th:each="expense : ${lastExpensesList}">
                                         <td class="chevron-cell-expense"><i class="fa fa-chevron-down"></i></td>
                                         <td class="id-cell-expense" th:text="'#'+${expense.idExpenses}"></td>
-                                        <td class="name-type-cell-expense"
-                                            th:text="${expense.name}+ ' ' +${expense.type}"></td>
+                                        <td class="name-type-cell-expense"><span th:text="${expense.name}+ ' '"></span><p th:text="${expense.type}"></p></td>
                                         <td class="value-cell-expense" th:text="'-'+${expense.value}+'zł'"></td>
                                         <td class="date-cell-expense"
                                             th:text="${#dates.format(expense.date, 'dd-MM-yyyy HH:mm')}"></td>
@@ -200,7 +199,7 @@
                             </div>
                         </div>
                         <div class="all-income tab-pane fade" id="expensesAndIncomes">
-                            <div class="panel-body table-responsive">
+                            <div class="panel-body table-responsive money-table">
                                 <table class="table table-borderless table-spacing" width="100%">
                                     <tr class="incomeAndExpenseTable"
                                         th:each="incomeAndExpense : ${incomesAndExpensesTogether}">
@@ -214,8 +213,7 @@
                                             th:classappend="${incomeAndExpense.isIncome()} ? id-cell : id-cell-expense"
                                             th:text="'#'+${incomeAndExpense.id}"></td>
                                         <td class=""
-                                            th:classappend="${incomeAndExpense.isIncome()} ? name-type-cell : name-type-cell-expense"
-                                            th:text="${incomeAndExpense.name}+ ' ' +${incomeAndExpense.type}"></td>
+                                            th:classappend="${incomeAndExpense.isIncome()} ? name-type-cell : name-type-cell-expense"><span th:text="${incomeAndExpense.name}+ ' ' "></span><p th:text="${incomeAndExpense.type}"></p></td>
                                         <td class=""
                                             th:classappend="${incomeAndExpense.isIncome()} ? value-cell : value-cell-expense"
                                             th:text="${incomeAndExpense.value}+'zł'"></td>
