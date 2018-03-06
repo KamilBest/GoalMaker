@@ -47,13 +47,13 @@
                         </div>
                         <div class="form-group">
                             <label for="id">ID</label>
-                            <div class="input-group">
+                            <div class="input-group readonly">
                             <span class="input-group-addon bg-blue">
                                 <span class="ion ion-minus"></span>
                             </span>
                                 <input type="text" class="form-control" id="id" name="incomeId"
                                        placeholder="id" th:value="${chosenIncome!=null? chosenIncome.id_income : ' '}"
-                                       readonly>
+                                       readonly disabled>
                             </div>
                         </div>
                         <div class="form-group">
