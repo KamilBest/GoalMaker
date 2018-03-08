@@ -65,7 +65,7 @@ public class IncomeController {
         incomeService.addIncome(income);
 
         //update user current state to goal
-        userFinancesService.updateCurrentStateToGoal(income);
+        /*userFinancesService.updateGoalBalance(income);*/
         userFinancesService.updateAccountBalance(gmUser.getUserFinances(), income.getValue(), true);
         return "redirect:/index";
     }

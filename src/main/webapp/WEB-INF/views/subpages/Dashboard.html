@@ -49,7 +49,7 @@
                         <p>
                             <span class="panel-title">POSTĘP</span>
                             <span class="panel-value"
-                                  th:text="${currentUserFinances.goal_balance+' / '+ currentUserGoal.value} + 'zł'"></span>
+                                  th:text="${currentUserFinancesView.getGoalBalance()+' / '+ currentUserGoal.value} + 'zł'"></span>
                         </p>
                     </div>
                 </div>
@@ -58,7 +58,9 @@
                         <span class="panel-icon"><img src="/assets/img/dashboard-icons/MoneyBag_48px.png"/></span>
                         <p>
                             <span class="panel-title">STAN KONTA</span>
-                            <span class="panel-value" th:text="${currentUserFinances.account_balance} + 'zł'"></span>
+                            <span class="panel-value" th:text="${currentUserFinancesView.getRealAccountBalance()} + 'zł'"></span>
+                            <br>
+                            <small th:text=" 'Po odliczeniu na cel: ' + ${currentUserFinancesView.getAccountBalance()} + 'zł'"></small>
                         </p>
                     </div>
                 </div>
@@ -68,6 +70,15 @@
                         <p>
                             <span class="panel-title">SZACOWANY CZAS</span>
                             <span class="panel-value">37 DNI</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-2" >
+                    <div class="metric income-panel">
+                        <p class="panel-button">
+                            <span class="panel-icon"><img src="/assets/img/dashboard-icons/Refund_48px.png"/></span>
+                            <span class="panel-title-button">PRZELEJ</span>
+                            <span class="panel-value-button">NA CEL</span>
                         </p>
                     </div>
                 </div>

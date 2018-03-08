@@ -65,9 +65,10 @@ public class DashboardController {
         }
 
         //get this user finances, to display his incomes and expenses
-        model.addAttribute("currentUserFinances", gmUser.getUserFinances());
+        model.addAttribute("currentuserFinancesTable", gmUser.getUserFinances());
         long currentUserFinancesId = gmUser.getUserFinances().getId_user_finances();
 
+        model.addAttribute("currentUserFinancesView", userFinancesService.getUserFinanceViewById(currentUserFinancesId));
         //PROGRESS BAR
 
         //display records of given amount
