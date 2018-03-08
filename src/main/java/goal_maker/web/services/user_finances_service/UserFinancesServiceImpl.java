@@ -33,4 +33,9 @@ public class UserFinancesServiceImpl implements UserFinancesService {
     @Override
     public void updateCurrentStateToGoal(UserFinances userFinances) {userFinancesDao.updateCurrentStateToGoal(userFinances);
     }
+
+    @Override
+    public void updateRealAccountBalance(Long userFinancesId, Long newRealAccountBalance) {
+        userFinancesDao.updateRealAccountBalance(userFinancesId,newRealAccountBalance);
+    }
 }

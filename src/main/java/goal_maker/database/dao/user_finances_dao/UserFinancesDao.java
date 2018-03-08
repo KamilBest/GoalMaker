@@ -12,4 +12,6 @@ public interface UserFinancesDao {
     void addUserFinance(UserFinances userFinances);
     void updateAccountBalance(UserFinances userFinances);
     void updateCurrentStateToGoal(UserFinances userFinances);
+    void updateRealAccountBalance(Long userFinancesId, Long newRealAccountBalance);
+
 }
