@@ -98,67 +98,67 @@
     <div class="container-fluid" th:if="${currentUserGoal!=null}">
         <div class="row">
             <div class="col-md-4">
-                    <div class="panel bg-black">
-                        <div class="panel-body panel-incomes-expenses panel-tables">
-                            <div class="col-md-12">
-                                <h1 class="text-center panel-header-text">Przychód okresowy</h1>
-                                <div class="panel-inc-exp">
+                <div class="panel bg-black">
+                    <div class="panel-body panel-incomes-expenses panel-tables">
+                        <div class="col-md-12">
+                            <h1 class="text-center panel-header-text">Przychód okresowy</h1>
+                            <div class="panel-inc-exp">
                                 <span class="panel-icon-inc-exp"><img
                                         src="../../../assets/img/dashboard-icons/RequestMoney_60px.png"/></span>
-                                    <div class="slideShow" th:each="income : ${lastIncomeList} ">
-                                        <p class="panel-text slides">
-                                            <span class="panel-from-inc-exp" th:text="${income.type}">Pensja</span>
-                                            <span class="panel-title-inc-exp"
-                                                  th:text="${income.name}">Programista</span>
-                                            <span class="panel-value-inc-exp green-text"
-                                                  th:text="'+'+${income.value}+' zł'">4200 zł</span>
-                                            <span class="panel-days-inc-exp">za 20 dni</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <h1 class="text-center panel-header-text">Wydatek okresowy</h1>
-                                <div class="panel-inc-exp">
-                                <span class="panel-icon-inc-exp"><img
-                                        src="../../../assets/img/dashboard-icons/InitiateMoneyTransfer_60px.png"/></span>
-                                    <div class="slideShow" th:each="expenses : ${lastExpensesList} ">
-                                        <p class="panel-text slides2">
-                                            <span class="panel-from-inc-exp" th:text="${expenses.type}">Rachunek</span>
-                                            <span class="panel-title-inc-exp" th:text="${expenses.name}">Prąd</span>
-                                            <span class="panel-value-inc-exp red-text"
-                                                  th:text="'-'+${expenses.value}+' zł'">4200 zł</span>
-                                            <span class="panel-days-inc-exp">za 20 dni</span>
-                                        </p>
-                                    </div>
+                                <div class="slideShow" th:each="income : ${lastIncomeList} ">
+                                    <p class="panel-text slides">
+                                        <span class="panel-from-inc-exp" th:text="${income.type}">Pensja</span>
+                                        <span class="panel-title-inc-exp"
+                                              th:text="${income.name}">Programista</span>
+                                        <span class="panel-value-inc-exp green-text"
+                                              th:text="'+'+${income.value}+' zł'">4200 zł</span>
+                                        <span class="panel-days-inc-exp">za 20 dni</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-            </div>
-            <div class="col-md-4">
-                    <div class="panel bg-black panel-tables">
-                        <div class="panel-body">
-                            <h1 class="text-center panel-header-text">Zrealizowane cele</h1>
-                            <div class="table-responsive realised-table-responsive">
-                                <table class="table table-borderless table-spacing realisedTable" width="100%">
-                                    <tr th:each="goal : ${realisedGoals}">
-                                        <td class="realised-goal-cell"><img
-                                                th:src="@{'/assets/img/dashboard-icons/'+${goal.category.name}+'.png'}"/>
-                                        </td>
-                                        <td><span class="realised-goal" th:text="${goal.name}"></span><span
-                                                class="realised-type" th:text="${goal.category.name}"></span></td>
-                                        <td><span class="title-save">Uzbierano</span><span class="realised-value"
-                                                                                           th:text="${goal.value} + ' zł / '"></span><span
-                                                th:text="${goal.number_of_days} + ' dni'"
-                                                class="realised-days"></span></td>
-                                        </td>
-                                    </tr>
-                                </table>
+                        <div class="col-md-12">
+                            <h1 class="text-center panel-header-text">Wydatek okresowy</h1>
+                            <div class="panel-inc-exp">
+                                <span class="panel-icon-inc-exp"><img
+                                        src="../../../assets/img/dashboard-icons/InitiateMoneyTransfer_60px.png"/></span>
+                                <div class="slideShow" th:each="expenses : ${lastExpensesList} ">
+                                    <p class="panel-text slides2">
+                                        <span class="panel-from-inc-exp" th:text="${expenses.type}">Rachunek</span>
+                                        <span class="panel-title-inc-exp" th:text="${expenses.name}">Prąd</span>
+                                        <span class="panel-value-inc-exp red-text"
+                                              th:text="'-'+${expenses.value}+' zł'">4200 zł</span>
+                                        <span class="panel-days-inc-exp">za 20 dni</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel bg-black panel-tables">
+                    <div class="panel-body">
+                        <h1 class="text-center panel-header-text">Zrealizowane cele</h1>
+                        <div class="table-responsive realised-table-responsive">
+                            <table class="table table-borderless table-spacing realisedTable" width="100%">
+                                <tr th:each="goal : ${realisedGoals}">
+                                    <td class="realised-goal-cell"><img
+                                            th:src="@{'/assets/img/dashboard-icons/'+${goal.category.name}+'.png'}"/>
+                                    </td>
+                                    <td><span class="realised-goal" th:text="${goal.name}"></span><span
+                                            class="realised-type" th:text="${goal.category.name}"></span></td>
+                                    <td><span class="title-save">Uzbierano</span><span class="realised-value"
+                                                                                       th:text="${goal.value} + ' zł / '"></span><span
+                                            th:text="${goal.number_of_days} + ' dni'"
+                                            class="realised-days"></span></td>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-4">
                 <div class="panel bg-black panel-tables">
                     <div class="panel-heading">
@@ -175,7 +175,8 @@
                                     <tr class="incomesTable" th:each="income : ${lastIncomeList} ">
                                         <td class="chevron-cell"><i class="fa fa-chevron-up"></i></td>
                                         <td class="id-cell" th:text="'#'+${income.id_income}"></td>
-                                        <td class="name-type-cell"><span th:text="${income.name}+ ' '"></span><p th:text="${income.type}"></p></td>
+                                        <td class="name-type-cell"><span th:text="${income.name}+ ' '"></span>
+                                            <p th:text="${income.type}"></p></td>
                                         <td class="value-cell" th:text="'+'+${income.value}+'zł'"></td>
                                         <td class="date-cell"
                                             th:text="${#dates.format(income.date, 'dd-MM-yyyy HH:mm')}"></td>
@@ -189,7 +190,8 @@
                                     <tr class="expensesTable" th:each="expense : ${lastExpensesList}">
                                         <td class="chevron-cell-expense"><i class="fa fa-chevron-down"></i></td>
                                         <td class="id-cell-expense" th:text="'#'+${expense.idExpenses}"></td>
-                                        <td class="name-type-cell-expense"><span th:text="${expense.name}+ ' '"></span><p th:text="${expense.type}"></p></td>
+                                        <td class="name-type-cell-expense"><span th:text="${expense.name}+ ' '"></span>
+                                            <p th:text="${expense.type}"></p></td>
                                         <td class="value-cell-expense" th:text="'-'+${expense.value}+'zł'"></td>
                                         <td class="date-cell-expense"
                                             th:text="${#dates.format(expense.date, 'dd-MM-yyyy HH:mm')}"></td>
@@ -212,7 +214,9 @@
                                             th:classappend="${incomeAndExpense.isIncome()} ? id-cell : id-cell-expense"
                                             th:text="'#'+${incomeAndExpense.id}"></td>
                                         <td class=""
-                                            th:classappend="${incomeAndExpense.isIncome()} ? name-type-cell : name-type-cell-expense"><span th:text="${incomeAndExpense.name}+ ' ' "></span><p th:text="${incomeAndExpense.type}"></p></td>
+                                            th:classappend="${incomeAndExpense.isIncome()} ? name-type-cell : name-type-cell-expense">
+                                            <span th:text="${incomeAndExpense.name}+ ' ' "></span>
+                                            <p th:text="${incomeAndExpense.type}"></p></td>
                                         <td class=""
                                             th:classappend="${incomeAndExpense.isIncome()} ? value-cell : value-cell-expense"
                                             th:text="${incomeAndExpense.value}+'zł'"></td>
