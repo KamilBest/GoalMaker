@@ -16,4 +16,5 @@ public interface UserFinancesService {
 
     void updateCurrentStateToGoal(Income income);
     void resetCurrentStateToGoal(long userFinancesId);
+     long nextId();
 }

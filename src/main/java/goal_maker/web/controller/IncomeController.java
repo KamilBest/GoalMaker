@@ -29,13 +29,19 @@ public class IncomeController {
     UserFinancesService userFinancesService;
 
     @RequestMapping(value ="/allIncomes", method = RequestMethod.GET)
-    public String allIncomes(Model model)
+    public String allIncomes(Model model, @RequestParam(value = "incomeId")long incomeId)
     {
+        model.addAttribute("location","incomesList");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
 
-        model.addAttribute("location","incomesList");
+        if(incomeId>0) {
+            Income chosenIncome = incomeService.getIncomeById(incomeId);
+            model.addAttribute("chosenIncome", chosenIncome);
+        }
+        else
+            model.addAttribute("chosenIncome", null);
         model.addAttribute("allIncomes", incomeService.findAllUserIncomes(gmUser.getUserFinances().getId_user_finances()));
         return "index";
     }
@@ -62,5 +68,32 @@ public class IncomeController {
         userFinancesService.updateCurrentStateToGoal(income);
         userFinancesService.updateAccountBalance(gmUser.getUserFinances(), income.getValue(), true);
         return "redirect:/index";
+    }
+
+/*
+    @RequestMapping(value = "/editIncome", method = RequestMethod.GET)
+    public String editIncome(Model model, @RequestParam(value = "incomeId") long incomeId) {
+        Income income=incomeService.getIncomeById(incomeId);
+        model.addAttribute( "chosenIncome", income);
+        return "redirect:/allIncomes";
+    }*/
+    /**
+     * Income edit
+     * @param model
+     * @param id given income id
+     * @return
+     */
+
+    @RequestMapping(value = "/editIncome", method = RequestMethod.POST)
+    public String editIncome(@RequestParam(value = "incomeId") long incomeId, @RequestParam(value = "name") String name, @RequestParam(value = "type") String type, @RequestParam(value = "value") long value) {
+        Income income=new Income(incomeId,name, type, value);
+        incomeService.modifyIncome(income);
+        return "redirect:/allIncomes?incomeId=0";
+    }
+
+    @RequestMapping(value = "/deleteIncome", method = RequestMethod.GET)
+    public String deleteIncome(@RequestParam(value = "incomeId") long incomeId) {
+        incomeService.deleteIncome(incomeId);
+        return "redirect:/allIncomes?incomeId=0";
     }
 }

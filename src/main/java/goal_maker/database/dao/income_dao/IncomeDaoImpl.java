@@ -29,6 +29,13 @@ public class IncomeDaoImpl implements IncomeDao {
         return incomes;
     }
 
+    @Override
+    public Income getIncomeById(long incomeId) {
+        String sqlSelect = "SELECT * FROM goal_maker.income WHERE id_income = " + incomeId;
+        Query query = entityManager.createNativeQuery(sqlSelect, Income.class);
+        Income income = (Income) query.getSingleResult();
+        return income;
+    }
 
     @Transactional
     @Override
@@ -48,5 +55,25 @@ public class IncomeDaoImpl implements IncomeDao {
         String sqlSelect = "SELECT id_income, type, value, id_user_finances, date, name  FROM goal_maker.income WHERE id_user_finances=" + id + "ORDER BY id_income DESC LIMIT " + amount;
         List<Income> lastIncomes = entityManager.createNativeQuery(sqlSelect, Income.class).getResultList();
         return lastIncomes;
+    }
+
+    @Transactional
+    @Override
+    public void modifyIncome(Income income) {
+        String sqlUpdate = "UPDATE goal_maker.income SET type=?, value=?, name=?" +
+                " WHERE id_income="+income.getId_income();
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdate, Income.class);
+        updateQuery.setParameter(1, income.getType());
+        updateQuery.setParameter(2,income.getValue());
+        updateQuery.setParameter(3, income.getName());
+        updateQuery.executeUpdate();
+    }
+
+    @Transactional
+    @Override
+    public void deleteIncome(long incomeId) {
+        String sqlDelete = "DELETE FROM goal_maker.income WHERE id_income = "+incomeId;
+        Query deleteQuery = entityManager.createNativeQuery(sqlDelete, Income.class);
+        deleteQuery.executeUpdate();
     }
 }

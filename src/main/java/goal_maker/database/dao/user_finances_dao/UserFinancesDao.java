@@ -14,4 +14,5 @@ public interface UserFinancesDao {
     void updateAccountBalance(UserFinances userFinances, long value, boolean addOrSubtract);
     void updateCurrentStateToGoal(Income income);
     void resetCurrentStateToGoal(long userFinancesId);
+    long nextId();
 }

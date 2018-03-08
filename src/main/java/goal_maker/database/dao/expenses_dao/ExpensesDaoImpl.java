@@ -26,6 +26,14 @@ public class ExpensesDaoImpl implements ExpensesDao {
         return expensesList;
     }
 
+    @Override
+    public Expenses getExpenseById(long expenseId) {
+        String sqlSelect = "SELECT * FROM goal_maker.expenses WHERE id_expenses = " + expenseId;
+        Query query = entityManager.createNativeQuery(sqlSelect, Expenses.class);
+        Expenses expenses = (Expenses) query.getSingleResult();
+        return expenses;
+    }
+
     @Transactional
     @Override
     public void addExpenses(Expenses expenses) {
@@ -44,5 +52,25 @@ public class ExpensesDaoImpl implements ExpensesDao {
         String sqlSelect = "SELECT id_expenses, type, value, id_user_finances, date, name FROM goal_maker.expenses WHERE id_user_finances=" + id + "ORDER BY id_expenses DESC LIMIT " + amount;
         List<Expenses> lastExpenses = entityManager.createNativeQuery(sqlSelect, Expenses.class).getResultList();
         return lastExpenses;
+    }
+
+    @Transactional
+    @Override
+    public void modifyExpense(Expenses expenses) {
+        String sqlUpdate = "UPDATE goal_maker.expenses SET type=?, value=?, name=? WHERE id_expenses="+expenses.getIdExpenses();
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdate, Expenses.class);
+        updateQuery.setParameter(1, expenses.getType());
+        updateQuery.setParameter(2,expenses.getValue());
+        updateQuery.setParameter(3, expenses.getName());
+        updateQuery.executeUpdate();
+    }
+
+    @Transactional
+    @Override
+    public void deleteExpense(long expenseId) {
+        String sqlDelete = "DELETE FROM goal_maker.expenses WHERE id_expenses="+expenseId;
+
+        Query deleteQuery = entityManager.createNativeQuery(sqlDelete, Expenses.class);
+        deleteQuery.executeUpdate();
     }
 }

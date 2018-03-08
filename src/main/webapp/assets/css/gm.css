@@ -13,24 +13,24 @@
 	width: 25px;
 }
 .goal-body{
-	color: white;
+    position: absolute;
+    padding: 25px;
 }
-.goal-body>a{
-	margin-top: 120px;
+.goal-body h1{
+	font-weight: bold;
+	font-size: 2em;
+	color: #fff;
+    margin-bottom: 25px;
 }
-.goal-name{
-	color: lime;
-	font-size: 4rem;
-	font-weight: 800;
-	text-shadow: 1px 2px 1px #000;
-}
-.goal-body>p{
-	font-size: 2rem;
-	font-weight: 600;
-	text-shadow: 1px 2px 1px #000;
+.goal-body-bg-rounded{
+    width: 50%;
+	height: 100%;
+	-webkit-border-radius: 0 50% 50% 0 / 50% 300% 300% 50%;
+    background: #2B333E;
+    position: absolute;
 }
 .all-income {
-	height: 550px;
+	height: 250px;
 }
 .all-income{
 	margin-top: 15px;
@@ -120,7 +120,10 @@
 {
 	background: #2F3640;
 }
-
+.noHorizontalScroll
+{
+	overflow: hidden;
+}
 .income-panel{
 	cursor: pointer;
 	background: rgba(47,54,64,1);
@@ -200,12 +203,13 @@
 .incomesTable:hover, .expensesTable:hover, .incomeAndExpenseTable:hover{
 	background-color: #323942;
 }
+
 .value-cell{
 	color: #49d61c;
 	font-weight: bold;
 	text-align: left;
 	width: 25%;
-	font-size: 1.8rem;
+	font-size: .9em;
 	padding-left: 0px;
 	vertical-align: middle;
 }
@@ -214,15 +218,22 @@
 	font-weight: bold;
 	text-align: left;
 	width: 25%;
-	font-size: 1.8rem;
+	font-size: .9em;
 	padding-left: 0px;
 	vertical-align: middle;
 }
-.name-type-cell, .name-type-cell-expense{
+.name-type-cell span, .name-type-cell-expense span{
 	color: #fff;
 	font-weight: bolder;
-	font-size: 1.8rem;
+	font-size: .9em;
 	vertical-align: middle;
+	text-transform: uppercase;
+}
+.name-type-cell p, .name-type-cell-expense p{
+	color: #686A6D;
+	font-size: .5em;
+	text-transform: uppercase;
+	display: inline-block;
 }
 .id-cell, .date-cell, .id-cell-expense, .date-cell-expense{
 	vertical-align: top!important;
@@ -231,9 +242,9 @@
 	text-align: left;
 	font-size: 1rem;
 }
-.incomesTable, .expensesTable, .incomeAndExpenseTable{
-	height: 45px;
-}
+/*.incomesTable, .expensesTable, .incomeAndExpenseTable{*/
+	/*height: 45px;*/
+/*}*/
 .nav-item>li.active>a.greenInc, .nav-tabs>li.active>a.greenInc:hover, .nav-tabs>li.active>a.greenInc:focus{
 	border: 1px solid #49d61c;
 	background: #49d61c;
@@ -279,11 +290,10 @@
 	padding: 5px;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
-	width: 150px;
-	height: 25px;
+	width: 100px;
 	cursor: pointer;
 	-webkit-border-radius: 40px;
-	border-radius: 4px;
+	border-radius: 5px;
 	text-align: center;
 	-o-text-overflow: clip;
 	text-overflow: clip;
@@ -360,7 +370,6 @@ tr.incomesTable td{
 .nav-item{
 	text-align: center;
 	width: 100%;
-	margin-top: 25px;
 	margin-bottom: -25px;
 }
 .nav-item > li{
@@ -658,16 +667,11 @@ input[type=range]{
 .slides{
 	display:none;
 }
-.panel-tables{
-	height: 740px;
+.dashboard-panel{
+	height: 450px;
 }
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
 	vertical-align: middle;
-}
-.name-type-cell span, .name-type-cell-expense span{
-    font-size: 12px;
-    color: #686A6D;
-    text-transform: uppercase;
 }
 .btn-range{
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00aaff+0,00aaff+51,19b2ff+51,19b2ff+100 */
@@ -734,31 +738,34 @@ input[type=range]{
 	-moz-box-shadow: inset 8px 0 0 0 #00aaff;
 	box-shadow: inset 8px 0 0 0 #00aaff;
 }
+.realised-goal-cell img{
+	width: 48px;
+}
 .realised-goal{
 	display: block;
 	color: #fff;
-	font-size: 2em;
+	font-size: 1.2em;
 	font-weight: bold;
 	text-transform: uppercase;
 }
 .realised-type{
 	color: #686A6D;
-	font-size: 12px;
+	font-size: 10px;
 	text-transform: uppercase;
 }
 .title-save{
 	display: block;
 	color: #686A6D;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 }
 .realised-value{
-	font-size: 1.2em;
+	font-size: 1em;
 	color: #fff;
 	font-weight: 800;
 }
 .realised-days{
-	font-size: 1.2em;
+	font-size: 1em;
 	font-weight: 500;
 	color: #00aaff;
 	text-transform: uppercase;
@@ -785,6 +792,7 @@ input[type=range]{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f3640', endColorstr='#353c45', GradientType=1 );
 	border: none;
 	color: #fff;
+	text-shadow: 0 0 4px #000;
 }
 .table-striped>tbody>tr:nth-child(even)>td {
 	background-color: #DDDEE3!important;
@@ -831,4 +839,32 @@ input[type=range]{
 	font-size: 15px;
 	width: 15px;
 }
-
+.scroll-dashboard-panel{
+	height: 350px;
+	overflow-y: scroll;
+}
+.scroll-dashboard-table{
+	height: 250px;
+	overflow-y: scroll;
+}
+.equal{
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+.panel-tables{
+	height: 450px;
+}
+.money-table{
+	height: 30vh;
+}
+.realised-table-responsive{
+	height: 60vh;
+}
+.readonly input{
+	background: #f1f1f1;
+	color: #aaa;
+}
+.readonly span{
+	background: #aaa;
+}

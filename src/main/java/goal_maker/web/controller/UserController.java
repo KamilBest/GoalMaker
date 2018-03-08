@@ -1,5 +1,9 @@
 package goal_maker.web.controller;
 
+import goal_maker.database.tables.Goal;
+import goal_maker.database.tables.UserFinances;
+import goal_maker.web.services.goal_service.GoalService;
+import goal_maker.web.services.user_finances_service.UserFinancesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -19,6 +23,12 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UserFinancesService userFinancesService;
+
+    @Autowired
+    GoalService goalService;
+
     @RequestMapping(value = "/getUserByLogin", method = RequestMethod.GET)
     public void getUserByLogin(Model model, @RequestParam String login) {
         GmUser gmUser = userService.getUserByLogin(login);
@@ -29,7 +39,7 @@ public class UserController {
     @RequestMapping(value = "/getUsersList", method = RequestMethod.GET)
     public String getUsersList(Model model) {
         model.addAttribute("location", "usersList");
-        model.addAttribute("UsersList", userService.getUsersList());
+        model.addAttribute("usersList", userService.getUsersList());
         return "index";
     }
 
@@ -48,7 +58,11 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String addUser(@ModelAttribute("user") GmUser user) {
+        UserFinances userFinances = new UserFinances(userFinancesService.nextId(), 0L,0L);
+        user.setUserFinances(userFinances);
         userService.addUser(user);
+        userFinancesService.addUserFinance(userFinances);
+
         return "redirect:/login";
     }
 
