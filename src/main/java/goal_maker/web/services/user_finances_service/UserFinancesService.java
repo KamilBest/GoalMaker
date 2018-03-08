@@ -15,6 +15,12 @@ public interface UserFinancesService {
     void updateAccountBalance(UserFinances userFinances, long value, boolean addOrSubtract);
 
     void updateCurrentStateToGoal(Income income);
+
     void resetCurrentStateToGoal(long userFinancesId);
-     long nextId();
+
+    long nextId();
+
+    void updateRealAccountBalance(Long userFinancesId, Long newRealAccountBalance);
+
+
 }

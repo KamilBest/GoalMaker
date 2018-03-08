@@ -96,6 +96,19 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
         BigInteger newID= (BigInteger) entityManager.createNativeQuery(sqlSelect).getSingleResult();
         return newID.longValue();
     }
+
+    @Transactional
+    @Override
+    public void updateRealAccountBalance(Long userFinancesId, Long newRealAccountBalance) {
+
+        String sqlUpdate = "UPDATE goal_maker.user_finances SET real_account_balance=? WHERE id_user_finances=?";
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
+        updateQuery.setParameter(1, newRealAccountBalance);
+        updateQuery.setParameter(2, userFinancesId);
+
+        updateQuery.executeUpdate();
+
+    }
 }
 
 
