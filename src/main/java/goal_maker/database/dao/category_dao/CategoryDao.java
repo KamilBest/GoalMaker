@@ -5,6 +5,8 @@ import goal_maker.database.tables.Category;
 import java.util.List;
 
 public interface CategoryDao {
-    public List<Category> findAll();
-    public Category getCategoryById(long id);
+     List<Category> findAll();
+     Category getCategoryById(long id);
+     void addCategory(Category category);
+     void editCategory(Long categoryId,String newCategoryName);
 }
