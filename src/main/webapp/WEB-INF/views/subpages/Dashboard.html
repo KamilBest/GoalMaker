@@ -76,7 +76,7 @@
                 <div class="col-md-2" th:onclick="'javascript:moveTo(\'' + @{/updateGoalBalance} + '\')'" style="width: auto;" >
                     <div class="metric income-panel">
                         <p class="panel-button">
-                            <span class="panel-icon"><img src="/assets/img/dashboard-icons/Refund_48px.png"/></span>
+                            <span class="panel-icon"><img src="/assets/img/dashboard-icons/Goal_48px.png"/></span>
                             <span class="panel-title-button">PRZELEJ</span>
                             <span class="panel-value-button">NA CEL</span>
                         </p>
@@ -165,7 +165,10 @@
                                             class="realised-days"></span></td>
                                     </td>
                                 </tr>
+
                             </table>
+                            <br>
+                            <span th:if="${realisedGoals==null || realisedGoals.isEmpty()}">Aktualnie nie masz zrealizowanych celów</span>
                         </div>
                     </div>
                 </div>
