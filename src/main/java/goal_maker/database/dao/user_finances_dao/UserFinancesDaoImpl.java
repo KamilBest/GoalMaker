@@ -28,9 +28,9 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
 
     @Override
     public UserFinances getUserFinanceById(long id) {
-        String sqlSelect = "SELECT * FROM goal_maker.user_finances WHERE id_user_finances="+id;
+        String sqlSelect = "SELECT * FROM goal_maker.user_finances WHERE id_user_finances=" + id;
         Query query = entityManager.createNativeQuery(sqlSelect, UserFinances.class);
-        UserFinances userFinances=(UserFinances)query.getSingleResult();
+        UserFinances userFinances = (UserFinances) query.getSingleResult();
         return userFinances;
     }
 
@@ -46,22 +46,18 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
     }
 
     /**
-     *
      * @param userFinances
      * @param value
-     * @param addOrSubtract true - add / false-subtract
+     * @param isIncome     true - add / false-subtract
      */
     @Transactional
     @Override
-    public void updateAccountBalance(UserFinances userFinances, long value, boolean addOrSubtract) {
+    public void updateRealAccountBalance(UserFinances userFinances, long value, boolean isIncome) {
         String sqlUpdate = "UPDATE goal_maker.user_finances SET real_account_balance=? WHERE id_user_finances=?";
         Query updateQuery = entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
-        if(addOrSubtract) {
+        if (isIncome) {
             updateQuery.setParameter(1, userFinances.getReal_account_balance() + value);
-
-        }
-        else
-        {
+        } else {
             updateQuery.setParameter(1, userFinances.getReal_account_balance() - value);
         }
         updateQuery.setParameter(2, userFinances.getId_user_finances());
@@ -72,11 +68,11 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
     @Transactional
     @Override
     public void updateGoalBalance(Income income) {
-        String sqlUpdate= "UPDATE goal_maker.user_finances SET goal_balance=? WHERE id_user_finances=?";
-        Query updateQuery=entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
-        UserFinances userFinances=income.getUser_finances();
+        String sqlUpdate = "UPDATE goal_maker.user_finances SET goal_balance=? WHERE id_user_finances=?";
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
+        UserFinances userFinances = income.getUser_finances();
 
-        updateQuery.setParameter(1, userFinances.getGoal_balance()+income.getValue());
+        updateQuery.setParameter(1, userFinances.getGoal_balance() + income.getValue());
         updateQuery.setParameter(2, userFinances.getId_user_finances());
         updateQuery.executeUpdate();
 
@@ -84,9 +80,20 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
 
     @Transactional
     @Override
+    public void updateGoalBalance(long value, UserFinances userFinances) {
+        String sqlUpdate = "UPDATE goal_maker.user_finances SET goal_balance=? WHERE id_user_finances=?";
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
+
+        updateQuery.setParameter(1, value);
+        updateQuery.setParameter(2, userFinances.getId_user_finances());
+        updateQuery.executeUpdate();
+    }
+
+    @Transactional
+    @Override
     public void resetCurrentStateToGoal(long userFinancesId) {
-        String sqlUpdate= "UPDATE goal_maker.user_finances SET goal_balance=0 WHERE id_user_finances=?";
-        Query updateQuery=entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
+        String sqlUpdate = "UPDATE goal_maker.user_finances SET goal_balance=0 WHERE id_user_finances=?";
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
         updateQuery.setParameter(1, userFinancesId);
         updateQuery.executeUpdate();
     }
@@ -94,15 +101,15 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
     @Override
     public long nextId() {
         String sqlSelect = "SELECT (last_value + 1) AS new_id FROM goal_maker.user_finances_id_user_finances_seq";
-        BigInteger newID= (BigInteger) entityManager.createNativeQuery(sqlSelect).getSingleResult();
+        BigInteger newID = (BigInteger) entityManager.createNativeQuery(sqlSelect).getSingleResult();
         return newID.longValue();
     }
 
     @Override
     public UserFinancesView getUserFinanceViewById(long id) {
-        String sqlSelect = "SELECT * FROM goal_maker.user_finances_view WHERE id_user_finances="+id;
+        String sqlSelect = "SELECT * FROM goal_maker.user_finances_view WHERE id_user_finances=" + id;
         Query query = entityManager.createNativeQuery(sqlSelect, UserFinancesView.class);
-        UserFinancesView userFinancesView=(UserFinancesView) query.getSingleResult();
+        UserFinancesView userFinancesView = (UserFinancesView) query.getSingleResult();
         return userFinancesView;
     }
 }

@@ -3,7 +3,6 @@ package goal_maker.web.controller;
 
 import goal_maker.database.tables.Expenses;
 import goal_maker.database.tables.GmUser;
-import goal_maker.database.tables.UserFinances;
 import goal_maker.web.services.expenses_service.ExpensesService;
 import goal_maker.web.services.user_finances_service.UserFinancesService;
 import goal_maker.web.services.user_service.UserService;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Controller
 public class ExpensesController {
@@ -66,7 +64,7 @@ public class ExpensesController {
         Expenses expenses=new Expenses(type, value,name,gmUser.getUserFinances(),currentTime);
 
         expensesService.addExpenses(expenses);
-        userFinancesService.updateAccountBalance(gmUser.getUserFinances(), expenses.getValue(), false);
+        userFinancesService.updateRealAccountBalance(gmUser.getUserFinances(), expenses.getValue(), false);
 
         return "redirect:/index";
     }

@@ -12,8 +12,10 @@ public interface UserFinancesDao {
     List<UserFinances> findAll();
     UserFinances getUserFinanceById(long id);
     void addUserFinance(UserFinances userFinances);
-    void updateAccountBalance(UserFinances userFinances, long value, boolean addOrSubtract);
+    void updateRealAccountBalance(UserFinances userFinances, long value, boolean addOrSubtract);
     void updateGoalBalance(Income income);
+    void updateGoalBalance(long value, UserFinances userFinances);
+
     void resetCurrentStateToGoal(long userFinancesId);
     long nextId();
 
