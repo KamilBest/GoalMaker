@@ -84,17 +84,19 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
         String sqlUpdate = "UPDATE goal_maker.user_finances SET goal_balance=? WHERE id_user_finances=?";
         Query updateQuery = entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
 
-        updateQuery.setParameter(1, value);
+        updateQuery.setParameter(1, userFinances.getGoal_balance()+value);
         updateQuery.setParameter(2, userFinances.getId_user_finances());
         updateQuery.executeUpdate();
     }
 
     @Transactional
     @Override
-    public void resetCurrentStateToGoal(long userFinancesId) {
-        String sqlUpdate = "UPDATE goal_maker.user_finances SET goal_balance=0 WHERE id_user_finances=?";
+    public void removeGoalValue(long value, long userFinancesId) {
+        String sqlUpdate = "UPDATE goal_maker.user_finances SET goal_balance=? WHERE id_user_finances=?";
         Query updateQuery = entityManager.createNativeQuery(sqlUpdate, UserFinances.class);
-        updateQuery.setParameter(1, userFinancesId);
+        updateQuery.setParameter(1, value);
+        updateQuery.setParameter(2, userFinancesId);
+
         updateQuery.executeUpdate();
     }
 

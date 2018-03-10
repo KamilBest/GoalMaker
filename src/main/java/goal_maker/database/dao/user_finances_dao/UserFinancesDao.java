@@ -16,7 +16,7 @@ public interface UserFinancesDao {
     void updateGoalBalance(Income income);
     void updateGoalBalance(long value, UserFinances userFinances);
 
-    void resetCurrentStateToGoal(long userFinancesId);
+    void removeGoalValue(long value,long userFinancesId);
     long nextId();
 
     //USER FINANCES VIEW

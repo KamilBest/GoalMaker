@@ -31,6 +31,13 @@ public class GoalDaoImpl implements GoalDao {
         return goal;
     }
 
+    @Override
+    public List<Goal> getGoalsByState(long idGoalState) {
+        String sqlSelect = "SELECT * FROM goal_maker.goal WHERE id_goal_state= "+idGoalState;
+        List<Goal> goals = entityManager.createNativeQuery(sqlSelect, Goal.class).getResultList();
+        return goals;
+    }
+
     @Transactional
     @Override
     public void addGoal(Goal goal) {
@@ -88,6 +95,16 @@ public class GoalDaoImpl implements GoalDao {
         String sqlUpdate = "UPDATE goal_maker.goal SET id_goal_state = 3 WHERE id_goal=?";
         Query updateQuery = entityManager.createNativeQuery(sqlUpdate, GmUser.class);
         updateQuery.setParameter(1, goalId);
+        updateQuery.executeUpdate();
+    }
+
+    @Transactional
+    @Override
+    public void changeGoalState(long goalId, long idGoalState) {
+        String sqlUpdateGoal = "UPDATE goal_maker.goal SET id_goal_state=? WHERE id_goal=?";
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdateGoal, Goal.class);
+        updateQuery.setParameter(1,idGoalState);
+        updateQuery.setParameter(2, goalId);
         updateQuery.executeUpdate();
     }
 }

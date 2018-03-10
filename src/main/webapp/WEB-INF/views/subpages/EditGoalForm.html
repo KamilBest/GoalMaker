@@ -27,11 +27,10 @@
                         <div class="form-group form-group-custom">
                             <label class="label-form">Wybierz kategorię</label>
                             <div class="form-check">
-                                <div th:each="category : ${goalCategories}">
+                                <div>
                                     <label class="form-check-label bg-form-check">
-                                        <input class="form-check-input" name="categoryId" type="radio"
-                                               th:value="${category.id_category}" id="inlineRadioStable"/>
-                                        <span th:text="${category.name}"></span>
+
+                                        <span th:text="${goal.category.name}"></span>
                                     </label>
                                 </div>
                             </div>
@@ -43,7 +42,7 @@
                                     <div class="col-md-12">
                                         <div id="slider">
                                             <input title="hiddenSlider" id="hiddenslider" type="range"
-                                                   th:value="${goal.value}" name="value" style="display:none"
+                                                    th:value="${goal.value}" name="value" style="display:none"
                                                    min="1" max="100"/>
                                         </div>
                                     </div>

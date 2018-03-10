@@ -43,8 +43,8 @@ public class UserFinancesServiceImpl implements UserFinancesService {
     }
 
     @Override
-    public void resetCurrentStateToGoal(long userFinancesId) {
-        userFinancesDao.resetCurrentStateToGoal(userFinancesId);
+    public void removeGoalValue(long value, long userFinancesId) {
+        userFinancesDao.removeGoalValue(value, userFinancesId);
     }
 
     @Override

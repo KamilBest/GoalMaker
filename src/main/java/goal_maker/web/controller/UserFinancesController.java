@@ -45,4 +45,6 @@ public class UserFinancesController {
         userFinancesService.updateRealAccountBalance(gmUser.getUserFinances(),value, isIncome);
         return "redirect:/index";
     }
+
+
 }
