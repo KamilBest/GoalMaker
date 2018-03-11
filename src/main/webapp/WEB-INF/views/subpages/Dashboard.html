@@ -107,11 +107,11 @@
                                         src="../../../assets/img/dashboard-icons/RequestMoney_60px.png"/></span>
                                     <div class="slideShow" th:each="income : ${lastIncomeList} ">
                                         <p class="panel-text slides">
-                                            <span class="panel-from-inc-exp" th:text="${income.type}">Pensja</span>
+                                            <span class="panel-from-inc-exp" th:text="${income.type}"></span>
                                             <span class="panel-title-inc-exp"
-                                                  th:text="${income.name}">Programista</span>
+                                                  th:text="${income.name}"></span>
                                             <span class="panel-value-inc-exp green-text"
-                                                  th:text="'+'+${income.value}+' zł'">4200 zł</span>
+                                                  th:text="'+'+${income.value}+' zł'"></span>
                                             <span class="panel-days-inc-exp">za 20 dni</span>
                                         </p>
                                     </div>
@@ -124,10 +124,10 @@
                                         src="../../../assets/img/dashboard-icons/InitiateMoneyTransfer_60px.png"/></span>
                                     <div class="slideShow" th:each="expenses : ${lastExpensesList} ">
                                         <p class="panel-text slides2">
-                                            <span class="panel-from-inc-exp" th:text="${expenses.type}">Rachunek</span>
-                                            <span class="panel-title-inc-exp" th:text="${expenses.name}">Prąd</span>
+                                            <span class="panel-from-inc-exp" th:text="${expenses.type}"></span>
+                                            <span class="panel-title-inc-exp" th:text="${expenses.name}"></span>
                                             <span class="panel-value-inc-exp red-text"
-                                                  th:text="'-'+${expenses.value}+' zł'">4200 zł</span>
+                                                  th:text="'-'+${expenses.value}+' zł'"></span>
                                             <span class="panel-days-inc-exp">za 20 dni</span>
                                         </p>
                                     </div>

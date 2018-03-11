@@ -298,28 +298,30 @@
 
 </script>
 <script>
-    var myIndex = 0;
+    var xIndex = 0;
+    var yIndex = 0;
     carousel();
 
     function carousel() {
         var i;
         var x = document.getElementsByClassName("slides");
         var y = document.getElementsByClassName("slides2");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-            for (j = 0; j < y.length; j++) {
-                y[j].style.display = "none";
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+                for (j = 0; j < y.length; j++) {
+                    y[j].style.display = "none";
+                }
             }
+        xIndex++;
+        yIndex++;
+        if (xIndex > x.length) {
+            xIndex = 1
         }
-        myIndex++;
-        if (myIndex > x.length) {
-            myIndex = 1
+        if (yIndex > y.length) {
+            yIndex = 1
         }
-        if (myIndex > y.length) {
-            myIndex = 1
-        }
-        x[myIndex - 1].style.display = "block";
-        y[myIndex - 1].style.display = "block";
+        x[xIndex - 1].style.display = "block";
+        y[yIndex - 1].style.display = "block";
         setTimeout(carousel, 5000); // Change image every 2 seconds
     }
 </script>
