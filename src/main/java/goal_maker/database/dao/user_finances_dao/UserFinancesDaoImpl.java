@@ -113,6 +113,7 @@ public class UserFinancesDaoImpl implements UserFinancesDao {
         Query query = entityManager.createNativeQuery(sqlSelect, UserFinancesView.class);
         UserFinancesView userFinancesView = (UserFinancesView) query.getSingleResult();
         return userFinancesView;
+
     }
 }
 

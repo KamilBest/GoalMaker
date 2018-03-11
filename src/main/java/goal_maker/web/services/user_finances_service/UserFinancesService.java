@@ -23,4 +23,5 @@ public interface UserFinancesService {
 
     //USER FINANCES VIEW
     UserFinancesView getUserFinanceViewById(long id);
+
 }

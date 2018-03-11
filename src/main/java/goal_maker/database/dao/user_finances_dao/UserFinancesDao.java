@@ -22,4 +22,5 @@ public interface UserFinancesDao {
     //USER FINANCES VIEW
     UserFinancesView getUserFinanceViewById(long id);
 
+
 }

@@ -6,6 +6,10 @@ import goal_maker.web.services.user_service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+
+
+import goal_maker.web.services.user_finances_service.UserFinancesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,8 +47,7 @@ public class UserFinancesController {
         //update real account balance
         boolean isIncome=false;
         userFinancesService.updateRealAccountBalance(gmUser.getUserFinances(),value, isIncome);
-        return "redirect:/index";
-    }
+    UserFinancesService userFinancesService;
 
 
 }

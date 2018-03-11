@@ -55,5 +55,6 @@ public class UserFinancesServiceImpl implements UserFinancesService {
     @Override
     public UserFinancesView getUserFinanceViewById(long id) {
         return userFinancesDao.getUserFinanceViewById(id);
+
     }
 }

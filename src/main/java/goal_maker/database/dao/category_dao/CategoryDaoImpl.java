@@ -29,4 +29,21 @@ public class CategoryDaoImpl implements CategoryDao{
         Category category=(Category)query.getSingleResult();
         return category;
     }
+    @Override
+    public void addCategory(Category category) {
+        String sqlInsert ="    INSERT INTO goal_maker.category(name) VALUES (?);";
+        Query query = entityManager.createNativeQuery(sqlInsert, Category.class);
+        query.setParameter(1, category.getName());
+        query.executeUpdate();
+    }
+
+    @Override
+    public void editCategory(Long categoryId,String newCategoryName) {
+        String sqlUpdateCategory = "UPDATE goal_maker.category SET  name=? WHERE id_category=?";
+        Query updateQuery = entityManager.createNativeQuery(sqlUpdateCategory, Category.class);
+        updateQuery.setParameter(1, newCategoryName);
+        updateQuery.setParameter(2,categoryId);
+        updateQuery.executeUpdate();
+
+    }
 }
