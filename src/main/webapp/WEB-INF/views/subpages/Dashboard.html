@@ -23,34 +23,47 @@
             <div th:if="${currentUserGoal!=null}"
                  th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');background-size:cover; background-position:center; height:200px; position:relative;'">
                 <div class="goal-body-bg-rounded"></div>
-                <div id="ggGoal" class="gauge" data-value="1200" data-min="0" data-max="10000" data-gaugeWidthScale="0.4"></div>
                 <div class="panel-body">
                     <div class="goal-body">
-                        <span>Cel:</span>
-                        <h1 th:text="${currentUserGoal.name}"></h1>
-                        <a th:onclick="'javascript:moveTo(\'' + @{/deleteGoal?id=}+${currentUserGoal.id_goal} + '\')'"
-                           class="btn btn-range-reset">
-                            <span>Usuń</span>
-                        </a>
-                        <a th:onclick="'javascript:moveTo(\'' + @{/editGoal?id=}+${currentUserGoal.id_goal} + '\')'"
-                           class="btn btn-range">
-                            <span>Edytuj</span>
-                        </a>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span>Cel:</span>
+                                <h1 th:text="${currentUserGoal.name}"></h1>
+                                <a th:onclick="'javascript:moveTo(\'' + @{/deleteGoal?id=}+${currentUserGoal.id_goal} + '\')'"
+                                   class="btn btn-range-reset">
+                                    <span>Usuń</span>
+                                </a>
+                                <a th:onclick="'javascript:moveTo(\'' + @{/editGoal?id=}+${currentUserGoal.id_goal} + '\')'"
+                                   class="btn btn-range">
+                                    <span>Edytuj</span>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="ggGoal" class="gauge" data-min="0" th:attr="data-max=${currentUserGoal.value}, data-value=${currentUserFinances.goal_balance}"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid" th:if="${currentUserGoal!=null}">
+    <div class="container-fluid" >
         <div class="row equal">
             <div class="panel-buttons">
                 <div class="col-md-2" align="left" style="width: auto;">
                     <div class="metric user-panel">
                         <span class="panel-icon"><img src="/assets/img/dashboard-icons/InProgress_48px.png"/></span>
-                        <p>
+                        <p th:if="${currentUserGoal!=null}">
                             <span class="panel-title">POSTĘP</span>
-                            <span class="panel-value"
+                            <span  class="panel-value"
                                   th:text="${currentUserFinances.goal_balance+' / '+ currentUserGoal.value} + 'zł'"></span>
+
+                        </p>
+                        <p th:if="${currentUserGoal==null}">
+                            <span class="panel-title">POZOSTAŁE ŚRODKI</span>
+                            <span  class="panel-value"
+                                   th:text="${currentUserFinances.goal_balance}"></span>
+
                         </p>
                     </div>
                 </div>
@@ -59,7 +72,9 @@
                         <span class="panel-icon"><img src="/assets/img/dashboard-icons/MoneyBag_48px.png"/></span>
                         <p>
                             <span class="panel-title">STAN KONTA</span>
-                            <span class="panel-value" th:text="${currentUserFinances.account_balance} + 'zł'"></span>
+                            <span class="panel-value" th:text="${currentUserFinances.real_account_balance} + 'zł'"></span>
+
+
                         </p>
                     </div>
                 </div>
@@ -69,6 +84,15 @@
                         <p>
                             <span class="panel-title">SZACOWANY CZAS</span>
                             <span class="panel-value">37 DNI</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-2" th:onclick="'javascript:moveTo(\'' + @{/updateGoalBalance} + '\')'" style="width: auto;" >
+                    <div class="metric income-panel">
+                        <p class="panel-button">
+                            <span class="panel-icon"><img src="/assets/img/dashboard-icons/Goal_48px.png"/></span>
+                            <span class="panel-title-button">PRZELEJ</span>
+                            <span class="panel-value-button">NA CEL</span>
                         </p>
                     </div>
                 </div>
@@ -96,7 +120,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid" th:if="${currentUserGoal!=null}">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
                 <div class="panel bg-black">
@@ -155,7 +179,10 @@
                                             class="realised-days"></span></td>
                                     </td>
                                 </tr>
+
                             </table>
+                            <br>
+                            <span th:if="${realisedGoals==null || realisedGoals.isEmpty()}">Aktualnie nie masz zrealizowanych celów</span>
                         </div>
                     </div>
                 </div>

@@ -868,7 +868,23 @@ input[type=range]{
 .readonly span{
 	background: #aaa;
 }
-.gauge{
-	width: 100px;
-	height: 100px;
+@media screen and (max-width: 1024px) {
+	.gauge svg {
+		left: -50px!important;
+	}
+}
+@media screen and (max-width: 1700px) and (min-width: 1025px){
+	.gauge svg {
+		left: 0!important;
+	}
+}
+@media screen and (max-width: 2560px) and (min-width: 1700px){
+	.gauge svg {
+		left: 200px!important;
+	}
+}
+@media screen and (max-width: 800px){
+	.gauge svg{
+		display: none;
+	}
 }

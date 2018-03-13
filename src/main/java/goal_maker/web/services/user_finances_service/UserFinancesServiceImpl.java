@@ -4,6 +4,7 @@ package goal_maker.web.services.user_finances_service;
 import goal_maker.database.dao.user_finances_dao.UserFinancesDao;
 import goal_maker.database.tables.Income;
 import goal_maker.database.tables.UserFinances;
+import goal_maker.database.tables.views.UserFinancesView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,17 +29,22 @@ public class UserFinancesServiceImpl implements UserFinancesService {
     }
 
     @Override
-    public void updateAccountBalance(UserFinances userFinances, long value,boolean addOrSubtract) {
-        userFinancesDao.updateAccountBalance(userFinances, value, addOrSubtract);
+    public void updateRealAccountBalance(UserFinances userFinances, long value, boolean addOrSubtract) {
+        userFinancesDao.updateRealAccountBalance(userFinances, value, addOrSubtract);
     }
 
     @Override
-    public void updateCurrentStateToGoal(Income income) {userFinancesDao.updateCurrentStateToGoal(income);
+    public void updateGoalBalance(Income income) {userFinancesDao.updateGoalBalance(income);
     }
 
     @Override
-    public void resetCurrentStateToGoal(long userFinancesId) {
-        userFinancesDao.resetCurrentStateToGoal(userFinancesId);
+    public void updateGoalBalance(long value, UserFinances userFinances) {
+        userFinancesDao.updateGoalBalance(value,userFinances);
+    }
+
+    @Override
+    public void removeGoalValue(long value, long userFinancesId) {
+        userFinancesDao.removeGoalValue(value, userFinancesId);
     }
 
     @Override
@@ -47,7 +53,8 @@ public class UserFinancesServiceImpl implements UserFinancesService {
     }
 
     @Override
-    public void updateRealAccountBalance(Long userFinancesId, Long newRealAccountBalance) {
-        userFinancesDao.updateRealAccountBalance(userFinancesId,newRealAccountBalance);
+    public UserFinancesView getUserFinanceViewById(long id) {
+        return userFinancesDao.getUserFinanceViewById(id);
+
     }
 }

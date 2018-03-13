@@ -1,48 +1,30 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edytuj cel</title>
+    <title>Title</title>
 </head>
 <body>
-<section class="content" th:fragment="EditGoalForm">
+<section class="content" th:fragment="AccountMoneyTransfer">
     <div class="container">
         <div class="panel bg-black">
             <div class="panel-body">
-                <h1 class="form-text text-center">Edytuj cel</h1>
+                <h1 class="form-text text-center">Przelej pieniądze na cel</h1>
                 <hr class="form-line"/>
                 <div class="forms">
-                    <form th:action="@{/editGoal}" method="post">
-                        <input type="hidden" th:value="${goal.id_goal}" name="id"/>
-                        <div class="form-group form-group-custom">
-                            <label for="goalname" class="label-form">Nazwa celu</label>
-                            <div class="input-group">
-                            <span class="input-group-addon bg-blue">
-                                <span class="ion ion-pinpoint"></span>
-                            </span>
-                                <input type="text" th:value="${goal.name}" name="name"
-                                       class="form-control form-control-custom" id="goalname">
-                            </div>
-                        </div>
-                        <div class="form-group form-group-custom">
-                            <label class="label-form">Wybierz kategorię</label>
-                            <div class="form-check">
-                                <div>
-                                    <label class="form-check-label bg-form-check">
+                    <form th:action="@{/updateGoalBalance}" method="post">
 
-                                        <span th:text="${goal.category.name}"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        <label class="label-form">Stan konta: </label>
+                        <span th:text="${realAccountBalance}"></span>
+
                         <div class="form-group form-group-custom">
-                            <label class="label-form">Wybierz wartość celu</label>
+                            <label class="label-form">Wybierz jaką wartość chcesz przeznaczyć na cel:</label>
                             <div class="form-inline form-control none-border-transparent-bg">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div id="slider">
                                             <input title="hiddenSlider" id="hiddenslider" type="range"
-                                                    th:value="${goal.value}" name="value" style="display:none"
+                                                   name="value" style="display:none"
                                                    min="1" max="100"/>
                                         </div>
                                     </div>

@@ -2,6 +2,7 @@ package goal_maker.web.services.user_finances_service;
 
 import goal_maker.database.tables.Income;
 import goal_maker.database.tables.UserFinances;
+import goal_maker.database.tables.views.UserFinancesView;
 
 import java.util.List;
 
@@ -12,15 +13,15 @@ public interface UserFinancesService {
 
     void addUserFinance(UserFinances userFinances);
 
-    void updateAccountBalance(UserFinances userFinances, long value, boolean addOrSubtract);
+    void updateRealAccountBalance(UserFinances userFinances, long value, boolean addOrSubtract);
 
-    void updateCurrentStateToGoal(Income income);
+    void updateGoalBalance(Income income);
+    void updateGoalBalance(long value, UserFinances userFinances);
 
-    void resetCurrentStateToGoal(long userFinancesId);
+    void removeGoalValue(long value,long userFinancesId);
+     long nextId();
 
-    long nextId();
-
-    void updateRealAccountBalance(Long userFinancesId, Long newRealAccountBalance);
-
+    //USER FINANCES VIEW
+    UserFinancesView getUserFinanceViewById(long id);
 
 }

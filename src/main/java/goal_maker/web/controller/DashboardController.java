@@ -49,20 +49,23 @@ public class DashboardController {
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
 
-
+        //Handle reaching goal
+        final long REALISED = 1;
         //Check if this user has a goal, if doesn't show only button to add goal
         Goal currentGoal = goalDao.getCurrentGoal(gmUser.getId());
-        if (currentGoal != null) {
-            model.addAttribute("currentUserGoal", currentGoal);
-            model.addAttribute("progressBarWidth", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
 
-            //Handle reaching goal
-            isGoalAchieved(gmUser, currentGoal); //TODO: ALERT ABOUT REACHING GOAL
-            model.addAttribute("realisedGoals", realisedGoals);
+        if (currentGoal != null) {
+            if(isGoalAchieved(gmUser, currentGoal)) //TODO: ADD ALERT ABOUT REACHING GOAL
+                currentGoal=null;
+            model.addAttribute("currentUserGoal", currentGoal);
+/*
+            model.addAttribute("progressBarWidth", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
+*/
         } else {
             model.addAttribute("currentUserGoal", currentGoal);
-            model.addAttribute("progressBarWidth", 0);
+            /*model.addAttribute("progressBarWidth", 0);*/
         }
+        model.addAttribute("realisedGoals", goalService.getGoalsByState(REALISED));
 
         //get this user finances, to display his incomes and expenses
         model.addAttribute("currentUserFinances", gmUser.getUserFinances());
@@ -77,7 +80,7 @@ public class DashboardController {
         model.addAttribute("lastIncomeList", incomesList);
         model.addAttribute("lastExpensesList", expensesList);
 
-        if ((incomesList != null || !incomesList.isEmpty())&& (expensesList != null || !expensesList.isEmpty())) {
+        if ((incomesList != null || !incomesList.isEmpty()) && (expensesList != null || !expensesList.isEmpty())) {
             List<IncomeAndExpense> incomeAndExpenseList = loadIncomesAndExpensesList(incomesList, expensesList);
             if (incomeAndExpenseList != null || !incomeAndExpenseList.isEmpty()) {
                 Collections.sort(incomeAndExpenseList);
@@ -148,10 +151,11 @@ public class DashboardController {
      * @return returns true if achieved
      */
     private boolean isGoalAchieved(GmUser gmUser, Goal currentGoal) {
-        if (gmUser.getUserFinances().getGoal_balance() >= currentGoal.getValue()) {
-            realisedGoals.add(currentGoal);
-            goalService.deleteGoal(gmUser.getId());
-            userFinancesService.resetCurrentStateToGoal(gmUser.getUserFinances().getId_user_finances());
+        UserFinances userFinances = gmUser.getUserFinances();
+        if (userFinances.getGoal_balance() >= currentGoal.getValue()) {
+            final long REALISED = 1;
+            goalService.changeGoalState(currentGoal.getId_goal(), REALISED);
+            userFinancesService.removeGoalValue(userFinances.getGoal_balance()-currentGoal.getValue(), userFinances.getId_user_finances());
             return true;
         }
         return false;
