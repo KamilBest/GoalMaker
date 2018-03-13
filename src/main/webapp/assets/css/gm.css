@@ -859,7 +859,7 @@ input[type=range]{
 	height: 30vh;
 }
 .realised-table-responsive{
-	height: 60vh;
+	height: 35vh;
 }
 .readonly input{
 	background: #f1f1f1;
@@ -867,4 +867,8 @@ input[type=range]{
 }
 .readonly span{
 	background: #aaa;
+}
+.gauge{
+	width: 100px;
+	height: 100px;
 }

@@ -45,4 +45,9 @@ public class UserFinancesServiceImpl implements UserFinancesService {
     public long nextId() {
        return userFinancesDao.nextId();
     }
+
+    @Override
+    public void updateRealAccountBalance(Long userFinancesId, Long newRealAccountBalance) {
+        userFinancesDao.updateRealAccountBalance(userFinancesId,newRealAccountBalance);
+    }
 }
