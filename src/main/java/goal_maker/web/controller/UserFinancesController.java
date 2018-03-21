@@ -36,7 +36,7 @@ public class UserFinancesController {
     }
 
     @RequestMapping(value = "/updateGoalBalance", method = RequestMethod.POST)
-    public String updateGoalBalance(@RequestParam(value = "value")long value) {
+    public String updateGoalBalance(@RequestParam(value = "value") long value) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName();
         GmUser gmUser = userService.getUserByLogin(login);
@@ -45,9 +45,9 @@ public class UserFinancesController {
         userFinancesService.updateGoalBalance(value, gmUser.getUserFinances());
 
         //update real account balance
-        boolean isIncome=false;
-        userFinancesService.updateRealAccountBalance(gmUser.getUserFinances(),value, isIncome);
-    UserFinancesService userFinancesService;
-
-
+        boolean isIncome = false;
+        userFinancesService.updateRealAccountBalance(gmUser.getUserFinances(), value, isIncome);
+        UserFinancesService userFinancesService;
+        return "redirect:/index";
+    }
 }

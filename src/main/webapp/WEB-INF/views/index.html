@@ -197,11 +197,45 @@
 <script src="assets/scripts/klorofil-common.js"></script>
 <script src="assets/scripts/nouislider.min.js"></script>
 <script src="assets/scripts/slider.js"></script>
-
+<!--GAUGE-->
+<script src="assets/scripts/raphael-2.1.4.min.js"></script>
+<script src="assets/scripts/justgage.js"></script>
+<script src="assets/scripts/jquery.confetti.js"></script>
 <script type="text/javascript">
     function moveTo(loc) {
         location.href = loc;
     }
+</script>
+<script>
+    var button = document.getElementById('startConfetti');
+    button.click(setTimeout(function () {
+            $.confetti.stop();
+            button.remove();
+        }, 5000));
+
+//    button.onclick = function () {
+//        setTimeout(function () {
+//            $.confetti.stop();
+//            button.remove();
+//        }, 5000);
+//    };
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var gauge = new JustGage({
+           id: 'ggGoal',
+            donut: true,
+            formatNumber: true,
+            counter: true,
+            levelColors: [
+                "#00aaff"
+            ],
+            hideMinMax: true,
+            valueFontColor: "#fff",
+            gaugeWidthScale: 0.5,
+            symbol: 'zł'
+        });
+    })
 </script>
 
 <script>
