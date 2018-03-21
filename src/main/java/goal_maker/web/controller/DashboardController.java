@@ -54,17 +54,7 @@ public class DashboardController {
         //Check if this user has a goal, if doesn't show only button to add goal
         Goal currentGoal = goalDao.getCurrentGoal(gmUser.getId());
 
-        if (currentGoal != null) {
-            if(isGoalAchieved(gmUser, currentGoal)) //TODO: ADD ALERT ABOUT REACHING GOAL
-                currentGoal=null;
-            model.addAttribute("currentUserGoal", currentGoal);
-/*
-            model.addAttribute("progressBarWidth", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
-*/
-        } else {
-            model.addAttribute("currentUserGoal", currentGoal);
-            /*model.addAttribute("progressBarWidth", 0);*/
-        }
+
         model.addAttribute("realisedGoals", goalService.getGoalsByState(REALISED));
 
         //get this user finances, to display his incomes and expenses

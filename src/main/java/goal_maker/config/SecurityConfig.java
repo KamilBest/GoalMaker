@@ -17,6 +17,8 @@ import goal_maker.web.services.user_service.UserLoginDetailsService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private final String MAIN_ADMIN = "1";
+    private final String ADMIN = "2";
 
     @Autowired
     @Qualifier("userDetailsService")
@@ -26,12 +28,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/webjars/**");
         web.ignoring().antMatchers("/assets/css/**", "/assets/img/**", "/assets/scripts/**", "/assets/vendor/**");
+        web.ignoring().antMatchers("/admin/assets/css/**", "/admin/assets/img/**", "/admin/assets/scripts/**", "/admin/assets/vendor/**");
 
     }
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/register*").permitAll().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and()
+        http.authorizeRequests().antMatchers("/admin/**").hasAnyAuthority(MAIN_ADMIN, ADMIN).antMatchers("/register*").permitAll().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and()
                 .rememberMe().tokenValiditySeconds(60 * 60 * 24 * 31).rememberMeParameter("remember-me")
                 .key("uniqueAndSecret").and().logout().deleteCookies("JSESSIONID").logoutUrl("/logout")
                 .logoutSuccessUrl("/login").permitAll().and().exceptionHandling().accessDeniedPage("/error").and()

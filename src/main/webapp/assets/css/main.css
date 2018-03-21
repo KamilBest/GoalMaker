@@ -154,7 +154,7 @@ footer {
 }
 
 .main-content {
-	padding: 28px 10px;
+	margin-top: 20px;
 }
 
 .navbar+.main-content {
@@ -848,7 +848,7 @@ ul.list-justify>li span {
 }
 
 .panel .panel-heading {
-	padding-top: 20px;
+	padding-top: 33px;
 	padding-bottom: 20px;
 	position: relative;
 }

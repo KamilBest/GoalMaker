@@ -32,8 +32,7 @@ public class UserFinancesController {
 
         model.addAttribute("location", "accountMoneyTransfer");
         model.addAttribute("realAccountBalance", gmUser.getUserFinances().getReal_account_balance());
-        return "index";
-    }
+        return "redirect:/index";    }
 
     @RequestMapping(value = "/updateGoalBalance", method = RequestMethod.POST)
     public String updateGoalBalance(@RequestParam(value = "value") long value) {
@@ -48,6 +47,5 @@ public class UserFinancesController {
         boolean isIncome = false;
         userFinancesService.updateRealAccountBalance(gmUser.getUserFinances(), value, isIncome);
         UserFinancesService userFinancesService;
-        return "index";
-    }
+        return "redirect:/index";    }
 }

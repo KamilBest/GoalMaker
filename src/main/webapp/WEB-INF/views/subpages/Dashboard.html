@@ -87,8 +87,17 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-2" th:onclick="'javascript:moveTo(\'' + @{/updateGoalBalance} + '\')'" style="width: auto;" >
-                    <div class="metric income-panel">
+                <div th:if="${currentUserGoal!=null}"class="col-md-2" th:onclick="'javascript:moveTo(\'' + @{/updateGoalBalance} + '\')'" style="width: auto;" >
+                    <div class="metric income-panel" style="opacity: 0.5;">
+                        <p class="panel-button">
+                            <span class="panel-icon"><img src="/assets/img/dashboard-icons/Goal_48px.png"/></span>
+                            <span class="panel-title-button">PRZELEJ</span>
+                            <span class="panel-value-button">NA CEL</span>
+                        </p>
+                    </div>
+                </div>
+                <div th:if="${currentUserGoal==null}"class="col-md-2" style="width: auto;" >
+                    <div class="metric income-panel-inactive">
                         <p class="panel-button">
                             <span class="panel-icon"><img src="/assets/img/dashboard-icons/Goal_48px.png"/></span>
                             <span class="panel-title-button">PRZELEJ</span>
