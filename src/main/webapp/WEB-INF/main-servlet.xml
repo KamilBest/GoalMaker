@@ -9,6 +9,10 @@
 	<mvc:resources mapping="/assets/scripts/**" location="/assets/scripts/" />
 	<mvc:resources mapping="/assets/vendor/**" location="/assets/vendor/" />
 
+	<mvc:resources mapping="/admin/assets/css/**" location="/assets/css/" />
+	<mvc:resources mapping="/admin/assets/img/**" location="/assets/img/" />
+	<mvc:resources mapping="/admin/assets/scripts/**" location="/assets/scripts/" />
+	<mvc:resources mapping="/admin/assets/vendor/**" location="/assets/vendor/" />
 
 
 	<mvc:annotation-driven />

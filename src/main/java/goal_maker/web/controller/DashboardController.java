@@ -40,7 +40,6 @@ public class DashboardController {
     UserFinancesService userFinancesService;
     private List<Goal> realisedGoals = new ArrayList<>();
 
-
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String showFrontPage(Model model) {
         model.addAttribute("location", "dashboard");
@@ -68,6 +67,8 @@ public class DashboardController {
             model.addAttribute("currentUserGoal", currentGoal);
             /*model.addAttribute("progressBarWidth", 0);*/
         }
+
+
         model.addAttribute("realisedGoals", goalService.getGoalsByState(REALISED));
 
         //get this user finances, to display his incomes and expenses
