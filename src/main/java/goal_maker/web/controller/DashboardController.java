@@ -49,10 +49,24 @@ public class DashboardController {
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
 
-        //Handle reaching goal
+//        //Handle reaching goal
         final long REALISED = 1;
         //Check if this user has a goal, if doesn't show only button to add goal
         Goal currentGoal = goalDao.getCurrentGoal(gmUser.getId());
+        if (currentGoal != null) {
+            if(isGoalAchieved(gmUser, currentGoal)){
+                //TODO: ADD ALERT ABOUT REACHING GOAL
+                model.addAttribute("achived", true);
+                currentGoal=null;
+            }
+            model.addAttribute("currentUserGoal", currentGoal);
+/*
+            model.addAttribute("progressBarWidth", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
+*/
+        } else {
+            model.addAttribute("currentUserGoal", currentGoal);
+            /*model.addAttribute("progressBarWidth", 0);*/
+        }
 
 
         model.addAttribute("realisedGoals", goalService.getGoalsByState(REALISED));
@@ -60,7 +74,8 @@ public class DashboardController {
         //get this user finances, to display his incomes and expenses
         model.addAttribute("currentUserFinances", gmUser.getUserFinances());
         long currentUserFinancesId = gmUser.getUserFinances().getId_user_finances();
-
+        //get percentage value, to display in circle progress bar
+//        model.addAttribute("perecentageValueGoal", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
         //PROGRESS BAR
 
         //display records of given amount
@@ -80,10 +95,8 @@ public class DashboardController {
             }
         }
 
-
         return "index";
     }
-
     /**
      * Loads incomes and expenses to one list
      *
