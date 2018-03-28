@@ -21,7 +21,7 @@ public class LoginAndLogoutController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginPage() {
 
-        return "login";
+        return "introPage";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -30,6 +30,6 @@ public class LoginAndLogoutController {
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/login";
+        return "redirect:/introPage";
     }
 }
