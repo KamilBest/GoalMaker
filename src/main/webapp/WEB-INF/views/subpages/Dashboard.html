@@ -6,275 +6,195 @@
 </head>
 <body>
 <section class="content" th:fragment="Dashboard">
-    <div class="container-fluid">
-        <div class="panel panel-headline">
-            <div class="panel-body" th:if="${currentUserGoal==null}">
-                <h1>CEL: </h1>
-                <!--IF USER DOESN'T HAVE GOAL SET-->
-                <!--<div th:if="${currentUserGoal==null}">-->
-                <h3>Nie ustawiłeś jeszcze żadnego celu, możesz zrobić to teraz</h3>
-                <p>(Kliknij "Dodaj cel")</p>
-                <a th:href="@{/addGoal}" class="btn btn-primary">
-                    <i class="fa fa-plus"></i>
-                    <span>Dodaj cel</span>
+    <section class="section">
+        <h1 class="section-header">
+            <div class="row">
+                <div class="big-section-header">Twój cel:</div>
+            </div>
+        </h1>
+    </section>
+    <!--IF USER HAVE GOAL SET-->
+    <div th:if="${currentUserGoal!=null}">
+        <div class="row">
+            <div class="col-12">
+                <div class="card rounded-card">
+                    <div class="goal-overlay"></div>
+                    <div class="card-body"
+                         th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');background-size:cover; background-position:center; position:relative; border-radius: 7px;'">
+                        <div class="row">
+                            <!--USER GOAL TEXT-->
+                            <div class="col-12">
+                                <h2 class="text-white" th:text="${currentUserGoal.name}"></h2>
+                            </div>
+                            <!--USER GOAL BUTTONS-->
+                            <div class="col-6">
+                                <a href="#" class="btn btn-primary btn-round goal-btn-edit"
+                                   th:onclick="'javascript:moveTo(\'' + @{/editGoal?id=}+${currentUserGoal.id_goal} + '\')'">Edytuj</a>
+                                <a href="#" class="btn btn-danger btn-round goal-btn-delete"
+                                   th:onclick="'javascript:moveTo(\'' + @{/deleteGoal?id=}+${currentUserGoal.id_goal} + '\')'">Usuń</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card card-sm-2">
+                <div class="card-icon"><img src="/dist/img/goal.png"></div>
+                <div class="card-header"><h4>Postęp celu
+                </h4></div>
+                <!--USER GOAL BALANCE AND USER GOAL CURRENT-->
+                <div class="card-body">
+                    <span th:text="${currentUserFinances.goal_balance} + ' / '"></span>
+                    <span th:text="${currentUserGoal.value}" class="text-muted">123</span>
+                </div>
+                <div class="card-progressbar">
+                    <div class="progress" style="height:6px;">
+                        <div class="progress-bar bg-success" role="progressbar" th:style="'width:${perecentageValueGoal};'"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--CURRENT USER FINANCES-->
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card card-sm-2">
+                <div class="card-icon"><img src="/dist/img/account.png"></div>
+                <div class="card-header"><h4>Stan Konta
+                </h4></div>
+                <div class="card-body">
+                    <span th:text="${currentUserFinances.real_account_balance}"></span>
+                </div>
+                <div class="card-progressbar"></div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+
+            <div class="card card-sm-2">
+                <div class="card-icon"><img src="/dist/img/hourglass.png">
+                </div>
+                <div class="card-header"><h4>Szacowany czas
+                </h4></div>
+                <div class="card-body">25 dni</div>
+                <div class="card-progressbar"></div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+
+            <div class="card card-sm-2">
+                <div class="card-icon"><i class="ion ion-ionic text-danger"></i></div>
+                <div class="card-header"><h4>XXXX
+                </h4></div>
+                <div class="card-body">yyy</div>
+                <div class="card-progressbar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+            <div class="float-right">
+                <a href='#' class="btn btn-primary btn-round" style="margin-bottom: 15px;"
+                   th:onclick="'javascript:moveTo(\'' + @{/updateGoalBalance} + '\')'">
+                    <img src="https://png.icons8.com/color/20/cccccc/deposit.png">Przelej na cel
+                </a> <a href='#' class="btn btn-primary btn-round" style="margin-bottom: 15px;"
+                        th:onclick="'javascript:moveTo(\'' + @{/addIncome} + '\')'">
+                <img src="https://png.icons8.com/color/20/cccccc/plus.png">Nowy przychód
+            </a>
+                <a href='#' class="btn btn-danger btn-round" style="margin-bottom: 15px;"
+                   th:onclick="'javascript:moveTo(\'' + @{/addExpenses} + '\')'">
+                    <img src="https://png.icons8.com/color/20/cccccc/minus.png">Nowy wydatek
                 </a>
             </div>
-            <div th:if="${achived}">
-                <button type="button" id="startConfetti" class="btn btn-primary" data-toggle="modal" data-target="#congratzModal" style="display: none">
-                    Osiągnąłeś cel - gratulacje
-                </button>
-                <div class="modal fade" id="congratzModal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">GRATULACJE!</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Udało Ci się osiągnąć cel - gratulujemy. Dodaj kolejne cele i zaoszczędź więcej pieniędzy!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--IF USER HAVE GOAL SET-->
-            <div th:if="${currentUserGoal!=null}"
-                 th:style="'background-image:url(' + @{'/assets/img/categories/'+${currentUserGoal.category.name}+'.jpg'} + ');background-size:cover; background-position:center; height:200px; position:relative;'">
-                <div class="goal-body-bg-rounded"></div>
-                <div class="panel-body">
-                    <div class="goal-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span>Cel:</span>
-                                <h1 th:text="${currentUserGoal.name}"></h1>
-                                <a th:onclick="'javascript:moveTo(\'' + @{/deleteGoal?id=}+${currentUserGoal.id_goal} + '\')'"
-                                   class="btn btn-range-reset">
-                                    <span>Usuń</span>
-                                </a>
-                                <a th:onclick="'javascript:moveTo(\'' + @{/editGoal?id=}+${currentUserGoal.id_goal} + '\')'"
-                                   class="btn btn-range">
-                                    <span>Edytuj</span>
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="ggGoal" class="gauge" data-min="0" th:attr="data-max=${currentUserGoal.value}, data-value=${currentUserFinances.goal_balance}"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="container-fluid" >
-        <div class="row equal">
-            <div class="panel-buttons">
-                <div class="col-md-2" align="left" style="width: auto;">
-                    <div class="metric user-panel">
-                        <span class="panel-icon"><img src="/assets/img/dashboard-icons/InProgress_48px.png"/></span>
-                        <p th:if="${currentUserGoal!=null}">
-                            <span class="panel-title">POSTĘP</span>
-                            <span  class="panel-value"
-                                  th:text="${currentUserFinances.goal_balance+' / '+ currentUserGoal.value} + 'zł'"></span>
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Cykliczne Wydatki i Przychody</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="statistic-details mt-1">
+                                <div class="statistic-details-item">
+                                    <small class="text-muted"><span class="text-primary"><i
+                                            class="ion-arrow-up-b"></i></span> 2 DNI
+                                    </small>
+                                    <div class="detail-value">$243</div>
+                                    <div class="detail-name">Roznoszenie ulotek</div>
+                                </div>
+                                <div class="statistic-details-item">
+                                    <small class="text-muted"><span class="text-danger"><i
+                                            class="ion-arrow-down-b"></i></span> 23 DNI
+                                    </small>
+                                    <div class="detail-value">$32</div>
+                                    <div class="detail-name">Opłata Netflix</div>
+                                </div>
+                            </div>
 
-                        </p>
-                        <p th:if="${currentUserGoal==null}">
-                            <span class="panel-title">POZOSTAŁE ŚRODKI</span>
-                            <span  class="panel-value"
-                                   th:text="${currentUserFinances.goal_balance}"></span>
-
-                        </p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-2" align="left" style="width: auto;">
-                    <div class="metric user-panel">
-                        <span class="panel-icon"><img src="/assets/img/dashboard-icons/MoneyBag_48px.png"/></span>
-                        <p>
-                            <span class="panel-title">STAN KONTA</span>
-                            <span class="panel-value" th:text="${currentUserFinances.real_account_balance} + 'zł'"></span>
-
-
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-2" align="left" style="width: auto;">
-                    <div class="metric user-panel">
-                        <span class="panel-icon"><img src="/assets/img/dashboard-icons/Clock_48px.png"/></span>
-                        <p>
-                            <span class="panel-title">SZACOWANY CZAS</span>
-                            <span class="panel-value">37 DNI</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-2" th:onclick="'javascript:moveTo(\'' + @{/updateGoalBalance} + '\')'" style="width: auto;" >
-                    <div class="metric income-panel">
-                        <p class="panel-button">
-                            <span class="panel-icon"><img src="/assets/img/dashboard-icons/Goal_48px.png"/></span>
-                            <span class="panel-title-button">PRZELEJ</span>
-                            <span class="panel-value-button">NA CEL</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-2" th:onclick="'javascript:moveTo(\'' + @{/addIncome} + '\')'" style="width: auto;">
-                    <div class="metric income-panel">
-                        <p class="panel-button">
-                            <span class="panel-icon"><img src="/assets/img/dashboard-icons/Refund_48px.png"/></span>
-                            <span class="panel-title-button">DODAJ</span>
-                            <span class="panel-value-button">PRZYCHÓD</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-md-2" th:onclick="'javascript:moveTo(\'' + @{/addExpenses} + '\')'"
-                     style="width: auto;">
-                    <div class="metric extense-panel">
-                        <p class="panel-button">
-                            <span class="panel-icon"><img
-                                    src="/assets/img/dashboard-icons/Card Payment_48px.png"/></span>
-                            <span class="panel-title-button">ODEJMIJ</span>
-                            <span class="panel-value-button">WYDATEK</span>
-                        </p>
+                <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Ostatni zrealizowany cel</h4>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled list-unstyled-border">
+                                <li class="media">
+                                    <img class="mr-3 rounded-circle" width="50"
+                                         src="https://images.vexels.com/media/users/3/127711/isolated/preview/384e0b3361d99d9c370b4037115324b9-flat-vintage-car-icon-by-vexels.png">
+                                    <div class="media-body">
+                                        <div class="float-right">
+                                            <small>19.05.2018</small>
+                                        </div>
+                                        <div class="media-title"><span>Samochód</span></div>
+                                        <small>Uzbierano: <span>123</span><span></span></small>
+                                    </div>
+                                </li>
+                                <div class="float-right"><a href="#"
+                                                            class="btn btn-primary btn-sm btn-round">Zobacz
+                                    wszystkie</a></div>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="panel bg-black">
-                    <div class="panel-body panel-incomes-expenses panel-tables">
-                        <div class="col-md-12">
-                            <h1 class="text-center panel-header-text">Przychód okresowy</h1>
-                            <div class="panel-inc-exp">
-                                <span class="panel-icon-inc-exp"><img
-                                        src="../../../assets/img/dashboard-icons/RequestMoney_60px.png"/></span>
-                                <div class="slideShow" th:each="income : ${lastIncomeList} ">
-                                    <p class="panel-text slides">
-                                        <span class="panel-from-inc-exp" th:text="${income.type}">Pensja</span>
-                                        <span class="panel-title-inc-exp"
-                                              th:text="${income.name}">Programista</span>
-                                        <span class="panel-value-inc-exp green-text"
-                                              th:text="'+'+${income.value}+' zł'">4200 zł</span>
-                                        <span class="panel-days-inc-exp">za 20 dni</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <h1 class="text-center panel-header-text">Wydatek okresowy</h1>
-                            <div class="panel-inc-exp">
-                                <span class="panel-icon-inc-exp"><img
-                                        src="../../../assets/img/dashboard-icons/InitiateMoneyTransfer_60px.png"/></span>
-                                <div class="slideShow" th:each="expenses : ${lastExpensesList} ">
-                                    <p class="panel-text slides2">
-                                        <span class="panel-from-inc-exp" th:text="${expenses.type}">Rachunek</span>
-                                        <span class="panel-title-inc-exp" th:text="${expenses.name}">Prąd</span>
-                                        <span class="panel-value-inc-exp red-text"
-                                              th:text="'-'+${expenses.value}+' zł'">4200 zł</span>
-                                        <span class="panel-days-inc-exp">za 20 dni</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Finanse</h4>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel bg-black panel-tables">
-                    <div class="panel-body">
-                        <h1 class="text-center panel-header-text">Zrealizowane cele</h1>
-                        <div class="table-responsive realised-table-responsive">
-                            <table class="table table-borderless table-spacing realisedTable" width="100%">
-                                <tr th:each="goal : ${realisedGoals}">
-                                    <td class="realised-goal-cell"><img
-                                            th:src="@{'/assets/img/dashboard-icons/'+${goal.category.name}+'.png'}"/>
-                                    </td>
-                                    <td><span class="realised-goal" th:text="${goal.name}"></span><span
-                                            class="realised-type" th:text="${goal.category.name}"></span></td>
-                                    <td><span class="title-save">Uzbierano</span><span class="realised-value"
-                                                                                       th:text="${goal.value} + ' zł / '"></span><span
-                                            th:text="${goal.number_of_days} + ' dni'"
-                                            class="realised-days"></span></td>
-                                    </td>
-                                </tr>
-
-                            </table>
-                            <br>
-                            <span th:if="${realisedGoals==null || realisedGoals.isEmpty()}">Aktualnie nie masz zrealizowanych celów</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel bg-black panel-tables">
-                    <div class="panel-heading">
-                        <ul class="nav nav-item">
-                            <li class="active"><a class="greenInc" data-toggle="tab" href="#income">Przychody</a></li>
-                            <li><a class="redExp" data-toggle="tab" href="#expenses">Wydatki</a></li>
-                            <li><a class="yellowAll" data-toggle="tab" href="#expensesAndIncomes">Wszystkie</a></li>
-                        </ul>
-                    </div>
-                    <div class="tab-content">
-                        <div class="all-income tab-pane fade in active" id="income">
-                            <div class="panel-body table-responsive money-table">
-                                <table class="table table-borderless table-spacing" width="100%">
-                                    <tr class="incomesTable" th:each="income : ${lastIncomeList} ">
-                                        <td class="chevron-cell"><i class="fa fa-chevron-up"></i></td>
-                                        <td class="id-cell" th:text="'#'+${income.id_income}"></td>
-                                        <td class="name-type-cell"><span th:text="${income.name}+ ' '"></span>
-                                            <p th:text="${income.type}"></p></td>
-                                        <td class="value-cell" th:text="'+'+${income.value}+'zł'"></td>
-                                        <td class="date-cell"
-                                            th:text="${#dates.format(income.date, 'dd-MM-yyyy HH:mm')}"></td>
-                                    </tr>
-                                </table>
+                <div class="card-body">
+                    <ul class="list-unstyled list-unstyled-border">
+                        <li class="media" th:each="incomeAndExpense : ${incomesAndExpensesTogether}">
+                            <a href="#"><img alt="image" class="mr-3 rounded" width="50"
+                                             src="/dist/img/expense.png"></a>
+                            <div class="media-body">
+                                <!--VALUE OF INCOME/EXPENSE-->
+                                <div class="media-right"
+                                     th:classappend="${incomeAndExpense.isIncome()} ? text-success : text-danger"
+                                     th:text="${incomeAndExpense.value} + ' zł'"></div>
+                                <!--NAME OF INCOME/EXPENSE-->
+                                <div class="media-title"><a href="#" th:text="${incomeAndExpense.name}"></a></div>
+                                <!--TYPE OF INCOME/EXPENSE-->
+                                <small class="text-muted" th:text="${incomeAndExpense.type}">
+                                    <div class="bullet"></div>
+                                    <span th:text="${#dates.format(incomeAndExpense.date, 'dd-MM-yyyy')}"></span>
+                                </small>
                             </div>
-                        </div>
-                        <div class="all-income tab-pane fade" id="expenses">
-                            <div class="panel-body table-responsive money-table">
-                                <table class="table table-borderless table-spacing" width="100%">
-                                    <tr class="expensesTable" th:each="expense : ${lastExpensesList}">
-                                        <td class="chevron-cell-expense"><i class="fa fa-chevron-down"></i></td>
-                                        <td class="id-cell-expense" th:text="'#'+${expense.idExpenses}"></td>
-                                        <td class="name-type-cell-expense"><span th:text="${expense.name}+ ' '"></span>
-                                            <p th:text="${expense.type}"></p></td>
-                                        <td class="value-cell-expense" th:text="'-'+${expense.value}+'zł'"></td>
-                                        <td class="date-cell-expense"
-                                            th:text="${#dates.format(expense.date, 'dd-MM-yyyy HH:mm')}"></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="all-income tab-pane fade" id="expensesAndIncomes">
-                            <div class="panel-body table-responsive money-table">
-                                <table class="table table-borderless table-spacing" width="100%">
-                                    <tr class="incomeAndExpenseTable"
-                                        th:each="incomeAndExpense : ${incomesAndExpensesTogether}">
-                                        <td class=""
-                                            th:classappend="${incomeAndExpense.isIncome()} ? chevron-cell : chevron-cell-expense">
-                                            <i class="fa "
-                                               th:classappend="${incomeAndExpense.isIncome()} ? fa-chevron-up : fa-chevron-down"></i>
-                                        </td>
-                                        <!--<td><div><span th:if="${incomeAndExpense.isIncome()}">PRZYCHÓD</span><span th:if="${!incomeAndExpense.isIncome()}">WYDATEK</span></div></td>-->
-                                        <td class=""
-                                            th:classappend="${incomeAndExpense.isIncome()} ? id-cell : id-cell-expense"
-                                            th:text="'#'+${incomeAndExpense.id}"></td>
-                                        <td class=""
-                                            th:classappend="${incomeAndExpense.isIncome()} ? name-type-cell : name-type-cell-expense">
-                                            <span th:text="${incomeAndExpense.name}+ ' ' "></span>
-                                            <p th:text="${incomeAndExpense.type}"></p></td>
-                                        <td class=""
-                                            th:classappend="${incomeAndExpense.isIncome()} ? value-cell : value-cell-expense"
-                                            th:text="${incomeAndExpense.value}+'zł'"></td>
-                                        <td class=""
-                                            th:classappend="${incomeAndExpense.isIncome()} ? date-cell : date-cell-expense"
-                                            th:text="${#dates.format(incomeAndExpense.date, 'dd-MM-yyyy HH:mm')}"></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <a href="#" class="btn btn-primary btn-sm btn-round">
+                            Zobacz wszystkie
+                        </a>
                     </div>
                 </div>
             </div>
