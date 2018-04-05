@@ -38,6 +38,14 @@ public class GoalDaoImpl implements GoalDao {
         return goals;
     }
 
+    @Override
+    public Goal getLastRealisedGoal(long idGoalState) {
+        String sqlSelect = "SELECT * FROM goal_maker.goal WHERE id_goal_state="+idGoalState +" ORDER BY id_goal DESC LIMIT 1";
+        Query query = entityManager.createNativeQuery(sqlSelect, Goal.class);
+        Goal goal = (Goal) query.getSingleResult();
+        return null;
+    }
+
     @Transactional
     @Override
     public void addGoal(Goal goal) {
