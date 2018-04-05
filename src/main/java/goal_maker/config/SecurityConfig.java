@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/admin/**").hasAnyAuthority(MAIN_ADMIN, ADMIN).antMatchers("/register*").permitAll().anyRequest().authenticated().antMatchers("/intro*").permitAll().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/dashboard").and()
+        http.authorizeRequests().antMatchers("/admin/**").hasAnyAuthority(MAIN_ADMIN, ADMIN).antMatchers("/register*").permitAll().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/dashboard").and()
                 .rememberMe().tokenValiditySeconds(60 * 60 * 24 * 31).rememberMeParameter("remember-me")
                 .key("uniqueAndSecret").and().logout().deleteCookies("JSESSIONID").logoutUrl("/logout")
                 .logoutSuccessUrl("/login").permitAll().and().exceptionHandling().accessDeniedPage("/error").and()
