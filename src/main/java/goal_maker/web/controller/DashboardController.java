@@ -70,16 +70,16 @@ public class DashboardController {
 
 
         model.addAttribute("realisedGoals", goalService.getGoalsByState(REALISED));
-
+        model.addAttribute("lastRealisedGoal", goalService.getLastRealisedGoal(REALISED));
         //get this user finances, to display his incomes and expenses
         model.addAttribute("currentUserFinances", gmUser.getUserFinances());
         long currentUserFinancesId = gmUser.getUserFinances().getId_user_finances();
         //get percentage value, to display in circle progress bar
-//        model.addAttribute("perecentageValueGoal", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
+         model.addAttribute("perecentageValueGoal", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
         //PROGRESS BAR
 
         //display records of given amount
-        final int amountOfIncomesAndExpenses = 10;
+        final int amountOfIncomesAndExpenses = 5;
         List<Income> incomesList = incomeService.findLastUserIncomes(currentUserFinancesId, amountOfIncomesAndExpenses);
         List<Expenses> expensesList = expensesService.findLastUserExpenses(currentUserFinancesId, amountOfIncomesAndExpenses);
         model.addAttribute("lastIncomeList", incomesList);

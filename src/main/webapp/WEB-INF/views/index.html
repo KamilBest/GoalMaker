@@ -10,197 +10,238 @@
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <script src="assets/scripts/jquery-3.2.1.min.js"></script>
 
-    <!-- VENDOR CSS -->
-    <link rel="stylesheet"
-          href="assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="assets/vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/vendor/linearicons/style.css">
-    <link rel="stylesheet"
-          href="assets/vendor/chartist/css/chartist-custom.css">
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet"
-          href="assets/css/gm.css">
-    <!-- GOOGLE FONTS -->
-    <link
-            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
-            rel="stylesheet">
-    <!-- ICONS -->
-    <link rel="apple-touch-icon" sizes="76x76"
-          href="assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96"
-          href="assets/img/favicon.png">
+    <!--&lt;!&ndash; VENDOR CSS &ndash;&gt;-->
+    <!--<link rel="stylesheet"-->
+    <!--href="assets/vendor/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet"-->
+    <!--href="assets/vendor/font-awesome/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="assets/vendor/linearicons/style.css">-->
+    <!--<link rel="stylesheet"-->
+    <!--href="assets/vendor/chartist/css/chartist-custom.css">-->
+    <!--&lt;!&ndash; MAIN CSS &ndash;&gt;-->
+    <!--<link rel="stylesheet" href="assets/css/main.css">-->
+    <!--<link rel="stylesheet"-->
+    <!--href="assets/css/gm.css">-->
+    <!--&lt;!&ndash; GOOGLE FONTS &ndash;&gt;-->
+    <!--<link-->
+    <!--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"-->
+    <!--rel="stylesheet">-->
+    <!--&lt;!&ndash; ICONS &ndash;&gt;-->
+    <!--<link rel="apple-touch-icon" sizes="76x76"-->
+    <!--href="assets/img/apple-icon.png">-->
+    <!--<link rel="icon" type="image/png" sizes="96x96"-->
+    <!--href="assets/img/favicon.png">-->
 
-    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>-->
     <!--DataTables-->
     <link rel="stylesheet" type="text/css" href="assets/vendor/data-table/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/nouislider.css"/>
+
+
+    <link rel="stylesheet" href="dist/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/modules/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+    <link rel="stylesheet" href="dist/modules/summernote/summernote-lite.css">
+    <link rel="stylesheet" href="dist/modules/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="dist/css/custom.css">
+    <link rel="stylesheet" href="dist/css/skins/blue.css">
+
 </head>
 
 <body>
 <!-- WRAPPER -->
-
-<div id="wrapper">
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="brand">
-            <a href="index.html"><img src="assets/img/logo-dark.png"
-                                      alt="Klorofil Logo" class="img-responsive logo"></a>
-        </div>
-        <div class="container-fluid">
-            <div class="navbar-btn">
-                <button type="button" class="btn-toggle-fullwidth">
-                    <i class="lnr lnr-arrow-left-circle"></i>
-                </button>
-            </div>
-
-            <div id="navbar-menu">
-                <ul class="nav navbar-nav navbar-right">
-                    <!--         <li class="dropdown"><a href="#"
-                                                     class="dropdown-toggle icon-menu" data-toggle="dropdown"> <i
-                                     class="lnr lnr-alarm"></i> <span class="badge bg-danger">5</span>
-                             </a>
-                                 <ul class="dropdown-menu notifications">
-                                     <li><a href="#" class="notification-item"><span
-                                             class="dot bg-warning"></span>System space is almost full</a></li>
-                                     <li><a href="#" class="notification-item"><span
-                                             class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
-                                     <li><<a href="#" class="notification-item"><span
-                                             class="dot bg-success"></span>Monthly report is available</a></li>
-                                     <li><a href="#" class="notification-item"><span
-                                             class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
-                                     <li><a href="#" class="notification-item"><span
-                                             class="dot bg-success"></span>Your request has been approved</a></li>
-                                     <li><a href="#" class="more">See all notifications</a></li>
-                                 </ul>
-                             </li>-->
-
-                    <li class="dropdown"><a href="#" class="dropdown-toggle"
-                                            data-toggle="dropdown"><img src="assets/img/user.png"
-                                                                        class="img-circle" alt="Avatar">
-                        <span>Test</span> <i
-                                class="icon-submenu lnr lnr-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <!--    <li><a href="#"><i class="lnr lnr-user"></i> <span>My
-                                                Profile</span></a></li>
-                                <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-                                <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>-->
-
-                            <!--  LOGOUT -->
-                            <li><a th:href="@{/logout}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
-
-                        </ul>
-                    </li>
+<div id="app">
+    <div class="main-wrapper">
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar">
+            <form class="form-inline mr-auto">
+                <ul class="navbar-nav mr-3">
+                    <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i
+                            class="ion ion-navicon-round"></i></a></li>
+                    <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
+                            class="ion ion-search"></i></a></li>
                 </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- END NAVBAR -->
-    <!-- LEFT SIDEBAR -->
-    <div id="sidebar-nav" class="sidebar">
-        <div class="sidebar-scroll">
-            <nav>
-                <ul class="nav">
-                    <li><a th:href="@{/index}" class="active"><i class="lnr lnr-home"></i>
-                        <span>Strona Główna</span></a></li>
-                    <li th:if="${#strings.contains(#authentication.principal.authorities,'1') || #strings.contains(#authentication.principal.authorities,'2')}"><a th:href="@{/admin/getUsersList}" class=""><i class="lnr lnr-users"></i>
-                        <span>Lista Użytkowników</span></a>
-                    </li>
-                    <li><a th:href="@{/allIncomes?incomeId=0}" class=""><i class="lnr lnr-plus-circle"></i>
-                        <span>Przychody</span></a></li>
-                    <li><a th:href="@{/allExpenses?expenseId=0}" class=""><i class="lnr lnr-circle-minus"></i>
-                        <span>Wydatki</span></a></li>
-                    <!--              <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>XXX</span></a></li>
-                                  <li><a href="#" data-toggle="collapse" class="collapsed"><i
-                                          class="lnr lnr-file-empty"></i> <span>XXX</span> <i
-                                          class="icon-submenu lnr lnr-chevron-left"></i></a>
-                                      <div id="subPages" class="collapse ">
-                                          <ul class="nav">
-                                              <li><a href="page-profile.html" class="">XXX</a></li>
-                                              <li><a href="page-login.html" class="">XXX</a></li>
-                                              <li><a href="page-lockscreen.html" class="">XXX</a></li>
-                                          </ul>
-                                      </div>
-                                  </li>
-                                  <li><a href="#" class=""><i class="lnr lnr-dice"></i> <span>XXX</span></a></li>
-                                  <li><a href="#" class=""><i class="lnr lnr-text-format"></i>
-                                      <span>XXX</span></a></li>
-                                  <li><a href="#" class=""><i class="lnr lnr-linearicons"></i>
-                                      <span>XXX</span></a></li>-->
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <!-- END LEFT SIDEBAR -->
-    <!-- MAIN -->
-    <div class="main">
-        <!-- MAIN CONTENT -->
-        <div class="main-content noHorizontalScroll">
-            <div class="container-fluid">
-                <!-- OVERVIEW -->
-                <div th:switch="${location}">
-                    <div th:case="'dashboard'"
-                         th:include="subpages/Dashboard :: Dashboard"></div>
-                    <div th:case="'usersList'"
-                         th:include="subpages/Userslist :: Userslist"></div>
-
-                    <div th:case="'createUpdateGoal'"
-                         th:include="subpages/GoalForm :: CreateUpdateGoalForm"></div>
-                    <div th:case="'updateGoal'"
-                         th:include="subpages/EditGoalForm :: EditGoalForm"></div>
-
-                    <div th:case="'addIncome'"
-                         th:include="subpages/AddIncome :: AddIncome"></div>
-                    <div th:case="'incomesList'"
-                         th:include="subpages/IncomesList :: IncomesList"></div>
-
-                    <div th:case="'addExpenses'"
-                         th:include="subpages/AddExpenses :: AddExpenses"></div>
-                    <div th:case="'expensesList'"
-                         th:include="subpages/ExpensesList :: ExpensesList"></div>
-
-                    <div th:case="'CreateConstantIncomeForm'"
-                         th:include="subpages/ConstantIncomeForm :: CreateConstantIncomeForm"></div>
-                    <div th:case="'CreateChangeableIncomeForm'"
-                         th:include="subpages/ChangeableIncomeForm :: CreateChangeableIncomeForm"></div>
-
-                    <div th:case="'accountMoneyTransfer'"
-                         th:include="subpages/AccountMoneyTransferForm :: AccountMoneyTransfer"></div>
+            </form>
+            <ul class="navbar-nav navbar-right">
+                <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+                                                             class="nav-link notification-toggle nav-link-lg beep"><i
+                        class="ion ion-ios-bell-outline"></i></a>
+                    <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                        <div class="dropdown-header">Notifications
+                            <div class="float-right">
+                                <a href="#">View All</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-list-content">
+                            <a href="#" class="dropdown-item dropdown-item-unread">
+                                <img alt="image" src="dist/img/avatar/avatar-1.png"
+                                     class="rounded-circle dropdown-item-img">
+                                <div class="dropdown-item-desc">
+                                    <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
+                                    <div class="time">10 Hours Ago</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item dropdown-item-unread">
+                                <img alt="image" src="dist/img/avatar/avatar-2.jpeg"
+                                     class="rounded-circle dropdown-item-img">
+                                <div class="dropdown-item-desc">
+                                    <b>Ujang Maman</b> has moved task <b>Fix bug footer</b> to <b>Progress</b>
+                                    <div class="time">12 Hours Ago</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <img alt="image" src="dist/img/avatar/avatar-3.jpeg"
+                                     class="rounded-circle dropdown-item-img">
+                                <div class="dropdown-item-desc">
+                                    <b>Agung Ardiansyah</b> has moved task <b>Fix bug sidebar</b> to <b>Done</b>
+                                    <div class="time">12 Hours Ago</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <img alt="image" src="dist/img/avatar/avatar-4.jpeg"
+                                     class="rounded-circle dropdown-item-img">
+                                <div class="dropdown-item-desc">
+                                    <b>Ardian Rahardiansyah</b> has moved task <b>Fix bug navbar</b> to <b>Done</b>
+                                    <div class="time">16 Hours Ago</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <img alt="image" src="dist/img/avatar/avatar-5.jpeg"
+                                     class="rounded-circle dropdown-item-img">
+                                <div class="dropdown-item-desc">
+                                    <b>Alfa Zulkarnain</b> has moved task <b>Add logo</b> to <b>Done</b>
+                                    <div class="time">Yesterday</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown"><a href="#" data-toggle="dropdown"
+                                        class="nav-link dropdown-toggle nav-link-lg">
+                    <i class="ion ion-android-person d-lg-none"></i>
+                    <div class="d-sm-none d-lg-inline-block">Witaj, użytkowniku</div>
+                </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="profile.html" class="dropdown-item has-icon">
+                            <i class="ion ion-android-person"></i> Profile
+                        </a>
+                        <a href="#" class="dropdown-item has-icon">
+                            <i class="ion ion-log-out"></i> Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-sidebar">
+            <aside id="sidebar-wrapper">
+                <div class="sidebar-brand">
+                    <a href="index.html">Goal maker</a>
                 </div>
+                <div class="sidebar-user">
+                    <div class="sidebar-user-picture">
+                        <img alt="image" src="dist/img/avatar/avatar-1.png">
+                    </div>
+                    <div class="sidebar-user-details">
+                        <div class="user-name">test test</div>
+                        <div class="user-role">
+                            Użytkownik
+                        </div>
+                    </div>
+                </div>
+                <ul class="sidebar-menu">
+
+                    <li class="menu-header">MENU</li>
+                    <li>
+                        <a href="#"><i class="ion ion-home"></i>
+                            <span>Strona główna</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ion ion-arrow-up-b"></i><span>Przychody</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ion ion-arrow-down-b"></i><span>Wydatki</span></a>
+                    </li>
+                    <li>
+                        <a href="table.html"><i class="ion ion-checkmark"></i><span>Zrealizowane cele</span></a>
+                    </li>
+
+                </ul>
+            </aside>
+        </div>
+        <div class="main-content">
+            <div th:switch="${location}">
+                <div th:case="'dashboard'"
+                     th:include="subpages/Dashboard :: Dashboard"></div>
+                <div th:case="'usersList'"
+                     th:include="subpages/Userslist :: Userslist"></div>
+
+                <div th:case="'createUpdateGoal'"
+                     th:include="subpages/GoalForm :: CreateUpdateGoalForm"></div>
+                <div th:case="'updateGoal'"
+                     th:include="subpages/EditGoalForm :: EditGoalForm"></div>
+
+                <div th:case="'addIncome'"
+                     th:include="subpages/AddIncome :: AddIncome"></div>
+                <div th:case="'incomesList'"
+                     th:include="subpages/IncomesList :: IncomesList"></div>
+
+                <div th:case="'addExpenses'"
+                     th:include="subpages/AddExpenses :: AddExpenses"></div>
+                <div th:case="'expensesList'"
+                     th:include="subpages/ExpensesList :: ExpensesList"></div>
+
+                <div th:case="'CreateConstantIncomeForm'"
+                     th:include="subpages/ConstantIncomeForm :: CreateConstantIncomeForm"></div>
+                <div th:case="'CreateChangeableIncomeForm'"
+                     th:include="subpages/ChangeableIncomeForm :: CreateChangeableIncomeForm"></div>
+
+                <div th:case="'accountMoneyTransfer'"
+                     th:include="subpages/AccountMoneyTransferForm :: AccountMoneyTransfer"></div>
             </div>
+            <footer class="main-footer">
+                <div class="footer-left">
+                    Copyright &copy; GOALMAKER 2018
+                    <div class="bullet"></div>
+                    Design By <a href="https://multinity.com/">Multinity</a>
+                    <div class="bullet"></div>
+                    <a href="https://icons8.com">Icon pack by Icons8</a>
+                </div>
+                <div class="footer-right"></div>
+            </footer>
         </div>
     </div>
-
-    <!-- END MAIN -->
-    <div class="clearfix"></div>
-    <footer>
-        <div class="container-fluid">
-            <p class="copyright">
-                &copy; 2017 <a href="" target="_blank">GOAL
-                MAKER</a> App Icons by <a href="https://icons8.com/">icons8</a>
-            </p>
-        </div>
-    </footer>
 </div>
 
 <!-- END WRAPPER -->
 <!-- Javascript -->
-<script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--<script src="assets/vendor/jquery/jquery.min.js"></script>-->
+<!--<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>-->
 
-<script src="assets/vendor/data-table/datatables.min.js"></script>
-<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script
-        src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-<script src="assets/vendor/chartist/js/chartist.min.js"></script>
-<script src="assets/scripts/klorofil-common.js"></script>
-<script src="assets/scripts/nouislider.min.js"></script>
-<script src="assets/scripts/slider.js"></script>
-<!--GAUGE-->
-<script src="assets/scripts/raphael-2.1.4.min.js"></script>
-<script src="assets/scripts/justgage.js"></script>
-<script src="assets/scripts/jquery.confetti.js"></script>
+<!--<script src="assets/vendor/data-table/datatables.min.js"></script>-->
+<!--<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>-->
+<!--<script-->
+        <!--src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>-->
+<!--<script src="assets/vendor/chartist/js/chartist.min.js"></script>-->
+<!--<script src="assets/scripts/klorofil-common.js"></script>-->
+<!--<script src="assets/scripts/nouislider.min.js"></script>-->
+<!--<script src="assets/scripts/slider.js"></script>-->
+<!--&lt;!&ndash;GAUGE&ndash;&gt;-->
+<!--<script src="assets/scripts/raphael-2.1.4.min.js"></script>-->
+<!--<script src="assets/scripts/justgage.js"></script>-->
+<!--<script src="assets/scripts/jquery.confetti.js"></script>-->
+
+<script src="dist/modules/jquery.min.js"></script>
+<script src="dist/modules/popper.js"></script>
+<script src="dist/modules/tooltip.js"></script>
+<script src="dist/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+<script src="dist/js/sa-functions.js"></script>
+
+<script src="dist/modules/chart.min.js"></script>
+<script src="dist/modules/summernote/summernote-lite.js"></script>
 <script type="text/javascript">
     function moveTo(loc) {
         location.href = loc;
@@ -209,21 +250,21 @@
 <script>
     var button = document.getElementById('startConfetti');
     button.click(setTimeout(function () {
-            $.confetti.stop();
-            button.remove();
-        }, 5000));
+        $.confetti.stop();
+        button.remove();
+    }, 5000));
 
-//    button.onclick = function () {
-//        setTimeout(function () {
-//            $.confetti.stop();
-//            button.remove();
-//        }, 5000);
-//    };
+    //    button.onclick = function () {
+    //        setTimeout(function () {
+    //            $.confetti.stop();
+    //            button.remove();
+    //        }, 5000);
+    //    };
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function (event) {
         var gauge = new JustGage({
-           id: 'ggGoal',
+            id: 'ggGoal',
             donut: true,
             formatNumber: true,
             counter: true,
