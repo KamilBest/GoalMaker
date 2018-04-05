@@ -45,7 +45,7 @@
                 </li>
             </ul>
             <form class="form-inline">
-                <a href="#login" class="btn smooth-link align-middle btn-primary">Zaloguj się</a>
+                <a th:href="@{/login}" class="btn smooth-link align-middle btn-primary">Zaloguj się</a>
             </form>
         </div>
     </div>
@@ -54,57 +54,21 @@
     <div class="text">
         <h1><span class="bold name">Goal maker</span><br>z nami osiągniesz swoje cele</h1>
         <div class="cta">
-            <a href="#login" class="btn btn-primary smooth-link">Zaloguj się</a>
+            <a th:href="@{/login}" class="btn btn-primary smooth-link">Zaloguj się</a>
             <div class="link">
                 <a href="#">Nie masz jeszcze konta? Zarejestruj się!</a>
             </div>
         </div>
     </div>
 </section>
-<section class="padding" id="login">
-    <div class="container">
 
-        <div class="row">
-            <div class="col-12 col-md-4 col-sm-12">
-                <h2>Zaloguj się</h2>
-                <form class="form-auth-small" th:action="@{/login}" method="post">
-                    <div class="form-group">
-                        <label class="control-label sr-only">Login</label>
-                        <input type="text" name="username" class="form-control"
-                               placeholder="Login">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label sr-only">Password</label>
-                        <input type="password" name="password" class="form-control"
-                               placeholder="Hasło">
-                    </div>
-                    <div class="form-group clearfix">
-                        <label class="fancy-checkbox element-left"> <input
-                                type="checkbox"> <span>Zapamiętaj mnie</span>
-                        </label>
-                    </div>
-                    <h4 th:if="${param.error}" class="loginError">Zły login lub
-                        hasło!</h4>
-                    <br>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">ZALOGUJ</button>
-                    <div class="bottom">
-									<span class="helper-text"><i class="fa fa-lock"></i> <a
-                                            href="#">Przypomnij hasło</a></span>
-                    </div>
-                </form>
-                <a th:href="@{/register}">Zarejestruj się!
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section class="padding" id="features">
     <div class="container">
         <div class="row align-items-center mt-5">
             <div class="col-12 col-md-6">
                 <h2>O aplikacji</h2>
-                <p class="text-muted">Nasza aplikacja pozwali Ci zaoszdzędzić pieniądze i realizować swoje cele. </p>
+                <p class="text-muted">Aplikacja Goal Maker to pierwsze narzędzie, które optymalizując Twoje wydatki, pozwala Ci osiągnąć wymarzony cel! Od teraz oszczędzanie jest jeszcze prostsze. Wystarczy mieć jasny wgląd w swoje przychody i wydatki by móc oszacować ile nam zostanie i na co przeznaczyć te pieniądze. Dzięki inteligentnemu systemowi, wszystko oblicza się samo!</p>
                 <br>
             </div>
         </div>
@@ -117,10 +81,9 @@
                     <div class="desc">
                         <h2>Zaoszczędź pieniądze</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore.
+                            Odkładaj pieniądze dzięki świeżemu spojrzeniu na swoje finanse. Może niepotrzebna Ci kolejna torebka, a może za dużo wydajesz na słodycze?
                         </p>
-                        <a href="#" class="more">Learn More</a>
+                        <a href="#" class="more">Czytaj więcej</a>
                     </div>
                 </div>
             </div>
@@ -132,10 +95,9 @@
                     <div class="desc">
                         <h2>Osiągaj cele</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore.
+                            Pomyśl tylko na co mógłbyś wydać zaoszczędzone pieniądze. Sięgnij po swoje marzenia!
                         </p>
-                        <a href="#" class="more">Learn More</a>
+                        <a href="#" class="more">Czytaj więcej</a>
                     </div>
                 </div>
             </div>
@@ -147,10 +109,9 @@
                     <div class="desc">
                         <h2>Analizuj historię</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore.
+                            Miej udokumentowaną historię zrealizowanych celów i zaoszczędzonych pieniędzy. Wgląd w historię zmotywuje Cię do działania.
                         </p>
-                        <a href="#" class="more">Learn More</a>
+                        <a href="#" class="more">Czytaj więcej</a>
                     </div>
                 </div>
             </div>

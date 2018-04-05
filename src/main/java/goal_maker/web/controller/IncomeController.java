@@ -29,19 +29,14 @@ public class IncomeController {
     UserFinancesService userFinancesService;
 
     @RequestMapping(value ="/allIncomes", method = RequestMethod.GET)
-    public String allIncomes(Model model, @RequestParam(value = "incomeId")long incomeId)
+    public String allIncomes(Model model)
     {
         model.addAttribute("location","incomesList");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
 
-        if(incomeId>0) {
-            Income chosenIncome = incomeService.getIncomeById(incomeId);
-            model.addAttribute("chosenIncome", chosenIncome);
-        }
-        else
-            model.addAttribute("chosenIncome", null);
+
         model.addAttribute("allIncomes", incomeService.findAllUserIncomes(gmUser.getUserFinances().getId_user_finances()));
         return "index";
     }

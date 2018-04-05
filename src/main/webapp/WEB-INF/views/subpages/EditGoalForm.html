@@ -4,58 +4,55 @@
     <meta charset="UTF-8">
     <title>Edytuj cel</title>
 </head>
+
 <body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-
-    <link rel="stylesheet" href="../dist/modules/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../dist/modules/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
-
-    <link rel="stylesheet" href="../dist/modules/summernote/summernote-lite.css">
-    <link rel="stylesheet" href="../dist/modules/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../dist/css/style.css">
-    <link rel="stylesheet" href="../dist/css/custom.css">
-    <link rel="stylesheet" href="../dist/css/skins/blue.css">
-</head>
-<body>
-<div class="main-content">
-    <div class="card">
-        <div class="card-header">
-            <h4>Edytuj cel</h4>
-        </div>
-        <form th:action="@{/editGoal}" method="post">
-            <div class="card-body">
-
-                <div class="form-group"><label>Nazwa celu</label>
+<section th:fragment="EditGoalForm">
+    <div class="main-content">
+        <section class="section">
+            <h1 class="section-header">
+                <div class="row">
+                    <div class="big-section-header">Edytuj cel:</div>
+                </div>
+            </h1>
+        </section>
+        <div class="card">
+            <div class="card-header">
+                <!--<h4>Edytuj cel</h4>-->
+            </div>
+            <form th:action="@{/addOrEditGoal}" method="post">
+                <div class="card-body">
                     <input th:value="${goal.id_goal}" type="hidden" name="id"
                            class="form-control">
-                    <input th:value="${goal.name}" type="text" name="name" id="goalname" placeholder="nazwa"
+                    <input th:value="${insertion}" type="hidden" name="insertion"
                            class="form-control">
+                    <div class="form-group"><label>Nazwa celu</label>
+
+                        <input th:value="${goal.name}" type="text" name="name" id="goalname" placeholder="nazwa"
+                               class="form-control">
+                    </div>
+
+                    <div class="form-group"><label>Kategoria</label>
+                        <select class="form-control" name="categoryId">
+                            <option th:each="category : ${goalCategories}" th:value="${category.id_category}" th:text="${category.name}"></option>
+                        </select></div>
+
+                    <div class="form-group"><label>Wybierz wartość celu</label>
+                        <input th:value="${goal.value}" type="number" name="value"
+                               class="form-control" id="value" placeholder="wartość"></div>
+
+
+                    <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
+                        Zatwierdź
+                    </button>
+                    <a th:href="@{/dashboard}" class="btn btn-danger btn-round" style="margin-bottom: 15px;">
+                        Anuluj
+                    </a>
                 </div>
+            </form>
 
-                <div class="form-group"><label>Wybierz kategorie</label>
-                    <input th:value="${goal.category.name}" type="text" name="category"
-                           class="form-control" id="hiddenslider" placeholder="kategoria"></div>
-
-                <div class="form-group"><label>Wybierz wartość celu</label>
-                    <input th:value="${goal.value}" type="text" name="value"
-                           class="form-control" id="value" placeholder="wartość"></div>
-
-
-                <a href='#' class="btn btn-primary btn-round" style="margin-bottom: 15px;">
-                    Zatwierdź
-                </a> <a href='#' class="btn btn-danger btn-round" style="margin-bottom: 15px;">
-                Anuluj
-            </a>
-            </div>
-        </form>
-
+        </div>
     </div>
-</div>
-
+</section>
 
 </body>
 

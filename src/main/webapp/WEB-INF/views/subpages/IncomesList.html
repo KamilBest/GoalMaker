@@ -6,116 +6,121 @@
 </head>
 <body>
 <section class="content" th:fragment="IncomesList">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Lista przychodów</h1>
-                <hr>
+    <div class="main-content">
+        <section class="section">
+            <h1 class="section-header">
+                <div class="row">
+                    <div class="big-section-header">Lista przychodów</div>
+                </div>
+            </h1>
+        </section>
+        <div class="card">
+            <div class="card-header">
+                <h4>Lista wszystkich Twoich przychodów</h4>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <table class="table table-bordered table-striped table-hover datatables" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th class="hidden-column">ID</th>
-                        <th>TYP</th>
-                        <th>NAZWA</th>
-                        <th>WARTOŚĆ</th>
-                        <th>DATA</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="tableRow" th:each="income : ${allIncomes}"
-                        th:onclick="'javascript:moveTo(\'' + @{/allIncomes?incomeId=}+${income.id_income} + '\')'">
-                        <td th:text="${income.id_income}"></td>
-                        <td th:text="${income.name}"></td>
-                        <td th:text="${income.type}"></td>
-                        <td th:text="${income.value}"></td>
-                        <td th:text="${income.date}"></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-4">
-                <form th:action="@{/editIncome}" method="post">
-                    <div class="add-edit-form">
-                        <div class="form-title">
-                            <p>Edytuj przychód</p>
-                            <span>(Wybierz rekord i zmień dane, aby edytować przychód, lub wypełnij pola i zatwierdź, aby dodać nowy)</span>
-                            <hr>
-                        </div>
-                        <div class="form-group">
-                            <label for="id">ID</label>
-                            <div class="input-group readonly">
-                            <span class="input-group-addon bg-blue">
-                                <span class="ion ion-minus"></span>
-                            </span>
-                                <input type="text" class="form-control" id="id" name="incomeId"
-                                       placeholder="id" th:value="${chosenIncome!=null? chosenIncome.id_income : ' '}"
-                                       readonly disabled>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Nazwa przychodu</label>
-                            <div class="input-group">
-                            <span class="input-group-addon bg-blue">
-                                <span class="ion ion-chatbubble"></span>
-                            </span>
-                                <input type="text" class="form-control" id="name" name="name"
-                                       placeholder="Nazwa" th:value="${chosenIncome!=null? chosenIncome.name: ' '}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="type">Typ</label>
-                            <div class="input-group">
-                            <span class="input-group-addon bg-blue">
-                                <span class="ion ion-compose"></span>
-                            </span>
-                                <input type="text" class="form-control" id="type" name="type"
-                                       placeholder="Typ" th:value="${chosenIncome!=null? chosenIncome.type: ' '}"
-                                       readonly>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="value">Wartość</label>
-                            <div class="input-group">
-                            <span class="input-group-addon bg-blue">
-                                <span class="ion ion-pricetag"></span>
-                            </span>
-                                <input type="text" class="form-control" id="value" name="value"
-                                       placeholder="Wartość" th:value="${chosenIncome!=null? chosenIncome.value: ' '}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Data</label>
-                            <div class="input-group">
-                            <span class="input-group-addon bg-blue">
-                                <span class="ion ion-android-calendar"></span>
-                            </span>
-                                <input type="text" class="form-control" id="date"
-                                       placeholder="Data" th:value="${chosenIncome!=null? chosenIncome.date: ' '}"
-                                       readonly>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-3" th:if="${chosenIncome!=null}">
-                                <a th:onclick="'javascript:moveTo(\'' + @{/deleteIncome?incomeId=}+${chosenIncome.id_income} + '\')'"
-                                   class="btn btn-range-reset">
-                                    <span>Usuń</span>
-                                </a>
-                            </div>
-                            <div class="col-md-3" th:if="${chosenIncome!=null}">
-                                <button type="submit" class="btn btn-range">Edytuj</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+            <div class="card-body">
+            <table class="table table-bordered table-striped table-hover datatables" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th class="hidden-column">ID</th>
+                    <th>TYP</th>
+                    <th>NAZWA</th>
+                    <th>WARTOŚĆ</th>
+                    <th>DATA</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="tableRow" th:each="income : ${allIncomes}"
+                    th:onclick="'javascript:moveTo(\'' + @{/allIncomes?incomeId=}+${income.id_income} + '\')'">
+                    <td th:text="${income.id_income}"></td>
+                    <td th:text="${income.name}"></td>
+                    <td th:text="${income.type}"></td>
+                    <td th:text="${income.value}"></td>
+                    <td th:text="${income.date}"></td>
+                </tr>
+                </tbody>
+            </table>
             </div>
         </div>
     </div>
 </section>
+<!-- <div class="col-md-4">
+     <form th:action="@{/editIncome}" method="post">
+         <div class="add-edit-form">
+             <div class="form-title">
+                 <p>Edytuj przychód</p>
+                 <span>(Wybierz rekord i zmień dane, aby edytować przychód, lub wypełnij pola i zatwierdź, aby dodać nowy)</span>
+                 <hr>
+             </div>
+             <div class="form-group">
+                 <label for="id">ID</label>
+                 <div class="input-group readonly">
+                 <span class="input-group-addon bg-blue">
+                     <span class="ion ion-minus"></span>
+                 </span>
+                     <input type="text" class="form-control" id="id" name="incomeId"
+                            placeholder="id" th:value="${chosenIncome!=null? chosenIncome.id_income : ' '}"
+                            readonly disabled>
+                 </div>
+             </div>
+             <div class="form-group">
+                 <label for="name">Nazwa przychodu</label>
+                 <div class="input-group">
+                 <span class="input-group-addon bg-blue">
+                     <span class="ion ion-chatbubble"></span>
+                 </span>
+                     <input type="text" class="form-control" id="name" name="name"
+                            placeholder="Nazwa" th:value="${chosenIncome!=null? chosenIncome.name: ' '}">
+                 </div>
+             </div>
+             <div class="form-group">
+                 <label for="type">Typ</label>
+                 <div class="input-group">
+                 <span class="input-group-addon bg-blue">
+                     <span class="ion ion-compose"></span>
+                 </span>
+                     <input type="text" class="form-control" id="type" name="type"
+                            placeholder="Typ" th:value="${chosenIncome!=null? chosenIncome.type: ' '}"
+                            readonly>
+                 </div>
+             </div>
+
+             <div class="form-group">
+                 <label for="value">Wartość</label>
+                 <div class="input-group">
+                 <span class="input-group-addon bg-blue">
+                     <span class="ion ion-pricetag"></span>
+                 </span>
+                     <input type="text" class="form-control" id="value" name="value"
+                            placeholder="Wartość" th:value="${chosenIncome!=null? chosenIncome.value: ' '}">
+                 </div>
+             </div>
+             <div class="form-group">
+                 <label for="date">Data</label>
+                 <div class="input-group">
+                 <span class="input-group-addon bg-blue">
+                     <span class="ion ion-android-calendar"></span>
+                 </span>
+                     <input type="text" class="form-control" id="date"
+                            placeholder="Data" th:value="${chosenIncome!=null? chosenIncome.date: ' '}"
+                            readonly>
+                 </div>
+             </div>
+
+             <div class="row">
+                 <div class="col-md-3" th:if="${chosenIncome!=null}">
+                     <a th:onclick="'javascript:moveTo(\'' + @{/deleteIncome?incomeId=}+${chosenIncome.id_income} + '\')'"
+                        class="btn btn-range-reset">
+                         <span>Usuń</span>
+                     </a>
+                 </div>
+                 <div class="col-md-3" th:if="${chosenIncome!=null}">
+                     <button type="submit" class="btn btn-range">Edytuj</button>
+                 </div>
+             </div>
+         </div>
+     </form>
+ </div>-->
+
 </body>
 </html>

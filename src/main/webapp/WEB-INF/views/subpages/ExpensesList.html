@@ -6,15 +6,19 @@
 </head>
 <body>
 <section class="content" th:fragment="ExpensesList">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Lista wydatków</h1>
-                <hr>
+    <div class="main-content">
+        <section class="section">
+            <h1 class="section-header">
+                <div class="row">
+                    <div class="big-section-header">Lista wydatków</div>
+                </div>
+            </h1>
+        </section>
+        <div class="card">
+            <div class="card-header">
+                <h4>Lista wszystkich Twoich wydatków</h4>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
+            <div class="card-body">
                 <table class="table table-bordered table-striped datatables" cellspacing="0" width="100%">
                     <thead>
                     <tr>
@@ -37,81 +41,80 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-4">
-                <form th:action="@{/editExpense}" method="post">
-                    <div class="add-edit-form">
-                        <div class="form-title">
-                            <p>Edytuj wydatek</p>
-                            <span>(Wybierz rekord i zmień dane, aby edytować przychód, lub wypełnij pola i zatwierdź, aby dodać nowy)</span>
-                            <hr>
-                        </div>
-                        <div class="form-group">
-                            <label for="id">ID</label>
-                            <div class="input-group readonly">
-                            <span class="input-group-addon bg-blue">
-                                <span class="ion ion-minus"></span>
-                            </span>
-                                <input type="text" class="form-control" id="id" name="expenseId"
-                                       placeholder="id" th:value="${chosenExpense!=null? chosenExpense.idExpenses : ' '}" readonly disabled>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Nazwa przychodu</label>
-                            <div class="input-group">
-                            <span class="input-group-addon bg-blue">
-                                <span class="ion ion-chatbubble"></span>
-                            </span>
-                                <input type="text" class="form-control" id="name" name="name"
-                                       placeholder="Wprowadź nazwę celu" th:value="${chosenExpense!=null? chosenExpense.name : ' '}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="type">Typ</label>
-                            <div class="input-group">
-                            <span class="input-group-addon bg-blue">
-                                <span class="ion ion-compose"></span>
-                            </span>
-                                <input type="text" class="form-control" id="type" name="type"
-                                       placeholder="Wybierz typ" th:value="${chosenExpense!=null? chosenExpense.type : ' '}" readonly>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="value">Wartość</label>
-                            <div class="input-group">
-                            <span class="input-group-addon bg-blue">
-                                <span class="ion ion-pricetag"></span>
-                            </span>
-                                <input type="text" class="form-control" id="value" name="value"
-                                       placeholder="Wprowadź wartość" th:value="${chosenExpense!=null? chosenExpense.value : ' '}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Data</label>
-                            <div class="input-group">
-                            <span class="input-group-addon bg-blue">
-                                <span class="ion ion-android-calendar"></span>
-                            </span>
-                                <input type="text" class="form-control" id="date"
-                                       placeholder="Wybierz datę" th:value="${chosenExpense!=null? chosenExpense.date : ' '}" readonly>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3" th:if="${chosenExpense!=null}">
-                                <a th:onclick="'javascript:moveTo(\'' + @{/deleteExpense?expenseId=}+${chosenExpense.idExpenses} + '\')'"
-                                   class="btn btn-range-reset">
-                                    <span>Usuń</span>
-                                </a>
-                            </div>
-                            <div class="col-md-3" th:if="${chosenExpense!=null}">
-                                <button type="submit" class="btn btn-range">Edytuj</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
-</section>
+</section>            <!--<div class="col-md-4">-->
+                <!--<form th:action="@{/editExpense}" method="post">-->
+                    <!--<div class="add-edit-form">-->
+                        <!--<div class="form-title">-->
+                            <!--<p>Edytuj wydatek</p>-->
+                            <!--<span>(Wybierz rekord i zmień dane, aby edytować przychód, lub wypełnij pola i zatwierdź, aby dodać nowy)</span>-->
+                            <!--<hr>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label for="id">ID</label>-->
+                            <!--<div class="input-group readonly">-->
+                            <!--<span class="input-group-addon bg-blue">-->
+                                <!--<span class="ion ion-minus"></span>-->
+                            <!--</span>-->
+                                <!--<input type="text" class="form-control" id="id" name="expenseId"-->
+                                       <!--placeholder="id" th:value="${chosenExpense!=null? chosenExpense.idExpenses : ' '}" readonly disabled>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label for="name">Nazwa przychodu</label>-->
+                            <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon bg-blue">-->
+                                <!--<span class="ion ion-chatbubble"></span>-->
+                            <!--</span>-->
+                                <!--<input type="text" class="form-control" id="name" name="name"-->
+                                       <!--placeholder="Wprowadź nazwę celu" th:value="${chosenExpense!=null? chosenExpense.name : ' '}">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label for="type">Typ</label>-->
+                            <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon bg-blue">-->
+                                <!--<span class="ion ion-compose"></span>-->
+                            <!--</span>-->
+                                <!--<input type="text" class="form-control" id="type" name="type"-->
+                                       <!--placeholder="Wybierz typ" th:value="${chosenExpense!=null? chosenExpense.type : ' '}" readonly>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group">-->
+                            <!--<label for="value">Wartość</label>-->
+                            <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon bg-blue">-->
+                                <!--<span class="ion ion-pricetag"></span>-->
+                            <!--</span>-->
+                                <!--<input type="text" class="form-control" id="value" name="value"-->
+                                       <!--placeholder="Wprowadź wartość" th:value="${chosenExpense!=null? chosenExpense.value : ' '}">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label for="date">Data</label>-->
+                            <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon bg-blue">-->
+                                <!--<span class="ion ion-android-calendar"></span>-->
+                            <!--</span>-->
+                                <!--<input type="text" class="form-control" id="date"-->
+                                       <!--placeholder="Wybierz datę" th:value="${chosenExpense!=null? chosenExpense.date : ' '}" readonly>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-3" th:if="${chosenExpense!=null}">-->
+                                <!--<a th:onclick="'javascript:moveTo(\'' + @{/deleteExpense?expenseId=}+${chosenExpense.idExpenses} + '\')'"-->
+                                   <!--class="btn btn-range-reset">-->
+                                    <!--<span>Usuń</span>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-3" th:if="${chosenExpense!=null}">-->
+                                <!--<button type="submit" class="btn btn-range">Edytuj</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
 </body>
 </html>

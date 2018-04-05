@@ -40,7 +40,7 @@ public class DashboardController {
     UserFinancesService userFinancesService;
     private List<Goal> realisedGoals = new ArrayList<>();
 
-    @RequestMapping(value = {"/dashboard"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/dashboard","/index"}, method = RequestMethod.GET)
     public String showFrontPage(Model model) {
         model.addAttribute("location", "dashboard");
 
@@ -60,9 +60,8 @@ public class DashboardController {
                 currentGoal=null;
             }
             model.addAttribute("currentUserGoal", currentGoal);
-/*
-            model.addAttribute("progressBarWidth", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
-*/
+            model.addAttribute("perecentageValueGoal", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
+
         } else {
             model.addAttribute("currentUserGoal", currentGoal);
             /*model.addAttribute("progressBarWidth", 0);*/
@@ -75,7 +74,6 @@ public class DashboardController {
         model.addAttribute("currentUserFinances", gmUser.getUserFinances());
         long currentUserFinancesId = gmUser.getUserFinances().getId_user_finances();
         //get percentage value, to display in circle progress bar
-         model.addAttribute("perecentageValueGoal", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
         //PROGRESS BAR
 
         //display records of given amount

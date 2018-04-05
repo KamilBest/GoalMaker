@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IntroController {
 
 
-    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/intro"}, method = RequestMethod.GET)
     public String showFrontPage(Model model) {
         return "introPage";
     }

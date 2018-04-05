@@ -28,86 +28,111 @@
                             </div>
                             <!--USER GOAL BUTTONS-->
                             <div class="col-6">
-                                <a href="#" class="btn btn-primary btn-round goal-btn-edit"
-                                   th:onclick="'javascript:moveTo(\'' + @{/editGoal?id=}+${currentUserGoal.id_goal} + '\')'">Edytuj</a>
-                                <a href="#" class="btn btn-danger btn-round goal-btn-delete"
-                                   th:onclick="'javascript:moveTo(\'' + @{/deleteGoal?id=}+${currentUserGoal.id_goal} + '\')'">Usuń</a>
+                                <button class="btn btn-primary btn-round goal-btn-edit"
+                                        th:onclick="'javascript:moveTo(\'' + @{/addOrEditGoal?id=}+${currentUserGoal.id_goal} + '\')'">
+                                    Edytuj
+                                </button>
+                                <button class="btn btn-danger btn-round goal-btn-delete"
+                                        th:onclick="'javascript:moveTo(\'' + @{/deleteGoal?id=}+${currentUserGoal.id_goal} + '\')'">
+                                    Usuń
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3 col-md-6 col-12">
-            <div class="card card-sm-2">
-                <div class="card-icon"><img src="/dist/img/goal.png"></div>
-                <div class="card-header"><h4>Postęp celu
-                </h4></div>
-                <!--USER GOAL BALANCE AND USER GOAL CURRENT-->
-                <div class="card-body">
-                    <span th:text="${currentUserFinances.goal_balance} + ' / '"></span>
-                    <span th:text="${currentUserGoal.value}" class="text-muted">123</span>
-                </div>
-                <div class="card-progressbar">
-                    <div class="progress" style="height:6px;">
-                        <div class="progress-bar bg-success" role="progressbar" th:style="'width:${perecentageValueGoal};'"></div>
+        <!--
+            GOAL IS SET
+        -->
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-12">
+                <div class="card card-sm-2">
+                    <div class="card-icon"><img src="/dist/img/goal.png"></div>
+                    <div class="card-header"><h4>Postęp celu
+                    </h4></div>
+                    <!--USER GOAL BALANCE AND USER GOAL CURRENT-->
+                    <div class="card-body">
+                        <span th:text="${currentUserFinances.goal_balance} + ' / '"></span>
+                        <span th:text="${currentUserGoal.value}" class="text-muted">123</span>
+                    </div>
+                    <div class="card-progressbar">
+                        <div class="progress" style="height:6px;">
+                            <div class="progress-bar bg-success" role="progressbar"
+                                 th:style="'width:${perecentageValueGoal};'"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--CURRENT USER FINANCES-->
-        <div class="col-lg-3 col-md-6 col-12">
-            <div class="card card-sm-2">
-                <div class="card-icon"><img src="/dist/img/account.png"></div>
-                <div class="card-header"><h4>Stan Konta
-                </h4></div>
-                <div class="card-body">
-                    <span th:text="${currentUserFinances.real_account_balance}"></span>
+            <!--CURRENT USER FINANCES-->
+            <div class="col-lg-3 col-md-6 col-12">
+                <div class="card card-sm-2">
+                    <div class="card-icon"><img src="/dist/img/account.png"></div>
+                    <div class="card-header"><h4>Stan Konta
+                    </h4></div>
+                    <div class="card-body">
+                        <span th:text="${currentUserFinances.real_account_balance}"></span>
+                    </div>
+                    <div class="card-progressbar"></div>
                 </div>
-                <div class="card-progressbar"></div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+
+                <div class="card card-sm-2">
+                    <div class="card-icon"><img src="/dist/img/hourglass.png">
+                    </div>
+                    <div class="card-header"><h4>Szacowany czas
+                    </h4></div>
+                    <div class="card-body">25 dni</div>
+                    <div class="card-progressbar"></div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+
+                <div class="card card-sm-2">
+                    <div class="card-icon"><i class="ion ion-ionic text-danger"></i></div>
+                    <div class="card-header"><h4>XXXX
+                    </h4></div>
+                    <div class="card-body">yyy</div>
+                    <div class="card-progressbar"></div>
+                </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-12">
 
-            <div class="card card-sm-2">
-                <div class="card-icon"><img src="/dist/img/hourglass.png">
+
+        <div class="row">
+            <div class="col-12">
+
+                <div class="float-right">
+                    <button class="btn btn-primary btn-round" style="margin-bottom: 15px;"
+                            th:onclick="'javascript:moveTo(\'' + @{/updateGoalBalance} + '\')'">
+                        <img src="https://png.icons8.com/color/20/cccccc/deposit.png">Przelej na cel
+                    </button>
+                    <button class="btn btn-primary btn-round" style="margin-bottom: 15px;"
+                            th:onclick="'javascript:moveTo(\'' + @{/addIncome} + '\')'">
+                        <img src="https://png.icons8.com/color/20/cccccc/plus.png">Nowy przychód
+                    </button>
+                    <button class="btn btn-danger btn-round" style="margin-bottom: 15px;"
+                            th:onclick="'javascript:moveTo(\'' + @{/addExpenses} + '\')'">
+                        <img src="https://png.icons8.com/color/20/cccccc/minus.png">Nowy wydatek
+                    </button>
                 </div>
-                <div class="card-header"><h4>Szacowany czas
-                </h4></div>
-                <div class="card-body">25 dni</div>
-                <div class="card-progressbar"></div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-12">
-
-            <div class="card card-sm-2">
-                <div class="card-icon"><i class="ion ion-ionic text-danger"></i></div>
-                <div class="card-header"><h4>XXXX
-                </h4></div>
-                <div class="card-body">yyy</div>
-                <div class="card-progressbar"></div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-
-            <div class="float-right">
-                <a href='#' class="btn btn-primary btn-round" style="margin-bottom: 15px;"
-                   th:onclick="'javascript:moveTo(\'' + @{/updateGoalBalance} + '\')'">
-                    <img src="https://png.icons8.com/color/20/cccccc/deposit.png">Przelej na cel
-                </a> <a href='#' class="btn btn-primary btn-round" style="margin-bottom: 15px;"
-                        th:onclick="'javascript:moveTo(\'' + @{/addIncome} + '\')'">
-                <img src="https://png.icons8.com/color/20/cccccc/plus.png">Nowy przychód
-            </a>
-                <a href='#' class="btn btn-danger btn-round" style="margin-bottom: 15px;"
-                   th:onclick="'javascript:moveTo(\'' + @{/addExpenses} + '\')'">
-                    <img src="https://png.icons8.com/color/20/cccccc/minus.png">Nowy wydatek
-                </a>
+    <!-- NO GOAL-->
+    <div th:if="${currentUserGoal==null}">
+        <div class="row">
+            <div class="col-12">
+                <div class="float-right" style="padding:20px;">
+                    <a th:href="@{/addOrEditGoal}" class="btn btn-primary btn-round">
+                        <img src="https://png.icons8.com/color/20/cccccc/plus.png">Dodaj cel
+                    </a>
+                </div>
             </div>
         </div>
+    </div>
+
     </div>
     <div class="row">
         <div class="col-lg-6 col-md-12 col-12 col-sm-12">

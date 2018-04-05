@@ -125,10 +125,10 @@
                 </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a href="profile.html" class="dropdown-item has-icon">
-                            <i class="ion ion-android-person"></i> Profile
+                            <i class="ion ion-android-person"></i> Profil
                         </a>
-                        <a href="#" class="dropdown-item has-icon">
-                            <i class="ion ion-log-out"></i> Logout
+                        <a th:href="@{/logout}" class="dropdown-item has-icon">
+                            <i class="ion ion-log-out"></i> Wyloguj
                         </a>
                     </div>
                 </li>
@@ -137,7 +137,7 @@
         <div class="main-sidebar">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                    <a href="index.html">Goal maker</a>
+                    <a th:href="@{/dashboard}">Goal maker</a>
                 </div>
                 <div class="sidebar-user">
                     <div class="sidebar-user-picture">
@@ -154,17 +154,17 @@
 
                     <li class="menu-header">MENU</li>
                     <li>
-                        <a href="#"><i class="ion ion-home"></i>
+                        <a th:href="@{/dashboard}"><i class="ion ion-home"></i>
                             <span>Strona główna</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="ion ion-arrow-up-b"></i><span>Przychody</span></a>
+                        <a th:href="@{/allIncomes}"><i class="ion ion-arrow-up-b"></i><span>Przychody</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="ion ion-arrow-down-b"></i><span>Wydatki</span></a>
+                        <a th:href="@{/allExpenses}"><i class="ion ion-arrow-down-b"></i><span>Wydatki</span></a>
                     </li>
                     <li>
-                        <a href="table.html"><i class="ion ion-checkmark"></i><span>Zrealizowane cele</span></a>
+                        <a href="#"><i class="ion ion-checkmark"></i><span>Zrealizowane cele</span></a>
                     </li>
 
                 </ul>
@@ -174,31 +174,31 @@
             <div th:switch="${location}">
                 <div th:case="'dashboard'"
                      th:include="subpages/Dashboard :: Dashboard"></div>
-                <div th:case="'usersList'"
-                     th:include="subpages/Userslist :: Userslist"></div>
+                <!--<div th:case="'usersList'"
+                     th:include="subpages/Userslist :: Userslist"></div>-->
 
-                <div th:case="'createUpdateGoal'"
-                     th:include="subpages/GoalForm :: CreateUpdateGoalForm"></div>
-                <div th:case="'updateGoal'"
+                <!--<div th:case="'createUpdateGoal'"
+                     th:include="subpages/GoalForm :: CreateUpdateGoalForm"></div>-->
+                <div th:case="'addOrEditGoal'"
                      th:include="subpages/EditGoalForm :: EditGoalForm"></div>
 
-                <div th:case="'addIncome'"
-                     th:include="subpages/AddIncome :: AddIncome"></div>
+                <!--<div th:case="'addIncome'"-->
+                     <!--th:include="subpages/AddIncome :: AddIncome"></div>-->
                 <div th:case="'incomesList'"
                      th:include="subpages/IncomesList :: IncomesList"></div>
 
-                <div th:case="'addExpenses'"
-                     th:include="subpages/AddExpenses :: AddExpenses"></div>
+                <!--<div th:case="'addExpenses'"-->
+                     <!--th:include="subpages/AddExpenses :: AddExpenses"></div>-->
                 <div th:case="'expensesList'"
                      th:include="subpages/ExpensesList :: ExpensesList"></div>
 
-                <div th:case="'CreateConstantIncomeForm'"
+              <!--  <div th:case="'CreateConstantIncomeForm'"
                      th:include="subpages/ConstantIncomeForm :: CreateConstantIncomeForm"></div>
                 <div th:case="'CreateChangeableIncomeForm'"
-                     th:include="subpages/ChangeableIncomeForm :: CreateChangeableIncomeForm"></div>
+                     th:include="subpages/ChangeableIncomeForm :: CreateChangeableIncomeForm"></div>-->
 
-                <div th:case="'accountMoneyTransfer'"
-                     th:include="subpages/AccountMoneyTransferForm :: AccountMoneyTransfer"></div>
+                <!--<div th:case="'accountMoneyTransfer'"-->
+                     <!--th:include="subpages/AccountMoneyTransferForm :: AccountMoneyTransfer"></div>-->
             </div>
             <footer class="main-footer">
                 <div class="footer-left">
@@ -219,7 +219,7 @@
 <!--<script src="assets/vendor/jquery/jquery.min.js"></script>-->
 <!--<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>-->
 
-<!--<script src="assets/vendor/data-table/datatables.min.js"></script>-->
+<script src="assets/vendor/data-table/datatables.min.js"></script>
 <!--<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>-->
 <!--<script-->
         <!--src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>-->
@@ -242,6 +242,7 @@
 
 <script src="dist/modules/chart.min.js"></script>
 <script src="dist/modules/summernote/summernote-lite.js"></script>
+
 <script type="text/javascript">
     function moveTo(loc) {
         location.href = loc;
