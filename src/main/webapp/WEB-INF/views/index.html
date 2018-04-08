@@ -124,8 +124,11 @@
                     <div class="d-sm-none d-lg-inline-block">Witaj, użytkowniku</div>
                 </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a href="profile.html" class="dropdown-item has-icon">
+                        <a href="#" class="dropdown-item has-icon">
                             <i class="ion ion-android-person"></i> Profil
+                        </a>
+                        <a th:href="@{/settings}" class="dropdown-item has-icon">
+                            <i class="ion ion-gear-a"></i> Ustawienia
                         </a>
                         <a th:href="@{/logout}" class="dropdown-item has-icon">
                             <i class="ion ion-log-out"></i> Wyloguj
@@ -191,6 +194,8 @@
                      <!--th:include="subpages/AddExpenses :: AddExpenses"></div>-->
                 <div th:case="'expensesList'"
                      th:include="subpages/ExpensesList :: ExpensesList"></div>
+                <div th:case="'userSettings'"
+                     th:include="subpages/UserSettings :: UserSettings"></div>
 
               <!--  <div th:case="'CreateConstantIncomeForm'"
                      th:include="subpages/ConstantIncomeForm :: CreateConstantIncomeForm"></div>
