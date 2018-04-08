@@ -2,7 +2,9 @@
 html, body {
 	height: 100% !important;
 }
-
+.mobile-menu-bg{
+	background-color: rgba(63, 82, 226, 0.59);
+}
 .main-loading {
 	position: fixed;
 	top: 50%;
