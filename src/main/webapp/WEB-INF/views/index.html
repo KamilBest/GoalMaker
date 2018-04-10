@@ -185,13 +185,14 @@
                 <div th:case="'addOrEditGoal'"
                      th:include="subpages/EditGoalForm :: EditGoalForm"></div>
 
-                <!--<div th:case="'addIncome'"-->
-                     <!--th:include="subpages/AddIncome :: AddIncome"></div>-->
+                <div th:case="'addIncome'"
+                     th:include="subpages/AddIncome :: AddIncome"></div>
+                <div th:case="'accountMoneyTransfer'"
+                     th:include="subpages/AccountMoneyTransferForm :: AccountMoneyTransferForm"></div>
                 <div th:case="'incomesList'"
                      th:include="subpages/IncomesList :: IncomesList"></div>
-
-                <!--<div th:case="'addExpenses'"-->
-                     <!--th:include="subpages/AddExpenses :: AddExpenses"></div>-->
+                <div th:case="'addExpenses'"
+                     th:include="subpages/AddExpenses :: AddExpenses"></div>
                 <div th:case="'expensesList'"
                      th:include="subpages/ExpensesList :: ExpensesList"></div>
                 <div th:case="'userSettings'"
@@ -202,8 +203,7 @@
                 <div th:case="'CreateChangeableIncomeForm'"
                      th:include="subpages/ChangeableIncomeForm :: CreateChangeableIncomeForm"></div>-->
 
-                <!--<div th:case="'accountMoneyTransfer'"-->
-                     <!--th:include="subpages/AccountMoneyTransferForm :: AccountMoneyTransfer"></div>-->
+
             </div>
             <footer class="main-footer">
                 <div class="footer-left">

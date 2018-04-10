@@ -5,14 +5,11 @@
     <title>Transfer pieniędzy</title>
 </head>
 <body>
-<section th:fragment="AccountMoneyTransfer">
-
-    <div class="main-content">
+<section th:fragment="AccountMoneyTransferForm">
+    <div class="container">
         <section class="section">
             <h1 class="section-header">
-                <div class="row">
-                    <div class="big-section-header">Przeznacz na cel</div>
-                </div>
+                <div class="big-section-header">Przeznacz na cel</div>
             </h1>
         </section>
         <div class="card">
@@ -21,23 +18,21 @@
             </div>
             <form th:action="@{/updateGoalBalance}" method="post">
                 <div class="card-body">
-                    <div class="form-group"><label>Stan konta: <span th:text=${realAccountBalance}"></span></label>
+                    <div class="form-group">
+                        <label>Stan konta: <span th:text="${realAccountBalance}"></span></label>
                     </div>
-
-                    <div class="form-group"><label>Wybierz jaką wartość chcesz przeznaczyć na cel:</label>
-                        <input type="text" name="value"
-                               class="form-control" id="hiddenslider" placeholder="wartość"></div>
-
-
-                    <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
-                        Zatwierdź
+                    <div class="form-group">
+                        <label>Wybierz jaką wartość chcesz przeznaczyć na cel:</label>
+                        <input type="number" name="value"
+                               class="form-control" placeholder="wartość">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">Zatwierdź
                     </button>
                     <a th:href="@{/dashboard}" class="btn btn-danger btn-round" style="margin-bottom: 15px;">
                         Anuluj
                     </a>
                 </div>
             </form>
-
         </div>
     </div>
 </section>

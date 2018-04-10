@@ -7,7 +7,7 @@
 <body>
 <section th:fragment="AddExpenses">
 
-    <div class="main-content">
+    <div class="container">
         <section class="section">
             <h1 class="section-header">
                 <div class="row">
@@ -21,8 +21,6 @@
             </div>
             <form th:action="@{/addExpenses}" method="post">
                 <div class="card-body">
-
-
                     <div class="form-group"><label class="d-block">Wybierz typ stały/zmienny</label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio"

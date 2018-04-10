@@ -46,7 +46,6 @@ public class UserFinancesController {
         //update real account balance
         boolean isIncome = false;
         userFinancesService.updateRealAccountBalance(gmUser.getUserFinances(), value, isIncome);
-        UserFinancesService userFinancesService;
         return "redirect:/index";
     }
 }
