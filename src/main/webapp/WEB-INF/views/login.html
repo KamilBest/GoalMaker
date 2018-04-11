@@ -5,11 +5,21 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
           name="viewport">
     <title>Examples &rsaquo; Login &mdash; Goal Maker</title>
-    <link rel="stylesheet" href="dist/modules/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="dist/modules/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
 
-    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/data-table/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/nouislider.css"/>
+
+
+    <link rel="stylesheet" type="text/css" href="dist/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="dist/modules/summernote/summernote-lite.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/style.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/skins/blue.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/datepicker.css">
 </head>
 
 <body>
@@ -83,8 +93,26 @@
     </section>
 </div>
 
+
+<script src="dist/js/scripts.js"></script>
 <script src="dist/modules/jquery.min.js"></script>
+<script src="dist/modules/popper.js"></script>
+<script src="dist/modules/tooltip.js"></script>
 <script src="dist/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+<script src="dist/js/sa-functions.js"></script>
+
+<script src="dist/modules/chart.min.js"></script>
+<script src="dist/modules/summernote/summernote-lite.js"></script>
+<script src="assets/scripts/bootstrap-datepicker.js"></script>
+<script>
+    $(function () {
+        $('.datepicker').datepicker({
+            format: 'dd.mm.yyyy'
+        });
+    });
+</script>
 
 
 </body>

@@ -4,13 +4,27 @@
 
 <head>
     <title> Rejestracja</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="assets/scripts/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/vendor/data-table/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/nouislider.css"/>
 
-    <link rel="stylesheet" href="dist/modules/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="dist/modules/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/datepicker.css">
 
-    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="dist/modules/summernote/summernote-lite.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/style.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/skins/blue.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/datepicker.css">
+
+
 </head>
 <body>
 
@@ -25,8 +39,6 @@
 
                     <div class="card card-primary">
                         <div class="card-header"><h4>Rejestracja</h4></div>
-
-
                         <div class="card-body">
                             <form method="post" th:action="@{/register}" th:object="${user}">
                                 <div class="form-group">
@@ -76,7 +88,7 @@
                                 -->
                                 <div class="form-group" hidden>
                                     <select class="form-control" th:field="*{isActive}">
-                                        <option th:value="TRUE" th:text="TRUE"/>
+                                        <option th:value="TRUE" th:text="TRUE"></option>
                                         <!--<option th:value="FALSE" th:text="FALSE" />-->
                                     </select>
                                 </div>
@@ -108,17 +120,17 @@
     </section>
 </div>
 
+<script src="dist/js/scripts.js"></script>
 <script src="dist/modules/jquery.min.js"></script>
 <script src="dist/modules/popper.js"></script>
 <script src="dist/modules/tooltip.js"></script>
 <script src="dist/modules/bootstrap/js/bootstrap.min.js"></script>
 <script src="dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
-<script src="dist/modules/moment.min.js"></script>
 <script src="dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
 <script src="dist/js/sa-functions.js"></script>
 
-<script src="dist/js/scripts.js"></script>
-<script src="dist/js/custom.js"></script>
+<script src="dist/modules/chart.min.js"></script>
+<script src="dist/modules/summernote/summernote-lite.js"></script>
 <script src="assets/scripts/bootstrap-datepicker.js"></script>
 <script>
     $(function () {
