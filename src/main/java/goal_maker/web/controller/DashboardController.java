@@ -40,7 +40,7 @@ public class DashboardController {
     UserFinancesService userFinancesService;
     private List<Goal> realisedGoals = new ArrayList<>();
 
-    @RequestMapping(value = {"/dashboard","/index"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/dashboard","/index"}, method = RequestMethod.GET)
     public String showFrontPage(Model model) {
         model.addAttribute("location", "dashboard");
 
