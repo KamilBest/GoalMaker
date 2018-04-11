@@ -7,12 +7,10 @@
 
 <body>
 <section th:fragment="EditGoalForm">
-    <div class="main-content">
+    <div>
         <section class="section">
             <h1 class="section-header">
-                <div class="row">
-                    <div class="big-section-header">Edytuj cel:</div>
-                </div>
+                <div>Edytuj cel:</div>
             </h1>
         </section>
         <div class="card">
@@ -33,7 +31,8 @@
 
                     <div class="form-group"><label>Kategoria</label>
                         <select class="form-control" name="categoryId">
-                            <option th:each="category : ${goalCategories}" th:value="${category.id_category}" th:text="${category.name}"></option>
+                            <option th:each="category : ${goalCategories}" th:value="${category.id_category}"
+                                    th:text="${category.name}"></option>
                         </select></div>
 
                     <div class="form-group"><label>Wybierz wartość celu</label>
