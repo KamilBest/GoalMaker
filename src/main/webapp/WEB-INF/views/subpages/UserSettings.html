@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+<div class="main-content" th:fragment="UserSettings">
+    <section class="section">
+        <h1 class="section-header">
+            <div>Ustawienia</div>
+        </h1>
+
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                        </div>
+                        <div class="card-body">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" id="loginData-tab" data-toggle="tab"
+                                                        href="#loginData" role="tab" aria-controls="loginData"
+                                                        aria-selected="true">Dane logowania</a></li>
+                                <li class="nav-item"><a class="nav-link" id="finanse-tab" data-toggle="tab"
+                                                        href="#finanse" role="tab" aria-controls="finanse"
+                                                        aria-selected="false">finanse</a></li>
+                                <li class="nav-item"><a class="nav-link" id="XXX-tab" data-toggle="tab"
+                                                        href="#XXX" role="tab" aria-controls="XXX"
+                                                        aria-selected="false">XXX</a></li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="loginData" role="tabpanel"
+                                     aria-labelledby="loginData-tab">
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>Zmień hasło</h4>
+                                        </div>
+                                        <form method="post">
+                                            <div class="card-body">
+
+                                                <div class="form-group"><label class="d-block">Stare hasło</label>
+                                                    <input type="password" name="oldPassword"
+                                                           class="form-control" id="gmUserOldPassword"></div>
+
+
+                                                <div class="form-group"><label>Nowe hasło</label>
+                                                    <input type="password" name="gmUserNewPassword"
+                                                           class="form-control" id="gmUserNewPassword"></div>
+
+                                                <div class="form-group"><label>Powtórz nowe hasło</label>
+                                                    <input type="password" name="gmUserNewPassword"
+                                                           class="form-control" id="gmUserNewPassword2"></div>
+
+
+                                                <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
+                                                    Zatwierdź
+                                                </button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>Zmień login</h4>
+                                        </div>
+                                     <form th:action="@{/editUserMail}" method="post">
+                                            <div class="card-body">
+                                                <div class="form-group"><label>Stary email:
+                                                    <span th:text="${user.email}">  </span></label>
+                                                </div>
+
+                                                <div class="form-group"><label>Nowy email</label>
+                                                    <input   type="email" name="newEmail"
+                                                           class="form-control" id="newEmail"></div>
+
+                                                <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
+                                                    Zatwierdź
+                                                </button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+
+                                </div>
+                                <div class="tab-pane fade" id="finanse" role="tabpanel" aria-labelledby="finanse-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+
+                                            <h4>Zmień stan konta</h4>
+                                        </div>
+                                        <form  th:action="@{/editRealAccountBalance}" method="post">
+                                            <div class="card-body">
+                                                <div class="form-group"><label>Aktualny stan konta:
+                                                    <span th:text="${userFinances.real_account_balance}">  </span></label>
+                                                </div>
+
+                                                <div class="form-group"><label class="d-block">nowy stan konta</label>
+                                                    <input type="number" name="newAccountBalance"
+                                                           class="form-control" id="newAccountBalance"></div>
+
+                                                <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
+                                                    Zatwierdź
+                                                </button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header">
+
+                                            <h4>Zmień stan konta celu</h4>
+                                        </div>
+                                        <form th:action="@{/editGoalBalance}" method="post">
+                                            <div class="card-body">
+                                                <div class="form-group"><label>Aktualny stan konta celu:
+                                                    <span th:text="${userFinances.goal_balance}">  </span></label>
+                                                </div>
+
+                                                <div class="form-group"><label class="d-block">nowy stan konta</label>
+                                                    <input type="number" name="newGoalBalance"
+                                                           class="form-control" id="newGoalBalance"></div>
+                                                <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
+                                                    Zatwierdź
+                                                </button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="XXX" role="tabpanel" aria-labelledby="XXX-tab">
+                                    Vestibulum imperdiet odio sed neque ultricies, ut dapibus mi maximus. Proin ligula
+                                    massa, gravida in lacinia efficitur, hendrerit eget mauris. Pellentesque fermentum,
+                                    sem interdum molestie finibus, nulla diam varius leo, nec varius lectus elit id
+                                    dolor. Nam malesuada orci non ornare vulputate. Ut ut sollicitudin magna. Vestibulum
+                                    eget ligula ut ipsum venenatis ultrices. Proin bibendum bibendum augue ut luctus.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

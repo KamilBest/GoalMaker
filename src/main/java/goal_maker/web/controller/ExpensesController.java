@@ -30,20 +30,13 @@ public class ExpensesController {
     private UserFinancesService userFinancesService;
 
     @RequestMapping(value ="/allExpenses", method = RequestMethod.GET)
-    public String allExpenses(Model model, @RequestParam(value = "expenseId")long expenseId)
+    public String allExpenses(Model model)
     {
         model.addAttribute("location","expensesList");
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
         GmUser gmUser = userService.getUserByLogin(login);
-
-        if(expenseId>0) {
-            Expenses chosenExpense = expensesService.getExpenseById(expenseId);
-            model.addAttribute("chosenExpense", chosenExpense);
-        }
-        else
-            model.addAttribute("chosenExpense", null);
         model.addAttribute("allExpenses", expensesService.findAllUserExpenses(gmUser.getUserFinances().getId_user_finances()));
         return "index";
     }

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Goal Maker</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="assets/vendor/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="assets/css/stisla.css">
+</head>
+
+<body>
+<nav id="navbar-menu" class="navbar navbar-expand-lg main-navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="assets/img/logo-light.png" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon">
+			    	<i class="ion-navicon"></i>
+			    </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="mr-auto"></div>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link smooth-link" href="#hero">Strona główna</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link smooth-link" href="#features">O aplikacji</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link smooth-link" href="#blog">Aktualności</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link smooth-link" href="#project">Aplikacja</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link smooth-link">Kontakt</a>
+                </li>
+            </ul>
+            <form class="form-inline">
+                <a href="#login" class="btn smooth-link align-middle btn-primary">Zaloguj się</a>
+            </form>
+        </div>
+    </div>
+</nav>
+<section class="hero bg-overlay" id="hero" data-main-bg="assets/img/hero.jpeg">
+    <div class="text">
+        <h1><span class="bold name">Goal maker</span><br>z nami osiągniesz swoje cele</h1>
+        <div class="cta">
+            <a href="#login" class="btn btn-primary smooth-link">Zaloguj się</a>
+            <div class="link">
+                <a th:href="@{/register}">Nie masz jeszcze konta? Zarejestruj się!</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="padding" id="login">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 col-md-4 col-sm-12">
+                <h2>Zaloguj się</h2>
+                <form class="form-auth-small" th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label class="control-label sr-only">Login</label>
+                        <input type="text" name="username" class="form-control"
+                               placeholder="Login">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label sr-only">Password</label>
+                        <input type="password" name="password" class="form-control"
+                               placeholder="Hasło">
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="fancy-checkbox element-left"> <input
+                                type="checkbox"> <span>Zapamiętaj mnie</span>
+                        </label>
+                    </div>
+                    <h4 th:if="${param.error}" class="loginError">Zły login lub
+                        hasło!</h4>
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">ZALOGUJ</button>
+                    <div class="bottom">
+									<span class="helper-text"><i class="fa fa-lock"></i> <a
+                                            href="#">Przypomnij hasło</a></span>
+                    </div>
+                </form>
+                <a th:href="@{/register}">Zarejestruj się!
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr>
+</section>
+
+<section class="padding" id="features">
+    <div class="container">
+        <div class="row align-items-center mt-5">
+            <div class="col-12 col-md-6">
+                <h2>O aplikacji</h2>
+                <p class="text-muted">Aplikacja Goal Maker to pierwsze narzędzie, które optymalizując Twoje wydatki,
+                    pozwala Ci osiągnąć wymarzony cel! Od teraz oszczędzanie jest jeszcze prostsze. Wystarczy mieć jasny
+                    wgląd w swoje przychody i wydatki by móc oszacować ile nam zostanie i na co przeznaczyć te
+                    pieniądze. Dzięki inteligentnemu systemowi, wszystko oblicza się samo!</p>
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 col-sm-12">
+                <div class="list-item">
+                    <div class="icon">
+                        <i class="ion-cash icon-color"></i>
+                    </div>
+                    <div class="desc">
+                        <h2>Zaoszczędź pieniądze</h2>
+                        <p>
+                            Odkładaj pieniądze dzięki świeżemu spojrzeniu na swoje finanse. Może niepotrzebna Ci kolejna
+                            torebka, a może za dużo wydajesz na słodycze?
+                        </p>
+                        <a href="#" class="more">Czytaj więcej</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-sm-12">
+                <div class="list-item">
+                    <div class="icon">
+                        <i class="ion-pinpoint icon-color"></i>
+                    </div>
+                    <div class="desc">
+                        <h2>Osiągaj cele</h2>
+                        <p>
+                            Pomyśl tylko na co mógłbyś wydać zaoszczędzone pieniądze. Sięgnij po swoje marzenia!
+                        </p>
+                        <a href="#" class="more">Czytaj więcej</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-sm-12">
+                <div class="list-item no-spacing">
+                    <div class="icon">
+                        <i class="ion-android-list icon-color"></i>
+                    </div>
+                    <div class="desc">
+                        <h2>Analizuj historię</h2>
+                        <p>
+                            Miej udokumentowaną historię zrealizowanych celów i zaoszczędzonych pieniędzy. Wgląd w
+                            historię zmotywuje Cię do działania.
+                        </p>
+                        <a href="#" class="more">Czytaj więcej</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="padding bg-grey" id="blog">
+    <div class="container">
+        <h2 class="section-title">Aktualności</h2>
+        <p class="section-lead text-muted">Sekcja developerska, możesz się tu dowiedzieć o dostępnych i nadchodzących
+            nowościach w naszej aplikacji</p>
+        <div class="section-body">
+            <div class="row col-spacing">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card">
+                        <img class="card-img-top" src="assets/img/news/img01.jpg" alt="Article Image">
+                        <div class="card-body">
+                            <div class="card-subtitle mb-2 text-muted">dodano przez <a href="#">Kamil Best</a>Marzec 25,
+                                2018
+                            </div>
+                            <h4 class="card-title"><a href="#" data-toggle="read" data-id="1">Duis aute irure dolor in
+                                reprehenderit in voluptate</a></h4>
+                            <p class="card-text">Mauris eu eros in metus elementum porta eget sed ligula. Praesent
+                                consequat, ipsum molestie pellentesque venenatis.</p>
+                            <div class="text-right">
+                                <a href="#" class="card-more" data-toggle="read" data-id="1">Czytaj więcej <i
+                                        class="ion-ios-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card">
+                        <img class="card-img-top" src="assets/img/news/img04.jpg" alt="Article Image">
+                        <div class="card-body">
+                            <div class="card-subtitle mb-2 text-muted">by <a href="#">Kamil Best</a>Marzec 25, 2018
+                            </div>
+                            <h4 class="card-title"><a href="#" data-toggle="read" data-id="1">Velit esse cillum dolore
+                                eu blos siur dropsida wedor</a></h4>
+                            <p class="card-text">Mauris eu eros in metus elementum porta eget sed ligula. Praesent
+                                consequat, ipsum molestie pellentesque venenatis.</p>
+                            <div class="text-right">
+                                <a href="#" class="card-more" data-toggle="read" data-id="1">Czytaj więcej <i
+                                        class="ion-ios-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card">
+                        <img class="card-img-top" src="assets/img/news/img02.jpg" alt="Article Image">
+                        <div class="card-body">
+                            <div class="card-subtitle mb-2 text-muted">dodano przez <a href="#">Kamil Best</a>Marzec 25,
+                                2018
+                            </div>
+                            <h4 class="card-title"><a href="#" data-toggle="read" data-id="1">Excepteur sint as occaecat
+                                dros cupidatat non proident los</a></h4>
+                            <p class="card-text">Mauris eu eros in metus elementum porta eget sed ligula. Praesent
+                                consequat, ipsum molestie pellentesque venenatis.</p>
+                            <div class="text-right">
+                                <a href="#" class="card-more" data-toggle="read" data-id="1">Czytaj więcej <i
+                                        class="ion-ios-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card">
+                        <img class="card-img-top" src="assets/img/news/img05.jpg" alt="Article Image">
+                        <div class="card-body">
+                            <div class="card-subtitle mb-2 text-muted">dodano przez <a href="#">Kamil Best</a>Marzec 25,
+                                2018
+                            </div>
+                            <h4 class="card-title"><a href="#" data-toggle="read" data-id="1">Sunt in ado culpa qui
+                                officia deserunt mollit anim id</a></h4>
+                            <p class="card-text">Mauris eu eros in metus elementum porta eget sed ligula. Praesent
+                                consequat, ipsum molestie pellentesque venenatis.</p>
+                            <div class="text-right">
+                                <a href="#" class="card-more" data-toggle="read" data-id="1">Czytaj więcej <i
+                                        class="ion-ios-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card">
+                        <img class="card-img-top" src="assets/img/news/img03.jpg" alt="Article Image">
+                        <div class="card-body">
+                            <div class="card-subtitle mb-2 text-muted">dodano przez <a href="#">Kamil Best</a>Marzec 25,
+                                2018
+                            </div>
+                            <h4 class="card-title"><a href="#" data-toggle="read" data-id="1">Incididunt ut labore et
+                                labore dolore magna aliqua lorem</a></h4>
+                            <p class="card-text">Mauris eu eros in metus elementum porta eget sed ligula. Praesent
+                                consequat, ipsum molestie pellentesque venenatis.</p>
+                            <div class="text-right">
+                                <a href="#" class="card-more" data-toggle="read" data-id="1">Czytaj więcej <i
+                                        class="ion-ios-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card">
+                        <img class="card-img-top" src="assets/img/news/img06.jpg" alt="Article Image">
+                        <div class="card-body">
+                            <div class="card-subtitle mb-2 text-muted">dodano przez <a href="#">Kamil Best</a>Marzec 25,
+                                2018
+                            </div>
+                            <h4 class="card-title"><a href="#" data-toggle="read" data-id="1">Ut enim ad minim veniam
+                                quis nostrud enim ad kruv</a></h4>
+                            <p class="card-text">Mauris eu eros in metus elementum porta eget sed ligula. Praesent
+                                consequat, ipsum molestie pellentesque venenatis.</p>
+                            <div class="text-right">
+                                <a href="#" class="card-more" data-toggle="read" data-id="1">Czytaj więcej <i
+                                        class="ion-ios-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-5">
+            <div class="col-12 col-md-6">
+                <h2>Nie omiń nowości (Newsletter)</h2>
+                <p class="text-muted">Podaj swój e-mail, a poinformujemy Cię o nowościach</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <form class="subscribe" action="#">
+                    <input type="email" name="email" class="form-control" placeholder="Twój email">
+                    <button class="btn btn-primary">Subskrybuj</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-overlay padding" id="project" data-bg="assets/img/projects.jpeg">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6">
+                <figure class="projects-picture">
+                    <img src="assets/img/youzhang.png" alt="Youzhang">
+                </figure>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="projects-details">
+                    <div class="projects-badge">
+                        Zalecane
+                    </div>
+                    <h2 class="projects-title">Zainstaluj naszą aplikację</h2>
+                    <p class="projects-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat..
+                    </p>
+                    <div class="projects-cta">
+                        <a href="#" class="btn btn-primary" target="_blank">
+                            Google play
+                        </a>
+                        <a href="#" class="btn btn-link" target="_blank">
+                            Pozostałe nasze aplikacje
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="padding bg-grey" id="contact">
+    <div class="container">
+        <h2 class="section-title text-center">Skontaktuj się z nami</h2>
+        <p class="section-lead text-center text-muted">Problemy z aplikacją? Pomysły na nowe funkcjonalności? Napisz do
+            nas!</p>
+        <div class="section-body">
+            <div class="row col-spacing">
+                <div class="col-12 col-md-5">
+                    <p class="contact-text">Zapytaj nas o co chcesz, odezwiemy się tak szybko jak będzie to możliwe.</p>
+                    <ul class="contact-icon">
+                        <li><i class="ion ion-ios-telephone"></i>
+                            <div>+123 456 789</div>
+                        </li>
+                        <li><i class="ion ion-ios-email"></i>
+                            <div>goalmaker@dev.com</div>
+                        </li>
+                    </ul>
+                    <iframe src="https://snazzymaps.com/embed/60376" width="100%" height="600px"
+                            style="border:none;"></iframe>
+
+
+                </div>
+                <div class="col-12 col-md-7">
+                    <form class="contact row" id="contact-form">
+                        <div class="form-group col-6">
+                            <input type="text" class="form-control" placeholder="Imię" name="name" required="">
+                        </div>
+                        <div class="form-group col-6">
+                            <input type="email" class="form-control" placeholder="Email" name="email" required="">
+                        </div>
+                        <div class="form-group col-12">
+                            <input type="text" class="form-control" placeholder="Temat" name="subject" required="">
+                        </div>
+                        <div class="form-group col-12">
+                            <textarea class="form-control" placeholder="Wiadomość" name="message"
+                                      required=""></textarea>
+                        </div>
+                        <div class="form-group col-12 mt-2">
+                            <button class="btn btn-primary">
+                                Wyślij wiadomość
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="container">
+        <figure>
+            <img src="assets/img/logo-light.png" alt="Logo">
+        </figure>
+        <p>
+            Copyright &copy; 2018 GoalMaker
+        </p>
+        <p>
+            Stisla bootstrap template made By Kodinger
+        </p>
+    </div>
+</footer>
+
+<script src="assets/scripts/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="assets/scripts/jquery.easeScroll.js"></script>
+<script src="assets/vendor/sweetalert/dist/sweetalert.min.js"></script>
+<script src="assets/scripts/stisla.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(".navbar-toggler").click(function(){
+                $("#navbar-menu").toggleClass("mobile-menu-bg");
+
+        });
+    });
+
+</script>
+</body>
+</html>

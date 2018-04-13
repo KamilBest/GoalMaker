@@ -35,19 +35,32 @@ public class GoalController {
         return "redirect:/index";
     }
 
-    @RequestMapping(value = "/editGoal", method = RequestMethod.GET)
-    public String editGoal(Model model, @RequestParam("id") long id) {
-        model.addAttribute("location", "updateGoal");
-        model.addAttribute("goal", goalService.getGoalById(id));
+    @RequestMapping(value = "/addOrEditGoal", method = RequestMethod.GET)
+    public String editGoal(Model model, @RequestParam(value = "id", required = false) Long id) {
+        model.addAttribute("location", "addOrEditGoal");
+
         model.addAttribute("goalCategories", categoryService.findAll());
+
+        if (id == null) {
+            model.addAttribute("goal", new Goal());
+            model.addAttribute("insertion", true);
+
+        } else {
+            model.addAttribute("goal", goalService.getGoalById(id));
+            model.addAttribute("insertion", false);
+        }
         return "index";
     }
 
-    @RequestMapping(value = "/editGoal", method = RequestMethod.POST)
-    public String editGoal(@RequestParam(value = "id") long id, @RequestParam(value = "name") String name, @RequestParam(value = "categoryId") long categoryId, @RequestParam(value = "value") long value) {
+    @RequestMapping(value = "/addOrEditGoal", method = RequestMethod.POST)
+    public String editGoal(@RequestParam(value = "id") long id, @RequestParam(value = "insertion") boolean insertion, @RequestParam(value = "name") String name, @RequestParam(value = "categoryId") long categoryId, @RequestParam(value = "value") long value) {
         Category category = categoryService.getCategoryById(categoryId);
         Goal goal = new Goal(id, name, category, value);
-        goalService.modifyGoal(goal);
+        if (insertion) {
+            goalService.addGoal(goal);
+
+        } else
+            goalService.modifyGoal(goal);
         return "redirect:/index";
     }
 

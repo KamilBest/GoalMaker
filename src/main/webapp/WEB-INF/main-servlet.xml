@@ -8,11 +8,11 @@
 	<mvc:resources mapping="/assets/img/**" location="/assets/img/" />
 	<mvc:resources mapping="/assets/scripts/**" location="/assets/scripts/" />
 	<mvc:resources mapping="/assets/vendor/**" location="/assets/vendor/" />
+	<mvc:resources mapping="/dist/css/**" location="/dist/css/" />
+	<mvc:resources mapping="/dist/img/**" location="/dist/img/" />
+	<mvc:resources mapping="/dist/js/**" location="/dist/js/" />
+	<mvc:resources mapping="/dist/modules/**" location="/dist/modules/" />
 
-	<mvc:resources mapping="/admin/assets/css/**" location="/assets/css/" />
-	<mvc:resources mapping="/admin/assets/img/**" location="/assets/img/" />
-	<mvc:resources mapping="/admin/assets/scripts/**" location="/assets/scripts/" />
-	<mvc:resources mapping="/admin/assets/vendor/**" location="/assets/vendor/" />
 
 
 	<mvc:annotation-driven />

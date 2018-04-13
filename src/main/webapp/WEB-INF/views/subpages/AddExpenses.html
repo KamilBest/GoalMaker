@@ -5,63 +5,52 @@
     <title>Odejmij wydatek</title>
 </head>
 <body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<section th:fragment="AddExpenses">
 
-
-    <link rel="stylesheet" href="../dist/modules/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../dist/modules/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
-
-    <link rel="stylesheet" href="../dist/modules/summernote/summernote-lite.css">
-    <link rel="stylesheet" href="../dist/modules/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../dist/css/style.css">
-    <link rel="stylesheet" href="../dist/css/custom.css">
-    <link rel="stylesheet" href="../dist/css/skins/blue.css">
-</head>
-<body>
-<div class="main-content">
-    <div class="card">
-        <div class="card-header">
-            <h4>Odejmij wydatek</h4>
-        </div>
-        <form th:action="@{/addExpenses}" method="post">
-            <div class="card-body">
-
-
-
-                <div class="form-group"><label class="d-block">Wybierz typ stały/zmienny</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio"
-                               name="type" id="inlineRadioStable" th:value="stały">
-                        <label class="form-check-label" >stały</label></div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio"
-                               name="type" id="inlineRadioChange"  th:value="zmienny">
-                        <label class="form-check-label" >zmienny</label></div></div>
-
-                <div class="form-group"><label>Wprowadź nazwę wydatku</label>
-                    <input th:value="${expenses.name}" type="text" name="name"
-                           class="form-control" id="expensesName" placeholder="nazwa"></div>
-
-                <div class="form-group"><label>Wybierz wartość wydatku</label>
-                    <input th:value="${expenses.value}" type="text" name= "value"
-                           class="form-control" id="hiddenslider" placeholder="wartość"></div>
-
-
-
-                <a href='#' class="btn btn-primary btn-round" style="margin-bottom: 15px;">
-                    Zatwierdź
-                </a> <a href='#' class="btn btn-danger btn-round" style="margin-bottom: 15px;">
-                Anuluj
-            </a>
+    <div >
+        <section class="section">
+            <h1 class="section-header">
+                <div class="row">
+                    <div class="big-section-header">Dodaj wydatek:</div>
+                </div>
+            </h1>
+        </section>
+        <div class="card">
+            <div class="card-header">
+                <h4>Odejmij wydatek</h4>
             </div>
-        </form>
+            <form th:action="@{/addExpenses}" method="post">
+                <div class="card-body">
+                    <div class="form-group"><label class="d-block">Wybierz typ stały/zmienny</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio"
+                                   name="type" id="inlineRadioStable" th:value="stały">
+                            <label class="form-check-label">stały</label></div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio"
+                                   name="type" id="inlineRadioChange" th:value="zmienny">
+                            <label class="form-check-label">zmienny</label></div>
+                    </div>
 
+                    <div class="form-group"><label>Wprowadź nazwę wydatku</label>
+                        <input th:value="${expenses.name}" type="text" name="name"
+                               class="form-control" id="expensesName" placeholder="nazwa"></div>
+
+                    <div class="form-group"><label>Wybierz wartość wydatku</label>
+                        <input th:value="${expenses.value}" type="text" name="value"
+                               class="form-control" id="hiddenslider" placeholder="wartość"></div>
+
+
+                    <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
+                        Zatwierdź
+                    </button>
+                    <a th:href="@{/dashboard}" class="btn btn-danger btn-round" style="margin-bottom: 15px;">
+                    Anuluj
+                </a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-
+</section>
 </body>
 </html>

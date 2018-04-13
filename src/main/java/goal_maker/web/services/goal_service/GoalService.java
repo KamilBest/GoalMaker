@@ -13,6 +13,7 @@ public interface GoalService {
     public Goal getCurrentGoal(long userId);
     public void deleteGoal(long goalId);
     public void changeGoalState(long goalId, long idGoalState);
+    Goal getLastRealisedGoal(long idGoalState);
 
 
 }

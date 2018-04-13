@@ -36,7 +36,7 @@ public class UserController {
         model.addAttribute("User", gmUser);
     }
 
-    @RequestMapping(value = "/getUsersList", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/getUsersList", method = RequestMethod.GET)
     public String getUsersList(Model model) {
         model.addAttribute("location", "usersList");
         model.addAttribute("usersList", userService.getUsersList());

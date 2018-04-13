@@ -40,7 +40,7 @@ public class DashboardController {
     UserFinancesService userFinancesService;
     private List<Goal> realisedGoals = new ArrayList<>();
 
-    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/dashboard","/index"}, method = RequestMethod.GET)
     public String showFrontPage(Model model) {
         model.addAttribute("location", "dashboard");
 
@@ -54,15 +54,15 @@ public class DashboardController {
         //Check if this user has a goal, if doesn't show only button to add goal
         Goal currentGoal = goalDao.getCurrentGoal(gmUser.getId());
         if (currentGoal != null) {
+            model.addAttribute("perecentageValueGoal", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
+
             if(isGoalAchieved(gmUser, currentGoal)){
-                //TODO: ADD ALERT ABOUT REACHING GOAL
+                realisedGoals.add(currentGoal);
                 model.addAttribute("achived", true);
                 currentGoal=null;
             }
             model.addAttribute("currentUserGoal", currentGoal);
-/*
-            model.addAttribute("progressBarWidth", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
-*/
+
         } else {
             model.addAttribute("currentUserGoal", currentGoal);
             /*model.addAttribute("progressBarWidth", 0);*/
@@ -70,16 +70,15 @@ public class DashboardController {
 
 
         model.addAttribute("realisedGoals", goalService.getGoalsByState(REALISED));
-
+        model.addAttribute("lastRealisedGoal", goalService.getLastRealisedGoal(REALISED));
         //get this user finances, to display his incomes and expenses
         model.addAttribute("currentUserFinances", gmUser.getUserFinances());
         long currentUserFinancesId = gmUser.getUserFinances().getId_user_finances();
         //get percentage value, to display in circle progress bar
-//        model.addAttribute("perecentageValueGoal", calculateCurrentGoalPercentageValue(gmUser, currentGoal));
         //PROGRESS BAR
 
         //display records of given amount
-        final int amountOfIncomesAndExpenses = 10;
+        final int amountOfIncomesAndExpenses = 5;
         List<Income> incomesList = incomeService.findLastUserIncomes(currentUserFinancesId, amountOfIncomesAndExpenses);
         List<Expenses> expensesList = expensesService.findLastUserExpenses(currentUserFinancesId, amountOfIncomesAndExpenses);
         model.addAttribute("lastIncomeList", incomesList);

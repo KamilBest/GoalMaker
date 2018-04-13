@@ -5,52 +5,37 @@
     <title>Transfer pieniędzy</title>
 </head>
 <body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-
-    <link rel="stylesheet" href="../dist/modules/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../dist/modules/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
-
-    <link rel="stylesheet" href="../dist/modules/summernote/summernote-lite.css">
-    <link rel="stylesheet" href="../dist/modules/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../dist/css/style.css">
-    <link rel="stylesheet" href="../dist/css/custom.css">
-    <link rel="stylesheet" href="../dist/css/skins/blue.css">
-</head>
-<body>
-<div class="main-content">
-    <div class="card">
-        <div class="card-header">
-            <h4>Przelej pieniądze na cel</h4>
-        </div>
-        <form th:action="@{/updateGoalBalance}" method="post">
-            <div class="card-body">
-                <div class="form-group"><label>Stan konta: <span th:text:"${realAccountBalance}"</label>
-                </div>
-
-                <div class="form-group"><label>Wybierz jaką wartość chcesz przeznaczyć na cel:</label>
-                    <input  type="text" name="value"
-                            class="form-control" id="hiddenslider" placeholder="wartość"></div>
-
-
-
-
-
-                <a href='#' class="btn btn-primary btn-round" style="margin-bottom: 15px;">
-                    Zatwierdź
-                </a> <a href='#' class="btn btn-danger btn-round" style="margin-bottom: 15px;">
-                Anuluj
-            </a>
+<section th:fragment="AccountMoneyTransferForm">
+    <div>
+        <section class="section">
+            <h1 class="section-header">
+                <div class="big-section-header">Przeznacz na cel</div>
+            </h1>
+        </section>
+        <div class="card">
+            <div class="card-header">
+                <h4>Przelej pieniądze na cel</h4>
             </div>
-        </form>
-
+            <form th:action="@{/updateGoalBalance}" method="post">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Stan konta: <span th:text="${realAccountBalance}"></span></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Wybierz jaką wartość chcesz przeznaczyć na cel:</label>
+                        <input type="number" name="value"
+                               class="form-control" placeholder="wartość">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">Zatwierdź
+                    </button>
+                    <a th:href="@{/dashboard}" class="btn btn-danger btn-round" style="margin-bottom: 15px;">
+                        Anuluj
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-
+</section>
 </body>
 </html>
 
