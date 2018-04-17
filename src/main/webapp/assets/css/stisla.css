@@ -820,3 +820,10 @@ footer i {
 	-webkit-box-shadow: 0 0 40px rgba(0, 0, 0, .05);
 	box-shadow: 0 0 40px rgba(0, 0, 0, .05);
 }
+.modal-dialog{
+	min-height: calc(100vh - 60px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: auto;
+}
