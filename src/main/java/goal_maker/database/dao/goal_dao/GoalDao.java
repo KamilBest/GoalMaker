@@ -19,7 +19,8 @@ public interface GoalDao {
 
     public void changeGoalState(long goalId, long idGoalState);
 
-    Goal getLastRealisedGoal(long idGoalState);
+    Goal getLastRealisedGoalByUserId(long idGoalState, long userId);
 
     List<Goal> getGoalsByStateAndUserId(long idGoalState, long userId);
+
 }
