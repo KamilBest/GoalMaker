@@ -46,18 +46,17 @@
 
 
                                                 <div class="form-group"><label>Nowe hasło</label>
-                                                    <input type="password" name="newPassword"
+                                                    <input type="password" name="gmUserNewPassword"
                                                            class="form-control" id="gmUserNewPassword"></div>
 
                                                 <div class="form-group"><label>Powtórz nowe hasło</label>
-                                                    <input type="password" name="repeatNewPassword"
-                                                           class="form-control" id="gmUserRepeatNewPassword"></div>
+                                                    <input type="password" name="gmUserNewPassword"
+                                                           class="form-control" id="gmUserNewPassword2"></div>
 
 
-                                                <a href='#' class="btn btn-primary btn-round"
-                                                   style="margin-bottom: 15px;">
-                                                    Zmień hasło
-                                                </a>
+                                                <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
+                                                    Zatwierdź
+                                                </button>
                                             </div>
                                         </form>
 
@@ -66,22 +65,19 @@
                                         <div class="card-header">
                                             <h4>Zmień login</h4>
                                         </div>
-                                        <form method="post">
+                                     <form th:action="@{/editUserMail}" method="post">
                                             <div class="card-body">
+                                                <div class="form-group"><label>Stary email:
+                                                    <span th:text="${user.email}">  </span></label>
+                                                </div>
 
-                                                <div class="form-group"><label class="d-block">Stary login</label>
-                                                    <input type="text" name="oldLogin"
-                                                           class="form-control" id="oldLogin"></div>
+                                                <div class="form-group"><label>Nowy email</label>
+                                                    <input   type="email" name="newEmail"
+                                                           class="form-control" id="newEmail"></div>
 
-
-                                                <div class="form-group"><label>Nowy login</label>
-                                                    <input type="text" name="newLogin"
-                                                           class="form-control" id="newLogin"></div>
-
-                                                <a href='#' class="btn btn-primary btn-round"
-                                                   style="margin-bottom: 15px;">
-                                                    Zmień login
-                                                </a>
+                                                <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
+                                                    Zatwierdź
+                                                </button>
                                             </div>
                                         </form>
 
@@ -95,19 +91,19 @@
 
                                             <h4>Zmień stan konta</h4>
                                         </div>
-                                        <form method="post">
+                                        <form  th:action="@{/editRealAccountBalance}" method="post">
                                             <div class="card-body">
                                                 <div class="form-group"><label>Aktualny stan konta:
-                                                    <span th:text=${realAccountBalance}>  </span></label>
+                                                    <span th:text="${userFinances.real_account_balance}">  </span></label>
                                                 </div>
 
                                                 <div class="form-group"><label class="d-block">nowy stan konta</label>
-                                                    <input type="number" name="accountBalance"
-                                                           class="form-control" id="accountBalance"></div>
-                                                <a href='#' class="btn btn-primary btn-round"
-                                                   style="margin-bottom: 15px;">
+                                                    <input type="number" name="newAccountBalance"
+                                                           class="form-control" id="newAccountBalance"></div>
+
+                                                <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
                                                     Zatwierdź
-                                                </a>
+                                                </button>
                                             </div>
                                         </form>
 
@@ -118,19 +114,18 @@
 
                                             <h4>Zmień stan konta celu</h4>
                                         </div>
-                                        <form method="post">
+                                        <form th:action="@{/editGoalBalance}" method="post">
                                             <div class="card-body">
                                                 <div class="form-group"><label>Aktualny stan konta celu:
-                                                    <span th:text=${goalBalance}>  </span></label>
+                                                    <span th:text="${userFinances.goal_balance}">  </span></label>
                                                 </div>
 
                                                 <div class="form-group"><label class="d-block">nowy stan konta</label>
-                                                    <input type="number" name="goalAccountBalance"
-                                                           class="form-control" id="goalAccountBalance"></div>
-                                                <a href='#' class="btn btn-primary btn-round"
-                                                   style="margin-bottom: 15px;">
+                                                    <input type="number" name="newGoalBalance"
+                                                           class="form-control" id="newGoalBalance"></div>
+                                                <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
                                                     Zatwierdź
-                                                </a>
+                                                </button>
                                             </div>
                                         </form>
 

@@ -9,7 +9,8 @@
     <section class="section">
         <h1 class="section-header">
             <div class="row">
-                <div class="big-section-header">Twój cel:</div>
+                <div class="big-section-header">Twój cel: </div>
+                <p th:if="${currentUserGoal==null}"><small>  Nie ustawiłeś jeszcze żadnego celu, możesz zrobić to teraz</small></p>
             </div>
         </h1>
     </section>
@@ -132,6 +133,25 @@
             </div>
         </div>
     </div>
+    <div th:if="${achived}">
+        <button type="button" id="startConfetti" class="btn btn-primary" data-toggle="modal" data-target="#congratzModal" style="display: none">
+            Osiągnąłeś cel - gratulacje
+        </button>
+        <div class="modal fade" id="congratzModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">GRATULACJE!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Udało Ci się osiągnąć cel - gratulujemy. Dodaj kolejne cele i zaoszczędź więcej pieniędzy!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     <div class="row">
