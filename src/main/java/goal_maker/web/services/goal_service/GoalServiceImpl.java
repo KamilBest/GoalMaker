@@ -49,4 +49,9 @@ public class GoalServiceImpl implements GoalService {
 
     @Override
     public Goal getLastRealisedGoal(long idGoalState) { return goalDao.getLastRealisedGoal(idGoalState); }
+
+    @Override
+    public List<Goal> getGoalsByStateAndUserId(long idGoalState, long userId) {
+        return goalDao.getGoalsByStateAndUserId(idGoalState, userId);
+    }
 }

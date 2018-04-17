@@ -167,7 +167,7 @@
                         <a th:href="@{/allExpenses}"><i class="ion ion-arrow-down-b"></i><span>Wydatki</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="ion ion-checkmark"></i><span>Zrealizowane cele</span></a>
+                        <a th:href="@{/allRealisedGoals}"><i class="ion ion-checkmark"></i><span>Zrealizowane cele</span></a>
                     </li>
 
                 </ul>
@@ -197,6 +197,8 @@
                      th:include="subpages/ExpensesList :: ExpensesList"></div>
                 <div th:case="'userSettings'"
                      th:include="subpages/UserSettings :: UserSettings"></div>
+                <div th:case="'realisedGoalList'"
+                     th:include="subpages/RealisedGoalsList :: RealisedGoalsList"></div>
 
               <!--  <div th:case="'CreateConstantIncomeForm'"
                      th:include="subpages/ConstantIncomeForm :: CreateConstantIncomeForm"></div>

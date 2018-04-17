@@ -115,4 +115,10 @@ public class GoalDaoImpl implements GoalDao {
         updateQuery.setParameter(2, goalId);
         updateQuery.executeUpdate();
     }
+    @Override
+    public List<Goal> getGoalsByStateAndUserId(long idGoalState, long userId){
+        String sqlSelect = "SELECT * FROM goal_maker.goal WHERE id_goal_state= "+idGoalState + " AND id_user="+userId+" ORDER BY id_goal DESC";
+        List<Goal> goals = entityManager.createNativeQuery(sqlSelect, Goal.class).getResultList();
+        return goals;
+    }
 }

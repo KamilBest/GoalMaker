@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista zrealizowanych celów</title>
+</head>
+<body>
+<section class="content" th:fragment="RealisedGoalsList">
+    <div>
+        <section class="section">
+            <h1 class="section-header">
+                <div class="row">
+                    <div class="big-section-header">Lista zrealizowanych celów</div>
+                </div>
+            </h1>
+        </section>
+        <div class="card">
+            <div class="card-header">
+                <h4>Lista wszystkich Twoich zrealizowanych celów</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped table-hover datatables" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="hidden-column">ID</th>
+                        <th>NAZWA</th>
+                        <th>KATEGORIA</th>
+                        <th>WARTOŚĆ</th>
+                        <th>LICZBA DNI</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="tableRow" th:each="goal : ${realisedGoals}">
+                        <td th:text="${goal.id_goal}"></td>
+                        <td th:text="${goal.name}"></td>
+                        <td th:text="${goal.category.name}"></td>
+                        <td th:text="${goal.value}"></td>
+                        <td th:text="${goal.number_of_days}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -14,6 +14,5 @@ public interface GoalService {
     public void deleteGoal(long goalId);
     public void changeGoalState(long goalId, long idGoalState);
     Goal getLastRealisedGoal(long idGoalState);
-
-
+    List<Goal> getGoalsByStateAndUserId(long idGoalState, long userId);
 }

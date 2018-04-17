@@ -21,4 +21,5 @@ public interface GoalDao {
 
     Goal getLastRealisedGoal(long idGoalState);
 
+    List<Goal> getGoalsByStateAndUserId(long idGoalState, long userId);
 }
