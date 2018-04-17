@@ -15,7 +15,8 @@
 
     <link rel="stylesheet" type="text/css" href="dist/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="dist/modules/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" type="text/css" href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
 
     <link rel="stylesheet" type="text/css" href="dist/modules/summernote/summernote-lite.css">
     <link rel="stylesheet" type="text/css" href="dist/modules/flag-icon-css/css/flag-icon.min.css">
@@ -103,12 +104,18 @@
 
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block">
-                                        Zarejestruj
-                                    </button>
-                                    <a th:href="@{/login}" class="btn btn-danger btn-round" style="margin-bottom: 15px;">
-                                        Anuluj
-                                    </a>
+                                    <div class="row">
+                                        <div class="col-6 col-xs-6 col-md-6 col-lg-6">
+                                            <button type="submit" class="btn btn-primary btn-block">
+                                                Zarejestruj
+                                            </button>
+                                        </div>
+                                        <div class="col-6 col-xs-6 col-md-6 col-lg-6">
+                                            <a th:href="@{/login}" class="btn btn-danger btn-block">
+                                                Anuluj
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </form>

@@ -243,6 +243,7 @@ html, body {
 	letter-spacing: 1px;
 	background-color: transparent;
 	border-color: #fff;
+	color: #fff;
 }
 
 .navbar.main-navbar .form-inline .btn:hover {
@@ -800,4 +801,22 @@ footer i {
 
 .icon-color {
     color:#1e76ff;
+}
+
+/*MODAL*/
+/* modal */
+.modal-header {
+	border-bottom: none;
+	padding-bottom: 5px;
+}
+.modal-header h5 {
+	font-size: 18px;
+}
+.modal-footer {
+	border-top: none;
+}
+.modal-content {
+	border: none;
+	-webkit-box-shadow: 0 0 40px rgba(0, 0, 0, .05);
+	box-shadow: 0 0 40px rgba(0, 0, 0, .05);
 }
