@@ -1,13 +1,16 @@
 package goal_maker.web.controller;
 
+import goal_maker.config.security.Encryption;
 import goal_maker.database.tables.GmUser;
 import goal_maker.database.tables.UserFinances;
 import goal_maker.web.services.user_finances_service.UserFinancesService;
 import goal_maker.web.services.user_service.UserService;
 import goal_maker.web.services.user_settings_service.UserSettingsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +29,10 @@ public class SettingsController {
     @Autowired
     UserFinancesService userFinancesService;
 
+    @Autowired
+    @Qualifier("encryption")
+    Encryption encryption;
+
 
     @RequestMapping(value = "/settings", method = RequestMethod.GET)
     public String showUserSettings(Model model) {
@@ -35,27 +42,37 @@ public class SettingsController {
         UserFinances userFinances = userFinancesService.getUserFinanceById(gmUser.getUserFinances().getId_user_finances());
         model.addAttribute("location", "userSettings");
         model.addAttribute("user", gmUser);
-        model.addAttribute("userFinances",userFinances);
+        model.addAttribute("userFinances", userFinances);
 
         return "index";
     }
 
 
-
-
     @RequestMapping(value = "/editUserPassword", method = RequestMethod.POST)
-    public String editUserSettings(@RequestParam(value = "newPassword") String newPassword) {
+    public String editUserPasword(
+            @RequestParam(value = "password") String password,
+            @RequestParam(value = "newPassword") String newPassword,
+            @RequestParam(value = "repeatNewPassword") String repeatNewPassword) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName();
         GmUser gmUser = userService.getUserByLogin(login);
+        Boolean compatible = false;
 
-        //edit field
-        userSettingsService.editUserSettings(gmUser, "password", newPassword);
+        //compare  newpassword with repeatNewPassword to avoid mistake
+        if (newPassword.equals(repeatNewPassword)) {
+            compatible = true;
+        }
+        //compare password with hash from DB
+        if (encryption.comparePassword(password, gmUser.getPassword()) && compatible) {
+            //set new password
+
+            userSettingsService.editUserSettings(gmUser, "password", encryption.encryptPassword(newPassword));
+        }
+
 
         return "redirect:/index";
     }
-
 
 
     @RequestMapping(value = "/editUserEmail", method = RequestMethod.POST)
@@ -83,7 +100,7 @@ public class SettingsController {
 
 
         //edit field
-       userSettingsService.editUserFinances(userFinances,"real_account_balance",newAccountBalance);
+        userSettingsService.editUserFinances(userFinances, "real_account_balance", newAccountBalance);
 
         return "redirect:/index";
     }
@@ -100,7 +117,7 @@ public class SettingsController {
 
 
         //edit field
-        userSettingsService.editUserFinances(userFinances,"goal_balance",newGoalBalance);
+        userSettingsService.editUserFinances(userFinances, "goal_balance", newGoalBalance);
 
         return "redirect:/index";
     }
