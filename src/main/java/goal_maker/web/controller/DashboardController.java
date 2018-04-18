@@ -69,8 +69,8 @@ public class DashboardController {
         }
 
 
-        model.addAttribute("realisedGoals", goalService.getGoalsByState(REALISED));
-        model.addAttribute("lastRealisedGoal", goalService.getLastRealisedGoal(REALISED));
+        //model.addAttribute("realisedGoals", goalService.getGoalsByState(REALISED));
+        model.addAttribute("lastRealisedGoal", goalService.getLastRealisedGoalByUserId(REALISED, gmUser.getId()));
         //get this user finances, to display his incomes and expenses
         model.addAttribute("currentUserFinances", gmUser.getUserFinances());
         long currentUserFinancesId = gmUser.getUserFinances().getId_user_finances();

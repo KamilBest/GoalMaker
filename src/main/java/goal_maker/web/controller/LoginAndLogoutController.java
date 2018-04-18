@@ -20,7 +20,6 @@ public class LoginAndLogoutController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginPage() {
-
         return "introPage";
     }
 

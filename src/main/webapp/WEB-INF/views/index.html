@@ -38,15 +38,15 @@
     <link rel="stylesheet" type="text/css" href="assets/css/nouislider.css"/>
 
 
-    <link rel="stylesheet" href="dist/modules/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="dist/modules/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
 
-    <link rel="stylesheet" href="dist/modules/summernote/summernote-lite.css">
-    <link rel="stylesheet" href="dist/modules/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="dist/css/style.css">
-    <link rel="stylesheet" href="dist/css/custom.css">
-    <link rel="stylesheet" href="dist/css/skins/blue.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/summernote/summernote-lite.css">
+    <link rel="stylesheet" type="text/css" href="dist/modules/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/style.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/skins/blue.css">
 
 </head>
 
@@ -167,7 +167,7 @@
                         <a th:href="@{/allExpenses}"><i class="ion ion-arrow-down-b"></i><span>Wydatki</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="ion ion-checkmark"></i><span>Zrealizowane cele</span></a>
+                        <a th:href="@{/allRealisedGoals}"><i class="ion ion-checkmark"></i><span>Zrealizowane cele</span></a>
                     </li>
 
                 </ul>
@@ -197,6 +197,8 @@
                      th:include="subpages/ExpensesList :: ExpensesList"></div>
                 <div th:case="'userSettings'"
                      th:include="subpages/UserSettings :: UserSettings"></div>
+                <div th:case="'realisedGoalList'"
+                     th:include="subpages/RealisedGoalsList :: RealisedGoalsList"></div>
 
               <!--  <div th:case="'CreateConstantIncomeForm'"
                      th:include="subpages/ConstantIncomeForm :: CreateConstantIncomeForm"></div>
@@ -232,7 +234,7 @@
 <!--<script src="assets/scripts/nouislider.min.js"></script>-->
 <!--<script src="assets/scripts/slider.js"></script>-->
 <!--&lt;!&ndash;GAUGE&ndash;&gt;-->
-v<!--<script src="assets/scripts/justgage.js"></script>-->
+<!--<script src="assets/scripts/justgage.js"></script>-->
 <script src="assets/scripts/jquery-3.2.1.min.js"></script>
 <script src="dist/js/scripts.js"></script>
 <script src="assets/scripts/jquery.confetti.js"></script>

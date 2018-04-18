@@ -192,16 +192,13 @@
                             <ul class="list-unstyled list-unstyled-border">
                                 <li class="media">
                                     <img class="mr-3 rounded-circle" width="50"
-                                         src="https://images.vexels.com/media/users/3/127711/isolated/preview/384e0b3361d99d9c370b4037115324b9-flat-vintage-car-icon-by-vexels.png">
+                                         th:src="@{'/dist/img/'+${lastRealisedGoal.category.name}+'.png'}">
                                     <div class="media-body">
-                                        <div class="float-right">
-                                            <small>19.05.2018</small>
-                                        </div>
-                                        <div class="media-title"><span>Samochód</span></div>
-                                        <small>Uzbierano: <span>123</span><span></span></small>
+                                        <div class="media-title"><span th:text="${lastRealisedGoal.name}">Samochód</span></div>
+                                        <small>Uzbierano: <span th:text="${lastRealisedGoal.value} + ' zł'"></span></small>
                                     </div>
                                 </li>
-                                <div class="float-right"><a href="#"
+                                <div class="float-right"><a th:href="@{/allRealisedGoals}"
                                                             class="btn btn-primary btn-sm btn-round">Zobacz
                                     wszystkie</a></div>
                             </ul>

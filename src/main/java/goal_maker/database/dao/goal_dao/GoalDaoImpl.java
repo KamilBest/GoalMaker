@@ -39,11 +39,10 @@ public class GoalDaoImpl implements GoalDao {
     }
 
     @Override
-    public Goal getLastRealisedGoal(long idGoalState) {
-        String sqlSelect = "SELECT * FROM goal_maker.goal WHERE id_goal_state="+idGoalState +" ORDER BY id_goal DESC LIMIT 1";
+    public Goal getLastRealisedGoalByUserId(long idGoalState, long userId) {
+        String sqlSelect = "SELECT * FROM goal_maker.goal WHERE id_goal_state="+idGoalState+" AND id_user="+userId +" ORDER BY id_goal DESC LIMIT 1";
         Query query = entityManager.createNativeQuery(sqlSelect, Goal.class);
-        Goal goal = (Goal) query.getSingleResult();
-        return null;
+        return (Goal) query.getSingleResult();
     }
 
     @Transactional
@@ -114,5 +113,11 @@ public class GoalDaoImpl implements GoalDao {
         updateQuery.setParameter(1,idGoalState);
         updateQuery.setParameter(2, goalId);
         updateQuery.executeUpdate();
+    }
+    @Override
+    public List<Goal> getGoalsByStateAndUserId(long idGoalState, long userId){
+        String sqlSelect = "SELECT * FROM goal_maker.goal WHERE id_goal_state= "+idGoalState + " AND id_user="+userId+" ORDER BY id_goal DESC";
+        List<Goal> goals = entityManager.createNativeQuery(sqlSelect, Goal.class).getResultList();
+        return goals;
     }
 }
