@@ -164,20 +164,24 @@
                         </div>
                         <div class="card-body">
                             <div class="statistic-details mt-1">
-                                <div class="statistic-details-item">
-                                    <small class="text-muted"><span class="text-primary"><i
-                                            class="ion-arrow-up-b"></i></span> 2 DNI
-                                    </small>
-                                    <div class="detail-value">$243</div>
-                                    <div class="detail-name">Roznoszenie ulotek</div>
+
+                                <div th:each="periodicalIncome : ${periodicalIncomesList}"class="statistic-details-item">
+                                    <small class="text-muted" th:text="${periodicalIncome.periodLength + ' DNI'}">
+                                    </small><span class="text-primary"><i
+                                        class="ion-arrow-up-b"></i></span>
+                                    <div class="detail-value" th:text="${periodicalIncome.value + ' $'}"></div>
+                                    <div class="detail-name" th:text="${periodicalIncome.name}"></div>
                                 </div>
-                                <div class="statistic-details-item">
-                                    <small class="text-muted"><span class="text-danger"><i
-                                            class="ion-arrow-down-b"></i></span> 23 DNI
-                                    </small>
-                                    <div class="detail-value">$32</div>
-                                    <div class="detail-name">Opłata Netflix</div>
-                                </div>
+
+
+                                <!--WYDATKI-->
+                                <!--<div class="statistic-details-item">-->
+                                    <!--<small class="text-muted"><span class="text-danger"><i-->
+                                            <!--class="ion-arrow-down-b"></i></span> 23 DNI-->
+                                    <!--</small>-->
+                                    <!--<div class="detail-value">$32</div>-->
+                                    <!--<div class="detail-name">Opłata Netflix</div>-->
+                                <!--</div>-->
                             </div>
 
                         </div>

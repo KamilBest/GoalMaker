@@ -6,6 +6,7 @@ import goal_maker.database.wrapper.IncomeAndExpense;
 import goal_maker.web.services.expenses_service.ExpensesService;
 import goal_maker.web.services.goal_service.GoalService;
 import goal_maker.web.services.income_service.IncomeService;
+import goal_maker.web.services.periodical_income_service.PeriodicalIncomeService;
 import goal_maker.web.services.user_finances_service.UserFinancesService;
 import goal_maker.web.services.user_service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,11 @@ public class DashboardController {
 
     @Autowired
     UserFinancesService userFinancesService;
+
+    @Autowired
+    PeriodicalIncomeService periodicalIncomeService;
+
+
     private List<Goal> realisedGoals = new ArrayList<>();
 
     @RequestMapping(value = {"/","/dashboard","/index"}, method = RequestMethod.GET)
@@ -93,6 +99,8 @@ public class DashboardController {
                 model.addAttribute("incomesAndExpensesTogether", incomeAndExpenseList);
             }
         }
+
+        model.addAttribute("periodicalIncomesList", periodicalIncomeService.findAllPeriodicalIncomesForUser(currentUserFinancesId));
 
         return "index";
     }
