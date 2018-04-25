@@ -9,8 +9,10 @@
     <section class="section">
         <h1 class="section-header">
             <div class="row">
-                <div class="big-section-header">Twój cel: </div>
-                <p th:if="${currentUserGoal==null}"><small>  Nie ustawiłeś jeszcze żadnego celu, możesz zrobić to teraz</small></p>
+                <div class="big-section-header">Twój cel:</div>
+                <p th:if="${currentUserGoal==null}">
+                    <small> Nie ustawiłeś jeszcze żadnego celu, możesz zrobić to teraz</small>
+                </p>
             </div>
         </h1>
     </section>
@@ -43,98 +45,88 @@
                 </div>
             </div>
         </div>
-        <!--
-            GOAL IS SET
-        -->
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
-                <div class="card card-sm-2">
-                    <div class="card-icon"><img src="/dist/img/goal.png"></div>
-                    <div class="card-header"><h4>Postęp celu
-                    </h4></div>
-                    <!--USER GOAL BALANCE AND USER GOAL CURRENT-->
-                    <div class="card-body">
-                        <span th:text="${currentUserFinances.goal_balance} + ' / '"></span>
-                        <span th:text="${currentUserGoal.value}" class="text-muted">123</span>
-                    </div>
-                    <div class="card-progressbar">
-                        <div class="progress" style="height:6px;">
-                            <div class="progress-bar bg-success" role="progressbar"
-                                 th:style="'width:${perecentageValueGoal};'"></div>
-                        </div>
-                    </div>
+    </div>
+    <!--
+           GOAL IS SET
+       -->
+    <div class="row">
+        <!--CURRENT USER FINANCES-->
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card card-sm-2">
+                <div class="card-icon"><img src="/dist/img/account.png"></div>
+                <div class="card-header"><h4>Stan Konta
+                </h4></div>
+                <div class="card-body">
+                    <span th:text="${currentUserFinances.real_account_balance}"></span>
                 </div>
+                <div class="card-progressbar"></div>
             </div>
-            <!--CURRENT USER FINANCES-->
-            <div class="col-lg-3 col-md-6 col-12">
-                <div class="card card-sm-2">
-                    <div class="card-icon"><img src="/dist/img/account.png"></div>
-                    <div class="card-header"><h4>Stan Konta
-                    </h4></div>
-                    <div class="card-body">
-                        <span th:text="${currentUserFinances.real_account_balance}"></span>
-                    </div>
-                    <div class="card-progressbar"></div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card card-sm-2">
+                <div class="card-icon"><i class="ion ion-ionic text-danger"></i></div>
+                <div class="card-header"><h4>XXXX
+                </h4></div>
+                <div class="card-body">yyy</div>
+                <div class="card-progressbar"></div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12" th:if="${currentUserGoal!=null}">
+            <div class="card card-sm-2">
+                <div class="card-icon"><img src="/dist/img/goal.png"></div>
+                <div class="card-header"><h4>Postęp celu
+                </h4></div>
+                <!--USER GOAL BALANCE AND USER GOAL CURRENT-->
+                <div class="card-body">
+                    <span th:text="${currentUserFinances.goal_balance} + ' / '"></span>
+                    <span th:text="${currentUserGoal.value}" class="text-muted">123</span>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-
-                <div class="card card-sm-2">
-                    <div class="card-icon"><img src="/dist/img/hourglass.png">
+                <div class="card-progressbar">
+                    <div class="progress" style="height:6px;">
+                        <div class="progress-bar bg-success" role="progressbar"
+                             th:style="'width:${perecentageValueGoal};'"></div>
                     </div>
-                    <div class="card-header"><h4>Szacowany czas
-                    </h4></div>
-                    <div class="card-body">25 dni</div>
-                    <div class="card-progressbar"></div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-
-                <div class="card card-sm-2">
-                    <div class="card-icon"><i class="ion ion-ionic text-danger"></i></div>
-                    <div class="card-header"><h4>XXXX
-                    </h4></div>
-                    <div class="card-body">yyy</div>
-                    <div class="card-progressbar"></div>
                 </div>
             </div>
         </div>
-
-
-        <div class="row">
-            <div class="col-12">
-
-                <div class="float-right">
-                    <button class="btn btn-primary btn-round" style="margin-bottom: 15px;"
-                            th:onclick="'javascript:moveTo(\'' + @{/updateGoalBalance} + '\')'">
-                        <img src="https://png.icons8.com/color/20/cccccc/deposit.png">Przelej na cel
-                    </button>
-                    <button class="btn btn-primary btn-round" style="margin-bottom: 15px;"
-                            th:onclick="'javascript:moveTo(\'' + @{/addIncome} + '\')'">
-                        <img src="https://png.icons8.com/color/20/cccccc/plus.png">Nowy przychód
-                    </button>
-                    <button class="btn btn-danger btn-round" style="margin-bottom: 15px;"
-                            th:onclick="'javascript:moveTo(\'' + @{/addExpenses} + '\')'">
-                        <img src="https://png.icons8.com/color/20/cccccc/minus.png">Nowy wydatek
-                    </button>
+        <div class="col-lg-3 col-md-6 col-12" th:if="${currentUserGoal!=null}">
+            <div class="card card-sm-2">
+                <div class="card-icon"><img src="/dist/img/hourglass.png">
                 </div>
+                <div class="card-header"><h4>Szacowany czas
+                </h4></div>
+                <div class="card-body">25 dni</div>
+                <div class="card-progressbar"></div>
             </div>
         </div>
     </div>
-    <!-- NO GOAL-->
-    <div th:if="${currentUserGoal==null}">
-        <div class="row">
-            <div class="col-12">
-                <div class="float-right" style="padding:20px;">
-                    <a th:href="@{/addOrEditGoal}" class="btn btn-primary btn-round">
-                        <img src="https://png.icons8.com/color/20/cccccc/plus.png">Dodaj cel
-                    </a>
-                </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="float-right">
+                <a th:if="${currentUserGoal==null}" th:href="@{/addOrEditGoal}" class="btn btn-primary btn-round"
+                   style="margin-bottom: 15px;">
+                    <img src="https://png.icons8.com/color/20/cccccc/plus.png">Dodaj cel
+                </a>
+                <button class="btn btn-primary btn-round" style="margin-bottom: 15px;"
+                        th:onclick="'javascript:moveTo(\'' + @{/addIncome} + '\')'">
+                    <img src="https://png.icons8.com/color/20/cccccc/plus.png">Nowy przychód
+                </button>
+                <button class="btn btn-danger btn-round" style="margin-bottom: 15px;"
+                        th:onclick="'javascript:moveTo(\'' + @{/addExpenses} + '\')'">
+                    <img src="https://png.icons8.com/color/20/cccccc/minus.png">Nowy wydatek
+                </button>
+                <button th:if="${currentUserGoal!=null}" class="btn btn-primary btn-round" style="margin-bottom: 15px;"
+                        th:onclick="'javascript:moveTo(\'' + @{/updateGoalBalance} + '\')'">
+                    <img src="https://png.icons8.com/color/20/cccccc/deposit.png">Przelej na cel
+                </button>
             </div>
         </div>
     </div>
+
     <div th:if="${achived}">
-        <button type="button" id="startConfetti" class="btn btn-primary" data-toggle="modal" data-target="#congratzModal" style="display: none">
+        <button type="button" id="startConfetti" class="btn btn-primary" data-toggle="modal"
+                data-target="#congratzModal" style="display: none">
             Osiągnąłeś cel - gratulacje
         </button>
         <div class="modal fade" id="congratzModal" tabindex="-1" role="dialog">
@@ -147,7 +139,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Udało Ci się osiągnąć cel - gratulujemy. Dodaj kolejne cele i zaoszczędź więcej pieniędzy!</p>
+                        <p>Udało Ci się osiągnąć cel - gratulujemy. Dodaj kolejne cele i zaoszczędź więcej
+                            pieniędzy!</p>
                     </div>
                 </div>
             </div>
@@ -165,10 +158,12 @@
                         <div class="card-body">
                             <div class="statistic-details mt-1">
 
-                                <div th:each="periodicalIncome : ${periodicalIncomesList}"class="statistic-details-item">
+                                <div th:each="periodicalIncome : ${periodicalIncomesList}"
+                                     class="statistic-details-item">
                                     <small class="text-muted" th:text="${periodicalIncome.periodLength + ' DNI'}">
-                                    </small><span class="text-primary"><i
-                                        class="ion-arrow-up-b"></i></span>
+                                    </small>
+                                    <span class="text-primary"><i
+                                            class="ion-arrow-up-b"></i></span>
                                     <div class="detail-value" th:text="${periodicalIncome.value + ' $'}"></div>
                                     <div class="detail-name" th:text="${periodicalIncome.name}"></div>
                                 </div>
@@ -176,11 +171,11 @@
 
                                 <!--WYDATKI-->
                                 <!--<div class="statistic-details-item">-->
-                                    <!--<small class="text-muted"><span class="text-danger"><i-->
-                                            <!--class="ion-arrow-down-b"></i></span> 23 DNI-->
-                                    <!--</small>-->
-                                    <!--<div class="detail-value">$32</div>-->
-                                    <!--<div class="detail-name">Opłata Netflix</div>-->
+                                <!--<small class="text-muted"><span class="text-danger"><i-->
+                                <!--class="ion-arrow-down-b"></i></span> 23 DNI-->
+                                <!--</small>-->
+                                <!--<div class="detail-value">$32</div>-->
+                                <!--<div class="detail-name">Opłata Netflix</div>-->
                                 <!--</div>-->
                             </div>
 
@@ -198,8 +193,10 @@
                                     <img class="mr-3 rounded-circle" width="50"
                                          th:src="@{'/dist/img/'+${lastRealisedGoal.category.name}+'.png'}">
                                     <div class="media-body">
-                                        <div class="media-title"><span th:text="${lastRealisedGoal.name}">Samochód</span></div>
-                                        <small>Uzbierano: <span th:text="${lastRealisedGoal.value} + ' zł'"></span></small>
+                                        <div class="media-title"><span
+                                                th:text="${lastRealisedGoal.name}">Samochód</span></div>
+                                        <small>Uzbierano: <span th:text="${lastRealisedGoal.value} + ' zł'"></span>
+                                        </small>
                                     </div>
                                 </li>
                                 <div class="float-right"><a th:href="@{/allRealisedGoals}"
@@ -238,7 +235,7 @@
                         </li>
                     </ul>
                     <div class="text-center">
-                        <a href="#" class="btn btn-primary btn-sm btn-round">
+                        <a th:href="@{/allIncomes}" class="btn btn-primary btn-sm btn-round">
                             Zobacz wszystkie
                         </a>
                     </div>

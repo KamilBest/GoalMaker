@@ -155,19 +155,21 @@
                     </div>
                 </div>
                 <ul class="sidebar-menu">
-
                     <li class="menu-header">MENU</li>
-                    <li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/dashboard' ||
+                    #httpServletRequest.getRequestURI() == '/index' ||
+                    #httpServletRequest.getRequestURI() == '/' ||
+                    #httpServletRequest.getRequestURI() == ' ' ? 'active':''}">
                         <a th:href="@{/dashboard}"><i class="ion ion-home"></i>
                             <span>Strona główna</span></a>
                     </li>
-                    <li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/allIncomes' ? 'active':''}">
                         <a th:href="@{/allIncomes}"><i class="ion ion-arrow-up-b"></i><span>Przychody</span></a>
                     </li>
-                    <li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/allExpenses' ? 'active':''}">
                         <a th:href="@{/allExpenses}"><i class="ion ion-arrow-down-b"></i><span>Wydatki</span></a>
                     </li>
-                    <li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/allRealisedGoals' ? 'active':''}">
                         <a th:href="@{/allRealisedGoals}"><i class="ion ion-checkmark"></i><span>Zrealizowane cele</span></a>
                     </li>
 
