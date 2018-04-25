@@ -65,6 +65,13 @@
                             class="ion ion-search"></i></a></li>
                 </ul>
             </form>
+            <ul class="navbar-nav mr-auto">
+                <li><span class="navbar-span">Stan konta: </span><span class="navbar-span" th:text="${realAccountBalance} + 'zł'"></span></li>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li><span class="navbar-span">Postęp celu: </span>
+                    <span class="navbar-span" th:text="${currentUserGoalBalance} +' / ' + ${currentUserGoalValue} + 'zł'"></span>
+            </ul>
             <ul class="navbar-nav navbar-right">
                 <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
                                                              class="nav-link notification-toggle nav-link-lg beep"><i

@@ -22,6 +22,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 import static java.util.concurrent.TimeUnit.HOURS;
+import static java.util.concurrent.TimeUnit.MINUTES;
 
 
 @Component
@@ -52,7 +53,7 @@ public class PeriodicalIncomeController  implements
 
         for(Runnable job : jobs){
 
-            scheduler.scheduleWithFixedDelay(job, 6, 6, HOURS);
+            scheduler.scheduleWithFixedDelay(job, 1, 1, HOURS);
 
         }
 
