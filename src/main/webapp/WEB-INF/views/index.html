@@ -47,6 +47,7 @@
     <link rel="stylesheet" type="text/css" href="dist/css/style.css">
     <link rel="stylesheet" type="text/css" href="dist/css/custom.css">
     <link rel="stylesheet" type="text/css" href="dist/css/skins/blue.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/datepicker.css">
 
 </head>
 
@@ -249,11 +250,26 @@
 
 <script src="dist/modules/chart.min.js"></script>
 <script src="dist/modules/summernote/summernote-lite.js"></script>
+<script src="assets/scripts/bootstrap-datepicker.js"></script>
+
 
 <script type="text/javascript">
     function moveTo(loc) {
         location.href = loc;
     }
+</script>
+<script>
+    $("input[type='radio']").click(function () {
+        $('#periodical-income').css('display', ($(this).attr('id') === 'inlineRadioStable') ? 'block':'none');
+    });
+</script>
+<script>
+    $(function () {
+        $('.datepicker').datepicker({
+            format: 'dd.mm.yyyy',
+            minDate: 0
+        });
+    });
 </script>
 <script>
 
@@ -270,6 +286,7 @@
     //        }, 5000);
     //    };
 </script>
+
 <!--<script>-->
     <!--document.addEventListener("DOMContentLoaded", function (event) {-->
         <!--var gauge = new JustGage({-->

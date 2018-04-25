@@ -20,8 +20,6 @@
             </div>
             <form th:action="@{/addIncome}" method="post">
                 <div class="card-body">
-
-
                     <div class="form-group"><label class="d-block">Wybierz typ stały/zmienny</label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio"
@@ -40,7 +38,16 @@
                     <div class="form-group"><label>Wybierz wartość przychodu</label>
                         <input th:value="${income.value}" type="text" name="value"
                                class="form-control" id="hiddenslider" placeholder="wartość"></div>
+                    <div id="periodical-income" style="display: none;">
+                        <div class="form-group"><label>Wybierz datę rozpoczęcia dodawania przychodu</label>
+                            <input type="text" name="date" class="form-control datepicker"
+                                   placeholder="">
+                        </div>
 
+                        <div class="form-group"><label>Wybierz długość trwania przychodu</label>
+                            <input type="number" class="form-control"/>
+                        </div>
+                    </div>
 
                     <button type="submit" class="btn btn-primary btn-round" style="margin-bottom: 15px;">
                         Zatwierdź
@@ -50,7 +57,6 @@
                     </a>
                 </div>
             </form>
-
         </div>
     </div>
 </section>
