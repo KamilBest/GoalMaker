@@ -47,6 +47,7 @@
     <link rel="stylesheet" type="text/css" href="dist/css/style.css">
     <link rel="stylesheet" type="text/css" href="dist/css/custom.css">
     <link rel="stylesheet" type="text/css" href="dist/css/skins/blue.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/datepicker.css">
 
 </head>
 
@@ -64,6 +65,13 @@
                             class="ion ion-search"></i></a></li>
                 </ul>
             </form>
+            <ul class="navbar-nav mr-auto">
+                <li><span class="navbar-span">Stan konta: </span><span class="navbar-span" th:text="${realAccountBalance} + 'zł'"></span></li>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li><span class="navbar-span">Postęp celu: </span>
+                    <span class="navbar-span" th:text="${currentUserGoalBalance} +' / ' + ${currentUserGoalValue} + 'zł'"></span>
+            </ul>
             <ul class="navbar-nav navbar-right">
                 <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
                                                              class="nav-link notification-toggle nav-link-lg beep"><i
@@ -154,19 +162,21 @@
                     </div>
                 </div>
                 <ul class="sidebar-menu">
-
                     <li class="menu-header">MENU</li>
-                    <li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/dashboard' ||
+                    #httpServletRequest.getRequestURI() == '/index' ||
+                    #httpServletRequest.getRequestURI() == '/' ||
+                    #httpServletRequest.getRequestURI() == ' ' ? 'active':''}">
                         <a th:href="@{/dashboard}"><i class="ion ion-home"></i>
                             <span>Strona główna</span></a>
                     </li>
-                    <li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/allIncomes' ? 'active':''}">
                         <a th:href="@{/allIncomes}"><i class="ion ion-arrow-up-b"></i><span>Przychody</span></a>
                     </li>
-                    <li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/allExpenses' ? 'active':''}">
                         <a th:href="@{/allExpenses}"><i class="ion ion-arrow-down-b"></i><span>Wydatki</span></a>
                     </li>
-                    <li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/allRealisedGoals' ? 'active':''}">
                         <a th:href="@{/allRealisedGoals}"><i class="ion ion-checkmark"></i><span>Zrealizowane cele</span></a>
                     </li>
 
@@ -249,11 +259,26 @@
 
 <script src="dist/modules/chart.min.js"></script>
 <script src="dist/modules/summernote/summernote-lite.js"></script>
+<script src="assets/scripts/bootstrap-datepicker.js"></script>
+
 
 <script type="text/javascript">
     function moveTo(loc) {
         location.href = loc;
     }
+</script>
+<script>
+    $("input[type='radio']").click(function () {
+        $('#periodical-income').css('display', ($(this).attr('id') === 'inlineRadioStable') ? 'block':'none');
+    });
+</script>
+<script>
+    $(function () {
+        $('.datepicker').datepicker({
+            format: 'dd.mm.yyyy',
+            minDate: 0
+        });
+    });
 </script>
 <script>
 
@@ -270,6 +295,7 @@
     //        }, 5000);
     //    };
 </script>
+
 <!--<script>-->
     <!--document.addEventListener("DOMContentLoaded", function (event) {-->
         <!--var gauge = new JustGage({-->

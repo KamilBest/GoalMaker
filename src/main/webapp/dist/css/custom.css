@@ -44,3 +44,9 @@
     font-size: 1.4em;
     margin-right: 5px;
 }
+.navbar-span{
+    color: #fff;
+    font-weight: 500;
+    font-size: 1em;
+    text-transform: uppercase;
+}
