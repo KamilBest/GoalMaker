@@ -1,5 +1,8 @@
 # GoalMaker
-
+http://goalmaker.herokuapp.com/
+Login: test
+Hasło: test
+(ewentualnie stworzyć nowego użytkownika)
 Podstawowe poruszanie się po heroku.
 
 Jeśli mamy nową bazę i nikt jeszcze z nas jej nie wrzucił na heroku, a potrzebujemy zrobić to pilnie należy wziąć od Igora linka do dropboxa (ma tam wrzucać backupy) i wydać komendę z terminala:
